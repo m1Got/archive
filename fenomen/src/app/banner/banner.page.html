@@ -1,0 +1,33 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="banner-actions">
+    <button (click)="back()">
+      <ion-icon src="assets/icon/close.svg"></ion-icon>
+    </button>
+    <button>
+      <ion-icon
+        src="/assets/icon/heart-fill.svg"
+        color="danger"
+        size="large"
+      ></ion-icon>
+    </button>
+    <button>
+      <ion-icon name="share-outline" size="large"></ion-icon>
+    </button>
+  </div>
+  <div class="banner-img">
+    <img src="assets/images/home-banner.png" />
+  </div>
+  <div class="banner-footer">
+    <h4 class="banner-title">Утиная утка с муссом и не муссом тоже</h4>
+    <ion-button
+      size="small"
+      color="purple"
+      routerLink="/advertise"
+      routerDirection="forward"
+    >
+      <ion-text>Узнать подробнее</ion-text>
+      <ion-icon name="arrow-forward-outline"></ion-icon>
+    </ion-button>
+  </div>
+  <div class="banner-bg-linear"></div>
+</ion-content>

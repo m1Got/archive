@@ -1,0 +1,138 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="primary-toolbar">
+    <div class="primary-toolbar--inner">
+      <button
+        size="m"
+        shape="rounded"
+        tuiButton
+        appearance="whiteblock"
+        class="icon-button"
+        (click)="navCtrl.back()"
+      >
+        <ion-icon
+          class="text-lg"
+          color="primary"
+          src="assets/icons/chevron-back-outline.svg"
+        />
+      </button>
+      <ion-title>Проверка паспорта</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="py-4">
+    <div class="grid grid-cols-2 gap-1">
+      <ion-button
+        [color]="passportType === 'idCard' ? 'primary' : 'tertiary'"
+        fill="outline"
+        size="large"
+        (click)="passportType = 'idCard'"
+      >
+        ID карта
+      </ion-button>
+      <ion-button
+        [color]="passportType === 'passport' ? 'primary' : 'tertiary'"
+        fill="outline"
+        size="large"
+        (click)="passportType = 'passport'"
+      >
+        Паспорт
+      </ion-button>
+    </div>
+    <ng-container *ngIf="passportType === 'idCard'">
+      ID карта
+      <div class="flex gap-4 pt-5">
+        <label tuiLabel="Серия" class="flex-[30%]">
+          <button
+            tuiButton
+            appearance="outline"
+            (click)="utilsService.odTemplate(seriesTemplate)"
+          >
+            <span class="font-semibold">AC</span>
+          </button>
+        </label>
+        <label tuiLabel="Серия" class="flex-[70%]">
+          <tui-input [formControl]="" [tuiTextfieldLabelOutside]="true"
+            >Номер паспорта</tui-input
+          >
+        </label>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="passportType === 'passport'">
+      Паспорт
+      <div class="flex gap-4 pt-5">
+        <label tuiLabel="Серия" class="flex-[30%]">
+          <button tuiButton appearance="outline">
+            <span class="font-semibold">AC</span>
+          </button>
+        </label>
+        <label tuiLabel="Серия" class="flex-[70%]">
+          <tui-input [formControl]="" [tuiTextfieldLabelOutside]="true"
+            >Номер паспорта</tui-input
+          >
+        </label>
+      </div>
+    </ng-container>
+    <div class="pt-5">
+      <label tuiLabel="Фото">
+        <div class="grid grid-cols-2 gap-2 pt-2">
+          <button
+            size="xl"
+            tuiButton
+            appearance="secondary"
+            class="overflow-hidden"
+          >
+            <img
+              class="absolute left-0 top-0 h-full w-full object-cover"
+              src="assets/images/work.jpg"
+            />
+            <div class="absolute right-2 top-2">
+              <button
+                size="s"
+                tuiIconButton
+                icon="assets/icons/trash-bin.svg"
+                appearance="secondary"
+              ></button>
+            </div>
+          </button>
+          <button
+            size="xl"
+            tuiButton
+            appearance="secondary"
+            icon="assets/icons/camera-photo.svg"
+          ></button>
+          <button
+            size="xl"
+            tuiButton
+            appearance="secondary"
+            icon="assets/icons/camera-photo.svg"
+          ></button>
+        </div>
+      </label>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="secondary-toolbar">
+    <ion-button expand="block">Отправить</ion-button>
+  </ion-toolbar>
+</ion-footer>
+
+<ng-template #seriesTemplate>
+  <div class="py-5">
+    <h4 class="text-xl font-semibold">Серия</h4>
+    <div class="grid grid-cols-2 gap-2 pt-2">
+      <button tuiButton appearance="outline">
+        <span class="font-semibold">AB</span>
+      </button>
+      <button tuiButton appearance="outline">
+        <span class="font-semibold">AD</span>
+      </button>
+      <button tuiButton appearance="outline">
+        <span class="font-semibold">ACC</span>
+      </button>
+    </div>
+  </div>
+</ng-template>

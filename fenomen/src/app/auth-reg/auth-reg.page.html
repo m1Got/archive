@@ -1,0 +1,129 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <header class="page-header">
+      <div class="page-header__start">
+        <h2 class="page-title">
+          <h2 class="page-title">Регистрация</h2>
+        </h2>
+      </div>
+      <div class="page-header__end"></div>
+    </header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-row>
+    <ion-col size="9">
+      <div class="group">
+        <div class="group-title">Имя*</div>
+        <div class="group-body">
+          <ion-input
+            required
+            inputmode="latin-name"
+            placeholder="Введите Ваше имя"
+            class="custom"
+          />
+        </div>
+      </div>
+    </ion-col>
+    <ion-col size="3">
+      <ion-avatar style="width: 75px; height: 75px">
+        <img src="assets/images/personal-placeholder.png" />
+      </ion-avatar>
+    </ion-col>
+  </ion-row>
+
+  <div class="group">
+    <div class="group-title">Пол и дата рождения*</div>
+    <div class="group-body">
+      <ion-row>
+        <ion-col size="4">
+          <ion-select
+            justify="space-between"
+            placeholder="Не выбран"
+            toggleIcon="chevron-down-outline"
+          >
+            <ion-select-option value="apple">Apple</ion-select-option>
+            <ion-select-option value="banana">Banana</ion-select-option>
+            <ion-select-option value="orange">Orange</ion-select-option>
+          </ion-select>
+        </ion-col>
+        <ion-col size="8">
+          <ion-input
+            required
+            placeholder="__.__._____"
+            class="custom"
+            autocomplete="false"
+            inputmode="numeric"
+          />
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+  <div class="group">
+    <div class="group-title">Ваши аллергены*</div>
+    <div class="group-body">
+      <ion-select
+        justify="space-between"
+        placeholder="Нет аллергенов2"
+        toggleIcon="chevron-down-outline"
+      >
+        <ion-select-option value="apple">Apple</ion-select-option>
+        <ion-select-option value="banana">Banana</ion-select-option>
+        <ion-select-option value="orange">Orange</ion-select-option>
+      </ion-select>
+    </div>
+  </div>
+
+  <div class="group">
+    <div class="group-title">E-mail*</div>
+    <div class="group-body">
+      <ion-input
+        required
+        type="email"
+        inputmode="email"
+        placeholder="Введите Ваше имя"
+        class="custom"
+      />
+    </div>
+  </div>
+
+  <div class="group">
+    <div class="group-title">Номер телефона*</div>
+    <div class="group-body">
+      <ion-row>
+        <ion-col size="3">
+          <ion-select
+            justify="space-between"
+            toggleIcon="chevron-down-outline"
+            value="ru"
+          >
+            <ion-select-option value="ru">+7</ion-select-option>
+            <ion-select-option value="uz">+998</ion-select-option>
+          </ion-select>
+        </ion-col>
+        <ion-col size="9">
+          <ion-input
+            required
+            placeholder="(999) 123-45-67"
+            class="custom"
+            autocomplete="false"
+            inputmode="numeric"
+          />
+        </ion-col>
+      </ion-row>
+      <br />
+      <ion-text color="primary" class="ion-padding-bottom">
+        После регистрации Вы получите 500 приветственных бонусов!
+      </ion-text>
+      <ion-note>*обязательное поле для заполнения</ion-note>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-button color="primary" expand="block"> готово </ion-button>
+  </ion-toolbar>
+</ion-footer>

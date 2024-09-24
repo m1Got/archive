@@ -1,0 +1,243 @@
+<section class="pb-10 pt-6">
+  <div class="container">
+    <div class="flex items-center">
+      <div class="mr-auto">
+        <h1 class="title">
+          <translate uz="PROFILE" ru="ПРОФИЛЬ" />
+        </h1>
+      </div>
+      <button
+        class="flex items-center text-medium"
+        (click)="utils.odTemplate(logoutTemplate, { size: 's' })"
+      >
+        <ion-icon class="text-3xl" src="icons/log-out-outline.svg" />
+        <span class="pl-2 text-lg">
+          <translate uz="Akkauntdan chiqmoq" ru="Выйти из аккаунта" />
+        </span>
+      </button>
+    </div>
+    <div class="grid gap-4 pt-6 lg:flex">
+      <ion-card class="card flex-1">
+        <form [formGroup]="formProfile" (submit)="onSubmit()">
+          <div class="mb-3">
+            <h3 class="text-xl font-bold text-dark">
+              
+              <translate uz="Shaxsiy ma'lumotlar" ru="Личные данные" />
+            </h3>
+          </div>
+          <div class="mb-3">
+            <tui-input formControlName="fio">
+              <translate uz="FIO" ru="ФИО" />
+              
+            </tui-input>
+          </div>
+          <div class="mb-3 grid gap-3 sm:grid-cols-2">
+            <tui-input formControlName="email">
+              <translate uz="Pochta" ru="Почта" />
+              
+            </tui-input>
+            <tui-input-phone
+              formControlName="phone"
+              countryCode="+998"
+              phoneMaskAfterCountryCode="(##) ###-##-##"
+              >
+              <translate uz="Telefon raqam" ru="Номер телефона" />
+              
+              </tui-input-phone
+            >
+          </div>
+          <div class="mb-3 grid flex-wrap gap-3 sm:flex">
+            <div class="grid flex-1 gap-1">
+              <ng-container
+                *ngIf="!authService.currentUser.passport_image || changePassport"
+              >
+                <ng-container *ngIf="!passportImage.value">
+                  <tui-input-files [formControl]="passportImage">
+                    <input
+                      accept=".png, .jpg, .jpeg, .pdf"
+                      capture="user"
+                      tuiInputFiles
+                    />
+                    <ng-template let-dragged>
+                      <div *ngIf="dragged; else base">
+                        <tui-marker-icon
+                          mode="link"
+                          src="tuiIconDropletLarge"
+                        />
+                        Drop it like it's hot!
+                      </div>
+                      <ng-template #base>
+                        <div class="flex items-center gap-4">
+                          <tui-marker-icon
+                            size="s"
+                            mode="link"
+                            src="tuiIconUploadCloudLarge"
+                          />
+                          <translate uz="Passportni bog'lash" ru="Прикрепить паспорт" />
+                          
+                        </div>
+                      </ng-template>
+                    </ng-template>
+                  </tui-input-files>
+                </ng-container>
+                <tui-files *ngIf="passportImage.valueChanges | async as file">
+                  <tui-file
+                    size="l"
+                    [file]="file"
+                    [showSize]="false"
+                    class="max-sm:!flex-col"
+                    (removed)="passportImage.setValue(null)"
+                  ></tui-file>
+                </tui-files>
+              </ng-container>
+              <ng-container
+                *ngIf="!!authService.currentUser.passport_image && !changePassport"
+              >
+                <tui-island>
+                  <div class="grid items-center gap-2 sm:flex">
+                    <tui-badged-content
+                      size="l"
+                      class="mr-auto w-full sm:w-40"
+                      contentTop="tuiIconCheckCircleLarge"
+                      [rounded]="true"
+                    >
+                      <img
+                        class="h-32 w-full rounded-md object-cover"
+                        [src]="path + authService.currentUser.passport_image"
+                      />
+                    </tui-badged-content>
+                    <button
+                      tuiIconButton
+                      type="button"
+                      (click)="utils.odTemplate(changePassportTemplate, { size: 's' })"
+                      icon="icons/refresh.svg"
+                      class="max-sm:ml-auto"
+                      shape="rounded"
+                      size="m"
+                    ></button>
+                  </div>
+                </tui-island>
+              </ng-container>
+              <ng-container *ngIf="!isPassportValidate && !passportImage.value">
+                <p class="text-center text-red-500">
+                  <translate uz="Passport rasmi kerak" ru="Фото паспорта обязательно" />
+                  
+                </p>
+              </ng-container>
+            </div>
+            <div class="flex flex-1 items-end">
+              <button
+                size="m"
+                class="w-full"
+                tuiButton
+                type="submit"
+                shape="rounded"
+                [disabled]="formProfile.invalid || ((!isPassportValidate || !formProfile.dirty) && !passportImage.value)"
+              >
+              <translate uz="Saqlamoq" ru="Сохранить" />
+                
+              </button>
+            </div>
+          </div>
+        </form>
+      </ion-card>
+
+      <ion-card class="card flex-1">
+        <ng-container *ngIf="simcards$ | async as simcards">
+          <ng-container *ngIf="!!simcards.data?.length">
+            <div class="mb-3 flex">
+              <h3 class="mr-auto text-xl font-bold text-dark">
+                <translate uz="Sim-kartalar" ru="Сим-карты" />
+                
+              </h3>
+              <button
+                class="text-lg font-medium text-medium"
+                routerLink="/profile/simcards"
+              >
+              <translate uz="Hammasini ko'rmoq" ru="Посмотреть все" />
+                
+              </button>
+            </div>
+            <!-- <app-simcards [isLastSimcards]="true" /> -->
+            <div
+              class="flex snap-x snap-mandatory flex-nowrap overflow-x-auto py-2"
+            >
+              <ng-container *ngFor="let simcard of simcards.data?.slice(-2)">
+                <div class="mx-2 snap-start">
+                  <app-simcard [simcard]="simcard" [isLastSimcards]="true" />
+                </div>
+              </ng-container>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="!simcards.data?.length">
+            <tui-block-status>
+              <img src="images/empty-orders.svg" tuiSlot="top" />
+              <p class="py-3">
+                <translate uz="Sizda hali active zakazlar yo'q" ru="У вас пока нет активных заказов" />
+                
+              </p>
+              <ion-button routerLink="/rates" tuiSlot="bottom">
+                <translate uz="Zakaz yaratish" ru="Создать заказ" />
+                
+              </ion-button>
+            </tui-block-status>
+          </ng-container>
+        </ng-container>
+      </ion-card>
+    </div>
+  </div>
+</section>
+
+<ng-template #logoutTemplate let-logoutTemplate>
+  <div class="pb-5 text-center text-lg font-semibold">
+    <translate uz="Rostdan ham chiqmoqchimisiz" ru="Вы точно хотите выйти" />
+    
+  </div>
+  <div class="grid grid-cols-2 gap-3">
+    <button
+      size="xl"
+      tuiButton
+      appearance="secondary"
+      (click)="logoutTemplate.complete()"
+    >
+    <translate uz="Bekor qilish" ru="Отмена" />
+      
+    </button>
+    <button
+      size="xl"
+      tuiButton
+      appearance="accent"
+      (click)="logout(logoutTemplate)"
+    >
+    <translate uz="Ha" ru="Да" />
+      
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #changePassportTemplate let-changePassportTemplate>
+  <div class="pb-5 text-center text-lg font-semibold">
+    <translate uz="Rostdan ham passport rasmini o'zgartirmoqchimisiz" ru="Вы точно хотите изменить фото паспорта" />
+    
+  </div>
+  <div class="grid grid-cols-2 gap-3">
+    <button
+      size="xl"
+      tuiButton
+      appearance="secondary"
+      (click)="changePassportTemplate.complete()"
+    >
+    <translate uz="Bekor qilish" ru="Отмена" />
+      
+    </button>
+    <button
+      size="xl"
+      tuiButton
+      appearance="accent"
+      (click)="onChangePassport(changePassportTemplate)"
+    >
+    <translate uz="Ha" ru="Да" />
+      
+    </button>
+  </div>
+</ng-template>

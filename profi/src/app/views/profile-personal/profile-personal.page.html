@@ -1,0 +1,83 @@
+<div class="grid max-w-2xl gap-5">
+  <div class="grid gap-5 md:grid-cols-2">
+    <label tuiLabel="Ваше имя">
+      <tui-input [tuiTextfieldLabelOutside]="true" [formControl]="">
+        Введите имя
+        <input tuiTextfield />
+      </tui-input>
+    </label>
+    <label tuiLabel="Ваша фамилия">
+      <tui-input [tuiTextfieldLabelOutside]="true" [formControl]="">
+        Введите фамилию
+        <input tuiTextfield />
+      </tui-input>
+    </label>
+    <label tuiLabel="Телефон">
+      <tui-input [tuiTextfieldLabelOutside]="true" [formControl]="">
+        Введите номер телефона
+        <input tuiTextfield />
+      </tui-input>
+    </label>
+    <label tuiLabel="Дополнительный номер">
+      <tui-input [tuiTextfieldLabelOutside]="true" [formControl]="">
+        Введите дополнительный номер
+        <input tuiTextfield />
+      </tui-input>
+    </label>
+  </div>
+  <div class="grid gap-5">
+    <label tuiLabel="Выберите город">
+      <tui-select [tuiTextfieldLabelOutside]="true" [formControl]="">
+        Выберите город
+        <input tuiTextfield />
+        <tui-data-list *tuiDataList>
+          <button tuiOption value="город 1">город 1</button>
+          <button tuiOption value="город 2">город 2</button>
+          <button tuiOption value="город 3">город 3</button>
+        </tui-data-list>
+      </tui-select>
+    </label>
+    <div class="grid gap-5 md:grid-cols-2">
+      <label tuiLabel="Дата рождения" [tuiTextfieldLabelOutside]="true">
+        <tui-input-date [formControl]="">
+          Выберите дату рождения
+        </tui-input-date>
+      </label>
+      <label tuiLabel="Опить работы">
+        <tui-select [tuiTextfieldLabelOutside]="true" [formControl]="">
+          Введите опить работы
+          <input tuiTextfield />
+          <tui-data-list *tuiDataList>
+            <button tuiOption value="Категория 1">опить работы 1</button>
+            <button tuiOption value="Категория 2">опить работы 2</button>
+            <button tuiOption value="Категория 3">опить работы 3</button>
+          </tui-data-list>
+        </tui-select>
+      </label>
+    </div>
+    <label tuiLabel="Образование">
+      <tui-input [tuiTextfieldLabelOutside]="true" [formControl]="">
+        Среднее специальное
+        <input tuiTextfield />
+      </tui-input>
+    </label>
+    <label tuiLabel="О себе">
+      <tui-textarea
+        class="!min-h-[10rem]"
+        [tuiTextfieldLabelOutside]="true"
+        [maxLength]="100"
+        [formControl]=""
+      >
+        Расскажите немного о себе
+      </tui-textarea>
+    </label>
+  </div>
+  <button
+    tuiButton
+    appearance="accent"
+    shape="rounded"
+    class="md:justify-self-start"
+  >
+    Сохранить
+  </button>
+</div>

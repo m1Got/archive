@@ -1,0 +1,47 @@
+:host {
+  border-radius: var(--rounded-md) var(--rounded-md) 0 0;
+  box-shadow: inset 0 1px var(--tui-base-04);
+
+  width: 100%;
+  height: 60px;
+  background-color: #fff;
+  position: fixed;
+  z-index: 99;
+  bottom: 0;
+  left: 0;
+
+  @media (width >= 48em) {
+    display: none;
+  }
+}
+.tabs {
+  gap: 5px;
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+
+  #tabsMainButton {
+    bottom: 20px;
+    position: relative;
+    outline: 10px solid #fff;
+  }
+
+  #tabsMainButton.active {
+    --tui-primary: var(--fire);
+  }
+}
+
+.tabs__link {
+  color: var(--lightgrey);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  ion-icon {
+    font-size: 25px;
+  }
+}
+
+.tabs__link.active {
+  color: var(--primary);
+}

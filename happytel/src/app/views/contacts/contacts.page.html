@@ -1,0 +1,164 @@
+<section class="py-8">
+  <div class="container">
+    <div class="mb-8">
+      <h1 class="title uppercase">
+        <translate uz="Kontaktlar" ru="Контакты" />
+      </h1>
+    </div>
+    <div class="grid gap-8 lg:flex">
+      <div class="flex-[60%] lg:w-[60%]">
+        <div class="h-full min-h-[20rem] w-full overflow-hidden rounded-2xl">
+          <ya-map [zoom]="12" [center]="[41.286238, 69.255931]" [zoom]="12">
+            <ya-placemark [geometry]="[41.286238, 69.255931]"></ya-placemark>
+          </ya-map>
+        </div>
+      </div>
+      <div class="flex-[40%] flex-shrink-0 flex-grow-0">
+        <ion-card class="card flex flex-col">
+          <h3 class="text-xl font-bold text-dark">
+            <translate uz="Kontaktlar" ru="Контакты" />
+          </h3>
+          <div class="grid flex-auto gap-2 pt-6">
+            <a
+              href="tel:{{ utils.phone }}"
+              target="_blank"
+              class="flex items-center"
+            >
+              <button
+                size="m"
+                shape="rounded"
+                tuiIconButton
+                icon="icons/phone-call.svg"
+              ></button>
+              <div class="ml-3 text-lg">
+                <p class="text-medium">
+                  <translate uz="Telefon raqam:" ru="Контактный номер:" />
+                </p>
+                <p class="text-dark">{{ utils.phone }}</p>
+              </div>
+            </a>
+            <a
+              href="mailto:{{ utils.email }}"
+              target="_blank"
+              class="flex items-center"
+            >
+              <button
+                size="m"
+                shape="rounded"
+                tuiIconButton
+                icon="icons/mail-outline.svg"
+              ></button>
+              <div class="ml-3 text-lg">
+                <p class="text-medium">
+                  <translate uz="Elektron manzil" ru="Электронная почта" />
+                </p>
+                <p class="text-dark">{{ utils.email }}</p>
+              </div>
+            </a>
+            <a
+              href="{{ utils.address }}"
+              target="_blank"
+              class="flex items-center"
+            >
+              <button
+                size="m"
+                shape="rounded"
+                tuiIconButton
+                icon="icons/location-outline.svg"
+              ></button>
+              <div class="ml-3 text-lg">
+                <p class="text-medium">
+                  <translate uz="Ofis manzili" ru="Адрес офиса" />
+                </p>
+                <p class="text-dark">
+                  <translate
+                    uz="Toshkent shahri, Yakasaroy tumani, Abdulla Qahhor ko‘chasi, 4-uy"
+                    ru="Город Ташкент, Якасарайский район, Улица Абдуллы Каххара 4"
+                  />
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="flex gap-2 pt-10">
+            <a
+              size="s"
+              tuiIconButton
+              target="_blank"
+              appearance="icon"
+              icon="icons/facebook.svg"
+              [href]="utils.facebookLink"
+            >
+            </a>
+            <a
+              size="s"
+              tuiIconButton
+              appearance="icon"
+              icon="icons/telegram.svg"
+              [href]="utils.telegramLink"
+            >
+            </a>
+            <a
+              size="s"
+              tuiIconButton
+              appearance="icon"
+              icon="icons/instagram.svg"
+              [href]="utils.instagramLink"
+            >
+            </a>
+          </div>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="py-10 md:py-24">
+  <div class="container gap-10 md:flex">
+    <form class="flex-[60%]" [formGroup]="formContacts" (submit)="onSubmit()">
+      <div class="mb-6">
+        <h1 class="title uppercase">
+          <translate
+            uz="Savollaringiz bo'lsa yuboring"
+            ru="Отправьте нам сообщение"
+          />
+        </h1>
+      </div>
+      <div class="mb-6">
+        <div class="grid gap-3 md:grid-cols-2">
+          <tui-input formControlName="name">
+            <translate uz="Ism" ru="Имя" />
+          </tui-input>
+          <tui-input-phone
+            formControlName="phone"
+            countryCode="+998"
+            phoneMaskAfterCountryCode="(##) ###-##-##"
+          >
+            <translate uz="Telefon raqam" ru="Номер телефона" />
+          </tui-input-phone>
+        </div>
+        <div class="pt-3">
+          <tui-textarea formControlName="comments" [maxLength]="150">
+            <translate uz="Murojaat matni" ru="Текст обращения" />
+          </tui-textarea>
+        </div>
+      </div>
+      <button
+        size="m"
+        tuiButton
+        type="submit"
+        shape="rounded"
+        [disabled]="formContacts.invalid || (isSubmitting$ | async)"
+      >
+        <translate uz="Junatmoq" ru="Отправить" />
+      </button>
+    </form>
+    <div class="hidden flex-[40%] md:block">
+      <div class="overflow-hidden rounded-2xl bg-[#E7E7E7]">
+        <img
+          class="ml-auto block h-full w-4/5"
+          src="images/support-woman.png"
+          alt="ContactsSupportImage"
+        />
+      </div>
+    </div>
+  </div>
+</section>

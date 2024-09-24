@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <header class="header">
+      <div class="header-start">
+        <ion-buttons slot="start">
+          <ion-back-button text="" icon="arrow-back-outline"> </ion-back-button>
+        </ion-buttons>
+      </div>
+      <div class="header-center">
+        <ion-text class="header-title"></ion-text>
+      </div>
+      <div class="header-end"></div>
+    </header>
+    <header class="page-header">
+      <div class="page-header__start">
+        <h2 class="page-title">Оплата</h2>
+      </div>
+      <div class="page-header__end"></div>
+    </header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true" class="ion-padding">
+  <section class="payment">
+    <article>
+      <img src="assets/logo-black.svg" />
+      <img src="assets/logo-subtext-black.svg" />
+    </article>
+    <ul>
+      <li>
+        <h5>Детали заказа</h5>
+        <span>#7777</span>
+      </li>
+      <li>
+        <p>Тар тар из говядины</p>
+        <span>300 ₽</span>
+      </li>
+      <li>
+        <p>Мини-брускетта с уткой конфи и луком</p>
+        <span>3000 ₽</span>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <h5>К оплате</h5>
+        <span></span>
+      </li>
+      <li>
+        <p>Всего:</p>
+        <span>3300₽</span>
+      </li>
+      <li>
+        <p>Скидка:</p>
+        <span>1200₽</span>
+      </li>
+      <li>
+        <p>Итог:</p>
+        <span>2100₽</span>
+      </li>
+    </ul>
+    <ion-text>Дата: 27.09.2023 04:43</ion-text>
+    <ion-text>Стол: №7</ion-text>
+    <ion-text>Адрес: ул. Уличная, 10</ion-text>
+    <ion-text>ИНН: 0278971703</ion-text>
+    <img class="payment-bg" src="/assets/payment-bg.svg" />
+    <div class="payment-collapse" *ngIf="collapse">
+      <ion-button
+        expand="block"
+        color="light"
+        (click)="collapse = !collapse"
+        class="payment-collapse-button"
+      >
+        Развернуть
+      </ion-button>
+      <ion-button fill="outline" expand="expand" color="danger">
+        оставить чаевые
+      </ion-button>
+      <ion-button fill="outline" expand="expand"> оплатить СБП </ion-button>
+      <ion-button fill="outline" expand="expand"> карта *7233 </ion-button>
+      <ion-button fill="outline" expand="expand"> добавить карту</ion-button>
+    </div>
+  </section>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-button
+      expand="block"
+      color="light"
+      (click)="collapse = !collapse"
+      class="payment-collapse-button"
+      *ngIf="!collapse"
+    >
+      Свернуть
+    </ion-button>
+    <ion-button
+      expand="block"
+      class="ion-margin-top"
+      routerLink="/awaiting"
+      routerDirection="forward"
+    >
+      оплатить
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

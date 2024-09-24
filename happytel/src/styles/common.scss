@@ -1,0 +1,357 @@
+.primary-card {
+  filter: drop-shadow(var(--shadow-light));
+  border-radius: var(--rounded-m);
+
+  max-width: 25rem;
+  overflow: hidden;
+
+  &--inner {
+    will-change: transform;
+    clip-path: var(--primary-card-clip-path);
+    background: white;
+    border-radius: var(--rounded-m);
+  }
+
+  [tuiButton][data-size="s"] [tuiwrapper],
+  [tuiButton][data-size="xs"] [tuiwrapper] {
+    box-shadow: var(--shadow-light);
+  }
+
+  [tuiButton][data-size="s"] {
+    --tui-padding: 8px;
+    --tui-height-s: 36px;
+  }
+
+  [tuiButton][data-size="xs"] {
+    --tui-padding: 6px;
+    --tui-height-xs: 28px;
+
+    border-radius: var(--rounded-xs);
+  }
+}
+
+.secondary-card {
+  z-index: 2;
+  position: relative;
+
+  &::before {
+    background: var(--light);
+    clip-path: var(--advantage-card-clip-path);
+
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+  }
+}
+
+.primary-button {
+  --tui-font-text-m: normal 1.125rem/1.5rem var(--tui-font-text);
+  filter: drop-shadow(var(--shadow-red));
+
+  background: transparent;
+
+  &--inner {
+    clip-path: var(--primary-button-clip-path);
+    background: var(--primary);
+    border-radius: var(--rounded-m);
+    transition-duration: var(--tui-duration, 300ms);
+
+    transition-property: all;
+    transition-timing-function: ease-in-out;
+
+    padding-inline: min(3vw, 20px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.125rem;
+    height: 3.5rem;
+    color: white;
+
+    &:hover {
+      background: var(--tui-primary-hover);
+    }
+
+    &:has(ion-icon) {
+      justify-content: space-between;
+      ion-icon {
+        font-size: 1.5rem;
+        padding-right: 1rem;
+      }
+    }
+  }
+}
+
+.tr-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  font-weight: 500;
+}
+
+.center-x {
+  left: 50%;
+  translate: -50% 0;
+}
+
+.center-y {
+  top: 50%;
+  translate: 0 -50%;
+}
+
+.disabled {
+  opacity: 0.4;
+  user-select: none;
+  pointer-events: none;
+  touch-action: none;
+  filter: grayscale(1);
+}
+
+.card {
+  --_box-shadow: var(--shadow-light);
+
+  box-shadow: var(--_box-shadow);
+  border-radius: var(--rounded-m);
+
+  padding: min(3vw, 25px);
+}
+
+.simcard {
+  --_bg-color: #f5f5f5;
+
+  background: var(--_bg-color);
+  border-radius: 1.5rem;
+  position: relative;
+  max-width: 18rem;
+  display: grid;
+  width: 100%;
+
+  z-index: 5;
+
+  &[data-light="true"] {
+    --_bg-color: white;
+  }
+
+  & > ion-button {
+    --background: var(--_bg-color);
+    min-height: 2.8rem;
+  }
+}
+
+.divider {
+  background: var(--tertiary);
+
+  width: 100vw;
+  height: 1px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.title {
+  --_line-color: var(--primary);
+  --_line-content: "";
+
+  position: relative;
+  font-size: clamp(24px, 4vw, 40px);
+  font-weight: 700;
+  line-height: 130%;
+
+  &[data-secondary] {
+    --_line-color: white;
+    color: white;
+  }
+
+  &[data-basic] {
+    --_line-content: none;
+  }
+
+  &::before {
+    content: var(--_line-content);
+    background: var(--_line-color);
+
+    height: 5px;
+    width: min(8vw, 80px);
+    position: absolute;
+    transform: translateY(-50%);
+    right: calc(100% + 1rem);
+    top: 50%;
+
+    @media (width < 62em) {
+      display: none;
+    }
+  }
+}
+
+[class*="grid-columns"] {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--_min-width), 1fr));
+  gap: min(3vw, 20px);
+}
+
+.grid-columns--md {
+  --_min-width: 20rem;
+}
+
+.grid-columns--sm {
+  --_min-width: 16rem;
+}
+
+.grid-columns--xs {
+  --_min-width: 12rem;
+}
+
+[tuiButton][data-size="l"] {
+  --tui-padding: 1.5rem;
+}
+
+[tuiWrapper][data-appearance="textfield"] {
+  box-shadow: var(--_box-shadow);
+  border: var(--_border);
+}
+
+:where(tui-select, tui-combo-box, tui-multi-select) {
+  --_box-shadow: none;
+  --_border: 1px solid var(--tertiary);
+
+  --tui-base-01: var(--light);
+  --tui-radius-m: 3rem;
+}
+
+ion-segment {
+  --background: var(--secondary);
+
+  width: fit-content;
+  border-radius: var(--rounded-l);
+}
+
+ion-segment-button {
+  &::part(indicator) {
+    padding-inline: 0;
+  }
+  &::part(indicator-background) {
+    background: var(--primary);
+  }
+}
+
+ion-radio {
+  &::part(container) {
+    width: 26px;
+    height: 26px;
+
+    border-radius: 8px;
+    border: 2px solid #ddd;
+  }
+
+  &::part(mark) {
+    background: none;
+    transition: none;
+    transform: none;
+    border-radius: 0;
+  }
+}
+
+ion-radio.radio-checked::part(container) {
+  background: var(--primary);
+  border-color: transparent;
+  transition: all 0.2s ease;
+}
+
+ion-radio.radio-checked::part(mark) {
+  width: 8px;
+  height: 14px;
+
+  border-width: 0px 2px 2px 0px;
+  border-style: solid;
+  border-color: #fff;
+
+  transform: rotate(45deg) translateX(-1px) translateY(-1px);
+}
+
+ion-segment-button {
+  --color-checked: #fff;
+  --border-radius: var(--rounded-l);
+  --padding-start: 16px;
+  --padding-end: 16px;
+
+  font-size: 16px;
+  height: 46px;
+}
+
+ion-card {
+  box-shadow: var(--shadow-light);
+}
+
+pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0 0;
+
+  .ngx-pagination {
+    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .ngx-pagination > li {
+    height: 45px;
+    min-width: 45px;
+    box-shadow: 0px 1px 6px rgba(#000, 0.08);
+    white-space: nowrap;
+    border-radius: 50%;
+    background: #fff;
+  }
+
+  .ngx-pagination > li {
+    a,
+    span[aria-live="polite"] {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+  }
+
+  .ngx-pagination .current {
+    background: var(--ion-color-primary) !important;
+  }
+}
+
+body #lb_button-call {
+  @media (width < 48em) {
+    top: -15px !important;
+  }
+}
+
+.lb-button__wrapper {
+  body & {
+    @media (width < 48em) {
+      bottom: 66px !important;
+    }
+  }
+}
+
+.lb-widget-panel--position-right {
+  @media (width < 48em) {
+  }
+}
+
+#recButton {
+  --tui-primary: #fff;
+  --tui-primary-hover: #fff;
+}
+
+#recIconButton > [tuiWrapper] {
+  background: rgb(82 82 91 / 0.9);
+  color: #fff;
+}

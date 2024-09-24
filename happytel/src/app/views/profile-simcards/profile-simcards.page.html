@@ -1,0 +1,16 @@
+<section class="py-6">
+  <div class="container">
+    <div class="pb-6">
+      <h1 class="title">
+        <translate uz="SIM-KARTALAR" ru="СИМ-КАРТЫ" />
+      </h1>
+    </div>
+    <ng-container *ngIf="simcards$ | async as simcards">
+      <div class="grid-columns--sm max-sm:justify-items-center">
+        <ng-container *ngFor="let simcard of simcards.data">
+          <app-simcard [simcard]="simcard" />
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+</section>

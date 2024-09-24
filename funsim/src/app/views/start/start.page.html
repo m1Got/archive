@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      <translate
+        nameEN="Select application language"
+        nameKZ="Қолданба тілін таңдаңыз"
+        nameRU="Выберите язык приложения"
+      />
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <section>
+    <ion-segment (ionChange)="changeLng()" [(ngModel)]="activeLng">
+      <ion-segment-button value="ru">
+        <ion-label>RU</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="kz">
+        <ion-label>KZ</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="en">
+        <ion-label>ENG</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </section>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button
+      class="ion-margin-top"
+      expand="block"
+      [disabled]="!activeLng"
+      routerDirection="forward"
+      routerLink="/tabs"
+      replaceUrl="true"
+    >
+      <translate nameEN="Choose" nameKZ="Таңдау" nameRU="Выбрать" />
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

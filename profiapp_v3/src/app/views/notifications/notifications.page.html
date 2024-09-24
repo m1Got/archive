@@ -1,0 +1,133 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="primary-toolbar">
+    <div class="primary-toolbar--inner">
+      <button
+        size="m"
+        shape="rounded"
+        tuiButton
+        appearance="whiteblock"
+        class="icon-button"
+        (click)="navCtrl.back()"
+      >
+        <ion-icon
+          class="text-lg"
+          color="primary"
+          src="assets/icons/chevron-back-outline.svg"
+        />
+      </button>
+      <ion-title>Уведомления</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-segment [(ngModel)]="activeSegment">
+    <ion-segment-button value="first">
+      <ion-label class="text-base">Новости</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="second">
+      <ion-label class="text-base">Заявки</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="third">
+      <ion-label class="text-base">Отзывы</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <div class="grid gap-5 py-5">
+    <ng-container *ngIf="activeSegment === 'first'">
+      <article class="card">
+        <div class="text-dark pb-4">
+          <p class="line-clamp-3 text-base font-medium">
+            Cрок объявления “Ремонт квартир” истек. Активируйте его еще на 30
+            дней
+          </p>
+        </div>
+        <span class="text-medium">1 день назад</span>
+      </article>
+      <article class="card">
+        <div class="pb-4">
+          <p class="text-dark line-clamp-3 text-base font-medium">
+            Cрок объявления “Ремонт квартир” истек. Активируйте его еще на 30
+            дней
+          </p>
+        </div>
+        <span class="text-medium">1 день назад</span>
+      </article>
+    </ng-container>
+    <ng-container *ngIf="activeSegment === 'second'">
+      <article class="card">
+        <div class="flex gap-1">
+          <ion-button color="light" size="small">Ташкент</ion-button>
+          <ion-button color="light" size="small">13.11.2023</ion-button>
+          <ion-button color="danger" size="small">Новое</ion-button>
+        </div>
+        <div class="py-5 text-base">
+          <p class="text-dark line-clamp-3 font-medium">
+            Cрок объявления “Ремонт квартир” истек. Активируйте его еще на 30
+            дней
+          </p>
+        </div>
+        <div class="flex gap-2">
+          <button size="m" tuiButton>
+            <span class="font-medium text-white">Принят заявку</span>
+          </button>
+          <button size="m" tuiButton appearance="accent">
+            <span class="font-medium text-white">Отказ</span>
+          </button>
+        </div>
+      </article>
+    </ng-container>
+    <ng-container *ngIf="activeSegment === 'third'">
+      <article class="card">
+        <div class="flex items-center">
+          <tui-avatar
+            size="m"
+            avatarUrl="assets/images/executor.png"
+            [rounded]="true"
+            class="mr-4"
+          />
+          <div class="flex-auto text-sm">
+            <p class="line-clamp-1 font-semibold">Равшан Аббасов</p>
+            <div class="flex items-center">
+              <p class="pr-4 text-tertiary">г.Ташкент</p>
+              <div class="flex items-center">
+                <ion-icon class="text-xs" src="assets/icons/rounded-star.svg" />
+                <p class="pl-1 font-medium">5.0</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="line-clamp-4 pt-5">
+          Хороший мастер, пунктуальный, аккуратный, честный. Спокойно могу
+          доверить на будущее ему ремонт
+        </div>
+      </article>
+      <article class="card">
+        <div class="flex items-center">
+          <tui-avatar size="m" text="username" [rounded]="true" class="mr-4" />
+          <div class="flex-auto text-sm">
+            <p class="line-clamp-1 font-semibold">Равшан Аббасов</p>
+            <div class="flex items-center">
+              <p class="pr-4 text-tertiary">г.Ташкент</p>
+              <div class="flex items-center">
+                <ion-icon class="text-xs" src="assets/icons/rounded-star.svg" />
+                <p class="pl-1 font-medium">5.0</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="line-clamp-4 pt-5">
+          Хороший мастер, пунктуальный, аккуратный, честный. Спокойно могу
+          доверить на будущее ему ремонт
+        </div>
+      </article>
+    </ng-container>
+  </div>
+  <!-- <tui-block-status>
+    <img
+      class="!h-60 !w-60"
+      src="assets/block-status/empty-notification.svg"
+      tuiSlot="top"
+    />
+    <h4>У вас пока ничего нет</h4>
+  </tui-block-status> -->
+</ion-content>

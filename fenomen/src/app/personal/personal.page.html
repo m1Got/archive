@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <header class="header">
+      <div class="header-start">
+        <ion-buttons slot="start">
+          <ion-back-button text="" icon="arrow-back-outline"> </ion-back-button>
+        </ion-buttons>
+      </div>
+      <div class="header-center">
+        <ion-text class="header-title"></ion-text>
+      </div>
+      <div class="header-end"></div>
+    </header>
+    <header class="page-header">
+      <div class="page-header__start">
+        <h2 class="page-title">Личная информация</h2>
+      </div>
+      <div class="page-header__end">
+        <button class="link-button">Готово</button>
+      </div>
+    </header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="personal-img">
+    <img src="assets/images/personal-placeholder.png" />
+  </div>
+  <ion-input
+    required
+    inputmode="latin-name"
+    placeholder="имя*"
+    class="custom"
+  />
+  <ion-input
+    required
+    inputmode="latin-name"
+    placeholder="фамилия"
+    class="custom"
+  />
+  <div class="group">
+    <div class="group-title">дата рождения</div>
+    <div class="group-body">
+      <div class="picker">
+        <div class="picker__start">
+          <div class="picker__value">
+            <span>день</span> / <span>месяц</span> / <span> год</span>
+          </div>
+        </div>
+        <div class="picker__end">
+          <ion-icon name="chevron-down"></ion-icon>
+        </div>
+      </div>
+      <ion-text class="helper-text" color="medium">
+        Скидка 10% за 7 дней до и после Дня рождения.
+      </ion-text>
+    </div>
+  </div>
+
+  <ion-select
+    justify="space-between"
+    placeholder="день / месяц / год"
+    toggleIcon="chevron-down-outline"
+  >
+    <ion-icon name=""></ion-icon>
+    <ion-select-option value="apple">Apple</ion-select-option>
+    <ion-select-option value="banana">Banana</ion-select-option>
+    <ion-select-option value="orange">Orange</ion-select-option>
+  </ion-select>
+
+  <ion-input required inputmode="tel" placeholder="e-mail" class="custom" />
+
+  <div class="personal-radios">
+    <label class="radio">
+      <input type="radio" name="personalRadio" />
+      <span>мужчина</span>
+    </label>
+
+    <label class="radio">
+      <input type="radio" name="personalRadio" />
+      <span>женщина</span>
+    </label>
+  </div>
+
+  <div class="personal-footer">
+    <button class="personal-delete">удалить профиль</button>
+  </div>
+</ion-content>

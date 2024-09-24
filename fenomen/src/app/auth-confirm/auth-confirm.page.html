@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <header class="header">
+      <div class="header-start">
+        <ion-buttons slot="start">
+          <ion-back-button text="" icon="arrow-back-outline"> </ion-back-button>
+        </ion-buttons>
+      </div>
+      <div class="header-center">
+        <ion-text class="header-title">подтверждение номера</ion-text>
+      </div>
+      <div class="header-end"></div>
+    </header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="auth-content">
+    <h5 class="auth-title">Подтвердите номер</h5>
+    <p class="auth-subtitle">
+      Мы отправили Вам SMS-сообщение на номер
+      <b>+71234567890</b> с кодом подтверждения
+    </p>
+
+    <ion-input
+      maxlength="4"
+      inputmode="tel"
+      placeholder="* * * *"
+      class="custom"
+    />
+    <ion-button class="auth-submit" disabled>
+      Отправить код повторно через 30 секунд
+    </ion-button>
+  </div>
+</ion-content>

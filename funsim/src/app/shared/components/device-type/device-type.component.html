@@ -1,0 +1,36 @@
+<section class="ion-padding-top">
+  <ng-container *ngIf="!deviceType">
+    <ion-row class="ion-padding-vertical">
+      <ion-button color="light" (click)="deviceType = 'iphone'">
+        <img src="/assets/imgs/apple.png" />
+        <ion-title size="sm"> Iphone </ion-title>
+      </ion-button>
+      <ion-button color="light" (click)="deviceType = 'android'">
+        <img src="/assets/imgs/android.png" />
+        <ion-title size="sm"> Android </ion-title>
+      </ion-button>
+    </ion-row>
+  </ng-container>
+
+  <article class="ion-padding" *ngIf="deviceType">
+    <ion-title color="dark" size="md" class="ion-text-center">
+      <translate nameEN="Instructions" nameKZ="Нұсқаулар" nameRU="Инструкция" />
+    </ion-title>
+    <ion-grid class="ion-padding">
+      <ng-container *ngIf="deviceType === 'iphone'">
+        <translate
+          nameEN="Settings => Cellular => Current period (Shows your traffic consumption)"
+          nameKZ="Параметрлер => Ұялы => Ағымдағы кезең (Трафикті тұтынуды көрсетеді)"
+          nameRU="Настройки => Сотовая связь => Текущий период (Показывает расход Вашего трафика)"
+        />
+      </ng-container>
+      <ng-container *ngIf="deviceType === 'android'">
+        <translate
+          nameEN="Settings => Connections => Data Usage (Shows your traffic consumption)"
+          nameKZ="Параметрлер => Қосылымдар => Деректерді пайдалану (трафикті тұтынуды көрсетеді)"
+          nameRU="Настройки => Подключения => Использование данных (Показывает расход Вашего трафика)"
+        />
+      </ng-container>
+    </ion-grid>
+  </article>
+</section>

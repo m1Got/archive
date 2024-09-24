@@ -1,0 +1,60 @@
+:root {
+  --main-gradient: linear-gradient(180deg, #070b18 0%, #03050a 100%);
+  --blue-gradient: linear-gradient(90deg, #0bc5ff1c 0%, #0bc5ff1c 100%);
+
+  --main-slate-gradient: linear-gradient(180deg, #131d39 0%, #101a37 100%);
+  --secondary-slate-gradient: linear-gradient(
+    90deg,
+    #0f6e8e 1.5%,
+    #041f28 17.5%,
+    #041f28 79%,
+    #0f6e8e 100%
+  );
+
+  --main-gold-gradient: linear-gradient(
+    90deg,
+    #c79402 0%,
+    #ffd700 25%,
+    #fffacd 50%,
+    #ffd700 75%,
+    #c79402 100%
+  );
+
+  --main-silver-gradient: linear-gradient(
+    90deg,
+    #c0c0c0 0%,
+    #d6d6d6 20%,
+    #ffffff 40%,
+    #d6d6d6 60%,
+    #c0c0c0 80%,
+    #9f9f9f 100%
+  );
+
+  --main-bronze-gradient: linear-gradient(
+    90deg,
+    #9a785f 0%,
+    #cd7f32 25%,
+    #daa520 50%,
+    #cd7f32 75%,
+    #94623e 100%
+  );
+
+  --main-aside-lights: 0 0 2rem 0 #7ce1f0, 0 0 4rem 0 #7ce1f0,
+    0 0 6rem 0 #7ce1f0;
+
+  --main-red-gradient: linear-gradient(
+      180deg,
+      rgba(255, 128, 11, 0) 0%,
+      #ff540b 100%
+    ),
+    linear-gradient(
+      180deg,
+      #fba195 0%,
+      #cf671c 21.5%,
+      #f5af27 62.5%,
+      #f6ee37 100%
+    );
+
+  --main-border: linear-gradient(180deg, #c759d2 0%, #c759d200 15.23%);
+  --main-text-color: rgba(200, 200, 200, 1);
+}

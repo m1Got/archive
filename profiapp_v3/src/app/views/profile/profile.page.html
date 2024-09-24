@@ -1,0 +1,596 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <img
+    class="absolute -top-[25%] left-0 z-[-2] w-full scale-150"
+    src="assets/images/primary-texture.svg"
+  />
+
+  <div class="grid justify-center gap-2 py-5">
+    <tui-avatar
+      class="mx-auto"
+      [rounded]="true"
+      avatarUrl="assets/images/executor.png"
+      text="Жасурбек Толипов"
+      size="xl"
+    ></tui-avatar>
+    <div class="grid gap-3 pt-3">
+      <h2 class="text-xl font-semibold">Жасурбек Толипов</h2>
+      <ion-button size="small" color="light" class="mx-auto">
+        <span class="text-primary">
+          {{ authService.role === 'client' ? 'Заказчик' : 'Исполнитель' }}
+        </span>
+      </ion-button>
+    </div>
+  </div>
+
+  <div class="grid gap-2 py-4">
+    <ng-container *ngIf="authService.role === 'executor'">
+      <ion-item button lines="none" detail="false" class="menu-item success">
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-2xl text-white"
+            src="assets/icons/dbsquare-success.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium !text-white">
+          Полная идентификая
+        </ion-label>
+        <ion-button size="small" color="light">
+          <span class="text-white">1/2</span>
+        </ion-button>
+      </ion-item>
+      <ion-item button lines="none" detail="false" class="menu-item accent">
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon class="text-2xl text-white" src="assets/icons/error.svg" />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium !text-white">
+          Полная идентификая
+        </ion-label>
+        <ion-button size="small" color="light">
+          <span class="text-white">1/2</span>
+        </ion-button>
+      </ion-item>
+    </ng-container>
+
+    <ion-item
+      button
+      lines="none"
+      detail="false"
+      class="menu-item"
+      id="userRole"
+    >
+      <button size="m" tuiIconButton appearance="secondary" class="icon-button">
+        <ion-icon
+          class="text-2xl text-primary"
+          src="assets/icons/rotate-refresh.svg"
+        />
+      </button>
+      <ion-label class="px-1 !text-sm font-medium">
+        Переключиться на {{ authService.role === 'client' ? 'исполнителя' :
+        'заказчика' }}
+      </ion-label>
+    </ion-item>
+
+    <ion-alert
+      trigger="userRole"
+      cssClass="myalert"
+      header="Переключить аккаунт?"
+      message="Вы уверены что хотите переключиться на {{authService.role === 'client' ? 'Заказчик' : 'Исполнитель'}}?"
+      [buttons]="userRoleButtons"
+    />
+  </div>
+
+  <ng-container *ngIf="authService.role === 'executor'">
+    <div class="grid gap-2 py-4">
+      <ion-item
+        button
+        lines="none"
+        detail="false"
+        class="menu-item"
+        routerLink="/balance"
+      >
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-2xl text-primary"
+            src="assets/icons/wallet-money.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium">
+          <span class="text-xs">Баланс</span>
+          <p class="text-base font-semibold !text-dark">155 000 UZS</p>
+        </ion-label>
+        <ion-icon
+          color="primary"
+          slot="end"
+          class="text-2xl"
+          src="assets/icons/plus-filled.svg"
+        />
+      </ion-item>
+      <ion-item
+        button
+        lines="none"
+        detail="false"
+        class="menu-item"
+        (click)="utilsService.odTemplate(tariffsTemplate)"
+      >
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-2xl text-primary"
+            src="assets/icons/medal-reward.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium">
+          <p class="text-base font-semibold !text-dark">Тарифы</p>
+          <span class="text-[10px] !text-primary">
+            У вас премиум аккаунт! Осталось 8 дней
+          </span>
+        </ion-label>
+        <ion-icon
+          color="primary"
+          slot="end"
+          class="text-2xl"
+          src="assets/icons/plus-filled.svg"
+        />
+      </ion-item>
+    </div>
+  </ng-container>
+
+  <div class="grid gap-2 py-4">
+    <ng-container *ngIf="authService.role === 'client'">
+      <ion-item
+        button
+        lines="none"
+        detail="false"
+        class="menu-item"
+        routerLink="/myorders"
+      >
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-2xl text-primary"
+            src="assets/icons/essential-shapes.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium">Мои заказы</ion-label>
+        <ion-icon
+          color="primary"
+          slot="end"
+          class="text-2xl"
+          src="assets/icons/chevron-right-filled.svg"
+        />
+      </ion-item>
+    </ng-container>
+    <ion-item
+      button
+      lines="none"
+      detail="false"
+      class="menu-item"
+      routerLink="/myorders-history"
+    >
+      <button size="m" tuiIconButton appearance="secondary" class="icon-button">
+        <ion-icon
+          class="text-2xl text-primary"
+          src="assets/icons/time-clock.svg"
+        />
+      </button>
+      <ion-label class="px-1 !text-sm font-medium">История заказов</ion-label>
+      <ion-icon
+        color="primary"
+        slot="end"
+        class="text-2xl"
+        src="assets/icons/chevron-right-filled.svg"
+      />
+    </ion-item>
+    <ng-container *ngIf="authService.role === 'executor'">
+      <ion-item
+        button
+        lines="none"
+        detail="false"
+        class="menu-item"
+        routerLink="/myadverts"
+      >
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-2xl text-primary"
+            src="assets/icons/suitcase-portfolio.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium">Мои объявления</ion-label>
+        <ion-icon
+          color="primary"
+          slot="end"
+          class="text-2xl"
+          src="assets/icons/chevron-right-filled.svg"
+        />
+      </ion-item>
+    </ng-container>
+
+    <ng-container *ngIf="authService.role === 'client'">
+      <ion-item
+        lines="none"
+        detail="false"
+        class="menu-item"
+        routerLink="/favorites"
+      >
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-2xl text-primary"
+            src="assets/icons/heart-outline.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium">Избранное</ion-label>
+        <ion-icon
+          color="primary"
+          slot="end"
+          class="text-2xl"
+          src="assets/icons/chevron-right-filled.svg"
+        />
+      </ion-item>
+    </ng-container>
+
+    <ion-item
+      lines="none"
+      detail="false"
+      class="menu-item"
+      routerLink="/myaddress"
+    >
+      <button size="m" tuiIconButton appearance="secondary" class="icon-button">
+        <ion-icon
+          class="text-2xl text-primary"
+          src="assets/icons/location-plus.svg"
+        />
+      </button>
+      <ion-label class="px-1 !text-sm font-medium">Мои адреса</ion-label>
+      <ion-icon
+        color="primary"
+        slot="end"
+        class="text-2xl"
+        src="assets/icons/chevron-right-filled.svg"
+      />
+    </ion-item>
+    <ion-item
+      lines="none"
+      detail="false"
+      class="menu-item"
+      routerLink="/speciality"
+    >
+      <button size="m" tuiIconButton appearance="secondary" class="icon-button">
+        <ion-icon
+          class="text-2xl text-primary"
+          src="assets/icons/settings-key.svg"
+        />
+      </button>
+      <ion-label class="px-1 !text-sm font-medium">Специальность</ion-label>
+      <ion-icon
+        color="primary"
+        slot="end"
+        class="text-2xl"
+        src="assets/icons/chevron-right-filled.svg"
+      />
+    </ion-item>
+  </div>
+
+  <div class="grid gap-2 py-4">
+    <ion-item
+      button
+      lines="none"
+      detail="false"
+      class="menu-item"
+      routerLink="/personal"
+    >
+      <button size="m" tuiIconButton appearance="secondary" class="icon-button">
+        <ion-icon
+          class="text-2xl text-primary"
+          src="assets/icons/user-outline.svg"
+        />
+      </button>
+      <ion-label class="px-1 !text-sm font-medium">Личная информация</ion-label>
+      <ion-icon
+        color="primary"
+        slot="end"
+        class="text-2xl"
+        src="assets/icons/chevron-right-filled.svg"
+      />
+    </ion-item>
+    <ion-item
+      button
+      lines="none"
+      detail="false"
+      class="menu-item"
+      routerLink="/verification"
+    >
+      <button size="m" tuiIconButton appearance="secondary" class="icon-button">
+        <ion-icon
+          class="text-2xl text-primary"
+          src="assets/icons/user-select.svg"
+        />
+      </button>
+      <div class="px-1">
+        <p class="text-sm font-medium">Проверка паспорта</p>
+        <span class="text-xs text-danger">Не проверены </span>
+      </div>
+      <ion-icon
+        color="primary"
+        slot="end"
+        class="text-2xl"
+        src="assets/icons/chevron-right-filled.svg"
+      />
+    </ion-item>
+
+    <ng-container *ngIf="authService.role === 'executor'">
+      <div class="pb-5"></div>
+    </ng-container>
+    <ion-item
+      button
+      lines="none"
+      detail="false"
+      class="menu-item"
+      routerLink="/settings"
+    >
+      <button size="m" tuiIconButton appearance="secondary" class="icon-button">
+        <ion-icon
+          class="text-2xl text-primary"
+          src="assets/icons/settings.svg"
+        />
+      </button>
+      <ion-label class="px-1 !text-sm font-medium">Настройки</ion-label>
+      <ion-icon
+        color="primary"
+        slot="end"
+        class="text-2xl"
+        src="assets/icons/chevron-right-filled.svg"
+      />
+    </ion-item>
+    <ion-item
+      button
+      lines="none"
+      detail="false"
+      class="menu-item"
+      routerLink="/support"
+    >
+      <button size="m" tuiIconButton appearance="secondary" class="icon-button">
+        <ion-icon
+          class="text-2xl text-primary"
+          src="assets/icons/headphone-support.svg"
+        />
+      </button>
+      <ion-label class="px-1 !text-sm font-medium">Служба поддержки</ion-label>
+      <ion-icon
+        slot="end"
+        color="primary"
+        class="text-2xl"
+        src="assets/icons/chevron-right-filled.svg"
+      />
+    </ion-item>
+
+    <h3 class="py-5 text-2xl text-primary underline">Стартовые страницы</h3>
+    <div class="grid gap-5">
+      <ion-item
+        lines="none"
+        detail="false"
+        class="menu-item"
+        routerLink="/app-start"
+      >
+        <ion-label class="px-1 !text-sm font-medium">Начальный экран</ion-label>
+        <ion-icon
+          slot="end"
+          color="primary"
+          class="text-2xl"
+          src="assets/icons/chevron-right-filled.svg"
+        />
+      </ion-item>
+      <ion-item
+        lines="none"
+        detail="false"
+        class="menu-item"
+        routerLink="/app-lng"
+      >
+        <ion-label class="px-1 !text-sm font-medium"
+          >Начальный экран (Выбор языка)</ion-label
+        >
+        <ion-icon
+          slot="end"
+          color="primary"
+          class="text-2xl"
+          src="assets/icons/chevron-right-filled.svg"
+        />
+      </ion-item>
+      <ion-item
+        lines="none"
+        detail="false"
+        class="menu-item"
+        routerLink="/auth-start"
+      >
+        <ion-label class="px-1 !text-sm font-medium"
+          >Авторизация (Слайдер)</ion-label
+        >
+        <ion-icon
+          slot="end"
+          color="primary"
+          class="text-2xl"
+          src="assets/icons/chevron-right-filled.svg"
+        />
+      </ion-item>
+      <ion-item
+        lines="none"
+        detail="false"
+        class="menu-item"
+        routerLink="/auth-phone"
+      >
+        <ion-label class="px-1 !text-sm font-medium"
+          >Авторизация (Номер телефона)</ion-label
+        >
+        <ion-icon
+          slot="end"
+          color="primary"
+          class="text-2xl"
+          src="assets/icons/chevron-right-filled.svg"
+        />
+      </ion-item>
+      <ion-item
+        lines="none"
+        detail="false"
+        class="menu-item"
+        routerLink="/auth-code"
+      >
+        <ion-label class="px-1 !text-sm font-medium"
+          >Авторизация (Код)</ion-label
+        >
+        <ion-icon
+          slot="end"
+          color="primary"
+          class="text-2xl"
+          src="assets/icons/chevron-right-filled.svg"
+        />
+      </ion-item>
+      <ion-item
+        lines="none"
+        detail="false"
+        class="menu-item"
+        routerLink="/auth-personal"
+      >
+        <ion-label class="px-1 !text-sm font-medium"
+          >Авторизация (Персональные данные)</ion-label
+        >
+        <ion-icon
+          slot="end"
+          color="primary"
+          class="text-2xl"
+          src="assets/icons/chevron-right-filled.svg"
+        />
+      </ion-item>
+      <ion-item
+        lines="none"
+        detail="false"
+        class="menu-item"
+        routerLink="/auth-city"
+      >
+        <ion-label class="px-1 !text-sm font-medium"
+          >Авторизация (Выбор города)</ion-label
+        >
+        <ion-icon
+          slot="end"
+          color="primary"
+          class="text-2xl"
+          src="assets/icons/chevron-right-filled.svg"
+        />
+      </ion-item>
+      <ion-item
+        lines="none"
+        detail="false"
+        class="menu-item"
+        routerLink="/auth-spec"
+      >
+        <ion-label class="px-1 !text-sm font-medium"
+          >Авторизация (Специальность)</ion-label
+        >
+        <ion-icon
+          slot="end"
+          color="primary"
+          class="text-2xl"
+          src="assets/icons/chevron-right-filled.svg"
+        />
+      </ion-item>
+    </div>
+  </div>
+</ion-content>
+
+<ng-template #tariffsTemplate>
+  <div class="py-4">
+    <h4 class="text-xl font-semibold">Выберите приложение</h4>
+    <p class="py-2 text-xs">
+      Для получения и приятие новых заказов пожалуйста оплатите свой тариф
+    </p>
+    <div class="grid gap-2 pt-2">
+      <div orientation="vertical" tuiGroup>
+        <tui-radio-block
+          contentAlign="left"
+          item="tariff_1"
+          size="l"
+          [(ngModel)]="tariff"
+        >
+          <div class="flex items-center">
+            <span class="px-2 text-lg font-medium text-primary">1 день</span>
+            <ion-button size="small" class="ml-auto">5 000 Сум</ion-button>
+          </div>
+        </tui-radio-block>
+        <tui-radio-block
+          contentAlign="left"
+          item="tariff_2"
+          size="l"
+          [(ngModel)]="tariff"
+        >
+          <div class="flex items-center">
+            <span class="px-2 text-lg font-medium text-primary">10 дней</span>
+            <ion-button size="small" class="ml-auto">25 000 Сум</ion-button>
+          </div>
+        </tui-radio-block>
+        <tui-radio-block
+          contentAlign="left"
+          item="tariff_3"
+          size="l"
+          [(ngModel)]="tariff"
+        >
+          <div class="flex items-center">
+            <span class="px-2 text-lg font-medium text-primary">30 дней</span>
+            <ion-button size="small" class="ml-auto">50 000 Сум</ion-button>
+          </div>
+        </tui-radio-block>
+        <tui-radio-block
+          contentAlign="left"
+          item="tariff_365"
+          size="l"
+          [(ngModel)]="tariff"
+        >
+          <div class="flex items-center">
+            <span class="px-2 text-lg font-medium text-primary">365 дней</span>
+            <ion-button color="secondary" size="small" class="ml-auto">
+              450 000 Сум
+            </ion-button>
+          </div>
+        </tui-radio-block>
+      </div>
+      {{ tariff }}
+    </div>
+    <p class="py-2 text-xs">
+      Не достаточно средств на балансе для приобретения тарифа <b>"365 дней"</b>
+    </p>
+    <button tuiButton appearance="secondary" class="w-full">
+      <span class="font-medium text-primary">Купить тариф</span>
+    </button>
+  </div>
+</ng-template>
+F

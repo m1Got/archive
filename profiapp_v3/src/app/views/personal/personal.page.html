@@ -1,0 +1,132 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="primary-toolbar">
+    <div class="primary-toolbar--inner">
+      <button
+        size="m"
+        shape="rounded"
+        tuiButton
+        appearance="whiteblock"
+        class="icon-button"
+        (click)="navCtrl.back()"
+      >
+        <ion-icon
+          class="text-lg"
+          color="primary"
+          src="assets/icons/chevron-back-outline.svg"
+        />
+      </button>
+      <ion-title>Личная информация</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="grid justify-center gap-4 py-6">
+    <tui-avatar
+      class="mx-auto"
+      [rounded]="true"
+      avatarUrl="assets/images/executor.png"
+      text="Жасурбек Толипов"
+      size="xl"
+    ></tui-avatar>
+
+    <ion-item button lines="none" detail="false" class="menu-item">
+      <button size="m" tuiIconButton appearance="secondary" class="icon-button">
+        <ion-icon
+          class="text-2xl text-primary"
+          src="assets/icons/camera-photo.svg"
+        />
+      </button>
+      <ion-label class="px-1 !text-sm font-medium">Загрузить фото</ion-label>
+    </ion-item>
+  </div>
+
+  <div class="grid gap-5">
+    <label tuiLabel="Ваша имя">
+      <tui-input [formControl]="" [tuiTextfieldLabelOutside]="true">
+        Ваша имя
+      </tui-input>
+    </label>
+    <label tuiLabel="Ваша фамилия">
+      <tui-input [formControl]="" [tuiTextfieldLabelOutside]="true">
+        Ваша фамилия
+      </tui-input>
+    </label>
+    <label tuiLabel="Номер телефона">
+      <tui-input [formControl]="" [tuiTextfieldLabelOutside]="true">
+        Номер телефона
+      </tui-input>
+    </label>
+    <label tuiLabel="Дата рождение">
+      <tui-input [formControl]="" [tuiTextfieldLabelOutside]="true">
+        Дата рождение
+      </tui-input>
+    </label>
+    <label tuiLabel="Опыт работы">
+      <tui-input [formControl]="" [tuiTextfieldLabelOutside]="true">
+        Опыт работы
+      </tui-input>
+    </label>
+    <label tuiLabel="Образование">
+      <tui-input [formControl]="" [tuiTextfieldLabelOutside]="true">
+        Образование
+      </tui-input>
+    </label>
+    <label tuiLabel="Почта">
+      <tui-input [formControl]="" [tuiTextfieldLabelOutside]="true">
+        Почта
+      </tui-input>
+    </label>
+    <label tuiLabel="Город">
+      <tui-input [formControl]="" [tuiTextfieldLabelOutside]="true">
+        Выберите город
+      </tui-input>
+    </label>
+    <label tuiLabel="Город">
+      <tui-input [formControl]="" [tuiTextfieldLabelOutside]="true">
+        Выберите город
+      </tui-input>
+    </label>
+    <label tuiLabel="Добавьте фото">
+      <div class="grid grid-cols-2 gap-2 pt-2">
+        <button
+          size="xl"
+          tuiButton
+          appearance="secondary"
+          class="overflow-hidden"
+        >
+          <img
+            class="absolute left-0 top-0 h-full w-full object-cover"
+            src="assets/images/work.jpg"
+          />
+          <div class="absolute right-2 top-2">
+            <button
+              size="s"
+              tuiIconButton
+              icon="assets/icons/trash-bin.svg"
+              appearance="secondary"
+            ></button>
+          </div>
+        </button>
+        <button
+          size="xl"
+          tuiButton
+          appearance="secondary"
+          icon="assets/icons/camera-photo.svg"
+        ></button>
+        <button
+          size="xl"
+          tuiButton
+          appearance="secondary"
+          icon="assets/icons/camera-photo.svg"
+        ></button>
+      </div>
+    </label>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="secondary-toolbar">
+    <ion-button class="m-2" expand="block">Сохранить изменения</ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,305 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="primary-toolbar">
+    <div class="primary-toolbar--inner">
+      <h2 class="text-lg font-semibold">Profi24</h2>
+      <div class="ml-auto flex gap-2">
+        <button
+          size="m"
+          shape="rounded"
+          tuiButton
+          appearance="whiteblock"
+          class="icon-button"
+          (click)="utilsService.odTemplate(contactsTemplate)"
+        >
+          <ion-icon color="primary" src="assets/icons/headphone-support.svg" />
+        </button>
+        <button
+          size="m"
+          shape="rounded"
+          tuiButton
+          appearance="whiteblock"
+          class="icon-button"
+          routerLink="/favorites"
+        >
+          <ion-icon color="primary" src="assets/icons/heart-outline.svg" />
+        </button>
+        <button
+          size="m"
+          shape="rounded"
+          tuiButton
+          appearance="whiteblock"
+          class="icon-button"
+          routerLink="/notifications"
+        >
+          <ion-icon color="primary" src="assets/icons/bell-notification.svg" />
+        </button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="relative flex items-center">
+    <tui-input
+      class="flex-auto"
+      tuiTextfieldSize="m"
+      [tuiTextfieldLabelOutside]="true"
+      [formControl]=""
+    >
+      Услуга или специалист?
+      <input tuiTextfield />
+    </tui-input>
+    <div class="absolute right-2">
+      <button
+        size="s"
+        shape="rounded"
+        tuiIconButton
+        appearance="accent"
+        icon="assets/icons/search-outline.svg"
+      ></button>
+    </div>
+  </div>
+  <div class="py-6">
+    <div class="flex snap-x snap-mandatory flex-nowrap overflow-x-auto">
+      <ng-container *ngFor="let store of rangeArray">
+        <div
+          class="mx-1 snap-start rounded-full border border-solid border-primary"
+          routerLink="/store"
+        >
+          <tui-avatar
+            size="l"
+            avatarUrl="assets/images/item.jpg"
+            [rounded]="true"
+            class="m-1"
+          />
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="pb-8">
+    <swiper class="h-48 rounded-2xl" [pagination]="{ el: bannerPagination }">
+      <ng-template swiperSlide *ngFor="let banner of rangeArray">
+        <div class="flex h-full gap-4 bg-primary">
+          <div class="flex flex-1 items-center p-5">
+            <p class="text-lg font-semibold text-white">
+              Работа выполняется Profi24.uz
+            </p>
+          </div>
+          <div class="relative flex-1">
+            <img
+              class="absolute bottom-0 h-5/6"
+              src="assets/images/executor.png"
+            />
+          </div>
+        </div>
+      </ng-template>
+    </swiper>
+    <div class="flex justify-center pt-5" #bannerPagination></div>
+  </div>
+  <div class="pb-6">
+    <h2 class="text-lg font-semibold">Популярные категории</h2>
+    <div class="grid grid-cols-2 gap-4 py-5">
+      <div class="relative h-28 overflow-hidden rounded-xl bg-light p-3">
+        <p class="relative z-10 text-sm font-medium">Сантехника</p>
+        <img
+          class="absolute bottom-2 right-2 w-20 object-contain"
+          src="assets/images/category-01.png"
+        />
+      </div>
+      <div class="relative h-28 overflow-hidden rounded-xl bg-light p-3">
+        <p class="relative z-10 text-sm font-medium">Сантехника</p>
+        <img
+          class="absolute bottom-2 right-2 w-20 object-contain"
+          src="assets/images/category-02.png"
+        />
+      </div>
+    </div>
+    <ion-button expand="block" color="light" routerLink="/category">
+      <span class="font-medium">Все категории</span>
+    </ion-button>
+  </div>
+  <article class="rounded-2xl bg-primary p-6">
+    <div class="px-6 text-center">
+      <p class="text-xl font-semibold text-white">
+        Хотите получать заявки от Profi24.uz?
+      </p>
+    </div>
+    <div class="flex justify-center pt-4">
+      <ion-button color="secondary" shape="round">
+        Стать специалистом
+      </ion-button>
+    </div>
+  </article>
+  <div class="py-8">
+    <h2 class="text-lg font-semibold">Топовые специалисты</h2>
+    <div class="grid gap-5 pt-5">
+      <article class="card">
+        <div class="flex items-center">
+          <tui-avatar
+            size="m"
+            avatarUrl="assets/images/executor.png"
+            [rounded]="true"
+            class="mr-4"
+          />
+          <div class="flex-auto text-sm">
+            <p class="line-clamp-1 font-semibold">Равшан Аббасов</p>
+            <div class="flex items-center">
+              <p class="pr-4 text-tertiary">г.Ташкент</p>
+              <div class="flex items-center">
+                <ion-icon class="text-xs" src="assets/icons/rounded-star.svg" />
+                <p class="pl-1 font-medium">5.0</p>
+              </div>
+            </div>
+          </div>
+          <button size="m" tuiButton shape="rounded" class="icon-button">
+            <ion-icon src="assets/icons/material-call.svg" />
+          </button>
+        </div>
+        <div class="pt-6">
+          <div class="flex snap-x snap-mandatory flex-nowrap overflow-x-auto">
+            <ng-container *ngFor="let item of rangeArray">
+              <img
+                src="assets/images/item.jpg"
+                class="mx-1 h-16 w-16 snap-start rounded-lg object-cover"
+              />
+            </ng-container>
+          </div>
+        </div>
+        <div class="pt-6">
+          <div class="flex items-center">
+            <span class="text-tertiary">11 ноября в 10:39</span>
+            <p class="ml-auto text-base font-semibold">Договорная</p>
+          </div>
+        </div>
+      </article>
+      <article class="card card--top">
+        <ion-button
+          size="small"
+          class="absolute -top-4 right-4"
+          color="secondary"
+        >
+          TOP
+        </ion-button>
+        <div class="flex items-center">
+          <tui-avatar
+            size="m"
+            avatarUrl="assets/images/executor.png"
+            [rounded]="true"
+            class="mr-4"
+          />
+          <div class="flex-auto text-sm">
+            <p class="line-clamp-1 font-semibold">Равшан Аббасов</p>
+            <div class="flex items-center">
+              <p class="pr-4 text-tertiary">г.Ташкент</p>
+              <div class="flex items-center">
+                <ion-icon class="text-xs" src="assets/icons/rounded-star.svg" />
+                <p class="pl-1 font-medium">5.0</p>
+              </div>
+            </div>
+          </div>
+          <button size="m" tuiButton shape="rounded" class="icon-button">
+            <ion-icon src="assets/icons/material-call.svg" />
+          </button>
+        </div>
+        <div class="pt-6">
+          <div class="flex snap-x snap-mandatory flex-nowrap overflow-x-auto">
+            <ng-container *ngFor="let item of rangeArray">
+              <img
+                src="assets/images/item.jpg"
+                class="mx-1 h-16 w-16 snap-start rounded-lg object-cover"
+              />
+            </ng-container>
+          </div>
+        </div>
+        <div class="pt-6">
+          <div class="flex items-center">
+            <span class="text-tertiary">11 ноября в 10:39</span>
+            <p class="ml-auto text-base font-semibold">Договорная</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class="pb-5">
+    <h2 class="text-lg font-semibold">Помощь</h2>
+    <div
+      class="flex snap-x snap-mandatory flex-nowrap gap-4 overflow-x-auto pt-4"
+    >
+      <div class="flex-shrink-0 snap-start overflow-hidden rounded-xl bg-light">
+        <div class="relative h-40 w-64 p-5">
+          <p class="relative z-10 w-4/5 text-base font-medium">
+            Видео инструкция
+          </p>
+          <img
+            class="absolute bottom-2 right-2 w-20 object-contain"
+            src="assets/images/help-01.svg"
+          />
+        </div>
+      </div>
+      <div class="flex-shrink-0 snap-start overflow-hidden rounded-xl bg-light">
+        <div class="relative h-40 w-64 p-5">
+          <p class="relative z-10 w-4/5 text-base font-medium">
+            Вопросы и ответы
+          </p>
+          <img
+            class="absolute bottom-2 right-2 w-20 object-contain"
+            src="assets/images/help-02.svg"
+          />
+        </div>
+      </div>
+      <div class="flex-shrink-0 snap-start overflow-hidden rounded-xl bg-light">
+        <div class="relative h-40 w-64 p-5">
+          <p class="relative z-10 w-4/5 text-base font-medium">Наши контакты</p>
+          <img
+            class="absolute bottom-2 right-2 w-20 object-contain"
+            src="assets/images/help-03.svg"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ng-template #contactsTemplate>
+  <div class="grid gap-4 py-4">
+    <ion-item [button]="true" color="light" lines="none" class="rounded-2xl">
+      <button
+        slot="start"
+        tuiButton
+        appearance="whiteblock"
+        class="icon-button my-2"
+        shape="rounded"
+        size="m"
+      >
+        <ion-icon color="primary" src="assets/icons/material-call.svg" />
+      </button>
+      <span class="pl-4 font-medium">Позвонить</span>
+    </ion-item>
+    <ion-item [button]="true" color="light" lines="none" class="rounded-2xl">
+      <button
+        slot="start"
+        tuiButton
+        appearance="whiteblock"
+        class="icon-button my-2"
+        shape="rounded"
+        size="m"
+      >
+        <ion-icon color="primary" src="assets/icons/telegram.svg" />
+      </button>
+      <span class="pl-4 font-medium">Написать в Телеграм</span>
+    </ion-item>
+    <ion-item [button]="true" color="light" lines="none" class="rounded-2xl">
+      <button
+        slot="start"
+        tuiButton
+        appearance="whiteblock"
+        class="icon-button my-2"
+        shape="rounded"
+        size="m"
+      >
+        <ion-icon color="primary" src="assets/icons/fluent-chat.svg" />
+      </button>
+      <span class="pl-4 font-medium">Служба поддержки</span>
+    </ion-item>
+  </div>
+</ng-template>

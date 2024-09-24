@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <header class="header">
+      <div class="header-start">
+        <ion-buttons slot="start">
+          <ion-back-button text="" icon="arrow-back-outline"> </ion-back-button>
+        </ion-buttons>
+      </div>
+      <div class="header-center">
+        <ion-text class="header-title"></ion-text>
+      </div>
+      <div class="header-end"></div>
+    </header>
+    <header class="page-header">
+      <div class="page-header__start">
+        <h2 class="page-title">Выберите дату и время</h2>
+      </div>
+      <div class="page-header__end"></div>
+    </header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-datetime presentation="date"></ion-datetime>
+  <h5 class="title">Время</h5>
+  <ion-radio-group class="radio-group" [allowEmptySelection]="true" value="1">
+    <ion-radio value="1">Через час</ion-radio><br />
+    <ion-radio value="2">Через 30 минут</ion-radio><br />
+    <ion-radio value="3">Через 15 минут</ion-radio><br />
+  </ion-radio-group>
+  <div class="group">
+    <div class="group-title">точное время</div>
+    <div class="group-body">
+      <div class="picker">
+        <div class="picker__start">
+          <div class="picker__value">15:50</div>
+        </div>
+        <div class="picker__end">
+          <ion-icon name="chevron-down"></ion-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-button expand="block"> Сохранить </ion-button>
+  </ion-toolbar>
+</ion-footer>

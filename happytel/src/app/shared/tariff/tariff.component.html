@@ -1,0 +1,298 @@
+<article class="primary-card" *ngIf="tariff">
+  <div class="primary-card--inner">
+    <div class="px-5 pb-1 pt-5" [ngClass]="{ 'pb-5': !isLarge }">
+      <div class="flex flex-wrap items-center gap-2 pr-8">
+        <tui-avatar
+          class="mr-auto"
+          [text]="tariff.region_group?.name"
+          [avatarUrl]="path + '/' + tariff.region_group?.img"
+        ></tui-avatar>
+        <ng-container *ngIf="isLarge || inOrder">
+          <div class="text-xl font-bold text-primary lg:text-2xl">
+            {{
+              tariff.price_sell | tuiFormatNumber: { thousandSeparator: "." }
+            }}
+            сум
+          </div>
+        </ng-container>
+      </div>
+      <div class="my-2 flex items-center md:my-4">
+        <div class="line-clamp-1 text-lg font-bold">
+          {{ tariff.region_group?.name }}
+        </div>
+        <ng-container *ngIf="tariff.description">
+          <tui-tooltip
+            class="ml-auto"
+            direction="bottom"
+            [content]="tariff.description"
+          />
+        </ng-container>
+      </div>
+      <div class="grid gap-2">
+        <div class="grid grid-cols-2 gap-1 [&>*]:min-h-[44px]">
+          <div class="flex items-center">
+            <button size="s" tuiButton appearance="whiteblock">
+              <ion-icon
+                color="primary"
+                src="icons/calendar.svg"
+                class="text-xl"
+              />
+            </button>
+            <p class="pl-2 text-medium">
+              {{ tariff.expiry_day }}
+              <translate uz="kun" ru="дней" />
+            </p>
+          </div>
+          <div class="flex items-center">
+            <button size="s" tuiButton appearance="whiteblock">
+              <ion-icon
+                color="primary"
+                src="icons/sms-box.svg"
+                class="text-xl"
+              />
+            </button>
+            <p class="line-clamp-2 pl-2 text-medium">
+              <tui-line-clamp
+                class="!flex items-center"
+                [content]="(tariff.quantity_sms ?? '0') + ' смс'"
+                [lineHeight]="22"
+                [linesLimit]="2"
+              ></tui-line-clamp>
+            </p>
+          </div>
+        </div>
+        <div
+          class="grid gap-2"
+          [ngClass]="{
+            'grid-cols-2 gap-1 [&>*]:min-h-[44px]':
+              !inOrder || tariff.quantity_minut?.length < 10
+          }"
+        >
+          <div class="flex items-center">
+            <button size="s" tuiButton appearance="whiteblock">
+              <ion-icon
+                color="primary"
+                src="icons/globus.svg"
+                class="text-xl"
+              />
+            </button>
+            <p class="line-clamp-2 pl-2 text-medium">
+              <tui-line-clamp
+                class="!flex items-center"
+                [content]="tariff.name ?? '0 GB'"
+                [lineHeight]="22"
+                [linesLimit]="2"
+              ></tui-line-clamp>
+            </p>
+          </div>
+          <div class="flex items-center">
+            <button size="s" tuiButton appearance="whiteblock">
+              <ion-icon
+                color="primary"
+                src="icons/phone-call.svg"
+                class="text-xl"
+              />
+            </button>
+            <p class="line-clamp-2 pl-2 text-medium">
+              <tui-line-clamp
+                class="!flex items-center"
+                [content]="(tariff.quantity_minut ?? '0') + ' мин'"
+                [lineHeight]="22"
+                [linesLimit]="2"
+              ></tui-line-clamp>
+            </p>
+          </div>
+        </div>
+        <ng-container *ngIf="isLarge || inOrder">
+          <div class="flex flex-wrap gap-5">
+            <div
+              *tuiLet="tariff.physical_sim as physical_sim"
+              class="flex items-center"
+              [ngClass]="{ disabled: !physical_sim }"
+            >
+              <button size="xs" tuiButton appearance="whiteblock">
+                <ion-icon
+                  color="primary"
+                  [src]="
+                    physical_sim ? 'icons/checkmark.svg' : 'icons/question.svg'
+                  "
+                />
+              </button>
+              <p
+                class="pl-2 text-medium"
+                [ngClass]="{ 'line-through': !physical_sim }"
+              >
+                <translate uz="Physical SIM-kart" ru="Физическая сим-карта" />
+              </p>
+            </div>
+            <div
+              *tuiLet="tariff.esim as esim"
+              class="flex items-center"
+              [ngClass]="{ disabled: !esim }"
+            >
+              <button size="xs" tuiButton appearance="whiteblock">
+                <ion-icon
+                  color="primary"
+                  [src]="esim ? 'icons/checkmark.svg' : 'icons/question.svg'"
+                />
+              </button>
+              <p class="pl-2 text-medium" [ngClass]="{ 'line-through': !esim }">
+                E-sim
+              </p>
+            </div>
+            <div
+              *tuiLet="tariff.tariff_4g as tariff_4g"
+              class="flex items-center"
+              [ngClass]="{ disabled: !tariff_4g }"
+            >
+              <button size="xs" tuiButton appearance="whiteblock">
+                <ion-icon
+                  color="primary"
+                  [src]="
+                    tariff_4g ? 'icons/checkmark.svg' : 'icons/question.svg'
+                  "
+                />
+              </button>
+              <p
+                class="pl-2 text-medium"
+                [ngClass]="{ 'line-through': !tariff_4g }"
+              >
+                4G
+              </p>
+            </div>
+            <div
+              *tuiLet="tariff.tariff_5g as tariff_5g"
+              class="flex items-center"
+              [ngClass]="{ disabled: !tariff_5g }"
+            >
+              <button size="xs" tuiButton appearance="whiteblock">
+                <ion-icon
+                  color="primary"
+                  [src]="
+                    tariff_5g ? 'icons/checkmark.svg' : 'icons/question.svg'
+                  "
+                />
+              </button>
+              <p
+                class="pl-2 text-medium"
+                [ngClass]="{ 'line-through': !tariff_5g }"
+              >
+                5G
+              </p>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <ng-container *ngIf="isLarge">
+      <button
+        class="tr-button mb-2 w-full py-2 text-primary disabled:text-medium disabled:opacity-40"
+        (click)="availableCountries(tariff.regions, countriesTemplate)"
+        [disabled]="tariff.regions.length <= 1"
+      >
+        <span class="text-lg">
+          <translate uz="Mavjud mamlakatlar" ru="Доступные страны" />
+        </span>
+      </button>
+    </ng-container>
+    <ng-container *ngIf="!inOrder">
+      <button
+        class="primary-button w-full"
+        (click)="referenceToAuth(tariff, simTypeTemplate, orderPromptTemplate)"
+      >
+        <div class="primary-button--inner">
+          <span>
+            <translate
+              [uz]="isLarge ? 'Ulanish' : 'Tanlash'"
+              [ru]="isLarge ? 'Подключить' : 'Выбрать'"
+            />
+          </span>
+        </div>
+      </button>
+    </ng-container>
+    <img
+      class="absolute left-0 top-[5%] -z-[1] h-4/5 w-full object-contain"
+      src="images/tariff-card-smile.svg"
+      alt="PrimaryCardSmile"
+    />
+  </div>
+</article>
+
+<ng-template #countriesTemplate>
+  <div class="text-center">
+    <h2 class="text-2xl font-bold" data-basic>
+      <translate uz="Mavjud mamlakatlar:" ru="Доступные страны:" />
+    </h2>
+  </div>
+  <div class="pt-6">
+    <div class="grid-columns--xs max-h-64 overflow-y-auto pr-2">
+      <ng-container
+        *ngFor="let country of utils.sortByAlphabet(countries, 'name')"
+      >
+        <tui-island class="!p-2">
+          <div class="flex items-center">
+            <tui-avatar
+              [text]="country.name"
+              [avatarUrl]="path + '/' + country.img"
+            ></tui-avatar>
+            <span class="pl-3 text-lg font-medium">{{ country.name }}</span>
+          </div>
+        </tui-island>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #simTypeTemplate let-simTypeTemplate let-tariff="tariff">
+  <div class="pb-4 text-center">
+    <h2 class="text-xl font-bold" data-basic>
+      <translate
+        uz="Qaysi turdagi SIM kartalarni ulamoqchisiz?"
+        ru="Какого типа сим карт вы хотите подключить"
+      />
+    </h2>
+  </div>
+  <div class="flex justify-center gap-3 max-sm:flex-col">
+    <ion-button
+      class="flex-1"
+      fill="outline"
+      (click)="simTypeReference('esim', simTypeTemplate)"
+    >
+      <translate uz="E-sim uchun" ru="Оформить E-sim" />
+    </ion-button>
+    <ion-button
+      class="flex-1"
+      fill="outline"
+      (click)="simTypeReference('physical', simTypeTemplate)"
+    >
+      <translate uz="Jismoniy sim-kart" ru="Физическая Sim-карта" />
+    </ion-button>
+  </div>
+</ng-template>
+
+<ng-template #orderPromptTemplate let-orderPromptTemplate>
+  <div class="pb-5 text-center text-lg font-semibold">
+    <translate
+      uz="SIM-kartaga buyurtma berish uchun tizimimizga kirishingiz kerak"
+      ru="Чтобы заказать сим карту вам надо авторизоваться в нашей системе"
+    />
+  </div>
+  <div class="flex justify-center gap-3 max-sm:flex-col-reverse">
+    <button
+      size="xl"
+      tuiButton
+      appearance="secondary"
+      (click)="orderPromptTemplate.complete()"
+    >
+      <translate uz="Bekor qilish" ru="Отмена" />
+    </button>
+    <button
+      size="xl"
+      tuiButton
+      appearance="accent"
+      (click)="openAuthTemplate(orderPromptTemplate)"
+    >
+      <translate uz="Davom etish" ru="Продолжить" />
+    </button>
+  </div>
+</ng-template>

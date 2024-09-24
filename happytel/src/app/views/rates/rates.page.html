@@ -1,0 +1,176 @@
+<div class="absolute left-0 top-0 -z-[1] h-96 w-full">
+  <img
+    class="h-full w-full object-cover"
+    src="images/man-talking-phone.png"
+    alt="RatesBannerImage"
+  />
+</div>
+<section class="relative z-10 py-10 sm:py-20">
+  <div class="container">
+    <ion-card class="card max-w-2xl">
+      <div class="grid items-center gap-3 sm:flex">
+        <h2 class="mr-auto text-2xl font-bold">
+          <translate uz="Qayerda ishlatasiz?" ru="Где будете пользоваться?" />
+        </h2>
+        <button
+          class="flex items-center font-medium text-primary"
+          (click)="utils.odTemplate(aboutEsimTemplate, { size: 'm' })"
+        >
+          <ion-icon
+            class="mr-2 text-2xl"
+            src="icons/information-circle-outline.svg"
+          />
+          <span class="text-lg">
+            <translate uz="E-sim haqida" ru="Информация о E-sim" />
+          </span>
+        </button>
+      </div>
+      <div class="mt-5 grid items-center gap-3 sm:flex">
+        <div class="flex-auto">
+          <ng-container *ngIf="countries$ | async as countries">
+            <tui-multi-select
+              tuiTextfieldSize="m"
+              [tuiTextfieldCleaner]="true"
+              [tuiTextfieldLabelOutside]="true"
+              [tuiDropdownMaxHeight]="200"
+              tuiDropdownDirection="bottom"
+              [stringify]="utils.stringifyByName"
+              [(ngModel)]="idsValue"
+              (ngModelChange)="changeIds($event)"
+            >
+              <translate uz="Mamlakat tanlang..." ru="Выберите страну..." />
+              <ng-container *ngIf="idsValue?.length <= 4">
+                <tui-data-list-wrapper
+                  *tuiDataList
+                  emptyContent="Ничего не найдено"
+                  tuiMultiSelectGroup
+                  [itemContent]="countryContent"
+                  [items]="countries.data | tuiFilterByInputWith: utils.stringifyByName"
+                ></tui-data-list-wrapper>
+              </ng-container>
+              <ng-container *ngIf="idsValue?.length >= 4">
+                <ng-container *ngIf="currentLanguage$ | async as currentLng">
+                  <tui-data-list-wrapper
+                    *tuiDataList
+                    [emptyContent]="currentLng === 'ru' ? 'Количество выбираемых стран не должно превысить 5' : 'Tanlangan mamlakatlar soni 5 tadan oshmasligi kerak'"
+                    [items]="[]"
+                  ></tui-data-list-wrapper>
+                </ng-container>
+              </ng-container>
+            </tui-multi-select>
+            <ng-template #countryContent let-country>
+              <div class="flex items-center will-change-transform">
+                <p class="mr-auto">{{ country.name }}</p>
+                <tui-avatar
+                  size="s"
+                  [text]="country.name"
+                  [avatarUrl]="path + '/' + country.img"
+                ></tui-avatar>
+              </div>
+            </ng-template>
+          </ng-container>
+        </div>
+        <div class="flex-[30%] flex-grow-0">
+          <button
+            size="m"
+            tuiButton
+            shape="rounded"
+            class="w-full"
+            (click)="filterByCountries()"
+            [disabled]="!idsValue?.length"
+          >
+            <translate uz="Qidirmoq" ru="Поиск" />
+          </button>
+        </div>
+      </div>
+    </ion-card>
+  </div>
+</section>
+<section class="py-12">
+  <div class="container">
+    <div class="grid items-center gap-3 sm:flex">
+      <div class="mr-auto">
+        <h1 class="title uppercase" data-basic>
+          <translate uz="QIDIRUV NATIJALARI" ru="РЕЗУЛЬТАТЫ ПОИСКА" />
+        </h1>
+      </div>
+      <tui-checkbox-labeled
+        size="l"
+        [(ngModel)]="esim"
+        (ngModelChange)="changeEsim()"
+      >
+        <span class="text-medium">
+          <translate
+            uz="Faqat E-SIM-ni ko'rsatish"
+            ru="Показать только E-sim"
+          />
+        </span>
+      </tui-checkbox-labeled>
+    </div>
+    <div class="pt-10">
+      <ng-container *ngIf="tariffsState$ | async as tariffsState">
+        <tui-loader [showLoader]="tariffsState.isLoading">
+          <ng-container *ngIf="!tariffsState.isLoading">
+            <div class="grid-columns--md">
+              <ng-container
+                *ngFor="
+                let tariff of tariffsState.tariffs
+                  | paginate: { itemsPerPage: 9, currentPage };
+                trackById
+              "
+              >
+                <app-tariff
+                  [tariff]="tariff"
+                  [isSlider]="false"
+                  [isLarge]="true"
+                />
+              </ng-container>
+            </div>
+            <pagination-controls
+              (pageChange)="currentPage = $event"
+              [directionLinks]="false"
+              [autoHide]="true"
+              [maxSize]="maxSize"
+            ></pagination-controls>
+          </ng-container>
+        </tui-loader>
+      </ng-container>
+    </div>
+  </div>
+</section>
+
+<ng-template #aboutEsimTemplate>
+  <article>
+    <h3 class="text-2xl font-semibold">О E-SIM</h3>
+    <div class="py-3">
+      <h5 class="text-xl font-medium">Порядок подключения еСИМ:</h5>
+      <p class="py-1 text-base">
+        - Перед покупкой, убедитесь что Ваш телефон поддерживает еСИМ.
+      </p>
+      <p class="py-1 text-base">
+        - После оформления покупки, Мы отправим Вам ссылку через СМС. В данной
+        ссылке будет QR код а также данные для подключения Вашего еСИМ.
+      </p>
+
+      <p class="py-1 text-base">
+        - Для подключения еСИМ, Ваш телефон должен быть подключен к стабильному
+        сети WiFi.
+      </p>
+    </div>
+    <div class="py-3">
+      <h5 class="text-xl font-medium">ВНИМАНИЕ!</h5>
+      <p class="py-1 text-base">
+        - QR код сканируется только по прибытию в стране назначения;
+      </p>
+      <p class="py-1 text-base">
+        - Мы не осуществляем возврат денежных средств если Вы удаляете еСИМ от
+        Happytel вручную в настройках телефона без согласия наших операторов.
+      </p>
+
+      <p class="py-1 text-base">
+        - Советуем обращаться по любому вопросу нашим операторам по Whatsapp или
+        на сайте.
+      </p>
+    </div>
+  </article>
+</ng-template>

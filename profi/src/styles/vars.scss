@@ -1,0 +1,46 @@
+:root {
+  --min-width: 320px;
+  --container-width: 1270px;
+  --scrollbar-width: 6px;
+  --font-family: "Montserrat";
+
+  --base-box-shadow: 1px 5px 5px 5px rgba(0, 0, 0, 0.05);
+  --heavy-box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.1);
+  --light-box-shadow: 0px 15px 15px 0px rgba(0, 0, 0, 0.05);
+
+  --rounded: 10px;
+  --rounded-md: 20px;
+  --rounded-lg: clamp(var(--rounded-md), 3vw, 30px);
+
+  --primary: var(--ion-color-primary);
+  --fire: var(--ion-color-fire);
+  --success: var(--ion-color-success);
+  --lightcyan: var(--ion-color-lightcyan);
+  --danger: var(--ion-color-danger);
+  --red: var(--ion-color-red);
+  --warning: var(--ion-color-warning);
+  --dark: var(--ion-color-dark);
+  --charcoal: var(--ion-color-charcoal);
+  --light: var(--ion-color-light);
+  --jupiter: var(--ion-color-jupiter);
+  --medium: var(--ion-color-medium);
+  --lightgrey: var(--ion-color-lightgrey);
+
+  // --_: #d7d7d7; - input border and icons
+  // --_: #b0b0b0; - input label
+  --ion-default-font: var(--font-family);
+  --tui-text-font: var(--font-family);
+  --tui-primary: var(--primary);
+  --tui-primary-hover: var(--ion-color-primary-tint);
+  --tui-primary-active: var(--ion-color-primary-shade);
+  --tui-secondary: var(--light);
+  --tui-secondary-hover: var(--ion-color-light-tint);
+  --tui-accent: var(--fire);
+  --tui-accent-hover: var(--ion-color-fire-tint);
+  --tui-accent-active: var(--ion-color-fire-shade);
+  --tui-error-fill: var(--danger);
+  --tui-selection: var(--primary);
+  --tui-link: var(--dark);
+  --tui-link-hover: var(--ion-color-primary-tint);
+  --tui-text-01: black;
+}

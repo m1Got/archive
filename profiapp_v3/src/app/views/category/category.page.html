@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="primary-toolbar">
+    <div class="primary-toolbar--inner">
+      <button
+        size="m"
+        shape="rounded"
+        tuiButton
+        appearance="whiteblock"
+        class="icon-button"
+        (click)="navCtrl.back()"
+      >
+        <ion-icon
+          class="text-lg"
+          color="primary"
+          src="assets/icons/chevron-back-outline.svg"
+        />
+      </button>
+      <ion-title>Категории</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="grid gap-2">
+    <accordion title="Авто" image="assets/images/category.svg">
+      <div class="mt-2 grid gap-2">
+        <ion-item class="rounded-xl" button="true" color="light" lines="none">
+          <span class="py-4 text-sm">Под категория 1</span>
+        </ion-item>
+        <ion-item class="rounded-xl" button="true" color="light" lines="none">
+          <span class="py-4 text-sm">Под категория 2</span>
+        </ion-item>
+        <ion-item class="rounded-xl" button="true" color="light" lines="none">
+          <span class="py-4 text-sm">Под категория 3</span>
+        </ion-item>
+      </div>
+    </accordion>
+    <accordion title="Аквариум" image="assets/images/category.svg">
+      <div class="mt-2 grid gap-2">
+        <ion-item class="rounded-xl" button="true" color="light" lines="none">
+          <span class="py-4 text-sm">Под категория 1</span>
+        </ion-item>
+        <ion-item class="rounded-xl" button="true" color="light" lines="none">
+          <span class="py-4 text-sm">Под категория 2</span>
+        </ion-item>
+        <ion-item class="rounded-xl" button="true" color="light" lines="none">
+          <span class="py-4 text-sm">Под категория 3</span>
+        </ion-item>
+      </div>
+    </accordion>
+  </div>
+</ion-content>

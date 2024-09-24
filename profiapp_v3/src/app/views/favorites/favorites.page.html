@@ -1,0 +1,177 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="primary-toolbar">
+    <div class="primary-toolbar--inner">
+      <button
+        size="m"
+        shape="rounded"
+        tuiButton
+        appearance="whiteblock"
+        class="icon-button"
+        (click)="navCtrl.back()"
+      >
+        <ion-icon
+          class="text-lg"
+          color="primary"
+          src="assets/icons/chevron-back-outline.svg"
+        />
+      </button>
+      <ion-title>Избранное</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-segment [(ngModel)]="activeSegment">
+    <ion-segment-button value="first">
+      <ion-label class="text-base">Заявки</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="second">
+      <ion-label class="text-base">Исполнители</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <div class="grid gap-5 py-5">
+    <ng-container *ngIf="activeSegment === 'first'">
+      <article class="card">
+        <div class="flex gap-1">
+          <ion-button color="light" size="small">Заявка №342</ion-button>
+          <ion-button color="light" size="small">Ташкент</ion-button>
+          <ion-button color="light" size="small">13.11.2023</ion-button>
+        </div>
+        <div class="line-clamp-2 py-3">
+          <p class="text-dark text-base font-medium">
+            Необходимо заменить смеситель в ванной. Срочно
+          </p>
+        </div>
+        <div class="flex items-center">
+          <p class="pr-2 text-medium">Категория:</p>
+          <span class="text-sm font-medium text-primary">Сантехника</span>
+        </div>
+        <div class="py-3">
+          <p class="text-medium">Ориентировочная цена:</p>
+          <h5 class="text-dark text-xl font-semibold">200 000 сум</h5>
+        </div>
+        <div class="flex items-center">
+          <button size="m" tuiButton>
+            <span class="font-medium text-white">Принят заявку</span>
+          </button>
+          <div class="ml-auto flex gap-1">
+            <button
+              size="m"
+              shape="rounded"
+              tuiButton
+              appearance="whiteblock"
+              class="icon-button"
+            >
+              <ion-icon color="medium" src="assets/icons/share.svg" />
+            </button>
+            <button
+              size="m"
+              shape="rounded"
+              tuiButton
+              appearance="whiteblock"
+              class="icon-button"
+            >
+              <ion-icon color="medium" src="assets/icons/heart-fill.svg" />
+            </button>
+          </div>
+        </div>
+      </article>
+    </ng-container>
+    <ng-container *ngIf="activeSegment === 'second'">
+      <article class="card">
+        <div class="flex items-center">
+          <tui-avatar
+            size="m"
+            avatarUrl="assets/images/executor.png"
+            [rounded]="true"
+            class="mr-4"
+          />
+          <div class="flex-auto text-sm">
+            <p class="line-clamp-1 font-semibold">Равшан Аббасов</p>
+            <div class="flex items-center">
+              <p class="pr-4 text-tertiary">г.Ташкент</p>
+              <div class="flex items-center">
+                <ion-icon class="text-xs" src="assets/icons/rounded-star.svg" />
+                <p class="pl-1 font-medium">5.0</p>
+              </div>
+            </div>
+          </div>
+          <button size="m" tuiButton shape="rounded" class="icon-button">
+            <ion-icon src="assets/icons/material-call.svg" />
+          </button>
+        </div>
+        <div class="pt-6">
+          <div class="flex snap-x snap-mandatory flex-nowrap overflow-x-auto">
+            <ng-container *ngFor="let item of arrayItems">
+              <img
+                src="assets/images/item.jpg"
+                class="mx-1 h-16 w-16 snap-start rounded-lg object-cover"
+              />
+            </ng-container>
+          </div>
+        </div>
+        <div class="pt-6">
+          <div class="flex items-center">
+            <span class="text-tertiary">11 ноября в 10:39</span>
+            <p class="ml-auto text-base font-semibold">Договорная</p>
+          </div>
+        </div>
+      </article>
+      <article class="card card--top">
+        <ion-button
+          size="small"
+          class="absolute -top-4 right-4"
+          color="secondary"
+        >
+          TOP
+        </ion-button>
+        <div class="flex items-center">
+          <tui-avatar
+            size="m"
+            avatarUrl="assets/images/executor.png"
+            [rounded]="true"
+            class="mr-4"
+          />
+          <div class="flex-auto text-sm">
+            <p class="line-clamp-1 font-semibold">Равшан Аббасов</p>
+            <div class="flex items-center">
+              <p class="pr-4 text-tertiary">г.Ташкент</p>
+              <div class="flex items-center">
+                <ion-icon class="text-xs" src="assets/icons/rounded-star.svg" />
+                <p class="pl-1 font-medium">5.0</p>
+              </div>
+            </div>
+          </div>
+          <button size="m" tuiButton shape="rounded" class="icon-button">
+            <ion-icon src="assets/icons/material-call.svg" />
+          </button>
+        </div>
+        <div class="pt-6">
+          <div class="flex snap-x snap-mandatory flex-nowrap overflow-x-auto">
+            <ng-container *ngFor="let item of arrayItems">
+              <img
+                src="assets/images/item.jpg"
+                class="mx-1 h-16 w-16 snap-start rounded-lg object-cover"
+              />
+            </ng-container>
+          </div>
+        </div>
+        <div class="pt-6">
+          <div class="flex items-center">
+            <span class="text-tertiary">11 ноября в 10:39</span>
+            <p class="ml-auto text-base font-semibold">Договорная</p>
+          </div>
+        </div>
+      </article>
+    </ng-container>
+  </div>
+
+  <!-- <tui-block-status>
+    <img
+      class="!h-60 !w-60"
+      src="assets/block-status/empty-address.svg"
+      tuiSlot="top"
+    />
+    <h4>Ваш список желаний пуст</h4>
+  </tui-block-status>  -->
+</ion-content>

@@ -1,0 +1,358 @@
+<div class="relative min-h-screen overflow-hidden py-5 md:bg-light md:py-8">
+  <div class="container">
+    <div class="grid items-center gap-4 md:flex md:gap-5">
+      <div class="flex items-center gap-4">
+        <div class="relative">
+          <tui-avatar
+            new
+            size="l"
+            fallback="icons/user-filled.svg"
+            avatarUrl="images/executor-02.jpg"
+            [rounded]="true"
+          ></tui-avatar>
+          <div class="absolute -right-1 -top-1">
+            <button
+              size="s"
+              tuiIconButton
+              shape="rounded"
+              icon="icons/pen.svg"
+              appearance="whiteblock-active"
+            ></button>
+          </div>
+        </div>
+        <div class="">
+          <div class="flex items-center gap-2">
+            <h4 class="line-clamp-2 text-xl font-semibold md:text-2xl">
+              Мурод Исаков
+            </h4>
+            <!-- <button
+              tuiHint="Не проверен"
+              tuiHintDirection="right"
+              tuiHintAppearance="error"
+            >
+              <ion-icon
+                src="icons/warning.svg"
+                color="danger"
+                class="text-2xl"
+              ></ion-icon>
+            </button> -->
+
+            <!-- <button tuiHint="Проверен" tuiHintDirection="right">
+              <ion-icon
+                src="icons/checkmark-done-check.svg"
+                color="success"
+                class="text-2xl"
+              ></ion-icon>
+            </button> -->
+
+            <ion-icon
+              src="icons/search-dots.svg"
+              color="warning"
+              class="ml-2 text-2xl"
+            ></ion-icon>
+            <div class="hidden md:block">
+              <tui-tag
+                size="l"
+                status="custom"
+                value="На проверке"
+                class="bg-warning text-white"
+                [hoverable]="true"
+              >
+              </tui-tag>
+            </div>
+          </div>
+          <p class="text-lg text-medium">id: 14583</p>
+        </div>
+      </div>
+      <div
+        class="flex flex-row-reverse items-center justify-between gap-4 md:ml-auto md:flex-row md:justify-normal"
+      >
+        <div class="hidden md:block">
+          <button
+            tuiButton
+            shape="rounded"
+            icon="icons/refresh.svg"
+            (click)="showModal(changeStatusModal)"
+          >
+            <span class="font-medium">
+              Стать
+              {{
+                authService.userStatus === "executor"
+                  ? "заказчиком"
+                  : "исполнителем"
+              }}
+            </span>
+          </button>
+        </div>
+        <div class="block md:hidden">
+          <button
+            tuiIconButton
+            shape="rounded"
+            icon="icons/refresh.svg"
+            (click)="showModal(changeStatusModal)"
+          ></button>
+        </div>
+        <button
+          tuiButton
+          shape="rounded"
+          appearance="accent"
+          icon="icons/logout.svg"
+          (click)="showModal(logoutModal)"
+        >
+          Выйти
+        </button>
+      </div>
+    </div>
+    <div class="auto-columns--profile">
+      <button
+        tuiButton
+        routerLinkActive
+        [appearance]="profilePersonal.isActive ? 'primary' : 'secondary'"
+        #profilePersonal="routerLinkActive"
+        routerLink="/profile/personal"
+        icon="icons/user-single.svg"
+        (click)="toggleProfileChild(profileSidebar, 'add')"
+      >
+        <span class="text-sm font-medium">Личная информация</span>
+        <div class="ml-auto block md:hidden">
+          <button
+            size="s"
+            tuiIconButton
+            icon="icons/chevron-right.svg"
+            shape="rounded"
+          ></button>
+        </div>
+      </button>
+      <ng-container *ngIf="authService.userStatus === 'client'">
+        <button
+          tuiButton
+          icon="icons/shapes-objects.svg"
+          routerLinkActive
+          [appearance]="profileOrders.isActive ? 'primary' : 'secondary'"
+          #profileOrders="routerLinkActive"
+          routerLink="/profile/orders"
+          (click)="toggleProfileChild(profileSidebar, 'add')"
+        >
+          <span class="text-sm font-medium"> Мои заказы </span>
+          <div class="ml-auto block md:hidden">
+            <button
+              size="s"
+              tuiIconButton
+              icon="icons/chevron-right.svg"
+              shape="rounded"
+            ></button>
+          </div>
+        </button>
+      </ng-container>
+      <ng-container *ngIf="authService.userStatus === 'executor'">
+        <button
+          tuiButton
+          routerLinkActive
+          [appearance]="profileBalance.isActive ? 'primary' : 'secondary'"
+          #profileBalance="routerLinkActive"
+          routerLink="/profile/balance"
+          icon="icons/money-wallet.svg"
+          (click)="toggleProfileChild(profileSidebar, 'add')"
+        >
+          <span class="text-sm font-medium">Баланс</span>
+          <div class="ml-auto block md:hidden">
+            <button
+              size="s"
+              tuiIconButton
+              icon="icons/chevron-right.svg"
+              shape="rounded"
+            ></button>
+          </div>
+        </button>
+        <button
+          tuiButton
+          routerLinkActive
+          [appearance]="profileTariffs.isActive ? 'primary' : 'secondary'"
+          #profileTariffs="routerLinkActive"
+          routerLink="/profile/tariffs"
+          icon="icons/medal-reward.svg"
+          (click)="toggleProfileChild(profileSidebar, 'add')"
+        >
+          <span class="text-sm font-medium">Тарифы</span>
+          <div class="ml-auto block md:hidden">
+            <button
+              size="s"
+              tuiIconButton
+              icon="icons/chevron-right.svg"
+              shape="rounded"
+            ></button>
+          </div>
+        </button>
+        <button
+          tuiButton
+          routerLinkActive
+          [appearance]="profileAnnouncement.isActive ? 'primary' : 'secondary'"
+          #profileAnnouncement="routerLinkActive"
+          routerLink="/profile/announcement"
+          icon="icons/suitcase-portfolio.svg"
+          (click)="toggleProfileChild(profileSidebar, 'add')"
+        >
+          <span class="text-sm font-medium">Мои объявления</span>
+          <div class="ml-auto block md:hidden">
+            <button
+              size="s"
+              tuiIconButton
+              icon="icons/chevron-right.svg"
+              shape="rounded"
+            ></button>
+          </div>
+        </button>
+      </ng-container>
+      <button
+        tuiButton
+        icon="icons/clock-loading.svg"
+        routerLinkActive
+        [appearance]="profileHistory.isActive ? 'primary' : 'secondary'"
+        #profileHistory="routerLinkActive"
+        routerLink="/profile/history"
+        (click)="toggleProfileChild(profileSidebar, 'add')"
+      >
+        <span class="text-sm font-medium"> История заказов</span>
+        <div class="ml-auto block md:hidden">
+          <button
+            size="s"
+            tuiIconButton
+            icon="icons/chevron-right.svg"
+            shape="rounded"
+          ></button>
+        </div>
+      </button>
+      <ng-container *ngIf="authService.userStatus === 'executor'">
+        <button
+          tuiButton
+          routerLinkActive
+          [appearance]="profileAddress.isActive ? 'primary' : 'secondary'"
+          #profileAddress="routerLinkActive"
+          routerLink="/profile/address"
+          icon="icons/location.svg"
+          (click)="toggleProfileChild(profileSidebar, 'add')"
+        >
+          <span class="text-sm font-medium">Мои адреса</span>
+          <div class="ml-auto block md:hidden">
+            <button
+              size="s"
+              tuiIconButton
+              icon="icons/chevron-right.svg"
+              shape="rounded"
+            ></button>
+          </div>
+        </button>
+        <button
+          tuiButton
+          routerLinkActive
+          [appearance]="profileSpecialty.isActive ? 'primary' : 'secondary'"
+          #profileSpecialty="routerLinkActive"
+          routerLink="/profile/specialty"
+          icon="icons/key-settings.svg"
+          (click)="toggleProfileChild(profileSidebar, 'add')"
+        >
+          <span class="text-sm font-medium">Специальность</span>
+          <div class="ml-auto block md:hidden">
+            <button
+              size="s"
+              tuiIconButton
+              icon="icons/chevron-right.svg"
+              shape="rounded"
+            ></button>
+          </div>
+        </button>
+      </ng-container>
+      <button
+        tuiButton
+        icon="icons/heart-classic.svg"
+        routerLinkActive
+        [appearance]="profileFavorites.isActive ? 'primary' : 'secondary'"
+        #profileFavorites="routerLinkActive"
+        routerLink="/profile/favorites"
+        (click)="toggleProfileChild(profileSidebar, 'add')"
+      >
+        <span class="text-sm font-medium"> Избранное </span>
+        <div class="ml-auto block md:hidden">
+          <button
+            size="s"
+            tuiIconButton
+            icon="icons/chevron-right.svg"
+            shape="rounded"
+          ></button>
+        </div>
+      </button>
+      <button
+        tuiButton
+        icon="icons/user-select.svg"
+        routerLinkActive
+        [appearance]="verification.isActive ? 'primary' : 'secondary'"
+        #verification="routerLinkActive"
+        routerLink="/profile/verification"
+        (click)="toggleProfileChild(profileSidebar, 'add')"
+      >
+        <span class="text-sm font-medium"> Проверка паспорта</span>
+        <div class="ml-auto block md:hidden">
+          <button
+            size="s"
+            tuiIconButton
+            icon="icons/chevron-right.svg"
+            shape="rounded"
+          ></button>
+        </div>
+      </button>
+    </div>
+    <div class="sidebar--profile" #profileSidebar>
+      <div class="md:hidden">
+        <button
+          tuiButton
+          (click)="toggleProfileChild(profileSidebar, 'remove')"
+          appearance="secondary"
+          class="mb-8 w-full"
+        >
+          <button
+            size="s"
+            tuiIconButton
+            shape="rounded"
+            icon="icons/chevron-left.svg"
+          ></button>
+          <span class="pl-2 text-primary">Назад</span>
+        </button>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<ng-template #logoutModal let-logoutRef>
+  <h4 class="pb-5 text-center text-2xl">Вы точно хотите выйти из аккаунта!</h4>
+  <div class="grid max-w-md grid-cols-2 gap-2">
+    <ion-button
+      size="large"
+      shape="round"
+      color="danger"
+      (click)="logout(logoutRef.complete())"
+    >
+      Да
+    </ion-button>
+    <ion-button size="large" shape="round" (click)="logoutRef.complete()">
+      Нет
+    </ion-button>
+  </div>
+</ng-template>
+
+<ng-template #changeStatusModal let-changeStatusRef>
+  <h4 class="pb-5 text-center text-2xl">Вы точно хотите сменить статус!</h4>
+  <div class="grid max-w-md grid-cols-2 gap-2">
+    <ion-button
+      size="large"
+      shape="round"
+      color="danger"
+      (click)="changeStatus(changeStatusRef.complete())"
+    >
+      Да
+    </ion-button>
+    <ion-button size="large" shape="round" (click)="changeStatusRef.complete()">
+      Нет
+    </ion-button>
+  </div>
+</ng-template>

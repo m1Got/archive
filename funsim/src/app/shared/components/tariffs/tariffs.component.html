@@ -1,0 +1,358 @@
+<ng-container *ngIf="vmTariffs$ | async as vmTariffs">
+  <ng-container *ngIf="vmTariffs.tariffs?.length">
+    <ng-container *ngIf="!slider">
+      <ion-card
+        class="tariff"
+        color="primary"
+        *ngFor="let tariff of vmTariffs.tariffs; let index = index"
+      >
+        <div class="tariff__header">
+          <h4 class="tariff__title">
+            <span class="ion-text-wrap">{{ tariff.name }}</span>
+          </h4>
+          <b class="tariff__price">
+            {{
+              tariff.price_sell
+                | mask
+                  : "separator.3"
+                  : { thousandSeparator: ".", showMaskTyped: false }
+            }}
+            ₸
+          </b>
+        </div>
+        <div class="tariff__body">
+          <ul class="tariff__list">
+            <li class="tariff__item">
+              <span>
+                <translate
+                  nameRU="активных дней"
+                  nameKZ="белсенді күндер"
+                  nameEN="active days"
+                />
+              </span>
+              <b>{{ tariff.expiry_day ?? "-" }}</b>
+            </li>
+            <li class="tariff__item">
+              <span>
+                <translate nameRU="смс" nameKZ="смс" nameEN="sms" />
+              </span>
+              <b>{{ tariff.quantity_sms ?? "-" }}</b>
+            </li>
+            <li class="tariff__item">
+              <span>
+                <translate
+                  nameRU="интернет"
+                  nameKZ="ғаламтор"
+                  nameEN="Internet"
+                />
+              </span>
+              <b *ngIf="tariff.quantity_internet as internet">
+                <i>
+                  {{ internet.split(" ")[internet.split(" ").length - 2] }}
+                </i>
+                <ion-icon
+                  name="infinite-outline"
+                  *ngIf="
+                    internet
+                      .split(' ')
+                      [internet.split(' ').length - 1].includes('Безлимит')
+                  "
+                ></ion-icon>
+                <ng-container
+                  *ngIf="
+                    !internet
+                      .split(' ')
+                      [internet.split(' ').length - 1].includes('Безлимит')
+                  "
+                >
+                  {{ internet.split(" ")[internet.split(" ").length - 1] }}
+                </ng-container>
+              </b>
+              <b *ngIf="!tariff.quantity_internet"> - </b>
+            </li>
+            <li class="tariff__item">
+              <span>
+                <translate nameRU="минут" nameKZ="минут" nameEN="minutes" />
+              </span>
+              <b>{{ tariff.quantity_minut ?? "-" }}</b>
+            </li>
+            <li class="tariff__item">
+              <span>
+                {{ tariff.tariff_128 ? "128 кбит/сек" : "" }}
+                {{ tariff.tariff_256 ? "256 кбит/сек" : "" }}
+                {{ tariff.tariff_384 ? "384 кбит/сек" : "" }}
+              </span>
+              <b style="font-size: 35px; font-weight: 600">
+                <ng-container
+                  *ngIf="
+                    tariff.tariff_128 || tariff.tariff_256 || tariff.tariff_384
+                  "
+                >
+                  <ion-icon name="infinite-outline"></ion-icon
+                ></ng-container>
+              </b>
+            </li>
+          </ul>
+          <div class="tariff__esims">
+            <ion-checkbox
+              mode="md"
+              color="light"
+              labelPlacement="end"
+              *ngIf="tariff.esim"
+              checked
+            >
+              <translate
+                nameRU="Есть E-sim"
+                nameKZ="E-sim бар"
+                nameEN="There is E-sim"
+              />
+            </ion-checkbox>
+            <ion-checkbox
+              mode="md"
+              color="light"
+              labelPlacement="end"
+              *ngIf="tariff.tariff_4g"
+              checked
+            >
+              4G
+            </ion-checkbox>
+            <ion-checkbox
+              mode="md"
+              color="light"
+              labelPlacement="end"
+              *ngIf="tariff.tariff_5g"
+              checked
+            >
+              5G
+            </ion-checkbox>
+            <ion-checkbox
+              mode="md"
+              color="light"
+              labelPlacement="end"
+              *ngIf="tariff.physical_sim"
+              checked
+            >
+              <translate
+                nameRU="Физическая сим-карта"
+                nameKZ="Физикалық SIM картасы"
+                nameEN="Physical SIM card"
+              />
+            </ion-checkbox>
+          </div>
+          <p
+            class="tariff__desc"
+            *ngIf="tariff.description && tariff.description !== '0'"
+          >
+            {{ tariff.description }}
+          </p>
+        </div>
+        <div class="tariff__bottom">
+          <ion-button
+            fill="outline"
+            color="light"
+            *ngIf="tariff.regions.length > 1"
+            (click)="modalRegions(tariff)"
+          >
+            <ion-icon name="earth-outline"></ion-icon>
+          </ion-button>
+
+          <ion-button
+            class="tariff__plug"
+            fill="outline"
+            color="light"
+            (click)="orderConclude(tariff)"
+          >
+            <translate
+              nameRU="Подключить"
+              nameKZ="Қосу үшін"
+              nameEN="To plug"
+            />
+          </ion-button>
+        </div>
+      </ion-card>
+    </ng-container>
+    <swiper [config]="config" *ngIf="slider">
+      <ng-template swiperSlide *ngFor="let tariff of vmTariffs.tariffs">
+        <ion-card class="tariff" color="primary">
+          <div class="tariff__header">
+            <h4 class="tariff__title">
+              <span class="ion-text-wrap">{{ tariff.name }}</span>
+            </h4>
+            <b class="tariff__price">
+              {{
+                tariff.price_sell
+                  | mask
+                    : "separator.3"
+                    : { thousandSeparator: ".", showMaskTyped: false }
+              }}
+              ₸
+            </b>
+          </div>
+          <div class="tariff__body">
+            <ul class="tariff__list">
+              <li class="tariff__item">
+                <span>
+                  <translate
+                    nameRU="активных дней"
+                    nameKZ="белсенді күндер"
+                    nameEN="active days"
+                  />
+                </span>
+                <b>{{ tariff.expiry_day ?? "-" }}</b>
+              </li>
+              <li class="tariff__item">
+                <span>
+                  <translate nameRU="смс" nameKZ="смс" nameEN="sms" />
+                </span>
+                <b>{{ tariff.quantity_sms ?? "-" }}</b>
+              </li>
+              <li class="tariff__item">
+                <span>
+                  <translate
+                    nameRU="интернет"
+                    nameKZ="ғаламтор"
+                    nameEN="Internet"
+                  />
+                </span>
+                <b *ngIf="tariff.quantity_internet as internet">
+                  <i>
+                    {{ internet.split(" ")[internet.split(" ").length - 2] }}
+                  </i>
+                  <ion-icon
+                    name="infinite-outline"
+                    *ngIf="
+                      internet
+                        .split(' ')
+                        [internet.split(' ').length - 1].includes('Безлимит')
+                    "
+                  ></ion-icon>
+                  <ng-container
+                    *ngIf="
+                      !internet
+                        .split(' ')
+                        [internet.split(' ').length - 1].includes('Безлимит')
+                    "
+                  >
+                    {{ internet.split(" ")[internet.split(" ").length - 1] }}
+                  </ng-container>
+                </b>
+                <b *ngIf="!tariff.quantity_internet"> - </b>
+              </li>
+              <li class="tariff__item">
+                <span>
+                  <translate nameRU="минут" nameKZ="минут" nameEN="minutes" />
+                </span>
+                <b>{{ tariff.quantity_minut ?? "-" }}</b>
+              </li>
+              <li class="tariff__item">
+                <span>
+                  {{ tariff.tariff_128 ? "128 кбит/сек" : "" }}
+                  {{ tariff.tariff_256 ? "256 кбит/сек" : "" }}
+                  {{ tariff.tariff_384 ? "384 кбит/сек" : "" }}
+                </span>
+                <b style="font-size: 35px; font-weight: 600">
+                  <ng-container
+                    *ngIf="
+                      tariff.tariff_128 ||
+                      tariff.tariff_256 ||
+                      tariff.tariff_384
+                    "
+                  >
+                    <ion-icon name="infinite-outline"></ion-icon
+                  ></ng-container>
+                </b>
+              </li>
+            </ul>
+            <div class="tariff__esims">
+              <ion-checkbox
+                mode="md"
+                color="light"
+                labelPlacement="end"
+                *ngIf="tariff.esim"
+                checked
+              >
+                <translate
+                  nameRU="Есть E-sim"
+                  nameKZ="E-sim бар"
+                  nameEN="There is E-sim"
+                />
+              </ion-checkbox>
+              <ion-checkbox
+                mode="md"
+                color="light"
+                labelPlacement="end"
+                *ngIf="tariff.tariff_4g"
+                checked
+              >
+                4G
+              </ion-checkbox>
+              <ion-checkbox
+                mode="md"
+                color="light"
+                labelPlacement="end"
+                *ngIf="tariff.tariff_5g"
+                checked
+              >
+                5G
+              </ion-checkbox>
+              <ion-checkbox
+                mode="md"
+                color="light"
+                labelPlacement="end"
+                *ngIf="tariff.physical_sim"
+                checked
+              >
+                <translate
+                  nameRU="Физическая сим-карта"
+                  nameKZ="Физикалық SIM картасы"
+                  nameEN="Physical SIM card"
+                />
+              </ion-checkbox>
+            </div>
+            <p
+              class="tariff__desc"
+              *ngIf="tariff.description && tariff.description !== '0'"
+            >
+              {{ tariff.description }}
+            </p>
+          </div>
+          <div class="tariff__bottom">
+            <ion-button
+              fill="outline"
+              color="light"
+              *ngIf="tariff.regions.length > 1"
+              (click)="modalRegions(tariff)"
+            >
+              <ion-icon name="earth-outline"></ion-icon>
+            </ion-button>
+
+            <ion-button
+              class="tariff__plug"
+              fill="outline"
+              color="light"
+              (click)="orderConclude(tariff)"
+            >
+              <translate
+                nameRU="Подключить"
+                nameKZ="Қосу үшін"
+                nameEN="To plug"
+              />
+            </ion-button>
+          </div>
+        </ion-card>
+      </ng-template>
+    </swiper>
+  </ng-container>
+  <ng-container *ngIf="!vmTariffs.tariffs?.length && !vmTariffs.isLoading">
+    <ion-title class="ion-text-center" size="lg">
+      <h2>
+        <translate
+          nameEN="Nothing found"
+          nameKZ="Еш нәрсе табылмады"
+          nameRU="Ничего не найдено"
+        />
+      </h2>
+      <span></span>
+    </ion-title>
+  </ng-container>
+</ng-container>

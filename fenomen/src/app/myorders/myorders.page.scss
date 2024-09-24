@@ -1,0 +1,16 @@
+.page-title {
+  ion-text[color="medium"] {
+    padding: 0 10px;
+  }
+}
+
+.myorders-items {
+  padding: 15px 0;
+  .stretch {
+    &:not(:last-child) {
+      margin: 0 0 15px;
+      padding: 0 0 15px;
+      border-bottom: 1px solid rgba(#000, 0.15);
+    }
+  }
+}

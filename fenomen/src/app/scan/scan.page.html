@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <header class="info-header">
+      <div class="info-header__start">
+        <button class="icon-button">
+          <ion-icon name="flash-outline" size="large"></ion-icon>
+        </button>
+      </div>
+      <div class="info-header__end">
+        <ion-buttons slot="end">
+          <ion-back-button text="" icon="close-outline" color="light">
+          </ion-back-button>
+        </ion-buttons>
+      </div>
+    </header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <section class="qrcode">
+    <video
+      class="qrcode__video"
+      muted
+      poster="assets/images/qr-code.png"
+    ></video>
+    <article>
+      <h5>Сканирование</h5>
+      <p>Наведите камеру на QR код</p>
+    </article>
+  </section>
+</ion-content>

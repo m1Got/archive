@@ -1,0 +1,164 @@
+<article class="simcard" [attr.data-light]="!isLastSimcards">
+  <div class="p-4">
+    <div class="flex items-center">
+      <h5 class="text-lg font-bold text-dark">
+        <translate uz="Simkarta" ru="Симкарта" />
+        №{{ simcard.id }}
+      </h5>
+      <button class="ml-auto flex text-2xl">
+        <ion-icon src="images/qr-code.svg" />
+      </button>
+    </div>
+    <div class="flex items-center pt-1">
+      <ng-container *ngIf="simcard.status === 'new'">
+        <ion-icon color="danger" src="icons/dott.svg" />
+        <span class="pl-1 text-red-600">
+          <translate uz="Qabul qilinmagan" ru="Ещё не принят" />
+        </span>
+      </ng-container>
+      <!-- <ng-container *ngIf="simcard.status === 1">
+        <ion-icon color="warning" src="icons/dott.svg" />
+        <span class="pl-1 text-yellow-400">
+          <translate uz="Tayyorlanmoqda" ru="Подготовка" />
+        </span>
+      </ng-container> -->
+      <ng-container *ngIf="simcard.status === 'accepted'">
+        <ion-icon color="success" src="icons/dott.svg" />
+        <span class="pl-1 text-success">
+          <translate uz="Aktiv" ru="Активная" />
+        </span>
+      </ng-container>
+    </div>
+
+    <div class="pt-3">
+      <div class="flex text-lg">
+        <p class="pr-1 text-medium">
+          <translate uz="Tariff:" ru="Тариф:" />
+        </p>
+        <p class="line-clamp-2 text-primary" [title]="simcard.plan.name">
+          <!-- tariffsService.getTariffById(simcard.tariff_id)?.name -->
+          {{ simcard.plan.name }}
+        </p>
+      </div>
+      <div class="flex text-lg">
+        <p class="pr-1 text-medium">
+          <translate uz="Buyurtma sanasi:" ru="Дата заказа:" />
+        </p>
+        <p class="text-primary">
+          {{ simcard.created_at | date: "dd.MM.yyyy" }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="grid content-end">
+    <button
+      class="tr-button py-2"
+      (click)="utils.odTemplate(balanceTemplate, { size: 's' })"
+    >
+      <ion-icon color="medium" class="text-xl" src="icons/eye.svg" />
+      <p class="pl-2 text-lg text-medium">
+        <translate uz="Balansni tekshirish" ru="Проверить остаток" />
+      </p>
+    </button>
+    <ion-button
+      fill="outline"
+      shape="round"
+      expand="block"
+      (click)="utils.odTemplate(extensionTemplate, { size: 's' })"
+      [disabled]="simcard.status !== 'accepted'"
+    >
+      <translate uz="Uzaytrish" ru="Запросить на продление" />
+    </ion-button>
+  </div>
+  <img
+    class="absolute left-0 top-[5%] -z-[1] h-4/5 w-full object-contain"
+    src="images/simcard-bg-smile.svg"
+    alt="SimCardSmile"
+  />
+</article>
+
+<ng-template #extensionTemplate let-extension>
+  <p class="text-center text-xl font-bold text-dark">
+    <translate
+      uz="SIM-kart ni uzaytrish uchun sizning qo'lingizda HappyTel dan olingan SIM-kart bo'lishi kerak."
+      ru="Запрос на продление актуален только в том случае, если вы имеете под рукой
+    сим-карту, полученную от Happytel"
+    />
+  </p>
+  <div class="grid grid-cols-2 gap-3 pt-8">
+    <button
+      size="m"
+      tuiButton
+      appearance="secondary"
+      shape="rounded"
+      (click)="extension.complete()"
+    >
+      <span class="text-medium">
+        <translate uz="Bekor qilish" ru="Отменить" />
+      </span>
+    </button>
+    <button size="m" tuiButton shape="rounded" (click)="extensionSimcard(extension)">
+      <translate uz="Uzaytir" ru="Запросить" />
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #balanceTemplate>
+  <div class="pb-8 text-center">
+    <h2 class="text-2xl font-bold">
+      <translate uz="Qurilma turi" ru="Тип устройства" />
+    </h2>
+  </div>
+
+  <div class="grid grid-cols-2 gap-3">
+    <button
+      size="xl"
+      tuiButton
+      appearance="secondary"
+      (click)="setType(instructionTemplate, 'iphone')"
+    >
+      <img class="h-4/5" src="images/apple.png" />
+      <span class="pl-2">Iphone</span>
+    </button>
+    <button
+      size="xl"
+      tuiButton
+      appearance="secondary"
+      (click)="setType(instructionTemplate, 'android')"
+    >
+      <img class="h-4/5" src="images/android.png" />
+      <span class="pl-2">Android</span>
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #instructionTemplate>
+  <div class="pb-8 text-center">
+    <h2 class="text-2xl font-bold">
+      <translate uz="Yo'riqnoma" ru="Инструкция" />
+    </h2>
+  </div>
+
+  <ng-container *ngIf="deviceType === 'iphone'">
+    Мы доставляем сим-карты Happytel в любой уголок Узбекистана! Вы можете
+    заказать свою карту онлайн, по телефону или электронной почте, и мы отправим
+    лучшую международную туристическую SIM-карту прямо на ваш адрес! Наш партнер
+    по доставкам «BTS Express Cargo Service» - один из немногих лидеров
+    логистического рынка, который обеспечивает быструю доставку каждому клиенту
+    не только в Узбекистане, но и за рубежом. Express доставка по Ташкенту
+    осуществляется в течение одного рабочего дня по регионам Узбекистана 3-4
+    рабочего дня *пожалуйста укажите точный адрес чтобы мы могли доставить вашу
+    карту счастья в указанные сроки.
+  </ng-container>
+  <ng-container *ngIf="deviceType === 'android'">
+    Мы доставляем сим-карты Happytel в любой уголок Узбекистана! Вы можете
+    заказать свою карту онлайн, по телефону или электронной почте, и мы отправим
+    лучшую международную туристическую SIM-карту прямо на ваш адрес! Наш партнер
+    по доставкам «BTS Express Cargo Service» - один из немногих лидеров
+    логистического рынка, который обеспечивает быструю доставку каждому клиенту
+    не только в Узбекистане, но и за рубежом. Express доставка по Ташкенту
+    осуществляется в течение одного рабочего дня по регионам Узбекистана 3-4
+    рабочего дня *пожалуйста укажите точный адрес чтобы мы могли доставить вашу
+    карту счастья в указанные сроки.
+  </ng-container>
+</ng-template>

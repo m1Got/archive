@@ -1,0 +1,77 @@
+<div class="primary-search" (click)="showSearch(searchTemplate)">
+  <tui-input
+    tuiTextfieldIconLeft="icons/search.svg"
+    [tuiTextfieldLabelOutside]="true"
+    [formControl]=""
+  >
+    Услуга или специалист?
+    <input tuiTextfield disabled />
+  </tui-input>
+  <button tuiButton tuiAutoFocus appearance="accent" shape="rounded" size="m">
+    Найти
+  </button>
+</div>
+<div class="my-5 grid flex-wrap gap-4 sm:flex">
+  <button tuiButton shape="rounded" appearance="secondary" size="m">
+    <span class="font-medium">Установить розетку</span>
+  </button>
+  <button tuiButton shape="rounded" appearance="accent" size="m">
+    <span class="font-medium">Мастер на час</span>
+  </button>
+  <button tuiButton shape="rounded" appearance="secondary" size="m">
+    <span class="font-medium">Уборка квартиры</span>
+  </button>
+  <button tuiButton shape="rounded" appearance="secondary" size="m">
+    <span class="font-medium">Починить кондиционер</span>
+  </button>
+</div>
+
+<ng-template #searchTemplate>
+  <div class="primary-search">
+    <tui-input
+      tuiTextfieldIconLeft="icons/search.svg"
+      [tuiTextfieldLabelOutside]="true"
+      [formControl]=""
+    >
+      Услуга или специалист?
+      <input tuiTextfield (keyup)="showResults = true" />
+    </tui-input>
+    <button tuiButton appearance="accent" shape="rounded" size="m">
+      Найти
+    </button>
+  </div>
+  <div
+    class="grid grid-rows-[0fr]"
+    [ngClass]="{ 'grid-rows-[1fr]': showResults }"
+  >
+    <div class="mt-6 grid gap-3 overflow-hidden md:grid-cols-3 md:gap-6">
+      <div class="rounded-3xl bg-white p-3 md:p-6">
+        <h5 class="text-lg font-semibold">Услуги</h5>
+        <ul class="[&>li]:first-letter:text-primary">
+          <li class="cursor-pointer py-1">Фирменный стиль</li>
+          <li class="cursor-pointer py-1">Фотография</li>
+          <li class="cursor-pointer py-1">Фотография</li>
+          <li class="cursor-pointer py-1">Фото</li>
+        </ul>
+      </div>
+      <div class="rounded-3xl bg-white p-3 md:p-6">
+        <h5 class="text-lg font-semibold">Исполнители</h5>
+        <ul class="[&>li]:first-letter:text-primary">
+          <li class="cursor-pointer py-1">Фаррух Ташматов</li>
+          <li class="cursor-pointer py-1">Фарангиз Усмонов</li>
+          <li class="cursor-pointer py-1">Фатиме Аллаёрова</li>
+          <li class="cursor-pointer py-1">Фаимжон Муллажонов</li>
+        </ul>
+      </div>
+      <div class="rounded-3xl bg-white p-3 md:p-6">
+        <h5 class="text-lg font-semibold">Заявки</h5>
+        <ul class="[&>li]:first-letter:text-primary">
+          <li class="cursor-pointer py-1">Фокус для детей</li>
+          <li class="cursor-pointer py-1">Фарго услуги</li>
+          <li class="cursor-pointer py-1">Фака мака</li>
+          <li class="cursor-pointer py-1">Фабос установка</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,33 @@
+.headerMenu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px min(2vw, 22px);
+
+  margin-left: min(4vw, 30px);
+  margin-right: 10px;
+
+  @media (width < 768px) {
+    display: none;
+  }
+}
+
+.headerMenu a.active {
+  color: #016fee;
+}
+
+.headerSearch {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  background: #f5f5f5;
+  border-radius: 30px;
+
+  @media (width < 992px) {
+    display: none;
+  }
+
+  input {
+    background: inherit;
+    margin-left: 8px;
+  }
+}

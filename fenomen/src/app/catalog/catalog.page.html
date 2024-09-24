@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <header class="info-header">
+      <div class="info-header__start">
+        <ion-buttons slot="start">
+          <ion-back-button text="" icon="arrow-back-outline"> </ion-back-button>
+        </ion-buttons>
+        <ion-chip class="sharped">
+          <ion-icon src="assets/icon/phi.svg"></ion-icon>
+          <ion-text>1,200</ion-text>
+        </ion-chip>
+        <ion-chip routerLink="/favorites" routerDirection="forward">
+          <ion-icon src="assets/icon/heart-fill.svg" color="red"></ion-icon>
+        </ion-chip>
+      </div>
+      <div class="info-header__end">
+        <ion-text>ул. Уличная, 10 Пт 12:00-06:00</ion-text>
+      </div>
+    </header>
+    <header class="page-header">
+      <div class="page-header__start">
+        <h2 class="page-title">Основное меню</h2>
+      </div>
+      <div class="page-header__end"></div>
+    </header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <section class="menu">
+    <div class="menu-item">
+      <ion-text>Завтраки</ion-text>
+      <img src="assets/images/menu/01.png" />
+    </div>
+    <div class="menu-item">
+      <ion-text>Кухня</ion-text>
+      <img src="assets/images/menu/02.png" />
+    </div>
+    <div class="menu-item">
+      <ion-text>Бар</ion-text>
+      <img src="assets/images/menu/03.png" />
+    </div>
+    <div class="menu-item">
+      <ion-text>Спец меню</ion-text>
+      <img src="assets/images/menu/04.png" />
+    </div>
+    <div class="menu-item">
+      <ion-text>Вег меню</ion-text>
+      <img src="assets/images/menu/05.png" />
+    </div>
+    <div class="menu-item">
+      <ion-text>Десерты</ion-text>
+      <img src="assets/images/menu/06.png" />
+    </div>
+  </section>
+  <section class="ion-margin-top">
+    <h5 class="title">Холодные закуски</h5>
+    <div class="product-items">
+      <article class="product">
+        <button class="product__fav icon-button">
+          <ion-icon
+            src="assets/icon/heart-outline.svg"
+            color="light"
+          ></ion-icon>
+        </button>
+        <div
+          class="product__img"
+          routerLink="/detail"
+          routerDirection="forward"
+        >
+          <img src="assets/images/order-1.jpg" />
+        </div>
+        <div class="product__body">
+          <button class="product__basket icon-button">
+            <ion-icon src="assets/icon/product-basket.svg"></ion-icon>
+          </button>
+          <div class="product__info">150 гр. 300 ккал</div>
+          <div class="product__title">Тар тар из говядины</div>
+          <div class="product__price">
+            <ion-text>3000 ₽</ion-text>
+          </div>
+        </div>
+      </article>
+      <article class="product">
+        <button class="product__fav icon-button">
+          <ion-icon src="assets/icon/heart-fill.svg" color="danger"></ion-icon>
+        </button>
+        <div
+          class="product__img"
+          routerLink="/detail"
+          routerDirection="forward"
+        >
+          <img src="assets/images/order-1.jpg" />
+        </div>
+        <div class="product__body">
+          <button class="product__basket icon-button">
+            <ion-icon src="assets/icon/product-basket.svg"></ion-icon>
+          </button>
+          <div class="product__info">50 гр. 323 ккал</div>
+          <div class="product__title">Мини-брускетта с уткой конфи и луком</div>
+          <div class="product__price">
+            <ion-text>3000 ₽</ion-text>
+            <ion-note>5000 ₽ </ion-note>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</ion-content>

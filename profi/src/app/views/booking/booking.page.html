@@ -1,0 +1,225 @@
+<div class="relative hidden overflow-hidden bg-primary py-4 md:block md:py-8">
+  <div class="container">
+    <div class="relative z-10">
+      <app-search />
+    </div>
+    <div
+      class="absolute -bottom-48 -left-16 h-80 w-80 rounded-full bg-fire"
+    ></div>
+    <div class="absolute -right-6 -top-16 h-36 w-36 rounded-full bg-fire"></div>
+  </div>
+</div>
+<div class="relative py-2 md:py-4">
+  <div class="container">
+    <div class="hidden items-center justify-between gap-4 md:flex">
+      <tui-breadcrumbs size="l">
+        <a *tuiItem tuiLink routerLink="/" class="font-medium"> Главная </a>
+        <a *tuiItem tuiLink routerLink="/" class="font-medium"> Объявления </a>
+        <a
+          *tuiItem
+          tuiLink
+          routerLink="/booking"
+          routerLinkActive="text-primary"
+          class="font-medium"
+        >
+          Автоэлектрик 24/7
+        </a>
+      </tui-breadcrumbs>
+      <div
+        (click)="navigationService.back()"
+        class="flex cursor-pointer items-center gap-3"
+      >
+        <button
+          size="s"
+          tuiIconButton
+          icon="icons/chevron-left.svg"
+          shape="rounded"
+        ></button>
+        <p class="text-base font-medium text-primary">Назад</p>
+      </div>
+    </div>
+  </div>
+  <div class="full-divider"></div>
+</div>
+<div class="py-5 md:py-14">
+  <div class="container">
+    <h1 class="title text-center">{{ title }}</h1>
+    <div class="relative py-5 md:py-10">
+      <progress
+        new
+        max="99"
+        [value]="step * 33"
+        tuiProgressBar
+        color="var(--fire)"
+        size="s"
+      ></progress>
+    </div>
+    <ng-container *ngIf="step === 1">
+      <div class="grid gap-3 sm:grid-cols-2 md:gap-5 lg:grid-cols-3">
+        <ion-card
+          class="flex cursor-pointer items-center rounded-3xl px-3 md:px-6"
+          color="primary"
+          (click)="setStep(2)"
+        >
+          <div class="h-24 w-24">
+            <img
+              class="h-full w-full object-contain"
+              src="images/category-01.png"
+              alt=""
+            />
+          </div>
+          <p class="flex-auto text-center text-lg font-medium">Электрика</p>
+        </ion-card>
+        <ion-card
+          class="flex cursor-pointer items-center rounded-3xl px-3 md:px-6"
+          (click)="setStep(2)"
+        >
+          <div class="h-24 w-24">
+            <img
+              class="h-full w-full object-contain"
+              src="images/category-02.png"
+              alt=""
+            />
+          </div>
+          <p class="flex-auto text-center text-lg font-medium">Сантехника</p>
+        </ion-card>
+        <ion-card
+          class="flex cursor-pointer items-center rounded-3xl px-3 md:px-6"
+          (click)="setStep(2)"
+        >
+          <div class="h-24 w-24">
+            <img
+              class="h-full w-full object-contain"
+              src="images/category-01.png"
+              alt=""
+            />
+          </div>
+          <p class="flex-auto text-center text-lg font-medium">Сантехника</p>
+        </ion-card>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="step === 2">
+      <div class="grid gap-3 sm:grid-cols-3 md:gap-5 lg:grid-cols-4">
+        <button
+          tuiButton
+          shape="rounded"
+          appearance="primary"
+          (click)="setStep(3)"
+        >
+          Аварийный электрик
+        </button>
+        <button
+          tuiButton
+          shape="rounded"
+          appearance="whiteblock"
+          (click)="setStep(3)"
+        >
+          Прокладка кабеля
+        </button>
+        <button
+          tuiButton
+          shape="rounded"
+          appearance="whiteblock"
+          (click)="setStep(3)"
+        >
+          Электрощиты
+        </button>
+        <button
+          tuiButton
+          shape="rounded"
+          appearance="whiteblock"
+          (click)="setStep(3)"
+        >
+          Прочие услуги электрика
+        </button>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="step === 3">
+      <div class="gap-5 lg:flex">
+        <div class="grid flex-[45%] items-start gap-5">
+          <div class="grid gap-3">
+            <p class="text-lg font-medium">Комментарий</p>
+            <tui-textarea
+              class="!min-h-[10rem]"
+              [tuiTextfieldLabelOutside]="true"
+              [maxLength]="100"
+              [formControl]=""
+            >
+              Комментарий к заказу
+            </tui-textarea>
+          </div>
+          <div class="grid gap-3">
+            <p class="text-lg font-medium">Ориентировочная цена</p>
+            <tui-input-number
+              tuiTextfieldSize="l"
+              [tuiTextfieldLabelOutside]="true"
+              [formControl]=""
+            >
+              250 000
+              <input tuiTextfield />
+            </tui-input-number>
+          </div>
+        </div>
+        <div class="grid flex-[55%] items-start gap-5">
+          <div
+            class="grid cursor-pointer !select-none gap-3"
+            (click)="showMap(mapTemplate)"
+          >
+            <p class="text-lg font-medium">Ваш адрес</p>
+            <tui-input
+              tuiTextfieldSize="l"
+              [tuiTextfieldLabelOutside]="true"
+              tuiTextfieldIconLeft="icons/navigate.svg"
+              [formControl]=""
+            >
+              Адрес не указан
+              <input tuiTextfield />
+            </tui-input>
+          </div>
+          <ya-map
+            class="block h-56 w-full overflow-hidden rounded-lg md:w-[40rem]"
+            [center]="[55.751952, 37.600739]"
+            [zoom]="12"
+          >
+          </ya-map>
+        </div>
+      </div>
+      <div class="grid justify-end pt-5">
+        <button size="m" tuiButton appearance="accent" shape="rounded">
+          Создать заказ
+        </button>
+      </div>
+    </ng-container>
+  </div>
+</div>
+<app-download />
+<app-faq />
+
+<ng-template #mapTemplate>
+  <div class="primary-search">
+    <tui-input [tuiTextfieldLabelOutside]="true" [formControl]="">
+      Введите адрес
+      <input tuiTextfield />
+    </tui-input>
+    <button tuiButton appearance="accent" shape="rounded" size="m">
+      Найти
+    </button>
+  </div>
+  <div class="relative h-[30rem] w-full pt-5">
+    <ya-map
+      class="block h-full w-full overflow-hidden rounded-3xl"
+      [center]="[55.751952, 37.600739]"
+      [zoom]="12"
+    >
+    </ya-map>
+    <button
+      size="m"
+      tuiButton
+      appearance="accent"
+      shape="rounded"
+      class="absolute bottom-14 left-[40%]"
+    >
+      Подтвердить
+    </button>
+  </div>
+</ng-template>

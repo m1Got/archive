@@ -1,0 +1,281 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <header class="page-header">
+      <div class="page-header__start">
+        <h2 class="page-title">
+          Корзина <span *ngIf="basketItems">/ 2 шт</span>
+        </h2>
+      </div>
+      <div class="page-header__end" *ngIf="basketItems">
+        <button class="link-button">Очистить</button>
+      </div>
+    </header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ng-container *ngIf="!basketItems">
+    <section class="basket-empty">
+      <div class="page-title">
+        в Вашей корзине <br />
+        пусто...?
+      </div>
+      <br />
+      <ion-text color="primary">
+        Перейдите во вкладку <b routerLink="/tabs/menu">меню</b> и выберите
+        понравившееся блюдо или напиток. Так же, у нас есть
+        <b routerLink="/tabs/home">акции</b> на главном экране приложения.
+      </ion-text>
+    </section>
+    <section class="ion-padding-vertical">
+      <h5 class="title">возможно Вам понравится</h5>
+      <div class="product-items">
+        <article class="product">
+          <button class="product__fav icon-button">
+            <ion-icon
+              src="assets/icon/heart-outline.svg"
+              color="light"
+            ></ion-icon>
+          </button>
+          <div
+            class="product__img"
+            routerLink="/detail"
+            routerDirection="forward"
+          >
+            <img src="assets/images/order-1.jpg" />
+          </div>
+          <div class="product__body">
+            <button class="product__basket icon-button">
+              <ion-icon src="assets/icon/product-basket.svg"></ion-icon>
+            </button>
+            <div class="product__info">150 гр. 300 ккал</div>
+            <div class="product__title">Тар тар из говядины</div>
+            <div class="product__price">
+              <ion-text>3000 ₽</ion-text>
+            </div>
+          </div>
+        </article>
+        <article class="product">
+          <button class="product__fav icon-button">
+            <ion-icon
+              src="assets/icon/heart-fill.svg"
+              color="danger"
+            ></ion-icon>
+          </button>
+          <div
+            class="product__img"
+            routerLink="/detail"
+            routerDirection="forward"
+          >
+            <img src="assets/images/order-1.jpg" />
+          </div>
+          <div class="product__body">
+            <button class="product__basket icon-button">
+              <ion-icon src="assets/icon/product-basket.svg"></ion-icon>
+            </button>
+            <div class="product__info">50 гр. 323 ккал</div>
+            <div class="product__title">
+              Мини-брускетта с уткой конфи и луком
+            </div>
+            <div class="product__price">
+              <ion-text>3000 ₽</ion-text>
+              <ion-note>5000 ₽ </ion-note>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+    <ion-button class="basket-submit" fill="outline">
+      посмотреть полное меню
+      <ion-icon name="arrow-forward-outline"></ion-icon>
+    </ion-button>
+  </ng-container>
+  <ng-container *ngIf="basketItems">
+    <section class="basket-items">
+      <article class="stretch">
+        <div class="stretch__img">
+          <img src="assets/images/order-1.jpg" />
+        </div>
+        <div class="stretch__body">
+          <div class="stretch__top">
+            <div class="stretch__text">
+              <h5 class="stretch__title">Тар тар из говядины</h5>
+              <p class="stretch__info">150 гр. 300 ккал</p>
+            </div>
+          </div>
+          <div class="stretch__bottom">
+            <ion-chip class="quantity-actions" color="light">
+              <ion-icon src="assets/icon/minus.svg"></ion-icon>
+              <span>1</span>
+              <ion-icon src="assets/icon/plus.svg"></ion-icon>
+            </ion-chip>
+            <div class="stretch__price">
+              <ion-text class="current-price">3000 ₽</ion-text>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="stretch">
+        <div class="stretch__img">
+          <img src="assets/images/order-1.jpg" />
+        </div>
+        <div class="stretch__body">
+          <div class="stretch__top">
+            <div class="stretch__text">
+              <h5 class="stretch__title">
+                Мини-брускетта с уткой конфи и луком Мини-брускетта с уткой
+                конфи и луком
+              </h5>
+              <p class="stretch__info">150 гр. 300 ккал</p>
+            </div>
+          </div>
+          <div class="stretch__bottom">
+            <ion-chip class="quantity-actions" color="light">
+              <ion-icon src="assets/icon/minus.svg"></ion-icon>
+              <span>1</span>
+              <ion-icon src="assets/icon/plus.svg"></ion-icon>
+            </ion-chip>
+            <div class="stretch__price">
+              <ion-text class="old-price">5000</ion-text>
+              <ion-text class="current-price">3000 ₽</ion-text>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+    <div class="ion-margin-bottom">
+      <ion-radio-group value="" class="radio-group" size="small">
+        <ion-radio value="1">подать по готовности</ion-radio>
+        <ion-radio value="2">напитки вместе с едой</ion-radio>
+        <ion-radio value="3">напитки сразу</ion-radio>
+        <ion-radio value="4">стандартная последовательность</ion-radio>
+      </ion-radio-group>
+    </div>
+    <ion-segment
+      class="basket-segment"
+      [(ngModel)]="activeTab"
+      [scrollable]="true"
+    >
+      <ion-segment-button value="pickup"> Самовывоз </ion-segment-button>
+      <ion-segment-button value="delivery"> Доставка </ion-segment-button>
+    </ion-segment>
+    <div class="basket-bonus">
+      <ion-chip>
+        <ion-icon src="assets/icon/phi.svg"></ion-icon>
+        <ion-text>1,200</ion-text>
+      </ion-chip>
+      <ion-toggle labelPlacement="start">Списать</ion-toggle>
+    </div>
+    <ng-container *ngIf="activeTab === 'pickup'">
+      <div class="basket-links">
+        <ion-item button detail="true" lines="none">
+          <ion-label>
+            <h2>оплатить онлайн</h2>
+            <p>*согласен получить чек на указанную почту</p>
+          </ion-label>
+        </ion-item>
+        <ion-item button detail="true" lines="none">
+          <ion-label>
+            <h2>запросить счет</h2>
+          </ion-label>
+        </ion-item>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="activeTab === 'delivery'">
+      <section class="basket-delivery">
+        <div class="basket-delivery__header">
+          <h4>Данные доставки</h4>
+          <button
+            class="link-button"
+            routerLink="/delivery"
+            routerDirection="forward"
+          >
+            Изменить
+          </button>
+        </div>
+        <div class="basket-delivery__items">
+          <p>г. Уфа, ул. Уличная, 10 кв. 77</p>
+          <p>2 персоны / 2 набора приборов</p>
+          <p>Оплата картой при получении</p>
+        </div>
+      </section>
+      <section class="basket-total">
+        <ng-container>
+          <ul class="info-list">
+            <div class="info-list__item">
+              <ion-text>сумма заказа</ion-text>
+              <ion-text>3300 ₽</ion-text>
+            </div>
+            <div class="info-list__item">
+              <ion-text color="red">скидка</ion-text>
+              <ion-text color="red">1200 бонусов</ion-text>
+            </div>
+            <div class="info-list__item">
+              <ion-text>доставка</ion-text>
+              <ion-text>200 ₽</ion-text>
+            </div>
+            <div class="info-list__item">
+              <ion-text><b>ИТОГ</b></ion-text>
+              <ion-text><b>2100 ₽</b></ion-text>
+            </div>
+          </ul>
+        </ng-container>
+      </section>
+    </ng-container>
+  </ng-container>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button
+      expand="block"
+      class="ion-margin-bottom"
+      routerLink="/payment"
+      routerDirection="forward"
+    >
+      Оформить заказ
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
+
+<!-- 
+<article class="stretch">
+  <div class="stretch__img">
+    <img src="assets/images/order-1.jpg" />
+  </div>
+  <div class="stretch__images">
+    <img src="assets/images/order-1.jpg" />
+    <img src="assets/images/order-2.jpg" />
+    <img src="assets/images/order-3.jpg" />
+  </div>
+  <div class="stretch__body">
+    <div class="stretch__top">
+      <div class="stretch__text">
+        <h5 class="stretch__title">Тар тар из говядины</h5>
+        <p class="stretch__info">150 гр. 300 ккал</p>
+      </div>
+      <div class="stretch__status">
+        <ion-button class="mark" color="green" expand="full">
+          завершен
+        </ion-button>
+      </div>
+    </div>
+    <div class="stretch__bottom">
+      <ion-chip class="quantity-actions">
+        <ion-icon src="assets/icon/minus.svg"></ion-icon>
+        <span>1</span>
+        <ion-icon src="assets/icon/plus.svg"></ion-icon>
+      </ion-chip>
+      <div class="stretch__price">
+        <ion-text class="old-price">5000</ion-text>
+        <ion-text class="current-price">3000 ₽</ion-text>
+      </div>
+      <div class="stretch__bonus">
+        <ion-icon src="assets/icon/phi.svg"></ion-icon>
+        <ion-text>+210</ion-text>
+      </div>
+    </div>
+  </div>
+</article>
+ -->

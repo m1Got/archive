@@ -1,0 +1,268 @@
+<ion-content [fullscreen]="true">
+  <section class="banner">
+    <ion-title size="xl">
+      <span class="ion-text-wrap">
+        <translate
+          nameRU="Добро пожаловать в Funsim"
+          nameKZ="Funsim сайтына қош келдіңіз"
+          nameEN="Welcome to Funsim"
+        />
+      </span>
+    </ion-title>
+
+    <ion-text>
+      <translate
+        nameRU="Наша компания предлагает роуминговые СИМ карты а также еСИМ по доступным ценам. Скажите ДА комфортным путешествиям вместе с Funsim!"
+        nameKZ="Қызмет қабылдаушы елге (елдерге) тариф қосылған физикалық SIM картасын сатып алу арқылы роуминг қызметтерін алу үшін пайдаланылады."
+        nameEN="Our company offers roaming SIM cards and eSIM at affordable prices. Say YES to comfortable travel with Funsim!"
+      />
+    </ion-text>
+    <ion-segment [(ngModel)]="activeTab">
+      <ion-segment-button value="country">
+        <ion-label>
+          <translate
+            nameRU="Одна страна"
+            nameKZ="Бір мемлекетел"
+            nameEN="One country"
+          />
+        </ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="countries">
+        <ion-label>
+          <translate
+            nameRU="Несколько стран"
+            nameKZ="Көптеген мемлекетел"
+            nameEN="Multiple countries"
+          />
+        </ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <div class="banner__form" *subscribe="queryCountries$ as queryCountries">
+      <ng-container *ngIf="activeTab === 'country'">
+        <ion-select [(ngModel)]="countryID">
+          <p slot="label">
+            <translate nameRU="Страна" nameKZ="Мемлекет" nameEN="Country" />
+          </p>
+          <ion-select-option
+            *ngFor="let country of queryCountries.data"
+            [value]="country.id"
+          >
+            {{ country.name }}
+          </ion-select-option>
+        </ion-select>
+        <div class="banner__form--footer">
+          <ion-checkbox
+            [(ngModel)]="esim"
+            labelPlacement="end"
+            color="light"
+            mode="md"
+          >
+            <translate
+              nameRU="Хочу E-sim"
+              nameKZ="Қалау E-sim"
+              nameEN="Want E-sim"
+            />
+          </ion-checkbox>
+          <ion-button
+            (click)="rateByCountry()"
+            [disabled]="!countryID && !esim"
+          >
+            <translate nameRU="Поиск" nameKZ="Іздеу" nameEN="Search" />
+          </ion-button>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="activeTab === 'countries'">
+        <ion-select multiple="true" maxlength="4" [(ngModel)]="countryIDS">
+          <p slot="label">
+            <translate nameRU="Страны" nameKZ="Мемлекет" nameEN="Country" />
+          </p>
+          <ion-select-option
+            *ngFor="let country of queryCountries.data"
+            [value]="country.id"
+          >
+            {{ country.name }}
+          </ion-select-option>
+        </ion-select>
+
+        <div class="banner__form--footer">
+          <ion-checkbox
+            [(ngModel)]="esim"
+            labelPlacement="end"
+            color="light"
+            mode="md"
+          >
+            <translate
+              nameRU="Хочу E-sim"
+              nameKZ="Қалау E-sim"
+              nameEN="Want E-sim"
+            />
+          </ion-checkbox>
+          <ion-button
+            (click)="rateByCountry()"
+            [disabled]="countryIDS.length === 0 && !esim"
+          >
+            <translate nameRU="Поиск" nameKZ="Іздеу" nameEN="Search" />
+          </ion-button>
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-button fill="outline" id="about-esim" expand="block">
+      <translate
+        nameRU="Информация о E-sim"
+        nameKZ="Туралы мәліметтер E-sim"
+        nameEN="About E-sim"
+      />
+    </ion-button>
+
+    <ion-modal
+      trigger="about-esim"
+      [initialBreakpoint]="0.5"
+      [breakpoints]="[0, 0.5, 0.75]"
+    >
+      <ng-template>
+        <ion-content class="ion-padding">
+          <br />
+          <ion-text class="ion-padding-top">
+            <b>
+              <translate
+                nameRU="Порядок подключения еСИМ:"
+                nameKZ="eSIM картасын қосу процедурасы:"
+                nameEN="Procedure for connecting eSIM:"
+              />
+            </b>
+            <p>
+              <translate
+                nameRU="- Перед покупкой, убедитесь что Ваш телефон поддерживает еСИМ."
+                nameKZ="- Сатып алу алдында телефоныңыз eSIM картасын қолдайтынына көз жеткізіңіз"
+                nameEN="- Before purchasing, make sure that your phone supports eSIM"
+              />
+            </p>
+            <p>
+              <translate
+                nameRU="- После оформления покупки, Мы отправим Вам ссылку через СМС. В данной ссылке будет QR код а также данные для подключения Вашего еСИМ."
+                nameKZ="- Сатып алуды аяқтағаннан кейін біз сізге SMS арқылы сілтеме жібереміз. Бұл сілтемеде QR коды, сондай-ақ eSIM картасын қосу деректері болады"
+                nameEN="- After completing the purchase, We will send you a link via SMS. This link will contain a QR code as well as data for connecting your eSIM"
+              />
+            </p>
+            <p>
+              <translate
+                nameRU="- Для подключения еСИМ, Ваш телефон должен быть подключен к стабильному сети WiFi."
+                nameKZ="- eSIM картасын қосу үшін телефон тұрақты WiFi желісіне қосылған болуы керек."
+                nameEN="- To connect eSIM, your phone must be connected to a stable WiFi network."
+              />
+            </p>
+          </ion-text>
+          <br />
+          <ion-text>
+            <b>
+              <translate
+                nameRU="ВНИМАНИЕ!"
+                nameKZ="НАЗАР АУДАРЫҢЫЗ!"
+                nameEN="ATTENTION!"
+              />
+            </b>
+            <p>
+              <translate
+                nameRU="- QR код сканируется только по прибытию в стране назначения;"
+                nameKZ="- QR коды межелі елге келген кезде ғана сканерленеді;"
+                nameEN="- The QR code is scanned only upon arrival in the destination country"
+              />
+            </p>
+            <p>
+              <translate
+                nameRU="- Мы не осуществляем возврат денежных средств если Вы удаляете еСИМ от Funsim вручную в настройках телефона без согласия наших операторов."
+                nameKZ="- Операторларымыздың келісімінсіз Funsim жүйесінен eSIM картасын телефон параметрлерінде қолмен жойсаңыз, біз ақшаны қайтармаймыз,"
+                nameEN="- We do not provide refunds if you delete eSIM from Funsim manually in the phone settings without the consent of our operators,"
+              />
+            </p>
+            <p>
+              <translate
+                nameRU="- Советуем обращаться по любому вопросу нашим операторам по Whatsapp или на сайте."
+                nameKZ="- Кез келген сұрақтар бойынша біздің операторларға Whatsapp немесе веб-сайт арқылы хабарласуға кеңес береміз"
+                nameEN="- We advise you to contact our operators with any questions via Whatsapp or on the website"
+              />
+            </p>
+          </ion-text>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+    <div class="bgimage">
+      <img ngSrc="/assets/imgs/bg-image-01.jpg" fill priority />
+    </div>
+  </section>
+  <section>
+    <ion-title size="xl" underline>
+      <h1 class="ion-text-wrap">
+        <translate
+          nameRU="ТАРИФЫ НА ПОПУЛЯРНЫЕ НАПРАВЛЕНИЯ"
+          nameKZ="ТАНЫМАЛ БАҒЫТТАРЫ ҮШІН БАҒЫМДАР"
+          nameEN="RATES FOR POPULAR DIRECTIONS"
+        />
+      </h1>
+    </ion-title>
+    <app-tariffs [slider]="true" [apiUrl]="'/getPopularTariffs'"></app-tariffs>
+  </section>
+  <section class="rules">
+    <ion-title size="xl" underline>
+      <h2 class="ion-text-wrap">
+        <translate
+          nameRU="ПОШАГОВАЯ ИНСТРУКЦИЯ ПО ИСПОЛЬЗОВАНИЮ"
+          nameKZ="ПАЙДАЛАНУ БОЙЫНША ҚАДАМ БОЙЫНША НҰСҚАУЛАР"
+          nameEN="STEP-BY-STEP INSTRUCTIONS FOR USE"
+        />
+      </h2>
+    </ion-title>
+    <div class="rules__items">
+      <div class="rules__item">
+        <b>01.</b>
+        <ion-text>
+          <translate
+            nameRU="Не рекомендуем вставить СИМ карту в Казахстане. Вставьте СИМ карту только в стране прибытия согласно тарифу."
+            nameKZ="Қазақстанда SIM картасын салуды ұсынбаймыз. SIM картасын тарифке сәйкес келген елде ғана салыңыз."
+            nameEN="We do not recommend inserting a SIM card in Kazakhstan. Insert a SIM card only in the country of arrival according to the tariff."
+          />
+        </ion-text>
+      </div>
+      <div class="rules__item">
+        <b>02.</b>
+        <ion-text>
+          <translate
+            nameRU="Если Ваш телефон поддерживает 2 сим карты, рекомендуем вставить СИМ карту от Funsim в слот SIM 1. Слот SIM 2 должен быть пустым."
+            nameKZ="Егер телефоныңыз 2 SIM картасын қолдаса, Funsim SIM картасын SIM 1 ұясына салуды ұсынамыз. SIM 2 ұясы бос болуы керек."
+            nameEN="If your phone supports 2 SIM cards, we recommend that you insert a Funsim SIM card into the SIM 1 slot. The SIM 2 slot must be empty."
+          />
+        </ion-text>
+      </div>
+      <div class="rules__item">
+        <b>03.</b>
+        <ion-text>
+          <translate
+            nameRU="Включите роуминг данных в настройках телефона (рекомендуем включить перед вылетом)."
+            nameKZ="Телефон параметрлерінде деректер роумингін қосыңыз (кету алдында қосу ұсынылады)."
+            nameEN="Enable data roaming in your phone settings (recommended to enable before departure)."
+          />
+        </ion-text>
+      </div>
+      <div class="rules__item">
+        <b>04.</b>
+        <ion-text>
+          <translate
+            nameRU="По прибытию в страну следования вставьте сим карту в мобильный телефон. Подключение произойдет автоматически."
+            nameKZ="Межелі елге келген кезде SIM картасын ұялы телефонға салыңыз. Қосылым автоматты түрде болады."
+            nameEN="On arrival in the country of destination, insert the SIM card into the mobile phone. The connection will happen automatically."
+          />
+        </ion-text>
+      </div>
+    </div>
+    <div class="bgimage">
+      <img ngSrc="/assets/imgs/bg-image-03.jpg" fill />
+    </div>
+  </section>
+  <section>
+    <app-article
+      [innerTitle]="'PAGES.HOME.WHAT_ROAMING.TITLE' | translate"
+      [text]="'PAGES.HOME.WHAT_ROAMING.TEXT' | translate"
+    ></app-article>
+  </section>
+</ion-content>

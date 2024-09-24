@@ -1,0 +1,193 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="primary-toolbar">
+    <div class="primary-toolbar--inner">
+      <button
+        size="m"
+        shape="rounded"
+        tuiButton
+        appearance="whiteblock"
+        class="icon-button"
+        (click)="navCtrl.back()"
+      >
+        <ion-icon
+          class="text-lg"
+          color="primary"
+          src="assets/icons/chevron-back-outline.svg"
+        />
+      </button>
+      <ion-title>Мои объявления</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-segment [(ngModel)]="activeSegment">
+    <ion-segment-button value="first">
+      <ion-label class="text-base">Активные</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="second">
+      <ion-label class="text-base">Неактивные</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div class="grid gap-4 pt-4">
+    <ng-container *ngIf="activeSegment === 'first'">
+      <article
+        class="card"
+        (click)="utilsService.odTemplate(activeAdvertTemplate)"
+      >
+        <div class="flex">
+          <img
+            class="h-20 w-16 rounded-xl object-cover"
+            src="assets/images/work.jpg"
+          />
+          <div class="flex flex-col pl-3">
+            <div class="flex text-xs font-semibold">
+              <p class="line-clamp-2 text-dark">
+                Разработка сайтов под. Разработка сайтов под
+              </p>
+              <p class="whitespace-nowrap text-primary">120.000 Сум</p>
+            </div>
+            <div class="flex w-4/5 flex-auto items-center py-1 text-xs">
+              <ion-icon color="primary" src="assets/icons/location-pin.svg" />
+              <p class="line-clamp-1 pl-1">
+                г.Ташкент, ул-Мукими, дом 13, кв 85
+              </p>
+            </div>
+            <div class="flex items-center">
+              <div class="flex gap-2">
+                <div class="flex items-center text-xs">
+                  <ion-icon color="primary" src="assets/icons/phone-call.svg" />
+                  <p class="pl-1 text-dark">124</p>
+                </div>
+                <div class="flex items-center text-xs">
+                  <ion-icon color="primary" src="assets/icons/eye.svg" />
+                  <p class="pl-1 text-dark">314</p>
+                </div>
+                <div class="flex items-center text-xs">
+                  <ion-icon
+                    color="primary"
+                    src="assets/icons/heart-outline.svg"
+                  />
+                  <p class="pl-1 text-dark">192</p>
+                </div>
+              </div>
+              <div class="ml-auto flex text-xs text-dark">
+                <p>20.11.2023</p>
+                <span class="pl-1">17:17</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </ng-container>
+    <ng-container *ngIf="activeSegment === 'second'">
+      <article
+        class="card card--top"
+        (click)="utilsService.odTemplate(notActiveAdvertTemplate)"
+      >
+        <div class="flex">
+          <img
+            class="h-20 w-16 rounded-xl object-cover"
+            src="assets/images/work.jpg"
+          />
+          <div class="flex flex-col pl-3">
+            <div class="flex text-xs font-semibold">
+              <p class="line-clamp-2 text-dark">
+                Разработка сайтов под. Разработка сайтов под
+              </p>
+              <p class="whitespace-nowrap text-primary">120.000 Сум</p>
+            </div>
+            <div class="flex w-4/5 flex-auto items-center py-1 text-xs">
+              <ion-icon color="primary" src="assets/icons/location-pin.svg" />
+              <p class="line-clamp-1 pl-1">
+                г.Ташкент, ул-Мукими, дом 13, кв 85
+              </p>
+            </div>
+            <div class="flex items-center">
+              <div class="flex gap-2">
+                <div class="flex items-center text-xs">
+                  <ion-icon color="primary" src="assets/icons/phone-call.svg" />
+                  <p class="pl-1 text-dark">124</p>
+                </div>
+                <div class="flex items-center text-xs">
+                  <ion-icon color="primary" src="assets/icons/eye.svg" />
+                  <p class="pl-1 text-dark">314</p>
+                </div>
+                <div class="flex items-center text-xs">
+                  <ion-icon
+                    color="primary"
+                    src="assets/icons/heart-outline.svg"
+                  />
+                  <p class="pl-1 text-dark">192</p>
+                </div>
+              </div>
+              <div class="ml-auto flex text-xs text-dark">
+                <p>20.11.2023</p>
+                <span class="pl-1">17:17</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </ng-container>
+  </div>
+  <!-- <tui-block-status>
+    <img
+      class="!h-60 !w-60"
+      src="assets/block-status/empty-announcement.svg"
+      tuiSlot="top"
+    />
+    <h4>У вас пока нет объявлений</h4>
+    <ion-button tuiSlot="bottom" routerLink="/tabs/advertcreate">Создать заказ</ion-button>
+  </tui-block-status> -->
+</ion-content>
+
+<ng-template #activeAdvertTemplate let-activeAdvertTemplate>
+  <div class="grid gap-1 py-5">
+    <ion-button color="light" fill="outline" expand="block">
+      <span class="text-primary">Поднят в топ</span>
+    </ion-button>
+    <ion-button
+      color="light"
+      fill="outline"
+      expand="block"
+      routerLink="/advert"
+      (click)="activeAdvertTemplate.complete()"
+    >
+      <span class="text-dark">Просмотреть объявление</span>
+    </ion-button>
+    <ion-button color="light" fill="outline" expand="block">
+      <span class="text-dark">Деактивировать</span>
+    </ion-button>
+    <ion-button color="danger" fill="outline" expand="block">
+      Удалить
+    </ion-button>
+    <ion-button expand="block" (click)="activeAdvertTemplate.complete()">
+      Отмена
+    </ion-button>
+  </div>
+</ng-template>
+
+<ng-template #notActiveAdvertTemplate let-notActiveAdvertTemplate>
+  <div class="grid gap-1 py-5">
+    <ion-button color="light" fill="outline" expand="block">
+      <span class="text-primary">Активировать</span>
+    </ion-button>
+    <ion-button
+      color="light"
+      fill="outline"
+      expand="block"
+      routerLink="/advert"
+      (click)="notActiveAdvertTemplate.complete()"
+    >
+      <span class="text-dark">Просмотреть объявление</span>
+    </ion-button>
+    <ion-button color="danger" fill="outline" expand="block">
+      Удалить
+    </ion-button>
+    <ion-button expand="block" (click)="notActiveAdvertTemplate.complete()">
+      Отмена
+    </ion-button>
+  </div>
+</ng-template>

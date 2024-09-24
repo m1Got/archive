@@ -1,0 +1,266 @@
+<div class="relative hidden overflow-hidden bg-primary py-4 md:block md:py-8">
+  <div class="container">
+    <div class="relative z-10">
+      <app-search />
+    </div>
+    <div
+      class="absolute -bottom-48 -left-16 h-80 w-80 rounded-full bg-fire"
+    ></div>
+    <div class="absolute -right-6 -top-16 h-36 w-36 rounded-full bg-fire"></div>
+  </div>
+</div>
+<div class="relative py-2 md:py-4">
+  <div class="container">
+    <div class="hidden items-center justify-between gap-4 md:flex">
+      <tui-breadcrumbs size="l">
+        <a *tuiItem tuiLink routerLink="/" class="font-medium"> Главная </a>
+        <a *tuiItem tuiLink routerLink="/" class="font-medium"> Исполнители </a>
+        <a
+          *tuiItem
+          tuiLink
+          routerLink="/performers/detail/electrician"
+          routerLinkActive="text-primary"
+          class="font-medium"
+        >
+          Автоэлектрик 24/7
+        </a>
+      </tui-breadcrumbs>
+      <div
+        (click)="navigationService.back()"
+        class="flex cursor-pointer items-center gap-3"
+      >
+        <button
+          size="s"
+          tuiIconButton
+          icon="icons/chevron-left.svg"
+          shape="rounded"
+        ></button>
+        <p class="text-base font-medium text-primary">Назад</p>
+      </div>
+    </div>
+  </div>
+  <div class="full-divider"></div>
+</div>
+<div class="py-5 md:py-10">
+  <div class="container">
+    <div class="grid gap-5 md:flex">
+      <div class="min-w-0 flex-auto">
+        <div class="relative mb-3 md:mb-6">
+          <swiper class="h-96 rounded-3xl bg-light" [config]="swiperConfig">
+            <ng-template swiperSlide>
+              <img
+                class="h-full w-full object-contain"
+                src="images/executor-02.jpg"
+              />
+            </ng-template>
+            <ng-template swiperSlide>
+              <img
+                class="h-full w-full object-contain"
+                src="images/executor-02.jpg"
+              />
+            </ng-template>
+          </swiper>
+          <div class="relative bottom-6 z-10">
+            <div
+              data-performers-detail-pagination
+              class="flex justify-center [&>span]:h-1 [&>span]:w-8 [&>span]:rounded-none [&>span]:bg-white"
+            ></div>
+          </div>
+          <div data-performers-detail-navigation>
+            <div
+              class="absolute left-6 top-[45%] z-10 hidden sm:block"
+              data-prev
+            >
+              <button
+                size="m"
+                tuiIconButton
+                shape="rounded"
+                icon="icons/chevron-left.svg"
+              ></button>
+            </div>
+            <div
+              class="absolute right-6 top-[45%] z-10 hidden sm:block"
+              data-next
+            >
+              <button
+                size="m"
+                tuiIconButton
+                shape="rounded"
+                icon="icons/chevron-right.svg"
+              ></button>
+            </div>
+          </div>
+        </div>
+        <ion-card class="card">
+          <h3 class="mb-5 text-2xl font-semibold text-dark">Описание</h3>
+          <ul class="tui-list">
+            <li class="tui-list__item">Code Review ($ 10)</li>
+            <li class="tui-list__item">
+              The whole project refactoring ($ 1000)
+              <ul class="tui-list tui-list_linear tui-list_nested">
+                <li class="tui-list__item">
+                  Add auto prettier and linters on precommit ($ 50)
+                </li>
+                <li class="tui-list__item">
+                  Rewrite to react and back ($ Infinity)
+                </li>
+              </ul>
+            </li>
+            <li class="tui-list__item">
+              Live workshop from
+              <a
+                href="https://angular.institute/corporate"
+                rel="noreferrer"
+                target="_blank"
+                tuiLink
+              >
+                angular.institute
+              </a>
+              ($ 3000)
+              <ol class="tui-list tui-list_ordered tui-list_nested">
+                <li class="tui-list__item">Interactive samples</li>
+                <li class="tui-list__item">Case analysis</li>
+                <li class="tui-list__item">
+                  Angular knowledge that keeps on growing
+                </li>
+              </ol>
+            </li>
+          </ul>
+        </ion-card>
+      </div>
+      <div class="flex-[32%] flex-grow-0">
+        <ion-card class="card mb-5 md:mb-10">
+          <h5 class="line-clamp-2 pb-3 text-lg font-semibold text-dark">
+            Автоэлектрик 24/7
+          </h5>
+          <div class="flex gap-3">
+            <button size="s" tuiButton appearance="secondary">
+              <span class="font-medium">Ташкент</span>
+            </button>
+            <button
+              size="s"
+              tuiButton
+              appearance="secondary"
+              icon="icons/eye.svg"
+            >
+              <span class="font-medium">1215</span>
+            </button>
+          </div>
+          <div class="grid gap-1 py-5 md:flex">
+            <div class="flex items-center">
+              <button
+                size="s"
+                shape="rounded"
+                icon="icons/shield.svg"
+                tuiIconButton
+                class="mr-2"
+              ></button>
+              <span class="text-medium">Паспорт проверен</span>
+            </div>
+            <div class="flex items-center">
+              <button
+                size="s"
+                shape="rounded"
+                icon="icons/money.svg"
+                tuiIconButton
+                class="mr-2"
+              ></button>
+              <span class="text-medium">Цены соответствуют заявленным</span>
+            </div>
+          </div>
+          <ul class="[&>li]:py-1">
+            <li class="grid grid-cols-2">
+              <span>Устранить течь</span>
+              <b class="text-dark">от 150.000 сум</b>
+            </li>
+            <li class="grid grid-cols-2">
+              <span>Установить сантехнику</span>
+              <b class="text-dark">от 125.000 сум</b>
+            </li>
+            <li class="grid grid-cols-2">
+              <span>Устранить засор</span>
+              <b class="text-dark">от 200.000 сум</b>
+            </li>
+          </ul>
+          <div class="mt-5 flex items-center">
+            <div class="md:hidden">
+              <button
+                size="m"
+                tuiIconButton
+                icon="icons/call.svg"
+                shape="rounded"
+                tuiHint="Контакты мастера"
+                [tuiHintShowDelay]="150"
+                [tuiHintDirection]="'right-top'"
+              ></button>
+            </div>
+            <div class="hidden md:inline-block">
+              <button tuiButton size="m" shape="rounded">
+                <span class="text-left font-medium">Позвонить</span>
+              </button>
+            </div>
+            <div class="ml-auto flex gap-2">
+              <button
+                size="m"
+                tuiIconButton
+                style="--tui-text-01: var(--charcoal)"
+                icon="icons/share.svg"
+                appearance="whiteblock"
+                shape="rounded"
+                (click)="utilsService.showAlert(copyTemplate)"
+              ></button>
+              <button
+                size="m"
+                tuiIconButton
+                style="--tui-text-01: var(--charcoal)"
+                icon="icons/heart-classic.svg"
+                appearance="whiteblock"
+                shape="rounded"
+                (click)="utilsService.showAlert(favoriteTemplate)"
+              ></button>
+            </div>
+          </div>
+        </ion-card>
+        <ion-card class="card">
+          <h3 class="mb-5 text-xl font-semibold text-dark">Исполнитель</h3>
+          <div class="flex">
+            <tui-avatar new size="l" avatarUrl="images/executor-01.jpg" />
+            <div class="pl-4">
+              <h5 class="line-clamp-2 text-lg font-semibold text-dark">
+                Мурод Исаков
+              </h5>
+              <div class="flex items-center py-2">
+                <tui-rating
+                  [readOnly]="true"
+                  [(ngModel)]="data.rating"
+                  iconNormal="icons/star-outline.svg"
+                  iconFilled="icons/star-filled.svg"
+                  class="mr-1 text-[#FFD600]"
+                ></tui-rating>
+                <span class="font-medium">{{ data.rating }}</span>
+              </div>
+              <div class="text-medium">
+                На Profi24 с <span class="font-semibold">октября 2023г.</span>
+              </div>
+            </div>
+          </div>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-download />
+
+<ng-template #favoriteTemplate>
+  <tui-notification class="!p-1" size="m" icon="icons/heart-filled.svg">
+    <p class="text-[15px] font-semibold">Добавлен в избранное</p>
+    <a routerLink="/favorites" class="text-sm text-primary">Перейти</a>
+  </tui-notification>
+</ng-template>
+
+<ng-template #copyTemplate>
+  <tui-notification class="!p-1" size="m" icon="icons/share.svg">
+    <p class="text-[15px] font-semibold">Ссылка скопировано</p>
+  </tui-notification>
+</ng-template>

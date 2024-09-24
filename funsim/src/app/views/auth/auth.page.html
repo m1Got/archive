@@ -1,0 +1,72 @@
+<ion-content fullscreen="true" class="ion-padding">
+  <section *ngIf="!(message$ | async) || loginPhoneView">
+    <ion-card-title color="light" class="ion-text-center ion-margin-bottom">
+      <translate
+        nameEN="Authorization"
+        nameKZ="Авторизация"
+        nameRU="Авторизация"
+      />
+    </ion-card-title>
+    <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+      <label class="form-group">
+        <span class="form-label">
+          <translate
+            nameEN="Phone number"
+            nameKZ="Телефон нөмірі"
+            nameRU="Номер телефона"
+          />
+        </span>
+        <input
+          inputmode="tel"
+          formControlName="phone"
+          class="form-input"
+          mask="+0 000 000 00 00"
+        />
+      </label>
+      <ion-button
+        type="submit"
+        expand="block"
+        class="ion-margin-top"
+        [disabled]="loginForm.invalid || (isSubmitting$ | async)"
+      >
+        <translate nameEN="Confirm" nameKZ="Растау" nameRU="Подтвердить" />
+      </ion-button>
+    </form>
+  </section>
+  <section *ngIf="message$ | async">
+    <button *ngIf="!loginPhoneView" (click)="loginPhoneView = true">
+      <ion-icon name="arrow-back-outline" size="medium"></ion-icon>
+    </button>
+    <ion-card-title color="light" class="ion-text-center ion-margin-bottom">
+      <translate
+        nameEN="Enter Code"
+        nameKZ="Кодты енгізіңіз"
+        nameRU="Введите код"
+      />
+    </ion-card-title>
+    <form [formGroup]="confirmForm" (ngSubmit)="onConfirmSubmit()">
+      <label class="form-group">
+        <span class="form-label">
+          <translate nameEN="Code" nameKZ="Код" nameRU="Код" />
+        </span>
+        <input
+          mask="000-000"
+          formControlName="code"
+          inputmode="numeric"
+          class="form-input"
+        />
+      </label>
+      <ion-button
+        type="submit"
+        expand="block"
+        class="ion-margin-top"
+        [disabled]="confirmForm.invalid || (isSubmitting$ | async)"
+      >
+        <translate nameEN="Confirm" nameKZ="Растау" nameRU="Подтвердить" />
+      </ion-button>
+    </form>
+  </section>
+  <div class="bgimage">
+    <img ngSrc="/assets/imgs/bg-image-01.jpg" fill priority />
+  </div>
+</ion-content>

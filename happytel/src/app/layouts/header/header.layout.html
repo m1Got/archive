@@ -1,0 +1,82 @@
+<div class="container flex items-center gap-4">
+  <div class="flex max-lg:order-2 max-lg:flex-auto max-lg:justify-center">
+    <a routerLink="/" class="w-32 sm:w-36">
+      <img src="images/logo.svg" alt="SiteLogo" />
+    </a>
+  </div>
+  <nav class="ml-auto hidden gap-5 lg:flex">
+    <a routerLink="/about" class="font-semibold"> 
+      <translate uz="Biz haqimizda" ru="О компании" />
+    </a>
+    <a routerLink="/rates" class="font-semibold"> 
+      <translate uz="Tarifflar" ru="Тарифы" />
+     </a>
+    <a routerLink="/contacts" class="font-semibold"> 
+      <translate uz="Kontaktlar" ru="Контакты" />
+     </a>
+  </nav>
+  <div class="block max-lg:order-1 lg:hidden">
+    <a
+      size="m"
+      tuiIconButton
+      shape="rounded"
+      icon="icons/phone-call.svg"
+      href="tel:{{ utils.phone }}"
+      target="_blank"
+    ></a>
+  </div>
+  <a
+    class="hidden items-center px-5 lg:flex"
+    href="tel:{{ utils.phone }}"
+    target="_blank"
+  >
+    <ion-icon
+      color="primary"
+      src="icons/phone-call.svg"
+      class="mr-2 text-2xl"
+    />
+    <span class="text-lg font-semibold">{{ utils.phone }}</span>
+  </a>
+  <tui-hosted-dropdown
+    [(open)]="openLanguageDropdown"
+    [content]="languageDropdown"
+    class="max-lg:order-3"
+  >
+    <div class="flex cursor-pointer items-center">
+      <ion-icon
+        color="primary"
+        class="text-2xl max-sm:hidden"
+        src="icons/globus.svg"
+      />
+      <span class="px-2 text-lg font-semibold">
+        <ng-container *ngIf="currentLanguage$ | async as currentLanguage">
+          {{ currentLanguage | uppercase }}
+        </ng-container>
+      </span>
+      <ion-icon class="text-lg text-medium" src="icons/chevron-down.svg" />
+    </div>
+  </tui-hosted-dropdown>
+  <div class="max-lg:hidden">
+    <button
+      size="m"
+      shape="rounded"
+      tuiIconButton
+      (click)="layoutsService.passProfile()"
+    >
+      <ion-icon class="text-xl" src="icons/profile-heavy.svg" />
+    </button>
+  </div>
+</div>
+
+<ng-template #languageDropdown>
+  <tui-data-list>
+    <tui-opt-group>
+      <button tuiOption (click)="setLanguage('ru')">
+        <span class="px-3 text-lg font-semibold">RU</span>
+      </button>
+      <button tuiOption (click)="setLanguage('uz')">
+        <span class="px-3 text-lg font-semibold">UZ</span>
+      </button>
+    </tui-opt-group>
+  </tui-data-list>
+</ng-template>

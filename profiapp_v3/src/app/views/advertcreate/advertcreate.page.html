@@ -1,0 +1,128 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="primary-toolbar">
+    <div class="primary-toolbar--inner">
+      <ion-title>Создать объявления</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="flex flex-col gap-5">
+    <label tuiLabel="Краткое описание услуги">
+      <tui-input [formControl]="" [tuiTextfieldLabelOutside]="true">
+        Описание услуги
+      </tui-input>
+    </label>
+    <label tuiLabel="Расскажите подробнее о вашей услуги">
+      <tui-input [formControl]="" [tuiTextfieldLabelOutside]="true">
+        Подробнее о услуги
+      </tui-input>
+    </label>
+    <label tuiLabel="Выберите адрес">
+      <ion-item button lines="none" detail="false" class="menu-item">
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-2xl text-primary"
+            src="assets/icons/location-plus.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium">Адрес не указан</ion-label>
+        <ion-icon
+          color="primary"
+          slot="end"
+          class="text-2xl"
+          src="assets/icons/plus-filled.svg"
+        />
+      </ion-item>
+    </label>
+    <label tuiLabel="Выберите адрес">
+      <ion-item button lines="none" detail="false" class="menu-item mb-3">
+        <ion-label class="px-1 !text-sm font-medium">Пусто</ion-label>
+        <ion-icon
+          color="primary"
+          slot="end"
+          class="text-2xl"
+          src="assets/icons/plus-filled.svg"
+        />
+      </ion-item>
+      <tui-input [formControl]="" [tuiTextfieldLabelOutside]="true">
+        Авто
+      </tui-input>
+    </label>
+    <label tuiLabel="Добавьте фото к описанию услуги">
+      <div class="grid grid-cols-2 gap-2 pt-2">
+        <button
+          size="xl"
+          tuiButton
+          appearance="secondary"
+          icon="assets/icons/camera-photo.svg"
+        ></button>
+        <button
+          size="xl"
+          tuiButton
+          appearance="secondary"
+          icon="assets/icons/camera-photo.svg"
+        ></button>
+      </div>
+    </label>
+    <ion-toggle>
+      <span class="text-xl font-semibold text-dark">Поднять в TOP</span>
+    </ion-toggle>
+    <tui-input [formControl]="" [tuiTextfieldLabelOutside]="true">
+      Выберите специальность
+    </tui-input>
+    <div class="py-4 text-sm text-tertiary">
+      Вы можете поднять в ваше объвление в TOP на 3 дня что даст преимущество
+      среди остальных исполнителей. Стоимость услуги
+      <b class="block text-primary">6 000 UZS</b>
+    </div>
+    <div class="pt-3">
+      <label tuiLabel="Услуга №1">
+        <tui-input [formControl]="" [tuiTextfieldLabelOutside]="true">
+          Название услуги
+        </tui-input>
+      </label>
+      <label tuiLabel="Стоимость услуги">
+        <tui-input [formControl]="" [tuiTextfieldLabelOutside]="true">
+          Введите сумму
+        </tui-input>
+      </label>
+    </div>
+    <div class="pb-6 pt-4">
+      <div class="grid justify-items-center">
+        <button
+          size="m"
+          shape="rounded"
+          tuiIconButton
+          icon="assets/icons/plus-add.svg"
+        ></button>
+        <p class="text-center text-sm font-semibold text-primary">
+          Добавить ещё
+        </p>
+      </div>
+    </div>
+    <ion-toggle>
+      <span class="text-xl font-semibold text-dark">Договорная</span>
+    </ion-toggle>
+    <div class="flex-auto"></div>
+    <div class="pb-4">
+      <ion-button id="advertCreateTrigger" expand="block">
+        Подать объявления
+      </ion-button>
+      <ion-alert
+        trigger="advertCreateTrigger"
+        cssClass="myalert"
+        header="Отлично"
+        message="Объявление успешно добавлено,
+        теперь ваше объявление заказчики
+        смогут найти в вкладке объявления"
+        [buttons]="[{ text: 'Хорошо', role: 'confirm' }]"
+      />
+    </div>
+  </div>
+</ion-content>

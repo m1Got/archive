@@ -1,0 +1,72 @@
+<ion-header class="ion-padding">
+  <ion-toolbar class="secondary-toolbar" mode="md">
+    <div class="flex items-center">
+      <button
+        size="m"
+        tuiIconButton
+        shape="rounded"
+        appearance="secondary"
+        icon="assets/icons/chevron-back-outline.svg"
+        class="z-10"
+      ></button>
+      <ion-title class="text-xl font-semibold"> Специальность </ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding z-[2]">
+  <img
+    class="absolute -top-[25%] left-0 z-[-2] w-full scale-150"
+    src="assets/images/primary-texture.svg"
+  />
+  <div class="grid gap-3">
+    <tui-accordion-item class="accordion-item">
+      <p class="text-lg font-medium">Авто</p>
+      <ng-template tuiAccordionItemContent>
+        <ion-toggle
+          [checked]="true"
+          [enableOnOffLabels]="true"
+          justify="space-between"
+          class="w-full py-1"
+        >
+          Авто
+        </ion-toggle>
+        <ion-toggle
+          [checked]="true"
+          [enableOnOffLabels]="true"
+          justify="space-between"
+          class="w-full py-2"
+        >
+          Вызов Автомойки
+        </ion-toggle>
+      </ng-template>
+    </tui-accordion-item>
+    <tui-accordion-item class="accordion-item">
+      <p class="text-lg font-medium">Авто</p>
+      <ng-template tuiAccordionItemContent class="!p-1">
+        <ion-toggle
+          [checked]="true"
+          [enableOnOffLabels]="true"
+          justify="space-between"
+          class="w-full py-2"
+        >
+          Авто
+        </ion-toggle>
+        <ion-toggle
+          [checked]="true"
+          [enableOnOffLabels]="true"
+          justify="space-between"
+          class="w-full py-2"
+        >
+          Вызов Автомойки
+        </ion-toggle>
+      </ng-template>
+    </tui-accordion-item>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="secondary-toolbar">
+    <ion-button expand="block">Далее</ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,165 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTMX + Tailwind + Vite Project</title>
+
+    <script defer type="module" src="scripts/main.ts"></script>
+  </head>
+
+  <body>
+    <div class="wrapper border-radiant">
+      <main>
+        <div class="pb-4 text-center">
+          <h2 class="font-pixeboy text-3xl text-white">Farm</h2>
+        </div>
+        <div class="grid grid-cols-2 gap-5 py-6">
+          <div class="relative">
+            <h5 class="-mb-4 text-center font-pixeboy text-lg">
+              <span class="text-white">Level 1</span> /5
+            </h5>
+            <div class="max-w-40">
+              <img class="w-full" src="images/sections/farm-2.png" />
+            </div>
+            <div class="bg-shape-radial--fuchsia h-28 w-80 blur-3xl"></div>
+          </div>
+          <div class="grid content-center pt-10">
+            <div class="flex pb-2">
+              <img
+                class="h-8 w-8 flex-shrink-0"
+                src="images/icons/ton-slate.png"
+              />
+              <div class="pl-3">
+                <p class="text-xs">Total mined</p>
+                <p class="font-geist-mono font-semibold text-cyan-400">
+                  247 <span class="text-xs">TON</span>
+                </p>
+              </div>
+            </div>
+            <div class="main-blue-gradient"></div>
+            <div class="flex pt-2">
+              <img
+                class="h-8 w-8 flex-shrink-0"
+                src="images/icons/power-consumption.png"
+              />
+              <div class="pl-3">
+                <p class="text-xs">Power consumption</p>
+                <p class="font-geist-mono font-semibold text-cyan-400">
+                  5 units/ <span class="-ml-2 text-xs">hour</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-3 gap-1 py-2">
+          <article class="figure-shape">
+            <img
+              class="figure-shape--bg"
+              src="images/shapes/hexagon-empty.png"
+            />
+          </article>
+          <article class="figure-shape">
+            <img
+              class="aboslute position-center w-3/4"
+              src="images/stations/01.png"
+            />
+            <div class="bg-shape-radial--fuchsia h-3/4 w-3/4 blur-sm"></div>
+            <img
+              class="figure-shape--bg"
+              src="images/shapes/hexagon-with-item.png"
+            />
+          </article>
+          <article class="figure-shape">
+            <div class="position-center">
+              <img class="mx-auto mb-1 block w-8" src="images/icons/lock.png" />
+              <p class="font-pixeboy text-sm text-rose-400">Locked</p>
+            </div>
+            <img
+              class="figure-shape--bg"
+              src="images/shapes/hexagon-locked.png"
+            />
+          </article>
+          <article class="figure-shape">
+            <div class="position-center">
+              <img class="mx-auto mb-1 block w-8" src="images/icons/lock.png" />
+              <p class="font-pixeboy text-sm text-rose-400">Locked</p>
+            </div>
+            <img
+              class="figure-shape--bg"
+              src="images/shapes/hexagon-locked.png"
+            />
+          </article>
+          <article class="figure-shape">
+            <div class="position-center">
+              <img class="mx-auto mb-1 block w-8" src="images/icons/lock.png" />
+              <p class="font-pixeboy text-sm text-rose-400">Locked</p>
+            </div>
+            <img
+              class="figure-shape--bg"
+              src="images/shapes/hexagon-locked.png"
+            />
+          </article>
+          <article class="figure-shape">
+            <div class="position-center">
+              <img class="mx-auto mb-1 block w-8" src="images/icons/lock.png" />
+              <p class="font-pixeboy text-sm text-rose-400">Locked</p>
+            </div>
+            <img
+              class="figure-shape--bg"
+              src="images/shapes/hexagon-locked.png"
+            />
+          </article>
+        </div>
+      </main>
+      <!-- MODAL -->
+      <section class="modal border-radiant">
+        <button class="absolute right-5 top-5">
+          <img class="w-6" src="images/icons/close.png" />
+        </button>
+        <div class="py-4">
+          <div class="pb-1 text-center">
+            <h4 class="font-pixeboy text-lg text-white">ProCore XT-500</h4>
+          </div>
+          <div class="mx-auto max-w-36 pb-4">
+            <img src="images/stations/01.png" />
+          </div>
+          <div class="rounded-lg border border-dashed border-cyan-400/65">
+            <div class="grid content-center p-3">
+              <div class="flex items-center pb-3">
+                <img
+                  class="h-8 w-8 flex-shrink-0 object-contain"
+                  src="images/icons/ton-hour-slate.png"
+                />
+                <div class="mr-auto pl-3 text-xs">Mining speed</div>
+                <div class="font-geist-mono text-sm font-bold text-cyan-400">
+                  0.1 TON/h
+                </div>
+              </div>
+              <div class="main-blue-gradient"></div>
+              <div class="flex items-center pt-3">
+                <img
+                  class="h-8 w-8 flex-shrink-0 object-contain"
+                  src="images/icons/lightning.png"
+                />
+                <div class="mr-auto pl-3 text-xs">Mining speed</div>
+                <div class="font-geist-mono text-sm font-bold text-cyan-400">
+                  5 units/h
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pt-6">
+            <div class="main-action--green">
+              <div class="mx-auto flex items-center py-1 text-sm">
+                <p class="pr-2 text-white">Repair</p>
+                <p class="font-geist-mono font-semibold text-cyan-400">
+                  0.43 TON
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

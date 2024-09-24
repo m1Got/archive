@@ -1,0 +1,34 @@
+{
+  "PAGES": {
+    "HOME": {
+      "WHAT_ROAMING": {
+        "TITLE": "Are you flying to another country but don't know how to stay connected? Don't want to waste time looking for a local SIM card? Then Funsim will help you out!",
+        "TEXT": "Funsim are SIM cards for travel with individual Internet tariffs that are designed for maximum comfort of your trip. We provide eSIM as well as a physical SIM card to many destinations around the world. Contact your loved ones upon arrival without leaving the plane and share your impressions online mode!"
+      }
+    },
+    "ABOUT": {
+      "TITLE_1": "About us",
+      "TEXT_1": "Funsim is a roaming SIM card distribution company founded in 2023 with the aim of changing the dynamics of the roaming industry. Funsim works closely with organizations related to the travel industry, mainly to meet the international communication needs of its customers. We offer economical roaming SIM cards worldwide for travelers with individual tariff plans. Funsim works as a one-stop solution for all roaming connectivity needs for travelers.",
+      "TITLE_2": "Products & Services",
+      "TEXT_2": "Funsim provides high quality data and voice communications from leading carriers around the world. Our development on international data allows our consumers to use the Internet at no great cost just like at home. Use email, surf the web, send messages and calls using applications such as Telegram, IMO, WhatsApp, Facebook Messenger, FaceTime, iMessage, Skype, etc. When traveling, it is convenient to navigate using navigation systems."
+    }
+  },
+  "DIALOGS": {
+    "DEVICE_TYPE": {
+      "TITLE": "Device type",
+      "FOOTER": "By writing to Funsim specialists on WhatsApp"
+    },
+    "INSTRUCTIONS": {
+      "TITLE": "Instructions",
+      "IPHONE_TEXT": "Settings => Cellular => Current period (Shows your traffic consumption)",
+      "ANDROID_TEXT": "Settings => Connections => Data Usage (Shows your traffic consumption)"
+    },
+    "REGIONS": {
+      "TITLE": "Available countries:"
+    },
+    "POINTS": {
+      "TITLE": "Information about pick-up points",
+      "SELECT_BUTTON": "Select"
+    }
+  }
+}

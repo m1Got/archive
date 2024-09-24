@@ -1,0 +1,52 @@
+<ng-container *ngIf="orders.length">
+  <div class="custom--table">
+    <table tuiTable [columns]="columns" class="w-full">
+      <thead>
+        <tr tuiThGroup>
+          <th *tuiHead="'id'" tuiTh>ID заказа</th>
+          <th *tuiHead="'name'" tuiTh>Исполнитель</th>
+          <th *tuiHead="'category'" tuiTh>Категория</th>
+          <th *tuiHead="'order_date'" tuiTh [sorter]="null">Дата заявки</th>
+          <th *tuiHead="'complete_date'" tuiTh [sorter]="null">
+            Дата выполнения
+          </th>
+          <th *tuiHead="'status'" tuiTh [sorter]="null">Статус</th>
+        </tr>
+      </thead>
+      <tbody
+        tuiTbody
+        *tuiLet="orders | tuiTableSort as sortedOrders"
+        [data]="sortedOrders"
+      >
+        <tr tuiTr *ngFor="let order of sortedOrders;">
+          <td *tuiCell="'id'" tuiTd>2154789</td>
+          <td *tuiCell="'name'" tuiTd>Азимжон Т</td>
+          <td *tuiCell="'category'" tuiTd>Уборка</td>
+          <td *tuiCell="'order_date'" tuiTd>01.02.2023</td>
+          <td *tuiCell="'complete_date'" tuiTd></td>
+          <td *tuiCell="'status'" tuiTd>
+            <tui-tag
+              size="l"
+              status="custom"
+              value="В процессе"
+              [hoverable]="true"
+              class="bg-warning text-white"
+            >
+            </tui-tag>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-container>
+<ng-container *ngIf="!orders.length">
+  <tui-block-status>
+    <img
+      class="h-60 w-60"
+      src="images/block-status/empty-orders.svg"
+      tuiSlot="top"
+    />
+    <h4>У вас пока нет заказов</h4>
+    Создайте свой первый заказ
+  </tui-block-status>
+</ng-container>

@@ -1,0 +1,310 @@
+:root {
+  --min-width: 320px;
+  --container-width: 1170px;
+  --scrollbar-width: 6px;
+  --font-family: "Jost", -apple-system, sans-serif;
+
+  --shadow-dark: 0px 1px 15px rgba(0, 0, 0, 0.1);
+  --shadow-light: 1px 2px 20px rgba(209, 209, 209, 0.2);
+  --shadow-red: 1px 2px 15px rgba(187, 37, 57, 0.2);
+
+  --rounded-xs: 8px;
+  --rounded-m: 20px;
+  --rounded-l: 30px;
+
+  --ion-font-family: var(--font-family);
+  --tui-text-font: var(--font-family);
+
+  --tui-font-text-s: normal 1rem / 1 var(--tui-font-text);
+
+  --tui-selection: var(--primary);
+  --tui-link: var(--medium);
+  --tui-link-hover: var(--ion-color-medium-tint);
+  --tui-text-01: var(--dark);
+
+  /* ============= primary ============= */
+  --primary: var(--ion-color-primary);
+
+  --ion-color-primary: #f06f1e;
+  --ion-color-primary-rgb: 240, 111, 30;
+  --ion-color-primary-contrast: #fff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #d3621a;
+  --ion-color-primary-tint: #f27d35;
+
+  --tui-primary: var(--primary);
+  --tui-primary-hover: var(--ion-color-primary-tint);
+  --tui-primary-active: var(--ion-color-primary-shade);
+  --tui-primary-text: var(--ion-color-primary-contrast);
+
+  /* ============= dark ============= */
+  --dark: var(--ion-color-dark);
+
+  --ion-color-dark: #313131;
+  --ion-color-dark-rgb: 49, 49, 49;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #2b2b2b;
+  --ion-color-dark-tint: #464646;
+
+  /* ============= secondary ============= */
+  --secondary: var(--ion-color-secondary);
+
+  --ion-color-secondary: #efefef;
+  --ion-color-secondary-rgb: 239, 239, 239;
+  --ion-color-secondary-contrast: #000000;
+  --ion-color-secondary-contrast-rgb: 0, 0, 0;
+  --ion-color-secondary-shade: #d2d2d2;
+  --ion-color-secondary-tint: #f1f1f1;
+
+  --tui-secondary: var(--light);
+  --tui-secondary-hover: var(--ion-color-light-tint);
+
+  /* ============= medium ============= */
+  --success: var(--ion-color-success);
+
+  --ion-color-success: #359d52;
+  --ion-color-success-rgb: 53, 157, 82;
+  --ion-color-success-contrast: #000000;
+  --ion-color-success-contrast-rgb: 0, 0, 0;
+  --ion-color-success-shade: #2f8a48;
+  --ion-color-success-tint: #49a763;
+
+  --tui-success-fill: var(--success);
+  --tui-success-bg-hover: var(--ion-color-success-tint);
+  --tui-success-bg: var(--ion-color-primary-contrast);
+
+  /* ============= medium ============= */
+  --medium: var(--ion-color-medium);
+
+  --ion-color-medium: #8a8a8a;
+  --ion-color-medium-rgb: 138, 138, 138;
+  --ion-color-medium-contrast: #000000;
+  --ion-color-medium-contrast-rgb: 0, 0, 0;
+  --ion-color-medium-shade: #797979;
+  --ion-color-medium-tint: #969696;
+
+  /* ============= light ============= */
+  --light: var(--ion-color-light);
+
+  --ion-color-light: #f5f5f5;
+  --ion-color-light-rgb: 245, 245, 245;
+  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #d8d8d8;
+  --ion-color-light-tint: #f6f6f6;
+
+  /* ============= tertiary ============= */
+  --tertiary: var(--ion-color-tertiary);
+
+  --ion-color-tertiary: #c0c0c0;
+  --ion-color-tertiary-rgb: 192, 192, 192;
+  --ion-color-tertiary-contrast: #000000;
+  --ion-color-tertiary-contrast-rgb: 0, 0, 0;
+  --ion-color-tertiary-shade: #a9a9a9;
+  --ion-color-tertiary-tint: #c6c6c6;
+
+  /* ============= clipPath ============= */
+
+  --primary-card-clip-path: polygon(
+    0% 5.305%,
+    0% 5.305%,
+    0.093% 4.445%,
+    0.364% 3.628%,
+    0.797% 2.867%,
+    1.378% 2.172%,
+    2.092% 1.554%,
+    2.924% 1.024%,
+    3.86% 0.592%,
+    4.885% 0.27%,
+    5.984% 0.069%,
+    7.143% 0%,
+    80.093% 0%,
+    80.093% 0%,
+    80.786% 0.025%,
+    81.465% 0.099%,
+    82.128% 0.22%,
+    82.769% 0.387%,
+    83.385% 0.597%,
+    83.971% 0.85%,
+    84.524% 1.144%,
+    85.038% 1.477%,
+    85.511% 1.848%,
+    85.936% 2.254%,
+    89.965% 6.511%,
+    98.715% 15.828%,
+    98.715% 15.828%,
+    98.955% 16.1%,
+    99.17% 16.381%,
+    99.362% 16.671%,
+    99.529% 16.968%,
+    99.671% 17.272%,
+    99.789% 17.582%,
+    99.881% 17.897%,
+    99.947% 18.216%,
+    99.987% 18.538%,
+    100% 18.863%,
+    100% 28.047%,
+    100% 52.588%,
+    100% 94.695%,
+    100% 94.695%,
+    99.907% 95.555%,
+    99.636% 96.372%,
+    99.203% 97.133%,
+    98.622% 97.828%,
+    97.908% 98.446%,
+    97.076% 98.976%,
+    96.14% 99.408%,
+    95.115% 99.73%,
+    94.016% 99.931%,
+    92.857% 100%,
+    7.143% 100%,
+    7.143% 100%,
+    5.984% 99.931%,
+    4.885% 99.73%,
+    3.86% 99.408%,
+    2.924% 98.976%,
+    2.092% 98.446%,
+    1.378% 97.828%,
+    0.797% 97.133%,
+    0.364% 96.372%,
+    0.093% 95.555%,
+    0% 94.695%,
+    0% 5.305%
+  );
+
+  --primary-button-clip-path: polygon(
+    0% 32.258%,
+    0% 32.258%,
+    0.069% 27.026%,
+    0.268% 22.062%,
+    0.587% 17.434%,
+    1.015% 13.207%,
+    1.542% 9.448%,
+    2.155% 6.224%,
+    2.844% 3.601%,
+    3.6% 1.645%,
+    4.409% 0.422%,
+    5.263% 0%,
+    85.746% 0%,
+    85.746% 0%,
+    86.02% 0.044%,
+    86.293% 0.174%,
+    86.563% 0.391%,
+    86.831% 0.693%,
+    87.096% 1.079%,
+    87.357% 1.549%,
+    87.615% 2.102%,
+    87.867% 2.736%,
+    88.114% 3.451%,
+    88.356% 4.246%,
+    92.5% 18.75%,
+    96.25% 34.821%,
+    97.753% 41.262%,
+    97.753% 41.262%,
+    98.158% 43.185%,
+    98.527% 45.32%,
+    98.859% 47.647%,
+    99.152% 50.147%,
+    99.405% 52.802%,
+    99.615% 55.591%,
+    99.781% 58.496%,
+    99.901% 61.498%,
+    99.975% 64.576%,
+    100% 67.713%,
+    100% 67.713%,
+    99.931% 72.947%,
+    99.732% 77.912%,
+    99.413% 82.544%,
+    98.985% 86.775%,
+    98.458% 90.538%,
+    97.845% 93.766%,
+    97.156% 96.393%,
+    96.4% 98.352%,
+    95.591% 99.577%,
+    94.737% 100%,
+    5.263% 100%,
+    5.263% 100%,
+    4.409% 99.578%,
+    3.6% 98.355%,
+    2.844% 96.399%,
+    2.155% 93.776%,
+    1.542% 90.552%,
+    1.015% 86.793%,
+    0.587% 82.566%,
+    0.268% 77.938%,
+    0.069% 72.974%,
+    0% 67.742%,
+    0% 32.258%
+  );
+
+  --advantage-card-clip-path: polygon(
+    47.857% 0%,
+    80.064% 0%,
+    80.064% 0%,
+    80.662% 0.024%,
+    81.253% 0.093%,
+    81.832% 0.208%,
+    82.398% 0.367%,
+    82.946% 0.569%,
+    83.475% 0.812%,
+    83.982% 1.096%,
+    84.463% 1.419%,
+    84.916% 1.781%,
+    85.339% 2.179%,
+    90.714% 7.692%,
+    100% 16.918%,
+    100% 27.806%,
+    100% 52.429%,
+    100% 93.311%,
+    100% 93.311%,
+    99.907% 94.396%,
+    99.636% 95.425%,
+    99.203% 96.385%,
+    98.622% 97.261%,
+    97.908% 98.041%,
+    97.076% 98.709%,
+    96.14% 99.253%,
+    95.115% 99.659%,
+    94.016% 99.912%,
+    92.857% 100%,
+    52.857% 100%,
+    52.857% 87.255%,
+    52.857% 87.255%,
+    52.826% 86.634%,
+    52.735% 86.023%,
+    52.585% 85.426%,
+    52.378% 84.847%,
+    52.117% 84.289%,
+    51.802% 83.756%,
+    51.436% 83.251%,
+    51.021% 82.777%,
+    50.558% 82.339%,
+    50.049% 81.939%,
+    2.808% 48.162%,
+    2.808% 48.162%,
+    2.3% 47.762%,
+    1.837% 47.323%,
+    1.421% 46.849%,
+    1.055% 46.344%,
+    0.74% 45.811%,
+    0.479% 45.253%,
+    0.272% 44.674%,
+    0.122% 44.077%,
+    0.031% 43.467%,
+    0% 42.845%,
+    0% 6.689%,
+    0% 6.689%,
+    0.093% 5.604%,
+    0.364% 4.575%,
+    0.797% 3.615%,
+    1.378% 2.739%,
+    2.092% 1.959%,
+    2.924% 1.291%,
+    3.86% 0.747%,
+    4.885% 0.341%,
+    5.984% 0.088%,
+    7.143% 0%,
+    47.857% 0%
+  );
+}

@@ -1,0 +1,143 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <header class="info-header">
+      <div class="info-header__start">
+        <ion-buttons slot="start">
+          <ion-back-button text="" icon="arrow-back-outline"> </ion-back-button>
+        </ion-buttons>
+      </div>
+      <div class="info-header__end">
+        <ion-icon name="share-outline" size="large"></ion-icon>
+      </div>
+    </header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="detail-top">
+    <div>
+      <ion-text class="detail-pretitle">Холодные Закуски</ion-text>
+      <h4 class="detail-title">Тар тар из говядины</h4>
+    </div>
+    <ion-button class="detail-action mark" color="danger" expand="block">
+      хит
+    </ion-button>
+  </div>
+  <div class="detail-image">
+    <img src="assets/images/order-2.jpg" />
+  </div>
+  <div class="detail-content ion-padding">
+    <div class="detail-massa">150 гр</div>
+    <div class="detail-header">
+      <div class="detail-price">
+        <ion-text>3000 ₽</ion-text>
+        <ion-note>5000 ₽ </ion-note>
+      </div>
+      <button class="detail-fav icon-button">
+        <ion-icon src="assets/icon/heart-outline.svg"></ion-icon>
+      </button>
+    </div>
+    <div class="detail-group">
+      <ion-radio-group value="1" class="radio-group" size="small">
+        <ion-radio value="1">добавить ржаной хлеб</ion-radio>
+        <ion-radio value="2">добавить 20 гр пармезана</ion-radio>
+        <ion-radio value="3">убрать пармезан</ion-radio>
+        <ion-radio value="4">убрать лук фри</ion-radio>
+      </ion-radio-group>
+    </div>
+    <div class="detail-group">
+      <ul class="detail-list">
+        <li class="detail-text">Подается с двумя кусочками ржаного хлеба</li>
+        <li class="detail-text">Тар тар посыпан твердым сыром и луком фри</li>
+      </ul>
+    </div>
+    <div class="detail-group">
+      <div class="detail-text">
+        Тартар — это холодная закуска французской кухни. По классическому
+        рецепту ее готовят из нарезанной кубиками говядины, сырого яичного или
+        перепелиного желтка.
+      </div>
+    </div>
+    <div class="detail-group">
+      <div class="detail-group-title">В 100 граммах</div>
+      <div class="detail-info">
+        <div class="detail-info-item"><b>333</b> <span>ккал</span></div>
+        <div class="detail-info-item"><b>8,7</b> <span>белки</span></div>
+        <div class="detail-info-item"><b>10,8</b> <span>жиры</span></div>
+        <div class="detail-info-item"><b>15</b> <span>углеводы</span></div>
+      </div>
+    </div>
+    <div class="detail-group">
+      <div class="detail-group-title">Состав и аллергены</div>
+      <div class="detail-text">
+        Мраморная говядина, яичный желток, ржаной хлеб, сыр, жареный лук.
+      </div>
+    </div>
+    <div class="detail-group">
+      <div class="detail-more">
+        <div class="detail-more-title">Еще</div>
+        <div class="product-items">
+          <article class="product">
+            <button class="product__fav icon-button">
+              <ion-icon
+                src="assets/icon/heart-outline.svg"
+                color="light"
+              ></ion-icon>
+            </button>
+            <div
+              class="product__img"
+              routerLink="/detail"
+              routerDirection="forward"
+            >
+              <img src="assets/images/order-1.jpg" />
+            </div>
+            <div class="product__body">
+              <button class="product__basket icon-button">
+                <ion-icon src="assets/icon/product-basket.svg"></ion-icon>
+              </button>
+              <div class="product__info">150 гр. 300 ккал</div>
+              <div class="product__title">Тар тар из говядины</div>
+              <div class="product__price">
+                <ion-text>3000 ₽</ion-text>
+              </div>
+            </div>
+          </article>
+          <article class="product">
+            <button class="product__fav icon-button">
+              <ion-icon
+                src="assets/icon/heart-fill.svg"
+                color="danger"
+              ></ion-icon>
+            </button>
+            <div
+              class="product__img"
+              routerLink="/detail"
+              routerDirection="forward"
+            >
+              <img src="assets/images/order-1.jpg" />
+            </div>
+            <div class="product__body">
+              <button class="product__basket icon-button">
+                <ion-icon src="assets/icon/product-basket.svg"></ion-icon>
+              </button>
+              <div class="product__info">50 гр. 323 ккал</div>
+              <div class="product__title">
+                Мини-брускетта с уткой конфи и луком
+              </div>
+              <div class="product__price">
+                <ion-text>3000 ₽</ion-text>
+                <ion-note>5000 ₽ </ion-note>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-button expand="block">добавить в корзину</ion-button>
+  </ion-toolbar>
+</ion-footer>

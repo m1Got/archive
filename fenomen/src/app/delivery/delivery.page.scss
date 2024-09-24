@@ -1,0 +1,22 @@
+ion-content > * {
+  margin: 0 0 20px;
+}
+
+ion-input.custom {
+  font-weight: 600;
+}
+
+.delivery-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.no-border {
+  border-bottom: 0;
+}
+
+ion-note {
+  padding: 10px 0;
+  display: block;
+}

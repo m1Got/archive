@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="primary-toolbar">
+    <div class="primary-toolbar--inner">
+      <button
+        size="m"
+        shape="rounded"
+        tuiButton
+        appearance="whiteblock"
+        class="icon-button"
+        (click)="navCtrl.back()"
+      >
+        <ion-icon
+          class="text-lg"
+          color="primary"
+          src="assets/icons/chevron-back-outline.svg"
+        />
+      </button>
+      <ion-title>Создать заказ</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ya-map [center]="[55.751952, 37.600739]" [zoom]="12">
+    <ya-placemark [geometry]="[55.751952, 37.600739]" />
+  </ya-map>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="light" class="mb-2">
+      <ion-icon class="text-sm" src="assets/icons/round-plus.svg" />
+    </ion-fab-button>
+    <ion-fab-button color="light" class="mb-2">
+      <ion-icon class="text-sm" src="assets/icons/round-minus.svg" />
+    </ion-fab-button>
+    <ion-fab-button color="dark">
+      <ion-icon class="text-sm" src="assets/icons/location.svg" />
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="secondary-toolbar">
+    <div class="p-2">
+      <ion-button expand="block">Далее</ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

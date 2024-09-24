@@ -1,0 +1,317 @@
+<ng-container *ngIf="!!tariffById">
+  <div class="absolute left-0 top-0 -z-[1] h-80 w-full">
+    <img
+      class="h-full w-full object-cover sm:rounded-b-[5rem]"
+      src="images/faq-thailand.png"
+      alt="OrderBannerImage"
+    />
+  </div>
+  <section class="py-10">
+    <div class="container">
+      <div class="pb-8">
+        <h1 class="title uppercase text-white" data-basic>ОФОРМЛЕНИЕ ЗАКАЗА</h1>
+      </div>
+      <div class="flex gap-6 max-md:flex-col-reverse">
+        <div class="grid flex-auto gap-3">
+          <ion-card class="card">
+            <div class="mb-4">
+              <h2 class="text-xl font-bold text-dark">
+                Выберите методы оплаты
+              </h2>
+            </div>
+            <div class="grid grid-cols-3 gap-2 lg:flex [&>button]:flex-1">
+              <button
+                size="l"
+                tuiButton
+                [appearance]="payment === 'cash' ? 'whiteblock-active' : 'secondary'"
+                (click)="payment = 'cash'"
+              >
+                <img class="h-10" src="images/payment/cash.svg" />
+              </button>
+              <button
+                size="l"
+                tuiButton
+                [appearance]="payment === 'humo' ? 'whiteblock-active' : 'secondary'"
+                (click)="payment = 'humo'"
+              >
+                <img class="h-10" src="images/payment/humo.png" />
+              </button>
+              <button
+                size="l"
+                tuiButton
+                [appearance]="payment === 'uzcard' ? 'whiteblock-active' : 'secondary'"
+                (click)="payment = 'uzcard'"
+              >
+                <img class="h-10" src="images/payment/uzcard.png" />
+              </button>
+              <button
+                size="l"
+                tuiButton
+                [disabled]="true"
+                [appearance]="payment === 'payme' ? 'whiteblock-active' : 'secondary'"
+                (click)="payment = 'payme'"
+              >
+                <img class="h-12" src="images/payment/payme.svg" />
+              </button>
+              <button
+                size="l"
+                tuiButton
+                [appearance]="payment === 'master_card' ? 'whiteblock-active' : 'secondary'"
+                (click)="payment = 'master_card'"
+              >
+                <img class="h-10" src="images/payment/mastercard_2.svg" />
+              </button>
+              <!-- <button
+                size="l"
+                tuiButton
+                [appearance]="payment === 'uzum' ? 'whiteblock-active' : 'secondary'"
+                (click)="payment = 'uzum'"
+              >
+                <img class="h-10" src="images/payment/uzumbank.svg" />
+              </button> -->
+              <button
+                size="l"
+                tuiButton
+                [appearance]="payment === 'visa' ? 'whiteblock-active' : 'secondary'"
+                (click)="payment = 'visa'"
+              >
+                <img class="h-10" src="images/payment/visa.svg" />
+              </button>
+            </div>
+          </ion-card>
+          <ion-card class="card">
+            <div class="mb-4 flex flex-wrap items-center gap-3">
+              <h2 class="text-xl font-bold text-dark">
+                Выберите метод доставки
+              </h2>
+              <ion-segment
+                [(ngModel)]="deliveryType"
+                (ngModelChange)="onChangeDeliveryType($event)"
+                class="max-sm:w-full sm:ml-auto sm:w-2/5"
+              >
+                <ion-segment-button value="pickup"
+                  >Самовывоз</ion-segment-button
+                >
+                <ion-segment-button value="express"
+                  >Курьером</ion-segment-button
+                >
+              </ion-segment>
+            </div>
+            <div [ngClass]="{hidden: deliveryType !== 'pickup'}">
+              <div class="mb-6 flex gap-3">
+                <ion-radio-group class="flex gap-4" [(ngModel)]="agentControl">
+                  <ion-radio value="office" labelPlacement="end" mode="md"
+                    >Из офиса</ion-radio
+                  >
+                  <ion-radio value="airport" labelPlacement="end" mode="md"
+                    >Из аэропорта</ion-radio
+                  >
+                </ion-radio-group>
+              </div>
+              <div class="h-64 overflow-hidden rounded-2xl">
+                <ya-map [zoom]="12" [center]="[41.286238, 69.255931]">
+                  <ya-placemark
+                    [geometry]="[41.286238, 69.255931]"
+                  ></ya-placemark>
+                  <ya-placemark
+                    [geometry]="[41.264012, 69.265338]"
+                  ></ya-placemark>
+                </ya-map>
+              </div>
+            </div>
+            <div [ngClass]="{hidden: deliveryType !== 'express'}">
+              <tui-input [(ngModel)]="address"> Адрес доставки </tui-input>
+              <!-- <div class="flex items-center justify-end pt-4">
+                <p class="pr-2 text-xl font-medium text-dark">Доставка:</p>
+                <p class="text-xl font-bold text-primary">
+                  {{ deliveryPrice | tuiFormatNumber: { thousandSeparator: "." }
+                  }} сум
+                </p>
+              </div> -->
+            </div>
+          </ion-card>
+          <ion-card class="card">
+            <form [formGroup]="formOrder">
+              <div class="mb-4 grid gap-3 sm:grid-cols-2">
+                <tui-input formControlName="name">Имя</tui-input>
+                <tui-input-phone
+                  formControlName="phone"
+                  countryCode="+998"
+                  phoneMaskAfterCountryCode="(##) ###-##-##"
+                >
+                  Контактный номер
+                </tui-input-phone>
+              </div>
+              <div class="grid flex-wrap gap-3 sm:flex">
+                <div class="flex-1">
+                  <tui-input formControlName="email">Почта</tui-input>
+                </div>
+                <div class="grid flex-1 gap-1">
+                  <ng-container
+                    *ngIf="!authService.currentUser.passport_image || changePassport"
+                  >
+                    <ng-container *ngIf="!passportImage.value">
+                      <tui-input-files [formControl]="passportImage">
+                        <input accept="image/*" capture="user" tuiInputFiles />
+                        <ng-template let-dragged>
+                          <div *ngIf="dragged; else base">
+                            <tui-marker-icon
+                              mode="link"
+                              src="tuiIconDropletLarge"
+                            />
+                            Drop it like it's hot!
+                          </div>
+                          <ng-template #base>
+                            <div class="flex items-center gap-4">
+                              <tui-marker-icon
+                                size="s"
+                                mode="link"
+                                src="tuiIconUploadCloudLarge"
+                              />
+                              Прикрепить паспорт
+                            </div>
+                          </ng-template>
+                        </ng-template>
+                      </tui-input-files>
+                    </ng-container>
+                    <tui-files
+                      *ngIf="passportImage.valueChanges | async as file"
+                    >
+                      <tui-file
+                        size="l"
+                        [file]="file"
+                        [showSize]="false"
+                        class="max-sm:!flex-col"
+                        (removed)="passportImage.setValue(null)"
+                      ></tui-file>
+                    </tui-files>
+                  </ng-container>
+                  <ng-container
+                    *ngIf="!!authService.currentUser.passport_image && !changePassport"
+                  >
+                    <tui-island>
+                      <div class="grid items-center gap-2 sm:flex">
+                        <tui-badged-content
+                          size="l"
+                          class="mr-auto sm:w-40"
+                          contentTop="tuiIconCheckCircleLarge"
+                          [rounded]="true"
+                        >
+                          <img
+                            class="max-h-96 w-full rounded-md object-cover"
+                            [src]="path + authService.currentUser.passport_image"
+                          />
+                        </tui-badged-content>
+                        <button
+                          tuiIconButton
+                          type="button"
+                          (click)="utils.odTemplate(changePassportTemplate, { size: 's' })"
+                          icon="icons/refresh.svg"
+                          class="max-sm:ml-auto"
+                          shape="rounded"
+                          size="m"
+                        ></button>
+                      </div>
+                    </tui-island>
+                  </ng-container>
+                  <ng-container
+                    *ngIf="!isPassportValidate && !passportImage.value"
+                  >
+                    <p class="text-center text-red-500">
+                      Фото паспорта обязательно
+                    </p>
+                  </ng-container>
+                </div>
+              </div>
+            </form>
+          </ion-card>
+          <div class="block md:hidden">
+            <ng-container [ngTemplateOutlet]="orderSummary" />
+          </div>
+        </div>
+        <div class="flex-[36%] flex-shrink-0 flex-grow-0 lg:flex-[28%]">
+          <app-tariff [inOrder]="true" [tariff]="tariffById" />
+          <div class="hidden md:block">
+            <ng-container [ngTemplateOutlet]="orderSummary" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-container>
+
+<ng-template #orderSummary>
+  <div class="py-6">
+    <tui-checkbox-labeled size="l" [formControl]="offerCheckbox">
+      <span class="text-medium">
+        Согласен с условиями
+        <a href="/docs/offer" class="underline">Публичной Оферты</a>
+      </span>
+    </tui-checkbox-labeled>
+    <div class="flex flex-wrap items-center gap-3 pt-4">
+      <!-- <div class="flex items-center justify-end">
+        <p class="pr-2 text-xl font-medium text-dark">Итого:</p>
+        <p class="text-xl font-bold text-primary">
+          {{ totalSumma | tuiFormatNumber: { thousandSeparator: "." } }} сум
+        </p>
+      </div> -->
+      <div class="grid flex-auto">
+        <button
+          size="m"
+          tuiButton
+          shape="rounded"
+          (click)="createOrder(afterOrderTemplate)"
+          [disabled]="isValidateOrder() || (isSubmitting$ | async)"
+        >
+          <!-- formOrder.invalid || !payment || !offerCheckbox.value || (!isPassportValidate && !passportImage.value) || (deliveryType === 'pickup' && !agentControl) || (deliveryType === 'express' && !address) -->
+          Купить
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #changePassportTemplate let-changePassportTemplate>
+  <div class="pb-5 text-center text-lg font-semibold">
+    Вы точно хотите изменить фото паспорта
+  </div>
+  <div class="grid grid-cols-2 gap-3">
+    <button
+      size="xl"
+      tuiButton
+      appearance="secondary"
+      (click)="changePassportTemplate.complete()"
+    >
+      Отмена
+    </button>
+    <button
+      size="xl"
+      tuiButton
+      appearance="accent"
+      (click)="onChangePassport(changePassportTemplate)"
+    >
+      Да
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #afterOrderTemplate>
+  <div class="pb-5">
+    <h5 class="text-lg font-semibold">
+      Уважаемый(ая) {{ authService.currentUser.name }},
+    </h5>
+    <p class="py-1">Благодарим вас за покупку на нашем сайте!</p>
+    <p class="py-1">
+      Мы начнем обработку вашего заказа немедленно, и вы получите уведомление о
+      его отправке, как только он будет готов.
+    </p>
+    <p class="py-1">
+      Убедитесь, что вы получили электронное письмо с QR кодом.
+    </p>
+    <p class="py-1">Благодарим за ваш выбор!</p>
+    <p class="py-1">С наилучшими пожеланиями команда Happytel</p>
+  </div>
+  <div class="font-medium">
+    Вы будете перенаправлены на страницу покупки через несколько секунд
+  </div>
+</ng-template>

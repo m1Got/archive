@@ -1,0 +1,83 @@
+<div class="grid max-w-2xl">
+  <h4 class="title">Выберите тариф</h4>
+  <p class="py-5 text-lg font-medium text-primary">
+    Для получения и принятие новых заказов пожалуйста оплатите свой тариф
+  </p>
+
+  <form [formGroup]="testForm" class="pb-5">
+    <div orientation="vertical" tuiGroup>
+      <tui-radio-block
+        contentAlign="right"
+        formControlName="testValue"
+        item="tariff_1"
+        size="l"
+      >
+        <tui-tag
+          size="l"
+          status="custom"
+          value="1 день"
+          [hoverable]="true"
+          class="bg-primary text-white"
+        >
+        </tui-tag>
+        <span class="px-5 text-lg font-medium md:px-10">14 500 so’m</span>
+      </tui-radio-block>
+      <tui-radio-block
+        contentAlign="right"
+        formControlName="testValue"
+        item="tariff_2"
+        size="l"
+      >
+        <tui-tag
+          size="l"
+          status="custom"
+          value="10 день"
+          [hoverable]="true"
+          class="bg-primary text-white"
+        >
+        </tui-tag>
+        <span class="px-5 text-lg font-medium md:px-10">24 600 so’m</span>
+      </tui-radio-block>
+      <tui-radio-block
+        contentAlign="right"
+        formControlName="testValue"
+        item="tariff_3"
+        size="l"
+      >
+        <tui-tag
+          size="l"
+          status="custom"
+          value="10 день"
+          [hoverable]="true"
+          class="bg-primary text-white"
+        >
+        </tui-tag>
+        <span class="px-5 text-lg font-medium md:px-10">54 600 so’m</span>
+      </tui-radio-block>
+      <tui-radio-block
+        contentAlign="right"
+        formControlName="testValue"
+        item="tariff_365"
+        size="l"
+      >
+        <tui-tag
+          size="l"
+          status="custom"
+          value="365 дней"
+          [hoverable]="true"
+          class="bg-primary text-white"
+        >
+        </tui-tag>
+        <span class="px-5 text-lg font-medium md:px-10">94 600 so’m</span>
+      </tui-radio-block>
+    </div>
+  </form>
+  <button
+    tuiButton
+    appearance="accent"
+    shape="rounded"
+    class="md:justify-self-start"
+  >
+    Пополнить баланс
+  </button>
+</div>

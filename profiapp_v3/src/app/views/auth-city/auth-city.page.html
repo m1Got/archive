@@ -1,0 +1,52 @@
+<ion-header class="ion-padding">
+  <ion-toolbar class="secondary-toolbar" mode="md">
+    <div class="flex items-center">
+      <button
+        size="m"
+        tuiIconButton
+        shape="rounded"
+        appearance="secondary"
+        icon="assets/icons/chevron-back-outline.svg"
+        class="z-10"
+      ></button>
+      <ion-title class="text-xl font-semibold"> Выберите город </ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true" class="ion-padding z-[2]">
+  <img
+    class="absolute -top-[25%] left-0 z-[-2] w-full scale-150"
+    src="assets/images/primary-texture.svg"
+  />
+  <div class="grid gap-4">
+    <tui-input [tuiTextfieldLabelOutside]="true" [formControl]="">
+      Поиск
+      <input tuiTextfield />
+    </tui-input>
+    <ion-item color="light" lines="none" class="rounded-xl">
+      <div class="mr-auto py-1">
+        <span class="text-xs text-primary">Ташкент</span>
+        <p class="text-base">Алмазарский район</p>
+      </div>
+      <ion-icon
+        color="primary"
+        src="assets/icons/checkmark-outline.svg"
+        slot="end"
+      />
+    </ion-item>
+    <ion-item color="light" lines="none" class="rounded-xl">
+      <div class="mr-auto py-1">
+        <span class="text-xs text-primary">Ташкент</span>
+        <p class="text-base">Алмазарский район</p>
+      </div>
+    </ion-item>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="primary-toolbar">
+    <ion-button expand="block">Выбрать</ion-button>
+  </ion-toolbar>
+</ion-footer>

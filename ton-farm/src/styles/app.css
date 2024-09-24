@@ -1,0 +1,33 @@
+@import url("fonts");
+@import url("vars");
+@import url("reset");
+@import url("common");
+@import url("layouts");
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700&display=swap");
+
+@tailwind base;
+/* @tailwind components; */
+@tailwind utilities;
+
+body {
+  font-family: Geist;
+  background: var(--main-gradient);
+  color: var(--main-text-color);
+}
+
+.wrapper {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--main-gradient);
+
+
+  > main {
+    z-index: 4;
+    flex: 1 1 auto;
+    min-height: 36rem;
+  }
+}
+

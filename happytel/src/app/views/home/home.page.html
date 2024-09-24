@@ -1,0 +1,511 @@
+<section class="relative grid items-center bg-primary md:min-h-[95dvh]">
+  <div class="container relative z-10 grid gap-10 lg:flex lg:gap-20">
+    <div class="flex-[45%]">
+      <div class="text-white max-lg:text-center max-sm:pt-5">
+        <h1 class="text-2xl font-bold md:text-5xl">
+          <translate uz="“ HappyTel “ xizmati" ru="Сервис “ Happytel “" />
+        </h1>
+        <p class="py-3 text-base sm:text-lg md:py-6">
+          <translate
+            uz="Xizmat xarid qilish orqali rouming xizmatlarini olish uchun ishlatiladi
+          mamlakat(lar)ga tarif ulangan jismoniy SIM-karta
+          qoling."
+            ru="Сервис служит для получения роуминговых услуг посредством покупки
+          физической сим-карты, к которой подключен тариф в страну(ы)
+          пребывания."
+          />
+        </p>
+      </div>
+      <ion-card class="card mx-auto max-w-lg">
+        <h4 class="mb-4 text-center text-2xl font-bold">
+          <translate uz="Tarifni qidiring" ru="Поиск тарифа" />
+        </h4>
+        <ng-container *tuiLet="countries$ | async as countries">
+          <tui-multi-select
+            tuiTextfieldSize="m"
+            [tuiTextfieldCleaner]="true"
+            [tuiTextfieldLabelOutside]="true"
+            [tuiDropdownMaxHeight]="200"
+            tuiDropdownDirection="bottom"
+            [stringify]="utils.stringifyByName"
+            [(ngModel)]="idsValue"
+          >
+            <translate uz="Mamlakat tanlang..." ru="Выберите страну..." />
+            <ng-container *ngIf="idsValue?.length <= 4">
+              <tui-data-list-wrapper
+                *tuiDataList
+                emptyContent="Ничего не найдено"
+                tuiMultiSelectGroup
+                [itemContent]="countryContent"
+                [items]="countries.data | tuiFilterByInputWith: utils.stringifyByName"
+              ></tui-data-list-wrapper>
+            </ng-container>
+            <ng-container *ngIf="idsValue?.length >= 4">
+              <ng-container *ngIf="currentLanguage$ | async as currentLng">
+                <tui-data-list-wrapper
+                  *tuiDataList
+                  [emptyContent]="currentLng === 'ru' ? 'Количество выбираемых стран не должно превысить 5' : 'Tanlangan mamlakatlar soni 5 tadan oshmasligi kerak'"
+                  [items]="[]"
+                ></tui-data-list-wrapper>
+              </ng-container>
+            </ng-container>
+          </tui-multi-select>
+          <ng-template #countryContent let-country>
+            <div class="flex items-center">
+              <p class="mr-auto">{{ country.name }}</p>
+              <tui-avatar
+                size="s"
+                [text]="country.name"
+                [avatarUrl]="path + '/' + country.img"
+              ></tui-avatar>
+            </div>
+          </ng-template>
+        </ng-container>
+        <button
+          size="m"
+          tuiButton
+          shape="rounded"
+          class="mt-5 w-full"
+          [disabled]="!idsValue?.length"
+          (click)="changeRoute()"
+        >
+          <translate uz="Qidirmoq" ru="Поиск" />
+        </button>
+      </ion-card>
+    </div>
+    <div class="min-w-0 flex-[55%] max-sm:pb-5">
+      <h4 class="text-2xl font-bold text-white">
+        <translate uz="Ko'pincha tanlanadi:" ru="Чаще выбирают:" />
+      </h4>
+      <div class="hidden lg:block">
+        <div class="grid gap-2 pb-3 pt-5 lg:grid-cols-2">
+          <ng-container *ngIf="chosenCountries$ | async as chosenCountries">
+            <ng-container *ngFor="let country of chosenCountries.data">
+              <ng-container
+                [ngTemplateOutlet]="chooseCountryTemplate"
+                [ngTemplateOutletContext]="{ country }"
+              ></ng-container>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+      <div
+        class="flex snap-x snap-mandatory flex-nowrap overflow-x-auto lg:hidden"
+      >
+        <ng-container *ngIf="chosenCountries$ | async as chosenCountries">
+          <ng-container *ngFor="let country of chosenCountries.data">
+            <div class="mr-2 grid w-64 flex-shrink-0 snap-start">
+              <ng-container
+                [ngTemplateOutlet]="chooseCountryTemplate"
+                [ngTemplateOutletContext]="{ country }"
+              ></ng-container>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+      <div class="rounded-3xl bg-white/60 px-3 py-2 my-3 md:flex">
+        <div class="flex-1 flex-[10rem] flex-shrink-0 self-center max-md:mb-3">
+          <img class="max-md:max-w-[10rem]" src="images/alfa-life.png" />
+        </div>
+        <div class="sm:pl-3 text-lg leading-5">
+          <div class="font-bold text-black">AO “ALFA LIFE INSURANCE”</div>
+          <div class="py-2 font-bold text-zinc-600/90">
+            <translate
+              uz="Chet elga ketyapsizmi?"
+              ru="Собираетесь за границу?"
+            />
+            <br />
+            <translate
+              uz="Sug'urta polisini sotib oling. O'zingizni va yaqinlaringizni himoya qiling
+              sayohat!"
+              ru="Купите страховой полис. Защитите себя и своих близких во время
+              путешествий!"
+            />
+          </div>
+          <a
+            href="https://www.alfalife.uz/service/22#calculation"
+            target="_blank"
+          >
+            <button size="m" tuiButton id="recButton" shape="rounded">
+              <span class="pr-1 uppercase text-red-600">
+                <translate
+                  uz="Sug'urtani rasmiylashtirish"
+                  ru="Оформить полис"
+                />
+              </span>
+              <button
+                size="s"
+                tuiIconButton
+                id="recIconButton"
+                icon="icons/arrow-right-circle.svg"
+                shape="rounded"
+              ></button>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="absolute bottom-0 left-0 h-4/5 w-full">
+    <img
+      class="h-full w-full object-cover"
+      src="images/banner-background.svg"
+      alt="HomeBannerBackground"
+    />
+  </div>
+  <div class="absolute -top-16 left-0 -z-[1] h-full w-full bg-primary"></div>
+</section>
+<ng-container *ngIf="popularTariffs$ | async as popular">
+  <ng-container *ngIf="!!popular.length">
+    <section class="py-10 md:py-20">
+      <div class="container">
+        <div class="flex items-center">
+          <h1 class="title uppercase">
+            <translate
+              uz="SIZ UCHUN ENG ZO'R TAKLIFLAR"
+              ru="ЛУЧШИЕ ПРЕДЛОЖЕНИЯ ДЛЯ ВАС"
+            />
+          </h1>
+          <div data-tariffs-navigation class="ml-auto flex gap-2 max-sm:hidden">
+            <button
+              size="m"
+              tuiIconButton
+              icon="icons/chevron-left.svg"
+              appearance="whiteblock"
+              shape="rounded"
+              data-prev
+            ></button>
+            <button
+              size="m"
+              tuiIconButton
+              icon="icons/chevron-right.svg"
+              appearance="whiteblock"
+              shape="rounded"
+              data-next
+            ></button>
+          </div>
+        </div>
+        <swiper class="!py-6" [config]="utils.cardSwiper('tariffs')">
+          <ng-template swiperSlide *ngFor="let tariff of popular">
+            <app-tariff [tariff]="tariff" [isSlider]="true" [isLarge]="false" />
+          </ng-template>
+        </swiper>
+      </div>
+    </section>
+  </ng-container>
+</ng-container>
+<section class="overflow-hidden bg-primary py-10 md:py-20">
+  <div class="container relative z-10">
+    <div class="mb-10">
+      <h1 class="title uppercase" data-secondary>
+        <translate uz="Ustunlik" ru="ПРЕИМУЩЕСТВА" />
+      </h1>
+    </div>
+    <div class="grid gap-10 lg:grid-cols-2">
+      <div class="flex items-center">
+        <img src="images/lte-sim-primary.svg" alt="Advantages" />
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <article class="primary-card">
+          <div class="primary-card--inner">
+            <div class="secondary-card h-72 p-4">
+              <img
+                class="h-16 object-contain"
+                src="images/advantages/01.svg"
+                alt="AdvantageIcon"
+              />
+              <div class="py-3 text-2xl font-bold">
+                <h4>
+                  <translate uz="Narxi" ru="Стоимость" />
+                </h4>
+              </div>
+              <p class="text-lg text-medium">
+                <translate
+                  uz="SIM-kartalarni chakana narxlarga qaraganda arzonroq narxlarda sotib oling
+                belgilangan mamlakat do'konlarida."
+                  ru="Покупайте SIM-карты по более низким ценам, чем в розничных
+                магазинах страны назначения."
+                />
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="primary-card">
+          <div class="primary-card--inner">
+            <div class="secondary-card h-72 p-4">
+              <img
+                class="h-16 object-contain"
+                src="images/advantages/02.svg"
+                alt="AdvantageIcon"
+              />
+              <div class="py-3 text-2xl font-bold">
+                <h4>
+                  <translate uz="Samaradorlik" ru="Оперативность" />
+                </h4>
+              </div>
+              <p class="text-lg text-medium">
+                <translate
+                  uz="SIM-kartani ulang va undan foydalaning. Ulanishdan keyin faollashadi
+                Qurilmaga SIM-kartalar."
+                  ru="Подключите SIM-карту и пользуйтесь. Активируется после подключения
+                SIM-карты к устройству."
+                />
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="primary-card">
+          <div class="primary-card--inner">
+            <div class="secondary-card h-72 p-4">
+              <img
+                class="h-16 object-contain"
+                src="images/advantages/03.svg"
+                alt="AdvantageIcon"
+              />
+              <div class="py-3 text-2xl font-bold">
+                <h4>
+                  <translate uz="Тарифы" ru="Тарифы" />
+                </h4>
+              </div>
+              <p class="text-lg text-medium">
+                <translate
+                  uz="Har bir mijozning xohishiga ko'ra moslashuvchan ma'lumotlar rejalari."
+                  ru="Гибкие тарифные планы по желанию каждого клиента."
+                />
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="primary-card">
+          <div class="primary-card--inner">
+            <div class="secondary-card h-72 p-4">
+              <img
+                class="h-16 object-contain"
+                src="images/advantages/04.svg"
+                alt="AdvantageIcon"
+              />
+              <div class="py-3 text-2xl font-bold">
+                <h4>
+                  <translate uz="Texnik yordam" ru="Тех-поддержка" />
+                </h4>
+              </div>
+              <p class="text-lg text-medium">
+                <translate
+                  uz="Mijozlarga xizmat ko'rsatish 24/7"
+                  ru="Техническое обслуживание клиентов 24/7"
+                />
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+      <img
+        class="absolute left-full top-0 -z-[1] ml-16 w-96 max-sm:hidden"
+        src="images/advantage-bg-smile.svg"
+        alt="AdvantageBackgroundSmile"
+      />
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container grid gap-8 lg:grid-cols-2">
+    <div class="py-10 md:py-20">
+      <h1 class="title uppercase">
+        <translate
+          uz="BOSHQA MAMLAKATGA UCHING LEKIN QANDAY QILIB ALOQADA BO'LISHNI BILMAYAPSIZMI? MAHALLIY SIM-KARTANI QIDIRISHGA VAQT SARFLASHNI XOHLAMAYSIZMI? KEYIN HAPPYTEL SIZGA YORDAM BERADI!"
+          ru="ЛЕТИТЕ В ДРУГУЮ СТРАНУ НО НЕ ЗНАЕТЕ КАК БЫТЬ НА СВЯЗИ? НЕ ХОТИТЕ ТРАТИТЬ
+        ВРЕМЯ НА ПОИСКИ МЕСТНОЙ СИМ КАРТЫ? ТОГДА ВАС ВЫРУЧИТ HAPPYTEL!"
+        />
+      </h1>
+      <p class="py-6 text-lg text-medium">
+        <translate
+          uz="Happytel-bu maxsus Internet bilan sayohat qilish uchun SIM-kartalar
+        sizning sayohatingiz uchun maksimal qulaylik uchun mo'ljallangan tariflar.
+        Biz taqdim etamiz esim va jismoniy sim-karta ko'pchilik uchun
+        dunyoning yo'nalishlari. Samolyotdan chiqmasdan yaqinlaringizga murojaat qiling
+        va taassurotlaringizni onlayn tarzda baham ko'ring!"
+          ru="Happytel это СИМ карты для путешествий с индивидуальными интернет
+        тарифами которые предназначены для максимального комфорта Вашей поездки.
+        Мы предоставляем еСИМ а также физическую СИМ карту по многим
+        направлениям мира. Свяжитесь с близкими по прилёту не выходя из самолёта
+        и делитесь впечатлениями в онлайн режиме!"
+        />
+      </p>
+    </div>
+    <div class="relative">
+      <img
+        class="bottom-0 left-0 z-10 w-11/12 lg:absolute"
+        src="images/woman-smiling-sim-card.png"
+        alt="HomeGirlSmile"
+      />
+      <img
+        class="absolute bottom-0 right-0 -z-[1] w-4/5"
+        src="images/plane-fly.png"
+        alt="HomePlaneFlying"
+      />
+    </div>
+  </div>
+</section>
+<section class="bg-primary py-10 md:py-20">
+  <div class="container">
+    <div class="sm:mb-10 sm:w-2/3">
+      <h1 class="title uppercase" data-secondary>
+        <translate
+          uz="FOYDALANISH BO'YICHA QADAM-BAQSAM KO'RSATMALAR"
+          ru="пошаговая инструкция по использованию"
+        />
+      </h1>
+    </div>
+    <div class="py-5">
+      <div class="relative mx-auto flex w-4/5 items-center max-md:hidden">
+        <div class="absolute left-0 h-4 w-[99%] rounded-3xl bg-white"></div>
+        <div class="z-10 flex w-full justify-between">
+          <img src="images/step-smile.svg" />
+          <img src="images/step-smile.svg" />
+          <img src="images/step-smile.svg" />
+          <img src="images/step-smile.svg" />
+        </div>
+      </div>
+      <div class="grid justify-center gap-5 pt-4 md:flex">
+        <article class="flex-1 text-center text-white max-sm:flex">
+          <div class="text-3xl font-bold sm:text-5xl">01.</div>
+          <p class="px-3 text-lg">
+            <translate
+              uz="O'zbekistonda SIM-kartani joylashtirishni tavsiya etmaymiz. SIM kartani joylashtiring
+          faqat tarif bo'yicha kelgan mamlakatda."
+              ru="Не рекомендуем вставить СИМ карту в Узбекистане. Вставьте СИМ карту
+          только в стране прибытия согласно тарифу."
+            />
+          </p>
+        </article>
+        <article class="flex-1 text-center text-white max-sm:flex">
+          <div class="text-3xl font-bold sm:text-5xl">02.</div>
+          <p class="px-3 text-lg">
+            <translate
+              uz="Agar Sizning telefoningiz 2 ta sim-kartani qo'llab-quvvatlasa, SIM-kartani kiritishni tavsiya etamiz
+          HAPPYTEEL-dan SIM 1 uyasiga karta. Sim 2 uyasi bo'sh bo'lishi kerak."
+              ru="Если Ваш телефон поддерживает 2 сим карты, рекомендуем вставить СИМ
+          карту от Happytel в слот SIM 1. Слот SIM 2 должен быть пустым."
+            />
+          </p>
+        </article>
+        <article class="flex-1 text-center text-white max-sm:flex">
+          <div class="text-3xl font-bold sm:text-5xl">03.</div>
+          <p class="px-3 text-lg">
+            <translate
+              uz="Telefon sozlamalarida Rouming ma'lumotlarini yoqing (yoqishni tavsiya etamiz
+          uchishdan oldin)."
+              ru="Включите роуминг данных в настройках телефона (рекомендуем включить
+          перед вылетом)."
+            />
+          </p>
+        </article>
+        <article class="flex-1 text-center text-white max-sm:flex">
+          <div class="text-3xl font-bold sm:text-5xl">04.</div>
+          <p class="px-3 text-lg">
+            <translate
+              uz="Keyingi mamlakatga kelganingizdan so'ng, sim-kartani mobil telefoningizga joylashtiring
+            telefon. Ulanish avtomatik ravishda amalga oshiriladi."
+              ru="По прибытию в страну следования вставьте сим карту в мобильный
+            телефон. Подключение произойдет автоматически."
+            />
+          </p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+<ng-container *ngIf="news$ | async as news">
+  <section class="py-10 md:py-20">
+    <div class="container">
+      <div class="flex items-center">
+        <h1 class="title uppercase">
+          <translate uz="Yangiliklar" ru="НОВОСТИ" />
+        </h1>
+        <div data-news-navigation class="ml-auto flex gap-2 max-sm:hidden">
+          <button
+            size="m"
+            tuiIconButton
+            icon="icons/chevron-left.svg"
+            appearance="whiteblock"
+            shape="rounded"
+            data-prev
+          ></button>
+          <button
+            size="m"
+            tuiIconButton
+            icon="icons/chevron-right.svg"
+            appearance="whiteblock"
+            shape="rounded"
+            data-next
+          ></button>
+        </div>
+      </div>
+      <swiper class="!py-6" [config]="utils.cardSwiper('news')">
+        <ng-template swiperSlide *ngFor="let tiding of news.data">
+          <article class="primary-card">
+            <div class="primary-card--inner">
+              <div class="h-48 overflow-hidden rounded-2xl">
+                <img
+                  class="h-full w-full object-cover"
+                  [src]="path + '/' + tiding.image"
+                  [alt]="tiding.title"
+                />
+              </div>
+              <div class="p-4">
+                <div class="mb-2 line-clamp-2 h-14 text-xl font-semibold">
+                  {{ tiding.title }}
+                </div>
+                <div class="flex items-center text-medium">
+                  <ion-icon class="text-xl" src="icons/calendar.svg" />
+                  <p class="ml-1">
+                    {{ tiding.updated_at | date: "dd.MM.yyyy" }}
+                  </p>
+                </div>
+              </div>
+              <button
+                class="primary-button w-full"
+                [routerLink]="['/news/', tiding.id]"
+              >
+                <div class="primary-button--inner">
+                  <span>
+                    <translate uz="O'tish" ru="Перейти" />
+                  </span>
+                  <ion-icon src="icons/arrow-right.svg" />
+                </div>
+              </button>
+            </div>
+          </article>
+        </ng-template>
+      </swiper>
+    </div>
+  </section>
+</ng-container>
+
+<ng-template #chooseCountryTemplate let-country="country">
+  <button
+    class="flex items-center rounded-2xl bg-light-white p-3"
+    routerLink="/rates"
+    [queryParams]="{ ids: country.id }"
+  >
+    <tui-avatar
+      [text]="country.name"
+      [avatarUrl]="path + '/' + country.img"
+      [rounded]="true"
+    />
+    <div class="flex-auto pl-2 text-left text-white">
+      <p
+        class="font-bold"
+        [class]="country.name.length > 10 ? 'text-base' : 'text-xl'"
+      >
+        {{ country.name }}
+      </p>
+
+      <span class="opacity-70">
+        от {{ country.min_price_sell | tuiFormatNumber: { decimalLimit: 0,
+        decimalSeparator: '.'} }} сум
+      </span>
+    </div>
+    <ion-icon class="text-2xl text-white" src="icons/chevron-right.svg" />
+  </button>
+</ng-template>

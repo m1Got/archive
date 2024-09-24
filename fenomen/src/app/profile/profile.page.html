@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <header class="page-header">
+      <div class="page-header__start">
+        <h2 class="page-title">Феномен</h2>
+      </div>
+      <div class="page-header__end">
+        <button
+          class="link-button"
+          class="link-button"
+          routerLink="/personal"
+          routerDirection="forward"
+        >
+          Изменить
+        </button>
+      </div>
+    </header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <section class="profile-top">
+    <ion-avatar>
+      <img src="/assets/tree.svg" />
+    </ion-avatar>
+    <ion-grid>
+      <h3>Достижения</h3>
+      <p>Посещения: 100</p>
+      <p>Спасли котят: 99</p>
+    </ion-grid>
+  </section>
+  <section class="profile-info">
+    <img class="profile-fenom-img" src="assets/logo.png" />
+    <div class="profile-info-items">
+      <div class="profile-info-item">
+        <p>Бонусный счёт</p>
+        <ion-chip class="sharped">
+          <ion-icon src="assets/icon/phi.svg"></ion-icon>
+          <ion-text>1,200</ion-text>
+        </ion-chip>
+        <span>1 бонус = 1 ₽</span>
+      </div>
+      <div class="profile-info-item">
+        <p>Кэшбэк</p>
+        <h3>10%</h3>
+        <span>Бонусы сгорят через 365 дней</span>
+      </div>
+    </div>
+    <div class="profile-info-bottom">
+      <p>Виртуальная карта <b>№ 7777</b></p>
+      <ion-chip routerLink="/qrcode" routerDirection="forward">QR-код</ion-chip>
+    </div>
+  </section>
+  <section class="profile-nav">
+    <button
+      class="nav-item ion-activatable"
+      routerDirection="forward"
+      routerLink="/myorders"
+    >
+      <ion-icon class="nav-item__icon" src="assets/icon/list.svg"></ion-icon>
+      <span class="nav-item__text">мои заказы</span>
+      <ion-icon class="nav-item__arrow" name="chevron-forward"></ion-icon>
+      <ion-ripple-effect></ion-ripple-effect>
+    </button>
+    <button
+      class="nav-item ion-activatable"
+      routerLink="/subscriptions"
+      routerDirection="forward"
+    >
+      <ion-icon class="nav-item__icon" src="assets/icon/bell.svg"></ion-icon>
+      <span class="nav-item__text">подписки и уведомления</span>
+      <ion-icon class="nav-item__arrow" name="chevron-forward"></ion-icon>
+      <ion-ripple-effect></ion-ripple-effect>
+    </button>
+    <button
+      class="nav-item ion-activatable"
+      routerDirection="forward"
+      routerLink="/creditcards"
+    >
+      <ion-icon class="nav-item__icon" src="assets/icon/plastic.svg"></ion-icon>
+      <span class="nav-item__text">оплата</span>
+      <ion-icon class="nav-item__arrow" name="chevron-forward"></ion-icon>
+      <ion-ripple-effect></ion-ripple-effect>
+    </button>
+    <button
+      class="nav-item ion-activatable"
+      routerDirection="forward"
+      routerLink="/address"
+    >
+      <ion-icon class="nav-item__icon" src="assets/icon/locate.svg"></ion-icon>
+      <span class="nav-item__text">адрес доставки</span>
+      <ion-icon class="nav-item__arrow" name="chevron-forward"></ion-icon>
+      <ion-ripple-effect></ion-ripple-effect>
+    </button>
+    <button class="nav-item ion-activatable">
+      <ion-icon class="nav-item__icon" src="assets/icon/chat.svg"></ion-icon>
+      <span class="nav-item__text">чат с поддержкой</span>
+      <ion-icon class="nav-item__arrow" name="chevron-forward"></ion-icon>
+      <ion-ripple-effect></ion-ripple-effect>
+    </button>
+    <button
+      class="nav-item ion-activatable"
+      routerDirection="forward"
+      routerLink="/feedback"
+    >
+      <ion-icon
+        class="nav-item__icon"
+        src="assets/icon/feedback.svg"
+      ></ion-icon>
+      <span class="nav-item__text">обратная связь</span>
+      <ion-icon class="nav-item__arrow" name="chevron-forward"></ion-icon>
+      <ion-ripple-effect></ion-ripple-effect>
+    </button>
+  </section>
+  <section class="profile-footer">
+    <button class="profile-logout">выйти из профиля</button>
+  </section>
+</ion-content>

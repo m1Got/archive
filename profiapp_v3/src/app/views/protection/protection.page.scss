@@ -1,0 +1,13 @@
+ion-content {
+  ion-badge {
+    --padding-top: 12px;
+    --padding-bottom: 4px;
+
+    border: 1px solid #ebebeb;
+  }
+
+  [tuiButton] {
+    width: 5rem !important;
+    height: 5rem !important;
+  }
+}

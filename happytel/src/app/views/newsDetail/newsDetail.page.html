@@ -1,0 +1,22 @@
+<section class="py-6" *ngIf="tiding$.result$ | async as tiding">
+  <tui-loader [showLoader]="!tiding" />
+  <div *ngIf="!!tiding" class="container">
+    <div class="mb-5">
+      <h1 class="title">{{ tiding.data?.title }}</h1>
+    </div>
+    <div class="relative h-[15rem] sm:h-[30rem]">
+      <ng-container *ngIf="tiding.data?.image as image">
+        <img
+          [src]="path + image"
+          class="h-full w-full rounded-xl object-cover"
+          [alt]="tiding.data?.title"
+        />
+      </ng-container>
+    </div>
+    <p class="py-8 text-lg text-medium">{{ tiding.data?.description }}</p>
+    <div class="flex items-center justify-end text-medium">
+      <ion-icon class="text-xl" src="icons/calendar.svg" />
+      <p class="ml-1">{{ tiding.data?.updated_at | date: "dd.MM.yyyy" }}</p>
+    </div>
+  </div>
+</section>

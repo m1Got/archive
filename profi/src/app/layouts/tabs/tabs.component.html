@@ -1,0 +1,58 @@
+<nav class="tabs">
+  <a
+    class="tabs__link"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    routerLink="/"
+  >
+    <ion-icon src="icons/home.svg"></ion-icon>
+  </a>
+  <a class="tabs__link" routerLinkActive="active" routerLink="/favorites">
+    <ion-icon src="icons/heart-classic.svg"></ion-icon>
+  </a>
+  <a class="tabs__link" routerLink="/booking">
+    <button
+      size="xl"
+      tuiIconButton
+      shape="rounded"
+      appearance="primary"
+      icon="icons/add-circle.svg"
+      routerLinkActive="active"
+      id="tabsMainButton"
+    ></button>
+  </a>
+  <button class="tabs__link" (click)="showDropdownDialog(notificationDropdown)">
+    <ion-icon icon="icons/notification.svg"></ion-icon>
+  </button>
+
+  <a
+    class="tabs__link"
+    routerLinkActive="active"
+    [routerLink]="authService.isLoggedIn ? '/profile' : '/auth'"
+  >
+    <ion-icon src="icons/user-single.svg"></ion-icon>
+  </a>
+</nav>
+
+<ng-template #notificationDropdown>
+  <div class="p-2 md:max-w-xs">
+    <ion-grid class="grid content-start gap-3">
+      <tui-island class="island cursor-pointer">
+        <tui-line-clamp
+          content="Daenerys of the House Targaryen, the First of Her Name, The Unburnt"
+          [lineHeight]="22"
+          [linesLimit]="2"
+        ></tui-line-clamp>
+        <ion-note class="block pt-4">1 день назад</ion-note>
+      </tui-island>
+      <tui-island class="island cursor-pointer">
+        <tui-line-clamp
+          content="Daenerys of the House Targaryen, the First of Her Name, The Unburnt"
+          [lineHeight]="22"
+          [linesLimit]="2"
+        ></tui-line-clamp>
+        <ion-note class="block pt-4">1 день назад</ion-note>
+      </tui-island>
+    </ion-grid>
+  </div>
+</ng-template>

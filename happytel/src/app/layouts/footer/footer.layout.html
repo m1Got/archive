@@ -1,0 +1,253 @@
+<div class="container text-medium">
+  <div class="grid gap-4 md:flex md:py-5 lg:gap-8">
+    <div class="flex-[30%] flex-grow-0">
+      <a routerLink="/" class="mb-4 block w-36">
+        <img src="images/logo.svg" alt="SiteLogo" />
+      </a>
+      <h5 class="text-base">ООО «PLUG AND PLAY COMMUNICATIONS»</h5>
+      <ul class="text-base">
+        <li>- <translate uz="Kod" ru="Код" /> ОКЭД-63.1.10</li>
+        <li>- ИНН-306985234</li>
+        <li>
+          - <translate uz="Joriy hisob raqami" ru="Номер расчетного счета" /> -
+          20208000505157897001
+        </li>
+        <li>- <translate uz="Bank kodi" ru="Код банка" /> - 00491</li>
+        <li>
+          -
+          <translate
+            uz="Yuridik manzili: Toshkent sh., Olmazor tumani, Elkin ko'chasi 7-10-uy"
+            ru="Юридический адрес-Г.Ташкент, Алмазарскийрайон, ул Елкин 7-10"
+          />
+        </li>
+      </ul>
+    </div>
+    <div class="flex-auto">
+      <menu class="grid grid-cols-2 justify-start gap-4 md:gap-8">
+        <ul class="text-base font-medium [&>li]:py-2">
+          <li>
+            <a routerLink="/docs/confident">
+              <translate
+                uz="Maxfiylik siyosati"
+                ru="Политика конфиденциальности"
+              />
+            </a>
+          </li>
+          <li>
+            <a routerLink="/docs/offer">
+              <translate uz="Ommaviy taklif" ru="Публичная оферта" />
+            </a>
+          </li>
+          <li>
+            <button
+              (click)="utils.odTemplate(returnPolicyTemplate, { size: 'm' })"
+            >
+              <translate uz="Qaytarish siyosati" ru="Правила возврата" />
+            </button>
+          </li>
+          <li>
+            <button
+              (click)="utils.odTemplate(deliveryTermsTemplate, { size: 'm' })"
+            >
+              <translate uz="Yetkazib berish shartlari" ru="Условия доставки" />
+            </button>
+          </li>
+        </ul>
+        <ul class="text-base font-medium [&>li]:py-2">
+          <li><a routerLink="/faq">FAQ</a></li>
+          <li>
+            <a routerLink="/contacts">
+              <translate uz="Kontaktlar" ru="Контакты" />
+            </a>
+          </li>
+          <li>
+            <a routerLink="/rates">
+              <translate uz="Tarifflar" ru="Тарифы" />
+            </a>
+          </li>
+          <li>
+            <a routerLink="/about">
+              <translate uz="Biz haqimizda" ru="О компании" />
+            </a>
+          </li>
+        </ul>
+      </menu>
+    </div>
+    <div class="flex-[30%] flex-grow-0">
+      <div class="grid gap-4">
+        <a
+          class="flex items-center"
+          href="tel:{{ utils.phone.trim() }}"
+          target="_blank"
+        >
+          <ion-icon
+            color="primary"
+            src="icons/phone-call.svg"
+            class="mr-2 flex-shrink-0 text-2xl"
+          />
+          <span class="text-lg font-semibold">{{ utils.phone }}</span>
+        </a>
+        <a class="flex items-center" href="#" target="_blank">
+          <ion-icon
+            color="primary"
+            src="icons/location.svg"
+            class="mr-2 flex-shrink-0 text-2xl"
+          />
+          <span class="text-base font-semibold">
+            <translate
+              uz="Toshkent shahri, Yakasaroy tumani, Abdulla Qahhor ko‘chasi"
+              ru="Город Ташкент, Якасарайский район, Улица Абдулла Каххара 4"
+            />
+          </span>
+        </a>
+      </div>
+      <div class="my-5 flex items-center">
+        <span class="text-lg font-semibold">
+          <translate uz="Ijtimoiy tarmoqlar:" ru="Социальные сети:" />
+        </span>
+        <div class="flex items-center gap-2 pl-1">
+          <a
+            size="s"
+            tuiIconButton
+            target="_blank"
+            appearance="icon"
+            icon="icons/facebook.svg"
+            [href]="utils.facebookLink"
+          >
+          </a>
+          <a
+            size="s"
+            tuiIconButton
+            appearance="icon"
+            icon="icons/telegram.svg"
+            [href]="utils.telegramLink"
+          >
+          </a>
+          <a
+            size="s"
+            tuiIconButton
+            appearance="icon"
+            icon="icons/instagram.svg"
+            [href]="utils.instagramLink"
+          >
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="relative">
+    <div class="flex flex-wrap gap-4 pb-5">
+      <img
+        class="w-20 object-contain"
+        src="images/payment/payme.svg"
+        alt="Payme"
+      />
+      <img
+        class="w-20 object-contain"
+        src="images/payment/click.svg"
+        alt="Click"
+      />
+      <img
+        class="w-20 object-contain"
+        src="images/payment/visa.svg"
+        alt="Visa"
+      />
+      <img
+        class="w-20 object-contain"
+        src="images/payment/mastercard.svg"
+        alt="MasterCard"
+      />
+    </div>
+    <div class="divider"></div>
+  </div>
+  <div class="grid gap-2 pt-5 text-base sm:grid-cols-3">
+    <div class="max-sm:text-center">
+      Happytel {{ currentYear }} ⓒ
+      <translate uz="Barcha huquqlar himoyalangan" ru="Все права защищены" />
+    </div>
+    <div class="text-center">
+      <translate uz="Ishlab chiqargan" ru="Разработано в" />
+      <a href="https://itdodasi.uz/" target="_blank"> ITDODASI</a>
+    </div>
+    <div></div>
+  </div>
+</div>
+
+<ng-template #returnPolicyTemplate>
+  <div class="text-lg">
+    <div class="pb-4 text-center text-2xl font-semibold">
+      <translate uz="Qaytarish shartlari" ru="Правила возврата" />
+    </div>
+    <p class="pb-3">
+      <translate
+        uz="Полная стоимость SIM-карты возмещается в случае, если данная SIM-карта не
+      была в употреблении, сохранены ее товарный вид и без физических
+      повреждении."
+        ru="Полная стоимость SIM-карты возмещается в случае, если данная SIM-карта не
+      была в употреблении, сохранены ее товарный вид и без физических
+      повреждении."
+      />
+    </p>
+    <p class="pb-3">
+      <translate
+        uz="Sifatli Happytel SIM-kartalarini qaytarish va almashtirish shaharda amalga oshiriladi
+      ariza berilgan kundan boshlab 7 kun ichida."
+        ru="Возврат и обмен SIM-карт Happytel надлежащего качества производится в
+      течении 7 дней, c момента заявки."
+      />
+    </p>
+    <p>
+      <translate
+        uz="
+      Buyurtmani bekor qilish mijoz tomonidan kamida 48 soat oldin amalga oshiriladi
+            ketish."
+        ru="Отмена заказа осуществляется заказчиком не менее чем за 48 часов до
+      вылета."
+      />
+    </p>
+  </div>
+</ng-template>
+
+<ng-template #deliveryTermsTemplate>
+  <div class="text-lg">
+    <div class="pb-4 text-center text-2xl font-semibold">
+      <translate uz="Yetkazib berish shartlari" ru="Условия доставки" />
+    </div>
+    <p class="pb-3">
+      <translate
+        uz="O'zbekistonning istalgan burchagiga Happytel SIM kartalarini yetkazib beramiz! Siz .. qila olasiz; siz ... mumkin
+      kartangizni onlayn, telefon yoki elektron pochta orqali buyurtma qiling va biz qilamiz
+      Biz eng yaxshi xalqaro sayohat SIM-kartasini to'g'ridan-to'g'ri manzilingizga yuboramiz!"
+        ru="Мы доставляем сим-карты Happytel в любой уголок Узбекистана! Вы можете
+      заказать свою карту онлайн, по телефону или электронной почте, и мы
+      отправим лучшую международную туристическую SIM-карту прямо на ваш адрес!"
+      />
+    </p>
+    <p class="pb-3">
+      <translate
+        uz="Наш партнер по доставкам «BTS Express Cargo Servis» - один из немногих
+      лидеров логистического рынка, который обеспечивает быструю доставку
+      каждому клиенту не только в Узбекистане, но и за рубежом."
+        ru="Наш партнер по доставкам «BTS Express Cargo Servis» - один из немногих
+      лидеров логистического рынка, который обеспечивает быструю доставку
+      каждому клиенту не только в Узбекистане, но и за рубежом."
+      />
+    </p>
+    <p class="pb-3">
+      <translate
+        uz="Toshkent shahrida tezkor yetkazib berish bir ish kuni ichida amalga oshiriladi
+      O'zbekiston hududlari bo'yicha 3-4 ish kuni"
+        ru="Express доставка по Ташкенту осуществляется в течение одного рабочего дня
+      по регионам Узбекистана 3-4 рабочего дня"
+      />
+    </p>
+    <p>
+      <translate
+        uz="*kartangizni yetkazib berishimiz uchun aniq manzilni ko'rsating
+      belgilangan vaqt oralig'ida baxt."
+        ru="*пожалуйста укажите точный адрес чтобы мы могли доставить вашу карту
+      счастья в указанные сроки."
+      />
+    </p>
+  </div>
+</ng-template>

@@ -1,0 +1,12 @@
+.feedback {
+  gap: 20px;
+  display: grid;
+  padding: 10px;
+
+  ion-title {
+    text-align: center;
+  }
+  ion-button {
+    width: 100%;
+  }
+}

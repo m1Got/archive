@@ -1,0 +1,309 @@
+<section class="py-4 md:py-8">
+  <div class="container">
+    <app-stories />
+  </div>
+</section>
+<section class="py-4 md:py-8">
+  <div class="container">
+    <swiper [config]="bannerConfig" class="rounded-[--rounded-lg]">
+      <ng-template
+        swiperSlide
+        *ngFor="let banner of bannerItems; let index = index"
+        class="bg-primary p-[min(7vw,_70px)]"
+      >
+        <div class="relative z-10 grid gap-5 pb-5 md:flex md:pb-0">
+          <div class="flex flex-[55%] flex-col justify-center text-white">
+            <h3
+              class="pb-5 text-[clamp(30px,_4vw,_48px)] font-semibold leading-[120%]"
+            >
+              Работа выполняется с Profi24.uz {{ index + 1 }}
+            </h3>
+            <p class="pb-[min(4vw,_40px)] text-lg md:w-1/2">
+              {{ index + 1 }} 27 000 клиентов доверили дела профи
+            </p>
+            <button
+              class="self-start"
+              shape="rounded"
+              appearance="accent"
+              tuiButton
+            >
+              Найти специалиста
+            </button>
+          </div>
+          <div class="flex-[45%]">
+            <img
+              class="h-full w-full object-contain"
+              src="images/main-banner.png"
+              alt=""
+            />
+          </div>
+        </div>
+        <div
+          class="absolute -bottom-20 -right-20 z-[-1] hidden aspect-square h-full rounded-full bg-fire md:block"
+        ></div>
+      </ng-template>
+    </swiper>
+    <div class="relative bottom-8 z-10 flex justify-center">
+      <div
+        class="flex justify-center [&>span]:h-4 [&>span]:w-4 [&>span]:bg-white"
+        data-banner-pagination
+      ></div>
+    </div>
+  </div>
+</section>
+<section class="py-2 md:py-4">
+  <div class="container">
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <article class="flex rounded-full p-2 shadow-md md:shadow-xl">
+        <button
+          icon="icons/builder-checkmark.svg"
+          shape="rounded"
+          class="mr-3"
+          tuiIconButton
+        ></button>
+        <div>
+          <h6 class="text-xl font-bold text-primary">10 707</h6>
+          <p class="text-medium">Анкет с контактами мастеров</p>
+        </div>
+      </article>
+      <article class="flex rounded-full p-2 shadow-md md:shadow-xl">
+        <button
+          icon="icons/chat-message.svg"
+          shape="rounded"
+          class="mr-3"
+          tuiIconButton
+        ></button>
+        <div>
+          <h6 class="text-xl font-bold text-primary">1 726</h6>
+          <p class="text-medium">Специалистов с отличными отзывами</p>
+        </div>
+      </article>
+      <article class="flex rounded-full p-2 shadow-md md:shadow-xl">
+        <button
+          icon="icons/chat-message.svg"
+          shape="rounded"
+          class="mr-3"
+          tuiIconButton
+        ></button>
+        <div>
+          <h6 class="text-xl font-bold text-primary">7460</h6>
+          <p class="text-medium">Заявок мы принимаем ежедневно</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="py-3 md:py-6">
+  <div class="container">
+    <app-search />
+  </div>
+</section>
+<section class="py-5 md:py-10">
+  <div class="container">
+    <div class="rounded-3xl bg-light px-3 py-5 md:px-7 md:py-10">
+      <div class="flex items-center justify-between">
+        <h3 class="title">Специалисты по категориям</h3>
+      </div>
+      <div
+        class="mt-6 grid justify-center gap-5 sm:grid-cols-2 lg:grid-cols-3"
+      >
+        <ion-card class="card h-52" color="primary">
+          <tui-scrollbar>
+            <div tuiFade="vertical" tuiScrollable class="h-36 overflow-auto">
+              <h6 class="text-xl font-semibold">Электрика</h6>
+              <p class="text-base">Аварийный электрик</p>
+              <p class="text-base">Розетки и выключатели</p>
+              <p class="text-base">Розетки и выключатели</p>
+              <p class="text-base">Прокладка кабеля</p>
+              <p class="text-base">Прокладка кабеля</p>
+              <p class="text-base">Электрощиты</p>
+              <p class="text-base">Умный дом</p>
+              <p class="text-base">Умный дом</p>
+              <p class="text-base">Умный дом</p>
+            </div>
+          </tui-scrollbar>
+        </ion-card>
+        <ion-card class="card h-52">
+          <h5 class="text-xl font-semibold">Сантехника</h5>
+          <img
+            class="absolute -bottom-5 -right-5 h-44 w-44 object-contain"
+            src="images/category-01.png"
+            alt=""
+          />
+        </ion-card>
+        <ion-card class="card h-52">
+          <h5 class="text-xl font-semibold">Сборка мебели</h5>
+          <img
+            class="absolute -bottom-5 -right-5 h-44 w-44 object-contain"
+            src="images/category-02.png"
+            alt=""
+          />
+        </ion-card>
+        <ion-card class="card h-52 justify-center" color="primary">
+          <h5 class="mb-3 px-4 text-center text-2xl">
+            Хотите получать заявки от Profi24.uz?
+          </h5>
+          <button class="mx-3" tuiButton appearance="accent" shape="rounded">
+            Стать специалистом
+          </button>
+        </ion-card>
+      </div>
+      <div class="flex justify-center py-3">
+        <button tuiButton appearance="accent" shape="rounded">
+          Все категории
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="py-4 md:py-8">
+  <div class="container">
+    <div class="flex items-center justify-between">
+      <h3 class="title">Как это работает</h3>
+    </div>
+    <div
+      class="grid justify-center gap-4 py-4 sm:grid-cols-2 md:grid-cols-3 md:py-8"
+    >
+      <ion-card class="card group text-center [&>*]:transition-colors">
+        <h6
+          class="text-left text-2xl font-semibold text-lightgrey group-hover:text-primary"
+        >
+          01
+        </h6>
+        <img
+          class="h-44 object-contain"
+          src="images/howit-work/01.png"
+          alt=""
+        />
+        <h5
+          class="mb-4 mt-7 text-xl font-semibold text-dark group-hover:text-primary"
+        >
+          Создайте заказ
+        </h5>
+        <p class="mx-auto w-4/5 text-base text-medium">
+          Опишите, что и когда нужно сделать
+        </p>
+      </ion-card>
+      <ion-card class="card group text-center">
+        <h6
+          class="text-left text-2xl font-semibold text-lightgrey group-hover:text-primary"
+        >
+          02
+        </h6>
+        <img
+          class="h-44 object-contain"
+          src="images/howit-work/02.png"
+          alt=""
+        />
+        <h5
+          class="mb-4 mt-7 text-xl font-semibold text-dark group-hover:text-primary"
+        >
+          Выберите специалиста
+        </h5>
+        <p class="mx-auto w-4/5 text-base text-medium">
+          Выберите компетентного специалиста для выполнения работы
+        </p>
+      </ion-card>
+      <ion-card class="card group text-center">
+        <h6
+          class="text-left text-2xl font-semibold text-lightgrey group-hover:text-primary"
+        >
+          03
+        </h6>
+        <img
+          class="h-44 object-contain"
+          src="images/howit-work/03.png"
+          alt=""
+        />
+        <h5
+          class="mb-4 mt-7 text-xl font-semibold text-dark group-hover:text-primary"
+        >
+          Закройте заказ
+        </h5>
+        <p class="mx-auto w-4/5 text-base text-medium">
+          Выберите компетентного специалиста для выполнения работы
+        </p>
+      </ion-card>
+    </div>
+    <div class="text-center text-lg font-semibold">
+      <a href="#" class="text-primary">Создайте заказ</a>
+      <span class="ml-2">
+        прямо сейчас и найдите специалиста за считанные минуты!
+      </span>
+    </div>
+  </div>
+</section>
+<section class="py-4 md:py-8">
+  <div class="container">
+    <div class="flex items-center justify-between">
+      <h3 class="title">Топовые исполнители</h3>
+      <button size="m" tuiButton shape="rounded">Все</button>
+    </div>
+    <app-performers [isSlider]="true" />
+  </div>
+</section>
+<section class="py-4 md:py-8">
+  <div class="container">
+    <div
+      class="grid gap-[min(4vw,_40px)] rounded-[--rounded-lg] bg-light px-[min(3vw,_70px)] md:grid-cols-2"
+    >
+      <div class="flex flex-col justify-center py-[min(6vw,_90px)] md:mr-8">
+        <h3 class="pb-5 text-3xl font-semibold md:text-5xl">Вы профи?</h3>
+        <p class="pb-[min(4vw,_40px)] text-lg md:w-1/2">
+          Выбирайте заказы и работайте на себя
+        </p>
+        <button class="self-start" shape="rounded" tuiButton>Подробнее</button>
+      </div>
+      <div class="relative overflow-hidden">
+        <div
+          class="h-hull top-6 grid w-full items-start gap-4 p-3 md:absolute md:grid-cols-2"
+        >
+          <div class="mt-8 hidden gap-4 md:grid">
+            <article class="cursor-pointer rounded-2xl bg-white p-4 shadow-lg">
+              <h3 class="pb-4 text-base font-medium">Английский язык</h3>
+              <p class="text-sm text-medium">450 000 Сум</p>
+            </article>
+            <article class="cursor-pointer rounded-2xl bg-white p-4 shadow-lg">
+              <h3 class="pb-4 text-base font-medium">Логотипы</h3>
+              <p class="text-sm text-medium">600 000 Сум</p>
+            </article>
+            <article class="cursor-pointer rounded-2xl bg-white p-4 shadow-lg">
+              <h3 class="pb-4 text-base font-medium">Стирка ковров</h3>
+              <p class="text-sm text-medium">12 000 Сум</p>
+            </article>
+          </div>
+          <div class="grid gap-4">
+            <article class="cursor-pointer rounded-2xl bg-white p-4 shadow-lg">
+              <h3 class="pb-4 text-base font-medium">Ищу переводчика</h3>
+              <p class="text-sm text-medium">500 000 Сум</p>
+            </article>
+            <article class="cursor-pointer rounded-2xl bg-white p-4 shadow-lg">
+              <h3 class="pb-4 text-base font-medium">Разработка сайта</h3>
+              <p class="text-sm text-medium">34 000 000 Сум</p>
+            </article>
+            <article class="cursor-pointer rounded-2xl bg-white p-4 shadow-lg">
+              <h3 class="pb-4 text-base font-medium">Нужен дизайнер</h3>
+              <p class="text-sm text-medium">6 000 000 Сум</p>
+            </article>
+            <article class="cursor-pointer rounded-2xl bg-white p-4 shadow-lg">
+              <h3 class="pb-4 text-base font-medium">Нужен Электрик</h3>
+              <p class="text-sm text-medium">60 000 Сум</p>
+            </article>
+          </div>
+        </div>
+        <div class="fade"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="py-4 md:py-8">
+  <div class="container">
+    <div class="flex items-center justify-between">
+      <h3 class="title">Заявки Profi 24</h3>
+      <button size="m" tuiButton shape="rounded">Все</button>
+    </div>
+    <app-requests [isSlider]="true" />
+  </div>
+</section>
+<app-download />
+<app-faq />

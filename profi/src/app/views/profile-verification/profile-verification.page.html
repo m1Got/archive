@@ -1,0 +1,74 @@
+<div class="max-w-2xl">
+  <span class="text-sm text-primary"></span>
+  <ion-segment [(ngModel)]="activeSegment">
+    <ion-segment-button value="id_card">
+      <ion-label>ID карта</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="passport">
+      <ion-label>Паспорт</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div class="grid gap-5 pt-5">
+    <div class="grid gap-5 md:grid-cols-2">
+      <label tuiLabel="Серия">
+        <tui-select [tuiTextfieldLabelOutside]="true" [formControl]="">
+          Выберите серию
+          <input tuiTextfield />
+          <tui-data-list *tuiDataList>
+            <button tuiOption value="Категория 1">AC 1</button>
+            <button tuiOption value="Категория 2">AC 2</button>
+            <button tuiOption value="Категория 3">AC 3</button>
+          </tui-data-list>
+        </tui-select>
+      </label>
+      <label tuiLabel="Номер паспорта">
+        <tui-input [tuiTextfieldLabelOutside]="true" [formControl]="">
+          Введите номер паспорта
+          <input tuiTextfield />
+        </tui-input>
+      </label>
+    </div>
+    <tui-input-files *ngIf="!control.value" [formControl]="control">
+      <input
+        accept="image/*"
+        capture="user"
+        title="Choose files (no limits)"
+        tuiInputFiles
+      />
+      <ng-template let-dragged>
+        <div *ngIf="dragged; else base" class="content">
+          <tui-marker-icon mode="link" src="tuiIconDropletLarge" />
+          Drop it like it's hot!
+        </div>
+        <ng-template #base>
+          <div class="flex items-center gap-4">
+            <tui-marker-icon
+              size="s"
+              mode="link"
+              src="tuiIconUploadCloudLarge"
+            />
+            Прикрепить паспорт
+          </div>
+        </ng-template>
+      </ng-template>
+    </tui-input-files>
+
+    <tui-files class="tui-space_top-1">
+      <tui-file
+        *ngIf="control.valueChanges | async as file"
+        [file]="file"
+        (removed)="removeFile()"
+      ></tui-file>
+    </tui-files>
+
+    <button
+      tuiButton
+      appearance="accent"
+      shape="rounded"
+      class="md:justify-self-start"
+    >
+      Отправить
+    </button>
+  </div>
+</div>

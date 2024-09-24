@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar [ngClass]="{disabled: tariffsLoading$ | async}">
+    <ion-segment (ionChange)="reset()" [(ngModel)]="activeTab">
+      <ion-segment-button value="country">
+        <ion-label>
+          <translate
+            nameRU="Одна страна"
+            nameKZ="Бір мемлекетел"
+            nameEN="One country"
+          />
+        </ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="countries">
+        <ion-label>
+          <translate
+            nameRU="Несколько стран"
+            nameKZ="Көптеген мемлекетел"
+            nameEN="Multiple countries"
+          />
+        </ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+  <ion-toolbar [ngClass]="{disabled: tariffsLoading$ | async}">
+    <ng-container *subscribe="queryCountries$ as queryCountries">
+      <ng-container *ngIf="activeTab === 'country'">
+        <ion-select [(ngModel)]="countryID" (ionChange)="tariffsFilter()">
+          <p slot="label">
+            <translate nameRU="Страна" nameKZ="Мемлекет" nameEN="Country" />
+          </p>
+          <ion-select-option
+            *ngFor="let country of queryCountries.data"
+            [value]="country.id"
+          >
+            {{ country.name }}
+          </ion-select-option>
+        </ion-select>
+      </ng-container>
+      <ng-container *ngIf="activeTab === 'countries'">
+        <ion-select
+          [(ngModel)]="countryIDS"
+          (ionChange)="tariffsFilter()"
+          multiple="true"
+          maxlength="4"
+        >
+          <p slot="label">
+            <translate nameRU="Страны" nameKZ="Мемлекетел" nameEN="Countries" />
+          </p>
+          <ion-select-option
+            *ngFor="let country of queryCountries.data"
+            [disabled]="countryIDS?.length >= 4"
+            [value]="country.id"
+          >
+            {{ country.name }}
+          </ion-select-option>
+        </ion-select>
+      </ng-container>
+    </ng-container>
+  </ion-toolbar>
+  <ion-toolbar [ngClass]="{disabled: tariffsLoading$ | async}">
+    <ion-row>
+      <ion-checkbox
+        (ionChange)="tariffsFilter()"
+        [disabled]="tariffsLoading$ | async"
+        labelPlacement="end"
+        [(ngModel)]="esim"
+        color="light"
+        mode="md"
+      >
+        <translate
+          nameEN="Show E-sim only"
+          nameKZ="Тек E-sim көрсету"
+          nameRU="Показать только E-sim"
+        />
+      </ion-checkbox>
+    </ion-row>
+    <ion-progress-bar
+      *ngIf="tariffsLoading$ | async"
+      type="indeterminate"
+    ></ion-progress-bar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content
+  class="ion-padding"
+  [ngClass]="{disabled: tariffsLoading$ | async}"
+>
+  <ion-refresher
+    slot="fixed"
+    pullMin="100"
+    pullMax="200"
+    snapbackDuration="500"
+    (ionRefresh)="refreshContent($event)"
+  >
+    <ion-refresher-content
+      pullingIcon="refresh-outline"
+      refreshingSpinner="crescent"
+    ></ion-refresher-content>
+  </ion-refresher>
+  <div class="ion-content-scroll-host">
+    <app-tariffs [apiUrl]="'/getTariffs?' + queryParams"></app-tariffs>
+  </div>
+</ion-content>

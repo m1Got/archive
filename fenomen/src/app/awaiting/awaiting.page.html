@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <header class="info-header">
+      <div class="info-header__start"></div>
+      <div class="info-header__end">
+        <ion-buttons slot="start">
+          <ion-back-button text="" icon="close-outline"> </ion-back-button>
+        </ion-buttons>
+      </div>
+    </header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <section>
+    <h1>Ваш заказ ожидает подтверждения</h1>
+    <h2>
+      Мы начнём отдавать заказ в течение 5 минут после Вашего прибытия. В
+      случае, если Вы не успеваете к указанному времени обязательно свяжитесь с
+      нами.
+    </h2>
+    <h4>Доставка</h4>
+    <ion-text>
+      <b>Адрес</b>
+      <span>г. Уфа, ул. Уличная, 10 кв. 77</span>
+    </ion-text>
+    <ion-grid>
+      <label class="radio" size="large">
+        <input type="checkbox" checked />
+        <span>Принят</span>
+      </label>
+      <label class="radio" size="large">
+        <input type="checkbox" />
+        <span>Готовят</span>
+      </label>
+      <label class="radio" size="large">
+        <input type="checkbox" />
+        <span>Готов к выдаче</span>
+      </label>
+    </ion-grid>
+  </section>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button color="danger" fill="outline" expand="block">
+      связаться с нами
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

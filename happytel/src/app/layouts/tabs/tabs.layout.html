@@ -1,0 +1,55 @@
+<div class="px-1">
+  <a
+    size="s"
+    tuiButton
+    appearance="icon"
+    routerLink="/"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <ion-icon class="text-3xl" src="icons/home.svg" />
+  </a>
+</div>
+<div class="px-1">
+  <a
+    size="s"
+    tuiButton
+    appearance="icon"
+    routerLink="/about"
+    routerLinkActive="active"
+  >
+    <ion-icon class="text-3xl" src="icons/building.svg" />
+  </a>
+</div>
+<div class="px-1">
+  <a
+    size="s"
+    tuiButton
+    appearance="icon"
+    routerLink="/rates"
+    routerLinkActive="active"
+  >
+    <ion-icon class="text-3xl" src="icons/simcards.svg" />
+  </a>
+</div>
+<div class="px-1">
+  <a
+    size="s"
+    tuiButton
+    appearance="icon"
+    routerLink="/contacts"
+    routerLinkActive="active"
+  >
+    <ion-icon class="text-3xl" src="icons/location-pin.svg" />
+  </a>
+</div>
+<div class="px-1">
+  <button
+    size="s"
+    tuiButton
+    appearance="icon"
+    (click)="layoutsService.passProfile()"
+  >
+    <ion-icon class="text-3xl" src="icons/profile-fill.svg" />
+  </button>
+</div>

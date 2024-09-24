@@ -1,0 +1,406 @@
+<div class="md:flex">
+  <div class="mb-5 grid grid-cols-2 gap-5 md:flex">
+    <button
+      tuiButton
+      [appearance]="activeTab === 'active' ? 'primary' : 'secondary'"
+      (click)="activeTab = 'active'"
+    >
+      <span class="text-sm font-medium">Активные</span>
+    </button>
+    <button
+      tuiButton
+      [appearance]="activeTab === 'not_active' ? 'primary' : 'secondary'"
+      (click)="activeTab = 'not_active'"
+    >
+      <span class="text-sm font-medium">Неактивные</span>
+    </button>
+  </div>
+  <div class="ml-auto" *ngIf="announcementItems.length">
+    <button
+      tuiButton
+      icon="icons/add-circle.svg"
+      appearance="accent"
+      class="w-full"
+    >
+      Создать
+    </button>
+  </div>
+</div>
+
+<div class="grid gap-5 pt-5" *ngIf="announcementItems.length">
+  <ng-container *ngIf="activeTab === 'active'">
+    <ion-card
+      class="flex rounded-3xl p-4"
+      *ngFor="let announcement of announcementItems"
+    >
+      <div class="hidden md:block">
+        <tui-avatar
+          size="xxl"
+          avatarUrl="images/executor-01.jpg"
+          class="md:mr-6"
+        />
+      </div>
+      <div class="flex flex-auto flex-col gap-2">
+        <div class="grid gap-2">
+          <div class="flex flex-auto">
+            <div class="block md:hidden">
+              <tui-avatar
+                size="xl"
+                avatarUrl="images/executor-01.jpg"
+                class="mr-4"
+              />
+            </div>
+            <div class="grid flex-auto md:flex md:items-center">
+              <p class="line-clamp-3 font-semibold text-dark md:text-lg">
+                Электрика 24/7. Наши Специалисты имеют Большой Опыт!
+              </p>
+              <p
+                class="text-base font-semibold text-dark md:ml-auto md:text-lg"
+              >
+                От 70.000 Сум
+              </p>
+            </div>
+          </div>
+          <div class="grid items-center gap-4 pt-3 md:flex">
+            <div class="flex border-solid border-primary md:border-r">
+              <p class="text-medium">Категория:</p>
+              <span class="px-3">Cантехника</span>
+            </div>
+            <div class="flex border-solid border-primary md:border-r">
+              <p class="text-medium">Город:</p>
+              <span class="px-3">Ташкент</span>
+            </div>
+            <div class="flex">
+              <p class="text-medium">Дата:</p>
+              <span class="px-3">19.10.2023</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex-auto"></div>
+        <div class="grid items-center gap-4 md:flex">
+          <div class="flex flex-wrap gap-2">
+            <button
+              size="s"
+              tuiButton
+              appearance="whiteblock"
+              icon="icons/phone-call.svg"
+            >
+              <span class="pl-1 font-medium">124</span>
+            </button>
+            <button
+              size="s"
+              tuiButton
+              appearance="whiteblock"
+              icon="icons/eye.svg"
+            >
+              <span class="pl-1 font-medium">3654</span>
+            </button>
+            <button
+              size="s"
+              tuiButton
+              appearance="whiteblock"
+              icon="icons/heart.svg"
+            >
+              <span class="pl-1 font-medium">144</span>
+            </button>
+          </div>
+          <div class="ml-auto flex gap-2">
+            <button
+              size="m"
+              tuiIconButton
+              appearance="secondary"
+              icon="icons/trash-delete.svg"
+            ></button>
+            <button
+              size="m"
+              tuiIconButton
+              appearance="secondary"
+              icon="icons/pen-edit.svg"
+              (click)="showDialog(announcementDetail)"
+            ></button>
+            <button size="m" tuiButton>
+              <span class="font-medium">Рекламировать</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </ion-card>
+  </ng-container>
+  <ng-container *ngIf="activeTab === 'not_active'">
+    <ion-card
+      class="flex rounded-3xl p-4"
+      *ngFor="let announcement of announcementItems"
+    >
+      <div class="hidden md:block">
+        <tui-avatar
+          size="xxl"
+          avatarUrl="images/executor-01.jpg"
+          class="md:mr-6"
+        />
+      </div>
+      <div class="flex flex-auto flex-col gap-2">
+        <div class="grid gap-2">
+          <div class="flex flex-auto">
+            <div class="block md:hidden">
+              <tui-avatar
+                size="xl"
+                avatarUrl="images/executor-01.jpg"
+                class="mr-4"
+              />
+            </div>
+            <div class="grid flex-auto md:flex md:items-center">
+              <p class="line-clamp-3 font-semibold text-dark md:text-lg">
+                Электрика 24/7. Наши Специалисты имеют Большой Опыт!
+              </p>
+              <p
+                class="text-base font-semibold text-dark md:ml-auto md:text-lg"
+              >
+                От 70.000 Сум
+              </p>
+            </div>
+          </div>
+          <div class="grid items-center gap-4 pt-3 md:flex">
+            <div class="flex border-solid border-primary md:border-r">
+              <p class="text-medium">Категория:</p>
+              <span class="px-3">Cантехника</span>
+            </div>
+            <div class="flex border-solid border-primary md:border-r">
+              <p class="text-medium">Город:</p>
+              <span class="px-3">Ташкент</span>
+            </div>
+            <div class="flex">
+              <p class="text-medium">Дата:</p>
+              <span class="px-3">19.10.2023</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex-auto"></div>
+        <div class="grid items-center gap-4 md:flex">
+          <div class="flex flex-wrap gap-2">
+            <button
+              size="s"
+              tuiButton
+              appearance="whiteblock"
+              icon="icons/phone-call.svg"
+            >
+              <span class="pl-1 font-medium">124</span>
+            </button>
+            <button
+              size="s"
+              tuiButton
+              appearance="whiteblock"
+              icon="icons/eye.svg"
+            >
+              <span class="pl-1 font-medium">3654</span>
+            </button>
+            <button
+              size="s"
+              tuiButton
+              appearance="whiteblock"
+              icon="icons/heart.svg"
+            >
+              <span class="pl-1 font-medium">144</span>
+            </button>
+          </div>
+          <div class="ml-auto flex gap-2">
+            <button
+              size="m"
+              tuiIconButton
+              appearance="secondary"
+              icon="icons/trash-delete.svg"
+            ></button>
+            <button
+              size="m"
+              tuiIconButton
+              appearance="secondary"
+              icon="icons/pen-edit.svg"
+            ></button>
+            <button size="m" tuiButton appearance="accent">
+              <span class="font-medium">Активировать</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </ion-card>
+  </ng-container>
+</div>
+
+<ng-container *ngIf="!announcementItems.length">
+  <tui-block-status>
+    <img
+      class="h-60 w-60"
+      src="images/block-status/empty-announcement.svg"
+      tuiSlot="top"
+    />
+    <h4>У вас пока нет объявлений</h4>
+    <button tuiButton icon="icons/add-circle.svg">Создать</button>
+  </tui-block-status>
+</ng-container>
+
+<ng-template #announcementDetail>
+  <div class="container">
+    <div class="flex max-w-xl flex-col gap-5">
+      <h2 class="title">Объявления</h2>
+      <label tuiLabel="Краткое описание услуги">
+        <tui-input [tuiTextfieldLabelOutside]="true" [formControl]="">
+          Краткое описание услуги
+          <input tuiTextfield />
+        </tui-input>
+      </label>
+      <label tuiLabel="Расскажите подробнее о вашей услуге">
+        <tui-input [tuiTextfieldLabelOutside]="true" [formControl]="">
+          Расскажите подробнее о вашей услуге
+          <input tuiTextfield />
+        </tui-input>
+      </label>
+      <label tuiLabel="Выберите адрес">
+        <tui-select [tuiTextfieldLabelOutside]="true" [formControl]="">
+          Выберите адрес
+          <input tuiTextfield />
+          <tui-data-list *tuiDataList>
+            <button tuiOption value="Сантехника 1">
+              Сантехника, ремонт квартир, дом тут
+            </button>
+            <button tuiOption value="Сантехника 2">
+              Сантехника, ремонт квартир, дом тут
+            </button>
+            <button tuiOption value="Сантехника 3">
+              Сантехника, ремонт квартир, дом тут
+            </button>
+          </tui-data-list>
+        </tui-select>
+      </label>
+      <label tuiLabel="Выберите специальность">
+        <tui-select [tuiTextfieldLabelOutside]="true" [formControl]="">
+          Выберите специальность
+          <input tuiTextfield />
+          <tui-data-list *tuiDataList>
+            <button tuiOption value="Сантехника 1">
+              Выберите специалность
+            </button>
+          </tui-data-list>
+        </tui-select>
+      </label>
+      <div class="grid grid-cols-3 gap-2">
+        <div>
+          <tui-input-files *ngIf="!file1.value" [formControl]="file1">
+            <input
+              accept="image/*"
+              capture="user"
+              title="Choose files (no limits)"
+              tuiInputFiles
+            />
+            <ng-template let-dragged>
+              <div *ngIf="dragged; else base" class="content">
+                <tui-marker-icon mode="link" src="tuiIconDropletLarge" />
+                Drop it like it's hot!
+              </div>
+              <ng-template #base>
+                <div class="flex flex-col items-center gap-4">
+                  <tui-marker-icon
+                    size="s"
+                    mode="link"
+                    src="tuiIconUploadCloudLarge"
+                  />
+                  Добавьте фото к описанию услуги
+                </div>
+              </ng-template>
+            </ng-template>
+          </tui-input-files>
+          <tui-file
+            *ngIf="file1.valueChanges | async as file"
+            [file]="file"
+            (removed)="removeFile(file1)"
+          ></tui-file>
+        </div>
+        <div>
+          <tui-input-files *ngIf="!file2.value" [formControl]="file2">
+            <input
+              accept="image/*"
+              capture="user"
+              title="Choose files (no limits)"
+              tuiInputFiles
+            />
+            <ng-template let-dragged>
+              <div *ngIf="dragged; else base" class="content">
+                <tui-marker-icon mode="link" src="tuiIconDropletLarge" />
+                Drop it like it's hot!
+              </div>
+              <ng-template #base>
+                <div class="flex flex-col items-center gap-4">
+                  <tui-marker-icon
+                    size="s"
+                    mode="link"
+                    src="tuiIconUploadCloudLarge"
+                  />
+                  Добавьте фото к описанию услуги
+                </div>
+              </ng-template>
+            </ng-template>
+          </tui-input-files>
+          <tui-file
+            *ngIf="file2.valueChanges | async as file"
+            [file]="file"
+            (removed)="removeFile(file2)"
+          ></tui-file>
+        </div>
+      </div>
+      <ion-toggle
+        [checked]="true"
+        justify="start"
+        [enableOnOffLabels]="true"
+        class="py-2"
+      >
+        Поднять в TOP
+      </ion-toggle>
+      <label tuiLabel="Выберите специалность">
+        <tui-input [tuiTextfieldLabelOutside]="true" [formControl]="">
+          7 дней
+          <input tuiTextfield />
+        </tui-input>
+      </label>
+      <p>
+        Вы можете поднять в ваше объвление в TOP на 3 дня что даст преимущество
+        среди остальных исполнителей. Стоимость услуги
+        <span class="text-primary">6 000 UZS</span>
+      </p>
+      <div class="grid gap-5 md:grid-cols-2">
+        <label tuiLabel="Услуги 1#">
+          <tui-input [tuiTextfieldLabelOutside]="true" [formControl]="">
+            Название услуги
+            <input tuiTextfield />
+          </tui-input>
+        </label>
+        <label tuiLabel="Стоимость услуги">
+          <tui-input [tuiTextfieldLabelOutside]="true" [formControl]="">
+            Введите сумму
+            <input tuiTextfield />
+          </tui-input>
+        </label>
+      </div>
+      <div class="flex justify-center">
+        <button
+          icon="icons/add-circle.svg"
+          shape="rounded"
+          tuiIconButton
+        ></button>
+      </div>
+      <ion-toggle
+        [checked]="true"
+        justify="start"
+        [enableOnOffLabels]="true"
+        class="py-2"
+      >
+        Договорная
+      </ion-toggle>
+      <button
+        tuiButton
+        shape="rounded"
+        appearance="accent"
+        class="sm:self-start"
+      >
+        Подать объявления
+      </button>
+    </div>
+  </div>
+</ng-template>

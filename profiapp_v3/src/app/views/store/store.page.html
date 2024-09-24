@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="px-2">
+      <ion-progress-bar color="light" type="indeterminate" />
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="absolute left-0 top-0 h-full w-full">
+    <img class="h-full w-full object-cover" src="assets/images/store.png" />
+  </div>
+  <div
+    class="absolute bottom-8 left-1/2 -translate-x-1/2"
+    (click)="navCtrl.back()"
+  >
+    <button
+      tuiButton
+      appearance="secondary"
+      shape="rounded"
+      class="icon-button"
+      size="m"
+    >
+      <ion-icon src="assets/icons/close-outline.svg" />
+    </button>
+  </div>
+</ion-content>

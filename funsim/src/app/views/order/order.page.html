@@ -1,0 +1,383 @@
+<ng-container *subscribe="queryTariff$ as queryTariff">
+  <ng-container *ngIf="queryTariff.data as tariff">
+    <ion-header>
+      <ion-toolbar>
+        <header>
+          <ion-buttons slot="start">
+            <ion-back-button text=""></ion-back-button>
+          </ion-buttons>
+          <ion-title>
+            <translate
+              nameEN="MAKE A REQUEST"
+              nameKZ="СҰРАНЫМ ЖАСАУ"
+              nameRU="ОФОРМИТЬ ЗАЯВКУ"
+            />
+          </ion-title>
+        </header>
+        <ion-progress-bar
+          *ngIf="queryTariff.isLoading"
+          type="indeterminate"
+        ></ion-progress-bar>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content [fullscreen]="true" class="ion-padding">
+      <ion-card class="order-card">
+        <div class="order-card--header">
+          <ion-title size="sm" underline>
+            <h5 class="ion-text-wrap">{{ tariff.name }}</h5>
+          </ion-title>
+          <ion-text class="order-card--price">
+            {{ tariff.price_sell | mask : "separator.3" : { thousandSeparator:
+            '.', showMaskTyped: false} }} ₸
+          </ion-text>
+        </div>
+        <ion-grid>
+          <li class="order-card--item">
+            <b>{{ tariff.expiry_day ?? "-" }}</b>
+            <span>
+              <translate
+                nameEN="active days"
+                nameKZ="белсенді күндер"
+                nameRU="активных дней"
+              />
+            </span>
+          </li>
+          <li
+            class="order-card--item"
+            *ngIf="tariff.quantity_internet as internet"
+          >
+            <b *ngIf="tariff.quantity_internet as internet">
+              <i *ngIf="internet.split(' ')[internet.split(' ').length - 2]">
+                {{ internet.split(" ")[internet.split(" ").length - 2] }}
+              </i>
+              <ng-container
+                *ngIf="internet.split(' ')[internet.split(' ').length - 1].includes('Безлимит')"
+              >
+                <ion-icon name="infinite-outline"></ion-icon>
+              </ng-container>
+              <ng-container
+                *ngIf="
+                !internet
+                  .split(' ')
+                  [internet.split(' ').length - 1].includes('Безлимит')
+              "
+              >
+                {{ internet.split(" ")[internet.split(" ").length - 1] }}
+              </ng-container>
+            </b>
+            <b *ngIf="!tariff.quantity_internet"> - </b>
+            <span>
+              <translate
+                nameEN="Internet traffic"
+                nameKZ="Интернет трафигі"
+                nameRU="интернет трафика"
+              />
+            </span>
+          </li>
+          <li class="order-card--item">
+            <b>{{ tariff.quantity_sms ?? "-" }}</b>
+            <span>
+              <translate nameEN="sms" nameKZ="sms" nameRU="смс" />
+            </span>
+          </li>
+          <li class="order-card--item">
+            <b>{{ tariff.quantity_minut ?? "-" }}</b>
+            <span>
+              <translate nameEN="minutes" nameKZ="минут" nameRU="минут" />
+            </span>
+          </li>
+        </ion-grid>
+        <div class="order-card--row">
+          <b class="ion-padding-end">
+            {{ tariff.tariff_128 ? "128 кбит/сек" : "" }} {{ tariff.tariff_256 ?
+            "256 кбит/сек" : "" }} {{ tariff.tariff_384 ? "384 кбит/сек" : "" }}
+          </b>
+          <span
+            *ngIf="tariff.tariff_128 || tariff.tariff_256 || tariff.tariff_384"
+          >
+            <ion-icon name="infinite-outline"></ion-icon>
+          </span>
+        </div>
+        <div class="order-sims">
+          <ion-checkbox
+            checked
+            mode="md"
+            labelPlacement="end"
+            *ngIf="tariff.esim"
+          >
+            <translate
+              nameEN="E-sim available"
+              nameKZ="E-sim қолжетімді"
+              nameRU="Есть E-sim"
+            />
+          </ion-checkbox>
+          <ion-checkbox
+            checked
+            mode="md"
+            labelPlacement="end"
+            *ngIf="tariff.tariff_4g"
+          >
+            4G
+          </ion-checkbox>
+          <ion-checkbox
+            checked
+            mode="md"
+            labelPlacement="end"
+            *ngIf="tariff.tariff_5g"
+          >
+            5G
+          </ion-checkbox>
+          <ion-checkbox
+            checked
+            mode="md"
+            labelPlacement="end"
+            *ngIf="tariff.physical_sim"
+          >
+            <translate
+              nameEN="Physical SIM card"
+              nameKZ="Физикалық SIM картасы"
+              nameRU="Физическая сим-карта"
+            />
+          </ion-checkbox>
+        </div>
+        <p
+          class="order-desc"
+          *ngIf="tariff.description && tariff.description !== '0'"
+        >
+          {{ tariff.description }}
+        </p>
+      </ion-card>
+      <ion-card class="order-card">
+        <ion-grid>
+          <form [formGroup]="form" class="order__card--inputs">
+            <label class="form-group">
+              <span class="form-label">
+                <translate nameEN="Name" nameKZ="Аты" nameRU="Имя" />
+              </span>
+              <input class="form-input" formControlName="name" />
+            </label>
+            <label class="form-group">
+              <span class="form-label">
+                <translate
+                  nameEN="Phone number"
+                  nameKZ="Телефон нөмірі"
+                  nameRU="Номер телефона"
+                />
+              </span>
+              <input
+                inputmode="tel"
+                class="form-input"
+                mask="+0 000 000 00 00"
+                formControlName="phone"
+              />
+            </label>
+          </form>
+        </ion-grid>
+      </ion-card>
+      <ion-card class="order-card">
+        <div class="order-card--header">
+          <ion-title size="sm">
+            <h5>
+              <translate
+                nameEN="Delivery type:"
+                nameKZ="Жеткізу әдісі:"
+                nameRU="Способ доставки:"
+              />
+            </h5>
+          </ion-title>
+        </div>
+        <ion-radio-group [(ngModel)]="deliveryType">
+          <ion-radio value="pickup" mode="md" labelPlacement="end">
+            <ion-icon src="/assets/icons/pickup.svg" color="primary"></ion-icon>
+            <span>
+              <translate
+                nameEN="Pickup"
+                nameKZ="Қолма-қол"
+                nameRU="Самовывоз"
+              />
+            </span>
+          </ion-radio>
+          <!-- <ion-radio value="delivery" mode="md" labelPlacement="end">
+            <ion-icon
+              src="/assets/icons/delivery.svg"
+              color="primary"
+            ></ion-icon>
+            <span>
+              <translate nameEN="Delivery" nameKZ="Жеткізу" nameRU="Доставка" />
+            </span>
+          </ion-radio> -->
+        </ion-radio-group>
+      </ion-card>
+      <ion-card class="order-card">
+        <div class="order-card--header">
+          <ion-title size="sm">
+            <h5>
+              <translate
+                nameEN="Payment method:"
+                nameKZ="Төлем әдісі:"
+                nameRU="Способ оплаты:"
+              />
+            </h5>
+          </ion-title>
+        </div>
+        <ion-radio-group [(ngModel)]="paymentMethod">
+          <ion-radio value="cash" mode="md" labelPlacement="end">
+            <ion-icon src="/assets/icons/wallet.svg" color="primary"></ion-icon>
+            <span>
+              <translate nameEN="Cash" nameKZ="Ақшаны алу" nameRU="Наличные" />
+            </span>
+          </ion-radio>
+          <!-- <ion-radio value="online" mode="md" labelPlacement="end">
+            <ion-icon
+              src="/assets/icons/credit-cards.svg"
+              color="primary"
+            ></ion-icon>
+            <span>
+              <translate nameEN="Online" nameKZ="Онлайн" nameRU="Онлайн" />
+            </span>
+          </ion-radio> -->
+        </ion-radio-group>
+      </ion-card>
+      <ion-card class="order-card" *ngIf="deliveryType === 'pickup'">
+        <div class="order-card--header">
+          <ion-title size="sm">
+            <h5>
+              <translate
+                nameEN="Information about pick-up points"
+                nameKZ="Алу пункттері туралы ақпарат"
+                nameRU="Информация о пунктах выдачи"
+              />
+            </h5>
+          </ion-title>
+        </div>
+        <ion-grid>
+          <label class="form-group">
+            <input
+              disabled
+              class="form-input"
+              [value]="(agent?.title ?? '') + (agent?.address ? ' - ' : '') + (agent?.address ?? '')"
+            />
+          </label>
+          <ion-button fill="outline" id="points-modal">
+            <translate
+              nameEN="Select a pickup point"
+              nameKZ="Алу нүктесін таңдау"
+              nameRU="Выберите пункт выдачи"
+            />
+          </ion-button>
+          <ion-modal
+            [keepContentsMounted]="true"
+            trigger="points-modal"
+            #pointsModal
+          >
+            <ng-template>
+              <ng-container *subscribe="queryAgents$ as queryAgents">
+                <ion-header>
+                  <ion-toolbar class="ion-no-padding-horizontal">
+                    <ion-title>
+                      <translate
+                        nameEN="Information about pick-up points"
+                        nameKZ="Алу пункттері туралы ақпарат"
+                        nameRU="Информация о пунктах выдачи"
+                      />
+                    </ion-title>
+                    <ion-buttons slot="end">
+                      <ion-button (click)="pointsModal.dismiss()">
+                        <ion-icon name="close-outline" size="large"></ion-icon>
+                      </ion-button>
+                    </ion-buttons>
+                    <ion-progress-bar
+                      *ngIf="queryAgents.isLoading"
+                      type="indeterminate"
+                    ></ion-progress-bar>
+                  </ion-toolbar>
+                </ion-header>
+                <ion-content class="ion-padding">
+                  <section
+                    class="order-points"
+                    *ngIf="queryAgents.data as agents"
+                  >
+                    <ya-map
+                      [zoom]="zoom"
+                      [center]="center || [+agents[0].longtitude, +agents[0].latitude]"
+                      (ready)="onMapReady($event, agents)"
+                      (boundschange)="onBoundsChange()"
+                    >
+                    </ya-map>
+                    <ion-list>
+                      <ion-item *ngFor="let agent of agents">
+                        <ion-label
+                          (click)="setCenterMap(agent)"
+                          [ngStyle]="{
+                            cursor:
+                              agent.longtitude && agent.latitude ? 'pointer' : 'not-allowed'
+                          }"
+                        >
+                          <h2>{{ agent.title }}</h2>
+                          <p>{{ agent.address }}</p>
+                        </ion-label>
+                        <ion-button
+                          size="small"
+                          (click)="sendAgent(agent, pointsModal)"
+                        >
+                          <translate
+                            nameEN="Select"
+                            nameKZ="Таңдау"
+                            nameRU="Выбрать"
+                          />
+                        </ion-button>
+                      </ion-item>
+                    </ion-list>
+                  </section>
+                </ion-content>
+              </ng-container>
+            </ng-template>
+          </ion-modal>
+        </ion-grid>
+      </ion-card>
+      <!--  <ion-card class="order-card" *ngIf="deliveryType === 'delivery'">
+        <div class="order-card--header">
+          <ion-title size="sm">
+            <h5>
+              <translate
+                nameEN="Shipping address"
+                nameKZ="Жеткізілім мекен-жайы"
+                nameRU="Адрес для доставки"
+              />
+            </h5>
+          </ion-title>
+        </div>
+        <ion-grid>
+          <ion-text color="medium">
+            <translate
+              nameEN="Kazakhstan"
+              nameKZ="Казахстан"
+              nameRU="Казахстан"
+            />, {{ location }}
+          </ion-text>
+          <label class="form-group">
+            <input class="form-input" [(ngModel)]="location" />
+          </label>
+        </ion-grid>
+      </ion-card> -->
+    </ion-content>
+
+    <ion-footer>
+      <ion-toolbar color="light">
+        <ion-button
+          fill="outline"
+          class="ion-margin-top"
+          expand="block"
+          (click)="onSubmit(tariff)"
+          [disabled]="form.invalid || !agent?.id || (isSubmitting$ | async)"
+        >
+          <translate
+            nameEN="Submit a request"
+            nameKZ="Сұраныс жіберу'"
+            nameRU="Оформить заявку"
+          />
+        </ion-button>
+      </ion-toolbar>
+    </ion-footer>
+  </ng-container>
+</ng-container>

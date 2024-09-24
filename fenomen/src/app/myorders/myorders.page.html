@@ -1,0 +1,136 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <header class="header">
+      <div class="header-start">
+        <ion-buttons slot="start">
+          <ion-back-button text="" icon="arrow-back-outline"> </ion-back-button>
+        </ion-buttons>
+      </div>
+      <div class="header-center">
+        <ion-text class="header-title">мои заказы</ion-text>
+      </div>
+      <div class="header-end"></div>
+    </header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <h2 class="page-title">Июнь <ion-text color="medium">2023</ion-text></h2>
+  <section class="myorders-items">
+    <article class="stretch" routerLink="/myorder" routerDirection="forward">
+      <div class="stretch__images">
+        <img src="assets/images/order-1.jpg" />
+        <img src="assets/images/order-2.jpg" />
+        <img src="assets/images/order-3.jpg" />
+      </div>
+      <div class="stretch__body">
+        <div class="stretch__top">
+          <div class="stretch__text">
+            <h5 class="stretch__title">Заказ #777777</h5>
+            <p class="stretch__info">Доставка</p>
+            <p class="stretch__info">19.06.2023 в 22:37</p>
+          </div>
+          <div class="stretch__status">
+            <ion-button class="mark" color="green" expand="block">
+              завершен
+            </ion-button>
+          </div>
+        </div>
+        <div class="stretch__bottom">
+          <div class="stretch__price">
+            <ion-text class="current-price">3000 ₽</ion-text>
+          </div>
+          <div class="stretch__bonus">
+            <ion-icon src="assets/icon/phi.svg"></ion-icon>
+            <ion-text>+210</ion-text>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="stretch">
+      <div class="stretch__images">
+        <img src="assets/images/order-1.jpg" />
+        <img src="assets/images/order-2.jpg" />
+        <img src="assets/images/order-3.jpg" />
+      </div>
+      <div class="stretch__body">
+        <div class="stretch__top">
+          <div class="stretch__text">
+            <h5 class="stretch__title">Заказ #777777</h5>
+            <p class="stretch__info">Доставка</p>
+            <p class="stretch__info">19.06.2023 в 22:37</p>
+          </div>
+          <div class="stretch__status">
+            <ion-button class="mark" color="red" expand="block">
+              не выполнен
+            </ion-button>
+          </div>
+        </div>
+        <div class="stretch__bottom">
+          <div class="stretch__price">
+            <ion-text class="current-price">3000 ₽</ion-text>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="stretch">
+      <div class="stretch__images">
+        <img src="assets/images/order-1.jpg" />
+        <img src="assets/images/order-2.jpg" />
+        <img src="assets/images/order-3.jpg" />
+      </div>
+      <div class="stretch__body">
+        <div class="stretch__top">
+          <div class="stretch__text">
+            <h5 class="stretch__title">Заказ #777777</h5>
+            <p class="stretch__info">Доставка</p>
+            <p class="stretch__info">19.06.2023 в 22:37</p>
+          </div>
+          <div class="stretch__status">
+            <ion-button class="mark" color="medium" expand="block">
+              отменен
+            </ion-button>
+          </div>
+        </div>
+        <div class="stretch__bottom">
+          <div class="stretch__price">
+            <ion-text class="current-price">3000 ₽</ion-text>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+  <h2 class="page-title">Июнь <ion-text color="medium">2023</ion-text></h2>
+  <section class="myorders-items">
+    <article class="stretch">
+      <div class="stretch__images">
+        <img src="assets/images/order-1.jpg" />
+        <img src="assets/images/order-2.jpg" />
+        <img src="assets/images/order-3.jpg" />
+      </div>
+      <div class="stretch__body">
+        <div class="stretch__top">
+          <div class="stretch__text">
+            <h5 class="stretch__title">Заказ #777777</h5>
+            <p class="stretch__info">Доставка</p>
+            <p class="stretch__info">19.06.2023 в 22:37</p>
+          </div>
+          <div class="stretch__status">
+            <ion-button class="mark" color="green" expand="block">
+              завершен
+            </ion-button>
+          </div>
+        </div>
+        <div class="stretch__bottom">
+          <div class="stretch__price">
+            <ion-text class="current-price">3000 ₽</ion-text>
+          </div>
+          <div class="stretch__bonus">
+            <ion-icon src="assets/icon/phi.svg"></ion-icon>
+            <ion-text>+210</ion-text>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+</ion-content>

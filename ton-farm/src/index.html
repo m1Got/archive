@@ -1,0 +1,186 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTMX + Tailwind + Vite Project</title>
+
+    <script defer type="module" src="scripts/main.ts"></script>
+  </head>
+
+  <body>
+    <div class="wrapper border-radiant">
+      <main>
+        <div class="profile-card">
+          <div class="main-circle-gradient h-11 w-11 p-1">
+            <img class="rounded-[50%]" src="images/avatars/01.png" />
+          </div>
+          <div class="pl-2">
+            <p class="text-sm text-white">Nick Jay</p>
+            <p class="font-pixeboy text-amber-400">Level 8</p>
+          </div>
+          <div class="ml-auto mr-10">
+            <div class="flex items-center font-geist-mono text-blue-400">
+              <p>28,5</p>
+              <span class="pl-2 text-xs">TON</span>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-2 py-2">
+          <div class="main-action--cyan">
+            <img class="w-8" src="images/icons/ton-hour.png" />
+            <div class="pl-2">
+              <p class="text-xs">Income power</p>
+              <p class="font-geist-mono font-semibold text-green-300">
+                4.54 TON/h
+              </p>
+            </div>
+            <div class="bg-shape--cyan"></div>
+          </div>
+          <div class="main-action--fuchsia">
+            <img class="w-6" src="images/icons/ton.png" />
+            <div class="pl-3">
+              <p class="text-xs">Total mined</p>
+              <p class="font-geist-mono font-semibold text-blue-400">247 TON</p>
+            </div>
+            <div class="bg-shape--fuchsia"></div>
+          </div>
+        </div>
+        <div class="grid h-[75%] grid-cols-2 gap-2 py-2">
+          <a href="/store" class="grid max-h-[30svh] items-start">
+            <div class="main-action--cyan">
+              <div class="text-sm text-blue-400">Level 1</div>
+              <div class="ml-auto flex items-center">
+                <p class="pr-1 font-geist-mono text-green-400">56%</p>
+                <svg class="circle-progress" width="26" height="26">
+                  <defs>
+                    <linearGradient
+                      id="gradient"
+                      gradientUnits="userSpaceOnUse"
+                      x1="0"
+                      y1="0"
+                      x2="24"
+                      y2="24"
+                    >
+                      <stop offset="0%" stop-color="#00ff9f" />
+                      <stop offset="100%" stop-color="#3a35ff" />
+                    </linearGradient>
+                  </defs>
+                  <circle
+                    stroke="url(#gradient)"
+                    style="--percentage: 56"
+                  ></circle>
+                </svg>
+              </div>
+            </div>
+            <div class="flex justify-center self-end">
+              <img class="max-h-[19svh]" src="images/sections/shop.png" />
+            </div>
+          </a>
+          <a href="/power-station" class="grid max-h-[30svh] items-start">
+            <div class="main-action--cyan">
+              <div class="text-sm text-blue-400">Level 1</div>
+              <div class="ml-auto flex items-center">
+                <p class="pr-1 font-geist-mono text-green-400">50%</p>
+                <svg class="circle-progress" width="26" height="26">
+                  <defs>
+                    <linearGradient
+                      id="gradient"
+                      gradientUnits="userSpaceOnUse"
+                      x1="0"
+                      y1="0"
+                      x2="24"
+                      y2="24"
+                    >
+                      <stop offset="0%" stop-color="#00ff9f" />
+                      <stop offset="100%" stop-color="#3a35ff" />
+                    </linearGradient>
+                  </defs>
+                  <circle
+                    stroke="url(#gradient)"
+                    style="--percentage: 50"
+                  ></circle>
+                </svg>
+              </div>
+            </div>
+            <div class="flex justify-center self-end">
+              <img
+                class="max-h-[19svh]"
+                src="images/sections/power-station.png"
+              />
+            </div>
+          </a>
+          <a href="/farm" class="grid max-h-[30svh] items-start">
+            <div class="main-action--cyan">
+              <div class="text-sm text-blue-400">Level 1</div>
+              <div class="ml-auto flex items-center">
+                <p class="pr-1 font-geist-mono text-green-400">89%</p>
+                <svg class="circle-progress" width="26" height="26">
+                  <defs>
+                    <linearGradient
+                      id="gradient"
+                      gradientUnits="userSpaceOnUse"
+                      x1="0"
+                      y1="0"
+                      x2="24"
+                      y2="24"
+                    >
+                      <stop offset="0%" stop-color="#00ff9f" />
+                      <stop offset="100%" stop-color="#3a35ff" />
+                    </linearGradient>
+                  </defs>
+                  <circle
+                    stroke="url(#gradient)"
+                    style="--percentage: 89"
+                  ></circle>
+                </svg>
+              </div>
+            </div>
+            <div class="flex justify-center self-center">
+              <img class="max-h-[19svh]" src="images/sections/farm.png" />
+            </div>
+          </a>
+          <a href="/workshop" class="grid max-h-[30svh] items-start">
+            <div class="main-action--cyan">
+              <div class="text-sm text-blue-400">Level 1</div>
+              <div class="ml-auto flex items-center">
+                <p class="pr-1 font-geist-mono text-green-400">24%</p>
+                <svg class="circle-progress" width="26" height="26">
+                  <defs>
+                    <linearGradient
+                      id="gradient"
+                      gradientUnits="userSpaceOnUse"
+                      x1="0"
+                      y1="0"
+                      x2="24"
+                      y2="24"
+                    >
+                      <stop offset="0%" stop-color="#00ff9f" />
+                      <stop offset="100%" stop-color="#3a35ff" />
+                    </linearGradient>
+                  </defs>
+                  <circle
+                    stroke="url(#gradient)"
+                    style="--percentage: 24"
+                  ></circle>
+                </svg>
+              </div>
+            </div>
+            <div class="flex justify-center self-center">
+              <img class="max-h-[19svh]" src="images/sections/workshop.png" />
+            </div>
+          </a>
+        </div>
+      </main>
+
+      <img
+        class="absolute bottom-0 left-0 h-[90svh] w-full"
+        src="images/main-bg.png"
+      />
+      <div
+        hx-get="layouts/tabs.htm"
+        hx-trigger="load"
+        hx-swap="outerHTML"
+      ></div>
+    </div>
+  </body>
+</html>

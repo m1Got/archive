@@ -1,0 +1,23 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <section class="qrcode">
+    <button class="qrcode-close" (click)="back()">
+      <ion-icon src="assets/icon/close.svg"></ion-icon>
+    </button>
+    <h5 class="qrcode-title">у Вас 1,200 бонусов</h5>
+    <p class="qrcode-subtitle">
+      Покажите QR-код официанту <br />
+      для их списания
+    </p>
+    <div class="qrcode-body">
+      <div class="qrcode-img">
+        <img src="assets/qrcode.png" />
+      </div>
+      <p>Виртуальная карта <b>№ 7777</b></p>
+    </div>
+  </section>
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-button class="qrcode-submit" (click)="back()">Закрыть</ion-button>
+  </ion-toolbar>
+</ion-footer>

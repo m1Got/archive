@@ -1,0 +1,37 @@
+:host {
+  color: var(--ion-color-dark);
+}
+
+header > :not(p) {
+  line-height: 1.8;
+  text-align: center;
+  margin-inline: auto;
+}
+
+header > h1 {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+header > h4 {
+  font-size: 20px;
+}
+
+header > p {
+  padding: 15px 0;
+  line-height: 1.1;
+}
+
+section > article {
+  padding: 5px 0;
+}
+
+section > article h5 {
+  padding: 10px 0;
+  font-weight: 600;
+}
+
+section > article p {
+  padding: 5px 0;
+  line-height: 1.2;
+}

@@ -1,0 +1,79 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="primary-toolbar">
+    <div class="primary-toolbar--inner">
+      <button
+        size="m"
+        shape="rounded"
+        tuiButton
+        appearance="whiteblock"
+        class="icon-button"
+        (click)="navCtrl.back()"
+      >
+        <ion-icon
+          class="text-lg"
+          color="primary"
+          src="assets/icons/chevron-back-outline.svg"
+        />
+      </button>
+      <ion-title>Защита аккаунта</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="flex h-full flex-col justify-center">
+    <p class="text-center text-lg font-semibold text-dark">
+      Введите код для входа
+    </p>
+    <div class="mt-5 flex justify-center gap-2">
+      <ion-badge color="primary">
+        <span class="hidden">numb_1</span>
+      </ion-badge>
+      <ion-badge color="light">
+        <span class="hidden">numb_2</span>
+      </ion-badge>
+      <ion-badge color="light">
+        <span class="hidden">numb_3</span>
+      </ion-badge>
+      <ion-badge color="light">
+        <span class="hidden">numb_4</span>
+      </ion-badge>
+    </div>
+    <div class="mt-6 grid grid-cols-3 justify-items-center gap-8">
+      <button shape="rounded" tuiButton appearance="whiteblock">
+        <span class="text-2xl font-medium">1</span>
+      </button>
+      <button shape="rounded" tuiButton appearance="whiteblock">
+        <span class="text-2xl font-medium">2</span>
+      </button>
+      <button shape="rounded" tuiButton appearance="whiteblock">
+        <span class="text-2xl font-medium">3</span>
+      </button>
+      <button shape="rounded" tuiButton appearance="whiteblock">
+        <span class="text-2xl font-medium">4</span>
+      </button>
+      <button shape="rounded" tuiButton appearance="whiteblock">
+        <span class="text-2xl font-medium">5</span>
+      </button>
+      <button shape="rounded" tuiButton appearance="whiteblock">
+        <span class="text-2xl font-medium">6</span>
+      </button>
+      <button shape="rounded" tuiButton appearance="whiteblock">
+        <span class="text-2xl font-medium">7</span>
+      </button>
+      <button shape="rounded" tuiButton appearance="whiteblock">
+        <span class="text-2xl font-medium">8</span>
+      </button>
+      <button shape="rounded" tuiButton appearance="whiteblock">
+        <span class="text-2xl font-medium">9</span>
+      </button>
+      <div></div>
+      <button shape="rounded" tuiButton appearance="whiteblock">
+        <span class="text-2xl font-medium">0</span>
+      </button>
+      <button shape="rounded" tuiButton class="icon-button">
+        <ion-icon class="!text-2xl" src="assets/icons/backspace-outline.svg" />
+      </button>
+    </div>
+  </div>
+</ion-content>

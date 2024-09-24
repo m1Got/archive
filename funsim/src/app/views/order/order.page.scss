@@ -1,0 +1,154 @@
+.order-card {
+  padding: 10px;
+
+  &:not(:last-child) {
+    margin-bottom: 15px;
+  }
+
+  ion-grid {
+    gap: 10px;
+    display: grid;
+  }
+
+  ion-radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.order-card--header {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+
+  ion-title {
+    padding-bottom: 10px;
+
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+}
+
+.order-card--price {
+  margin-left: auto;
+  padding-bottom: 20px;
+  color: var(--ion-color-primary);
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.order-card--item {
+  display: flex;
+  align-items: center;
+
+  b {
+    text-align: right;
+    position: relative;
+    font-size: clamp(18px, 5vw, 26px);
+  }
+
+  b > i {
+    right: 0;
+    top: 101%;
+    position: absolute;
+    font-style: normal;
+
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  ion-icon {
+    display: flex;
+    font-size: 35px;
+    font-weight: 600;
+  }
+
+  span {
+    padding: 0 5px;
+    font-size: 16px;
+  }
+  span > i {
+    font-size: 14px;
+    font-style: normal;
+  }
+}
+
+.order-card--item:has(b > i) {
+  padding: 0 0 15px;
+}
+
+.order-card--row {
+  display: flex;
+  align-items: center;
+  padding: 10px 0 0;
+
+  b {
+    font-size: 25px;
+    font-weight: 500;
+  }
+
+  span {
+    white-space: nowrap;
+    padding-top: 5px;
+  }
+
+  ion-icon {
+    display: flex;
+    font-weight: 600;
+    font-size: 35px;
+  }
+}
+
+.order-sims {
+  gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 16px;
+  padding: 16px 0 0;
+
+  ion-checkbox {
+    --checkbox-background-checked: transparent;
+    --border-color-checked: transparent;
+    --checkmark-color: var(--ion-color-medium);
+
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+.order-desc {
+  padding: 16px 0 0;
+  font-size: 18px;
+}
+
+.order-points {
+  gap: 20px;
+  display: grid;
+  max-height: 100%;
+  grid-template-rows: 1fr 1fr;
+
+  ion-list {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  ion-list > ion-item {
+    padding: 5px 0;
+  }
+
+  ion-list > ion-item > ion-label {
+    height: 100%;
+  }
+}
+
+.order-points > ya-map {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  min-height: 400px;
+}

@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="primary-toolbar">
+    <div class="primary-toolbar--inner">
+      <ion-title>Создать заказ</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <section class="flex h-full flex-col pb-5">
+    <tui-input [formControl]="" [tuiTextfieldCleaner]="true">
+      Ваш адрес
+    </tui-input>
+    <div class="h-52 w-full rounded-xl pt-4">
+      <ya-map [center]="[55.751952, 37.600739]" [zoom]="12">
+        <ya-placemark [geometry]="[55.751952, 37.600739]" />
+      </ya-map>
+    </div>
+    <div class="py-5">
+      <tui-textarea [formControl]="" [maxlength]="100" class="text-dark">
+        Комментарий
+      </tui-textarea>
+    </div>
+    <tui-input [formControl]="" [tuiTextfieldCleaner]="true">
+      Ориентировочная цена
+    </tui-input>
+    <div class="flex-auto"></div>
+    <ion-button
+      expand="block"
+      (click)="utilsService.odTemplate(orderSuccessTemplate)"
+    >
+      Создать заказ
+    </ion-button>
+  </section>
+</ion-content>
+
+<ng-template #orderSuccessTemplate>
+  <div class="py-4 text-center">
+    <div class="mb-4">
+      <button
+        size="m"
+        shape="rounded"
+        tuiIconButton
+        appearance="secondary"
+        icon="assets/icons/success-filled.svg"
+        size="xl"
+      ></button>
+    </div>
+    <h4 class="mb-4 text-xl font-semibold">Заказ успешно создан</h4>
+    <p class="mb-4 text-base">
+      Вы автоматически перенаправлены в раздел
+      <span class="font-semibold text-primary">Мои заказы</span>
+    </p>
+  </div>
+</ng-template>

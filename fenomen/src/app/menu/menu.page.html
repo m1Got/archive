@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <header class="info-header">
+      <div class="info-header__start">
+        <ion-chip class="sharped">
+          <ion-icon src="assets/icon/phi.svg"></ion-icon>
+          <ion-text>1,200</ion-text>
+        </ion-chip>
+        <ion-chip routerLink="/favorites" routerDirection="forward">
+          <ion-icon src="assets/icon/heart-fill.svg" color="red"></ion-icon>
+        </ion-chip>
+      </div>
+      <div class="info-header__end">
+        <ion-text>ул. Уличная, 10 Пт 12:00-06:00</ion-text>
+      </div>
+    </header>
+    <header class="page-header">
+      <div class="page-header__start">
+        <h2 class="page-title">Меню</h2>
+      </div>
+      <div class="page-header__end"></div>
+    </header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-card class="card-push" color="silver">
+    <ion-icon name="close-outline"></ion-icon>
+    <h3>Дорогой гость!</h3>
+    <ion-text>
+      Вы указали аллергены. Приложение будет выделять для Вас блюда, которые их
+      содержат.
+    </ion-text>
+    <ion-note color="primary">
+      *в случае, если аллерген можно заменить или убрать из блюда, вы сможете
+      сделать это при заказе
+    </ion-note>
+  </ion-card>
+  <section class="catalog">
+    <div class="catalog-item" routerLink="/catalog" routerDirection="forward">
+      <ion-text>Основное меню</ion-text>
+      <img src="assets/images/catalog/01.png" />
+    </div>
+    <div class="catalog-item">
+      <ion-text>Завтраки</ion-text>
+      <img src="assets/images/catalog/02.png" />
+    </div>
+    <div class="catalog-item">
+      <ion-text>Бар</ion-text>
+      <img src="assets/images/catalog/03.png" />
+    </div>
+    <div class="catalog-item">
+      <ion-text>Винная карта</ion-text>
+      <img src="assets/images/catalog/04.png" />
+    </div>
+    <div class="catalog-item">
+      <ion-text>Коктейльная карта</ion-text>
+      <img src="assets/images/catalog/05.png" />
+    </div>
+  </section>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="green">
+    <marquee direction="right" class="mention">
+      НОВОЕ ВЕГЕТАРИАНСКОЕ МЕНЮ! /// НОВОЕ ВЕГЕТАРИАНСКОЕ МЕНЮ! ///
+    </marquee>
+  </ion-toolbar>
+  <ion-toolbar color="red">
+    <div class="mention">для завершения бронирования сделайте заказ</div>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,21 @@
+ion-footer {
+  ion-toolbar {
+    --background: white;
+    --ion-toolbar-border-color: #ebebeb;
+  }
+}
+
+.chat-input {
+  display: flex;
+  align-items: center;
+  border-radius: 10rem;
+  border: 1px solid #ebebeb;
+  padding: 5px;
+}
+
+tui-textarea {
+  --tui-height-l: 3rem;
+  
+  min-height: var(--tui-height-l);
+  border-radius: 10rem;
+}

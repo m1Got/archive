@@ -1,0 +1,25 @@
+<section class="pb-10 pt-6">
+  <div class="container">
+    <div class="mb-6">
+      <h1 class="title uppercase">FAQ</h1>
+    </div>
+    <div class="grid gap-4 md:grid-cols-2">
+      <div class="grid content-start gap-2">
+        <ng-container *ngIf="faqs$ | async as faqs">
+          <ng-container *ngFor="let faq of faqs.data">
+            <app-accordion [title]="faq.question" [content]="faq.answer" />
+          </ng-container>
+        </ng-container>
+      </div>
+      <div class="hidden overflow-hidden rounded-2xl md:grid">
+        <div class="max-h-[30rem] bg-[#E7E7E7] pt-5">
+          <img
+            class="ml-auto block h-full object-cover lg:w-3/4"
+            src="images/businessman-thinking-question.png"
+            alt="ContactsSupportImage"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <header class="header">
+      <div class="header-start"></div>
+      <div class="header-center">
+        <ion-text class="header-title">заказ #777777</ion-text>
+      </div>
+      <div class="header-end">
+        <button class="header-back" (click)="back()">
+          <ion-icon src="assets/icon/close.svg" color="primary"></ion-icon>
+        </button>
+      </div>
+    </header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <header class="page-header">
+    <div class="page-header__start">
+      <h2 class="page-title">Доставка</h2>
+      <ion-text color="medium">19.06.2023</ion-text>
+    </div>
+    <div class="page-header__end">
+      <ion-button size="small" color="light">
+        помощь
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </header>
+  <div class="myoder-status">
+    <ion-button class="mark" color="green" expand="block"> завершен </ion-button>
+  </div>
+  <div class="myoder-address">
+    <b>Адрес доставки</b>
+    <p>г. Уфа, ул. Уличная, 10, кв. 77</p>
+  </div>
+  <div class="myoder-items">
+    <article class="stretch">
+      <div class="stretch__img">
+        <img src="assets/images/order-1.jpg" />
+      </div>
+      <div class="stretch__body">
+        <div class="stretch__top">
+          <div class="stretch__text">
+            <h5 class="stretch__title">Тар тар из говядины</h5>
+            <p class="stretch__info">150 гр. 300 ккал</p>
+          </div>
+        </div>
+        <div class="stretch__bottom">
+          <div class="stretch__price">
+            <ion-text class="old-price">5000</ion-text>
+            <ion-text class="current-price">3000 ₽</ion-text>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="stretch">
+      <div class="stretch__img">
+        <img src="assets/images/order-1.jpg" />
+      </div>
+      <div class="stretch__body">
+        <div class="stretch__top">
+          <div class="stretch__text">
+            <h5 class="stretch__title">
+              Мини-брускетта с уткой конфи и луком Мини-брускетта с уткой конфи
+              и луком
+            </h5>
+            <p class="stretch__info">150 гр. 300 ккал</p>
+          </div>
+        </div>
+        <div class="stretch__bottom">
+          <div class="stretch__price">
+            <ion-text class="old-price">5000</ion-text>
+            <ion-text class="current-price">3000 ₽</ion-text>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div class="myoder-total">
+    <h4 class="page-title">2100 ₽</h4>
+    <ion-text>
+      <ion-icon src="assets/icon/phi.svg"></ion-icon>
+      +210
+    </ion-text>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button color="primary" expand="block">повторить заказ</ion-button>
+  </ion-toolbar>
+</ion-footer>

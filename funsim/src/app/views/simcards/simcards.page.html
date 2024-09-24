@@ -1,0 +1,106 @@
+<ng-container *subscribe="querySimcards$ as querySimcards">
+  <ion-header>
+    <ion-toolbar>
+      <header>
+        <ion-buttons slot="start">
+          <ion-back-button text=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+          <translate
+            nameEN="SIM cards"
+            nameKZ="SIM карталары"
+            nameRU="Сим-карты"
+          />
+        </ion-title>
+      </header>
+      <ion-progress-bar
+        *ngIf="querySimcards.isLoading"
+        type="indeterminate"
+      ></ion-progress-bar>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content [fullscreen]="true" class="ion-padding">
+    <section *ngIf="querySimcards.data as simcards">
+      <ion-card class="profile__card" *ngFor="let simcard of simcards">
+        <div class="profile__card--header">
+          <ion-title size="sm" underline>
+            <h5>
+              <translate
+                nameEN="SIM CARD"
+                nameKZ="SIM КАРТА"
+                nameRU="СИМ-КАРТА"
+              />
+            </h5>
+          </ion-title>
+          <ion-item lines="none">
+            <ion-badge
+              [color]="simcard.status === 'new' ? 'warning' : 'green'"
+            ></ion-badge>
+            <ion-text *ngIf="simcard.status !== 'new'" color="green">
+              <translate nameEN="Active" nameKZ="Белсенді" nameRU="Активная" />
+            </ion-text>
+            <ion-text *ngIf="simcard.status === 'new'" color="warning">
+              <translate
+                nameEN="In progress"
+                nameKZ="Орындалуда"
+                nameRU="В процессе"
+              />
+            </ion-text>
+          </ion-item>
+        </div>
+        <div class="profile__card--bottom">
+          <ion-label>
+            <ion-text>
+              <b>
+                <translate nameEN="Tariff" nameKZ="Тариф" nameRU="Тариф" />:
+              </b>
+            </ion-text>
+            <ion-text color="dark">
+              <b>{{ simcard.plan?.name }}</b>
+            </ion-text>
+          </ion-label>
+          <ion-label>
+            <ion-text>
+              <b>
+                <translate
+                  nameEN="Order date"
+                  nameKZ="Тапсырыс күні"
+                  nameRU="Дата заказа"
+                />:
+              </b>
+            </ion-text>
+            <ion-text color="dark">
+              <b>{{ simcard.created_at | date : "dd.MM.yyyy" }}</b>
+            </ion-text>
+          </ion-label>
+          <ion-button color="light" (click)="checkBalance()">
+            <ion-icon src="/assets/icons/eye.svg"></ion-icon>
+            <ion-text>
+              <translate
+                nameEN="Check balance"
+                nameKZ="Балансты тексеру"
+                nameRU="Проверить остаток"
+              />
+            </ion-text>
+          </ion-button>
+        </div>
+      </ion-card>
+    </section>
+
+    <ng-container
+      *ngIf="!querySimcards.data?.length && !querySimcards.isLoading"
+    >
+      <ion-title class="ion-text-center ion-padding-vertical" size="lg">
+        <h3>
+          <translate
+            nameEN="Nothing found"
+            nameKZ="Еш нәрсе табылмады"
+            nameRU="Ничего не найдено"
+          />
+        </h3>
+        <span></span>
+      </ion-title>
+    </ng-container>
+  </ion-content>
+</ng-container>

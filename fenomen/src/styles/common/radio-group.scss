@@ -1,0 +1,51 @@
+.radio-group {
+  gap: 6px 4px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px 0;
+}
+
+.radio-group[size="small"] ion-radio {
+  --_height: 30px;
+}
+
+.radio-group[size="large"] ion-radio {
+  --_height: 60px;
+}
+
+.radio-group[expand="full"] ion-radio {
+  width: 100%;
+}
+
+.radio-group ion-radio {
+  --_height: 40px;
+  --_padding-left: 16px;
+  height: var(--_height);
+  background: #eee;
+  font-weight: 500;
+  font-size: 1rem;
+  padding-left: var(--_padding-left);
+  border: 1px solid #eee;
+
+  &.radio-checked {
+    color: var(--ion-color-light);
+    background: var(--ion-color-green);
+  }
+
+  &::part(container) {
+    width: 0;
+  }
+
+  &::part(mark) {
+    width: 0;
+    border: 0;
+    height: 0;
+  }
+}
+
+.radio-group ion-radio > span {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  left: calc(50% - var(--_padding-left) / 2);
+  top: 50%;
+}

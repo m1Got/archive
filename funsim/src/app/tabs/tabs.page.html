@@ -1,0 +1,49 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home" href="/tabs/home">
+      <ion-icon src="/assets/icons/home.svg"></ion-icon>
+      <ion-label>
+        <translate nameEN="Home" nameKZ="Үй" nameRU="Главная" />
+      </ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="about" href="/tabs/about">
+      <ion-icon src="/assets/icons/build-peoples.svg"></ion-icon>
+      <ion-label>
+        <translate nameEN="About" nameKZ="Компания" nameRU="О компании" />
+      </ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="rates" href="/tabs/rates">
+      <ion-icon src="/assets/icons/plate.svg"></ion-icon>
+      <ion-label>
+        <translate nameEN="Tariffs" nameKZ="Тарифтер" nameRU="Тарифы" />
+      </ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="contacts" href="/tabs/contacts">
+      <ion-icon src="/assets/icons/form.svg"></ion-icon>
+      <ion-label>
+        <translate nameEN="Contacts" nameKZ="Контактілер" nameRU="Контакты" />
+      </ion-label>
+    </ion-tab-button>
+
+    <ng-container *ngIf="isLoggedIn$ | async">
+      <ion-tab-button tab="profile" href="/tabs/profile">
+        <ion-icon src="/assets/icons/profile-fill.svg"></ion-icon>
+        <ion-label>
+          <translate nameEN="Profile" nameKZ="Профиль" nameRU="Профиль" />
+        </ion-label>
+      </ion-tab-button>
+    </ng-container>
+
+    <ng-container *ngIf="(isLoggedIn$ | async) === false">
+      <ion-tab-button tab="auth" href="/tabs/auth">
+        <ion-icon src="/assets/icons/profile-fill.svg"></ion-icon>
+        <ion-label>
+          <translate nameEN="Login" nameKZ="Войти" nameRU="Войти" />
+        </ion-label>
+      </ion-tab-button>
+    </ng-container>
+  </ion-tab-bar>
+</ion-tabs>

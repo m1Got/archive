@@ -1,0 +1,23 @@
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-height: 100%;
+  margin: 0 0 10px;
+}
+
+section > * {
+  margin: 0 0 10px;
+}
+
+ion-grid {
+  gap: 20px;
+  display: grid;
+  align-content: start;
+  flex-grow: 0;
+}
+
+ion-note {
+  display: block;
+}

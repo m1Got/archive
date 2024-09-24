@@ -1,0 +1,41 @@
+.quantity {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-amount {
+  font-size: 15px;
+  font-weight: 600;
+  color: #000;
+}
+
+.quantity-label {
+  font-size: 18px;
+  font-weight: 500;
+
+  flex: 1 1 auto;
+}
+
+.quantity-actions {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  color: #000;
+  ion-chip {
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
+
+    ion-icon {
+      font-size: 26px;
+    }
+  }
+}
+
+ion-chip.quantity-actions {
+  gap: 13px;
+  ion-icon {
+    color: #000;
+    font-size: 16px;
+  }
+}

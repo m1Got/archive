@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="primary-toolbar">
+    <div class="primary-toolbar--inner">
+      <button
+        size="m"
+        shape="rounded"
+        tuiButton
+        appearance="whiteblock"
+        class="icon-button"
+        (click)="navCtrl.back()"
+      >
+        <ion-icon
+          class="text-lg"
+          color="primary"
+          src="assets/icons/chevron-back-outline.svg"
+        />
+      </button>
+      <ion-title>Мои заказы</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <article class="card">
+    <div class="flex gap-1">
+      <ion-button color="light" size="small">Ташкент</ion-button>
+      <ion-button color="light" size="small">13.11.2023</ion-button>
+    </div>
+    <div class="line-clamp-2 py-3">
+      <p class="text-base font-semibold text-dark">Заказ №10785</p>
+    </div>
+    <div class="flex items-center">
+      <p class="pr-2 text-medium">Категория:</p>
+      <span class="text-sm font-medium text-primary">Сантехника</span>
+    </div>
+    <div class="flex items-center">
+      <p class="pr-2 text-medium">Время поиска:</p>
+      <span class="text-sm font-medium text-primary">2 часа 55 минут</span>
+    </div>
+    <div class="grid pt-3">
+      <ion-button>Приостановить поиск</ion-button>
+      <ion-button color="secondary">Завершить заказ</ion-button>
+    </div>
+  </article>
+  <!-- <tui-block-status> 
+    <img
+      class="!h-60 !w-60"
+      src="assets/block-status/empty-myorders.svg"
+      tuiSlot="top"
+    />
+    <h4>У вас пока нет активных заказов</h4>
+    <ion-button tuiSlot="bottom">Создать заказ</ion-button>
+  </tui-block-status> -->
+</ion-content>

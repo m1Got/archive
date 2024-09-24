@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="primary-toolbar">
+    <div class="primary-toolbar--inner">
+      <button
+        size="m"
+        shape="rounded"
+        tuiButton
+        appearance="whiteblock"
+        class="icon-button"
+        (click)="navCtrl.back()"
+      >
+        <ion-icon
+          class="text-lg"
+          color="primary"
+          src="assets/icons/chevron-back-outline.svg"
+        />
+      </button>
+      <ion-title>Новый адрес</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="relative">
+  <div class="absolute left-0 z-10 w-full rounded-md bg-white p-2">
+    <tui-input
+      tuiTextfieldSize="m"
+      [tuiTextfieldLabelOutside]="true"
+      [formControl]=""
+    >
+      Поиск
+    </tui-input>
+    <ion-button fill="outline" color="tertiary" expand="block">
+      <span class="text-dark">Чилонзор, ул. Бунёдкор 8/10.</span>
+    </ion-button>
+  </div>
+  <ya-map [center]="[55.751952, 37.600739]" [zoom]="12">
+    <ya-placemark [geometry]="[55.751952, 37.600739]" />
+  </ya-map>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="light" class="mb-2">
+      <ion-icon class="text-sm" src="assets/icons/round-plus.svg" />
+    </ion-fab-button>
+    <ion-fab-button color="light" class="mb-2">
+      <ion-icon class="text-sm" src="assets/icons/round-minus.svg" />
+    </ion-fab-button>
+    <ion-fab-button color="dark">
+      <ion-icon class="text-sm" src="assets/icons/location.svg" />
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="secondary-toolbar">
+    <ion-button expand="block">Добавить адрес</ion-button>
+  </ion-toolbar>
+</ion-footer>

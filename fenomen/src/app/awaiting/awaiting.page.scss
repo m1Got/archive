@@ -1,0 +1,50 @@
+ion-content {
+  --background: linear-gradient(
+    180deg,
+    #a1c84c 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+ion-toolbar {
+  --background: transparent;
+  --border-color: transparent;
+}
+
+section {
+  h1 {
+    margin: 5vh 0 2vh;
+    font-size: 36px;
+    padding: 0 30px;
+    text-align: center;
+  }
+
+  h2 {
+    margin-bottom: 15vh;
+    font-weight: 400;
+    padding: 0 10px;
+    text-wrap: balance;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  h4 {
+    font-weight: 700;
+    font-size: 24px;
+    margin: 0 0 3vh;
+  }
+
+  ion-text {
+    gap: 5px;
+    display: grid;
+  }
+
+  ion-grid {
+    gap: 25px;
+    display: grid;
+    padding: 20px 0;
+    user-select: none;
+    pointer-events: none;
+    touch-action: none;
+  }
+}

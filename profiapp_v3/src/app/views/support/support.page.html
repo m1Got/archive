@@ -1,0 +1,73 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="primary-toolbar">
+    <div class="primary-toolbar--inner">
+      <button
+        size="m"
+        shape="rounded"
+        tuiButton
+        appearance="whiteblock"
+        class="icon-button"
+        (click)="navCtrl.back()"
+      >
+        <ion-icon
+          class="text-lg"
+          color="primary"
+          src="assets/icons/chevron-back-outline.svg"
+        />
+      </button>
+      <ion-title>Тех поддержка</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="flex h-full flex-col justify-end gap-2">
+    <div class="mb-4 ml-auto w-2/3">
+      <ion-card color="primary" class="m-0 p-2">
+        <img
+          class="h-28 w-full rounded-md object-contain"
+          src="assets/images/organization.jpg"
+        />
+      </ion-card>
+      <p class="pt-1 text-end text-tertiary">12:47</p>
+    </div>
+    <div class="mb-4 w-2/3">
+      <ion-card color="light" class="m-0 p-2">
+        Menga Iphone juda yoqdi kelishtirib bering iltimos!
+      </ion-card>
+      <p class="pt-1 text-tertiary">12:41</p>
+    </div>
+    <div class="mb-4 ml-auto w-2/3">
+      <ion-card color="primary" class="m-0 p-2">
+        Hohlasangiz menda boshqa tel ham bor gaplashamiz?
+      </ion-card>
+      <p class="pt-1 text-end text-tertiary">12:41</p>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="py-3">
+      <div class="chat-input">
+        <button class="p-1">
+          <ion-icon
+            color="primary"
+            class="flex text-2xl"
+            src="assets/icons/cloud-upload.svg"
+          />
+        </button>
+        <input
+          class="flex-auto bg-transparent pl-1 outline-none"
+          placeholder="Чем вам помочь?"
+        />
+        <button
+          size="s"
+          shape="rounded"
+          tuiIconButton
+          icon="assets/icons/send-bold.svg"
+        ></button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>

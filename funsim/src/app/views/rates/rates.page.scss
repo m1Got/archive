@@ -1,0 +1,16 @@
+ion-header {
+  ion-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0;
+  }
+  ion-toolbar {
+    --background: #fff;
+  }
+  ion-item {
+    --border-radius: 10px;
+    --border-width: 1px;
+    margin: 5px 0;
+  }
+}

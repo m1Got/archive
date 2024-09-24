@@ -1,0 +1,54 @@
+$xl: 45;
+$lg: 35;
+$md: 25;
+$sm: 20;
+
+ion-title {
+  --color: var(--ion-color-dark);
+  font-size: var(--size);
+
+  height: auto;
+  position: static;
+  text-align: left;
+  font-weight: 700;
+}
+
+ion-title > span {
+  display: block;
+  padding: 0 0 5px;
+}
+
+ion-title[underline] {
+  --bg-line: var(--ion-color-primary);
+
+  margin: 0 0 min(3vw, 25px);
+  padding: 0 0 min(3vw, 15px);
+  text-transform: uppercase;
+  position: relative;
+
+  &::after {
+    content: "";
+    height: 4px;
+    width: max(15%, 90px);
+    background: var(--bg-line);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+ion-title[size="xl"] {
+  --size: clamp(#{$md + px}, 5vw, #{$xl + px});
+}
+
+ion-title[size="lg"] {
+  --size: clamp(#{$sm + px}, 5vw, #{$lg + px});
+}
+
+ion-title[size="md"] {
+  --size: #{$md + px};
+}
+
+ion-title[size="sm"] {
+  --size: #{$sm + px};
+}

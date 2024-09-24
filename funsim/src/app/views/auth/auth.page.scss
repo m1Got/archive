@@ -1,0 +1,24 @@
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+
+  .form-label {
+    color: #fff;
+  }
+}
+
+section > button {
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}

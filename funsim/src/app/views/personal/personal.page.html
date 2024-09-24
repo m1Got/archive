@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar>
+    <header>
+      <ion-buttons slot="start">
+        <ion-back-button text=""></ion-back-button>
+      </ion-buttons>
+      <ion-title>
+        <translate
+          nameEN="Personal Area"
+          nameKZ="Жеке бөлме"
+          nameRU="Личный кабинет"
+        />
+      </ion-title>
+    </header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <section>
+    <form [formGroup]="form" class="ion-padding">
+      <label class="form-group">
+        <span class="form-label">
+          <translate nameEN="Name" nameKZ="Аты" nameRU="Имя" />
+        </span>
+        <input class="form-input" formControlName="name" />
+      </label>
+      <label class="form-group">
+        <span class="form-label">
+          <translate nameEN="Surname" nameKZ="Фамилия" nameRU="Фамилия" />
+        </span>
+        <input class="form-input" formControlName="surname" />
+      </label>
+      <label class="form-group">
+        <span class="form-label">
+          <translate
+            nameEN="Patronymic"
+            nameKZ="әкесінің аты"
+            nameRU="Отчество"
+          />
+        </span>
+        <input class="form-input" formControlName="patronymic" />
+      </label>
+      <label class="form-group">
+        <span class="form-label">
+          <translate
+            nameEN="Phone number"
+            nameKZ="Телефон нөмірі"
+            nameRU="Номер телефона"
+          />
+        </span>
+        <input
+          class="form-input"
+          mask="+0 000 000 00 00"
+          formControlName="phone"
+        />
+      </label>
+    </form>
+
+    <hr />
+
+    <ion-item button id="logout-alert">
+      <ion-label>
+        <translate nameEN="Go out" nameKZ="Шығу" nameRU="Выйти" />
+      </ion-label>
+    </ion-item>
+    <ion-alert
+      header="Вы действительно хотите выйти"
+      trigger="logout-alert"
+      [buttons]="logoutAlertButtons"
+    ></ion-alert>
+    <ion-item button color="danger" id="delete-alert">
+      <ion-label>
+        <translate
+          nameEN="Delete account"
+          nameKZ="Есептік жазбаны жою"
+          nameRU="Удалить аккаунт"
+        />
+      </ion-label>
+    </ion-item>
+    <ion-alert
+      header="Вы действительно хотите удалить аккаунт"
+      trigger="delete-alert"
+      [buttons]="logoutAlertButtons"
+    ></ion-alert>
+    <br />
+  </section>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-button
+      expand="block"
+      class="ion-margin-top"
+      [disabled]="!form.dirty || form.invalid || (isSubmitting$ | async)"
+      (click)="onSubmit()"
+    >
+      <translate nameEN="Save" nameKZ="Сақтау" nameRU="Сохранить" />
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

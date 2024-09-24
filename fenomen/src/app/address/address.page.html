@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <header class="header">
+      <div class="header-start">
+        <ion-buttons slot="start">
+          <ion-back-button text="" icon="arrow-back-outline"> </ion-back-button>
+        </ion-buttons>
+      </div>
+      <div class="header-center">
+        <ion-text class="header-title"></ion-text>
+      </div>
+      <div class="header-end"></div>
+    </header>
+    <header class="page-header">
+      <div class="page-header__start">
+        <h2 class="page-title">Адрес доставки</h2>
+      </div>
+      <div class="page-header__end">
+        <button class="link-button" (click)="onChange()">
+          {{ changing ? "Готово" : "Изменить" }}
+        </button>
+      </div>
+    </header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <section>
+    <label class="picker">
+      <div class="picker__start">
+        <div class="picker__value">
+          <span>г. Уфа, с. Сельское, ул. Уличная, 101, кв. 177</span>
+        </div>
+      </div>
+      <div class="picker__end">
+        <button class="icon-button" *ngIf="changing">
+          <ion-icon name="close-circle" color="red"></ion-icon>
+        </button>
+        <ng-container *ngIf="!changing">
+          <input type="radio" name="payment" checked />
+          <div class="picker__check"></div>
+        </ng-container>
+      </div>
+    </label>
+    <label class="picker">
+      <div class="picker__start">
+        <div class="picker__value">
+          <span> г. Уфа, ул. Уличная, 10, кв. 77 </span>
+        </div>
+      </div>
+      <div class="picker__end">
+        <button class="icon-button" *ngIf="changing">
+          <ion-icon name="close-circle" color="red"></ion-icon>
+        </button>
+        <ng-container *ngIf="!changing">
+          <input type="radio" name="payment" />
+          <div class="picker__check"></div>
+        </ng-container>
+      </div>
+    </label>
+    <label class="picker">
+      <div class="picker__start">
+        <div class="picker__value">
+          <span>г. Уфа, ул. Ленина, 5, офис. 1</span>
+        </div>
+      </div>
+      <div class="picker__end">
+        <button class="icon-button" *ngIf="changing">
+          <ion-icon name="close-circle" color="red"></ion-icon>
+        </button>
+        <ng-container *ngIf="!changing">
+          <input type="radio" name="payment" />
+          <div class="picker__check"></div>
+        </ng-container>
+      </div>
+    </label>
+  </section>
+</ion-content>
+
+<ion-footer *ngIf="changing">
+  <ion-toolbar>
+    <ion-button
+      expand="block"
+      color="primary"
+      routerLink="/addaddress"
+      routerDirection="forward"
+    >
+      добавить адрес
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

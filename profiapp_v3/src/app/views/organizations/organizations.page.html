@@ -1,0 +1,184 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="primary-toolbar">
+    <div class="primary-toolbar--inner">
+      <ion-title>Организации</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="flex items-center gap-3">
+    <button
+      size="m"
+      tuiButton
+      appearance="whiteblock"
+      class="icon-button"
+      (click)="utilsService.odTemplate(filterTemplate)"
+    >
+      <ion-icon class="text-lg" src="assets/icons/settings-filter.svg" />
+    </button>
+    <div class="relative flex flex-auto items-center">
+      <tui-input
+        class="flex-auto"
+        tuiTextfieldSize="m"
+        [tuiTextfieldLabelOutside]="true"
+        [formControl]=""
+      >
+        Поиск объявлений
+        <input tuiTextfield />
+      </tui-input>
+      <div class="absolute right-2">
+        <button
+          size="s"
+          shape="rounded"
+          tuiIconButton
+          appearance="accent"
+          icon="assets/icons/search-outline.svg"
+        ></button>
+      </div>
+    </div>
+  </div>
+  <div class="grid gap-5 py-6">
+    <article class="card">
+      <div class="flex items-center">
+        <div class="flex flex-auto items-center" routerLink="/advert">
+          <tui-avatar
+            size="m"
+            avatarUrl="assets/images/organization-logo.jpg"
+            [rounded]="true"
+            class="mr-4"
+          />
+          <div class="flex-auto text-sm">
+            <p class="line-clamp-1 font-semibold">Равшан Аббасов</p>
+            <div class="flex items-center">
+              <p class="pr-4 text-tertiary">г.Ташкент</p>
+              <div class="flex items-center">
+                <ion-icon class="text-xs" src="assets/icons/rounded-star.svg" />
+                <p class="pl-1 font-medium">5.0</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button size="m" tuiButton shape="rounded" class="icon-button">
+          <ion-icon src="assets/icons/material-call.svg" />
+        </button>
+      </div>
+      <div class="pt-6">
+        <img
+          class="h-40 w-full snap-start rounded-lg object-cover"
+          src="assets/images/organization.jpg"
+        />
+      </div>
+    </article>
+    <article class="card card--top">
+      <ion-button
+        size="small"
+        class="absolute -top-4 right-4"
+        color="secondary"
+      >
+        TOP
+      </ion-button>
+      <div class="flex items-center">
+        <div class="flex flex-auto items-center" routerLink="/advert">
+          <tui-avatar
+            size="m"
+            avatarUrl="assets/images/organization-logo.jpg"
+            [rounded]="true"
+            class="mr-4"
+          />
+          <div class="flex-auto text-sm">
+            <p class="line-clamp-1 font-semibold">Равшан Аббасов</p>
+            <div class="flex items-center">
+              <p class="pr-4 text-tertiary">г.Ташкент</p>
+              <div class="flex items-center">
+                <ion-icon class="text-xs" src="assets/icons/rounded-star.svg" />
+                <p class="pl-1 font-medium">5.0</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button size="m" tuiButton shape="rounded" class="icon-button">
+          <ion-icon src="assets/icons/material-call.svg" />
+        </button>
+      </div>
+      <div class="pt-6">
+        <img
+          class="h-40 w-full snap-start rounded-lg object-cover"
+          src="assets/images/organization.jpg"
+        />
+      </div>
+    </article>
+  </div>
+</ion-content>
+
+<ng-template #filterTemplate let-filter>
+  <div class="mb-4">
+    <h3 class="tetx-xl font-semibold">Фильтр объявлений</h3>
+  </div>
+  <div class="grid gap-2">
+    <tui-input [tuiTextfieldLabelOutside]="true" [formControl]="">
+      Выбрать город
+      <input tuiTextfield />
+    </tui-input>
+    <tui-input [tuiTextfieldLabelOutside]="true" [formControl]="">
+      Выберите категорию
+      <input tuiTextfield />
+    </tui-input>
+    <label tuiLabel="Мин рейтинг">
+      <div class="flex gap-2 py-2">
+        <button
+          tuiButton
+          size="m"
+          [appearance]="rating === 1 ? 'primary' : 'whiteblock'"
+          (click)="rating = 1"
+        >
+          1
+        </button>
+        <button
+          tuiButton
+          size="m"
+          [appearance]="rating === 2 ? 'primary' : 'whiteblock'"
+          (click)="rating = 2"
+        >
+          2
+        </button>
+        <button
+          tuiButton
+          size="m"
+          [appearance]="rating === 3 ? 'primary' : 'whiteblock'"
+          (click)="rating = 3"
+        >
+          3
+        </button>
+        <button
+          tuiButton
+          size="m"
+          [appearance]="rating === 4 ? 'primary' : 'whiteblock'"
+          (click)="rating = 4"
+        >
+          4
+        </button>
+        <button
+          tuiButton
+          size="m"
+          [appearance]="rating === 5 ? 'primary' : 'whiteblock'"
+          (click)="rating = 5"
+        >
+          5
+        </button>
+      </div>
+    </label>
+    <label tuiLabel="Бюджет до">
+      <tui-input [tuiTextfieldLabelOutside]="true" [formControl]="">
+        Введите сумму
+        <input tuiTextfield />
+      </tui-input>
+    </label>
+  </div>
+  <div class="py-3">
+    <ion-button expand="block" (click)="filter.complete()">
+      Применить
+    </ion-button>
+    <ion-button expand="block" fill="outline">Очистить все</ion-button>
+  </div>
+</ng-template>

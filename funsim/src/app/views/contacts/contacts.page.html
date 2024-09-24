@@ -1,0 +1,77 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <!-- <app-feedback></app-feedback> -->
+  <section class="contacts-content">
+    <div class="contacts-map">
+      <ya-map [center]="[43.2368633, 76.9272727]" [zoom]="12">
+        <ya-placemark [geometry]="[43.2368633, 76.9272727]"></ya-placemark>
+      </ya-map>
+    </div>
+    <div class="contacts-groups">
+      <ion-card class="contacts-group">
+        <ion-title size="sm">
+          <h6>
+            <translate
+              nameEN="Location"
+              nameKZ="Орналасқан жері"
+              nameRU="Место нахождение"
+            />
+          </h6>
+        </ion-title>
+        <a
+          class="contacts-item"
+          href="https://goo.gl/maps/QiMsp4ZH4jrcZVmW6"
+          target="_blank"
+        >
+          <ion-icon src="/assets/icons/location.svg"></ion-icon>
+          <span>
+            <translate
+              nameEN="Адрес офиса:"
+              nameKZ="Кеңсе мекенжайы:"
+              nameRU="Адрес офиса:"
+            />
+          </span>
+          <b>
+            <translate
+              nameEN="Republic of Kazakhstan, Almaty, st. Pozharsky 1"
+              nameKZ="Қазақстан Республикасы, Алматы қ., көш. Пожарский 1"
+              nameRU="Республика Казахстан, г. Алматы , ул. Пожарского 1"
+            />
+          </b>
+        </a>
+      </ion-card>
+      <ion-card class="contacts-group">
+        <ion-title size="sm">
+          <h6>
+            <translate
+              nameEN="Contacts"
+              nameKZ="Контактілер"
+              nameRU="Контакты"
+            />
+          </h6>
+        </ion-title>
+        <a class="contacts-item" href="tel:+77007760707">
+          <ion-icon src="/assets/icons/call.svg"></ion-icon>
+          <span>
+            <translate
+              nameEN="Office address:"
+              nameKZ="Байланыс нөмірі:"
+              nameRU="Контактный номер:"
+            />
+          </span>
+          <b>+7 (700) 776 07 07</b>
+        </a>
+        <a class="contacts-item" href="mailto:info@funsim.kz">
+          <ion-icon src="/assets/icons/mail.svg"></ion-icon>
+          <span>
+            <translate
+              nameEN="E-mail address:"
+              nameKZ="Электрондық поштаның адресі:"
+              nameRU="Адрес электронной почты:"
+            />
+          </span>
+          <b>info@funsim.kz</b>
+        </a>
+      </ion-card>
+    </div>
+  </section>
+</ion-content>

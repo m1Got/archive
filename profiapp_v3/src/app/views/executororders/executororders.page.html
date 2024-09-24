@@ -1,0 +1,98 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="primary-toolbar">
+    <div class="primary-toolbar--inner">
+      <ion-title>Заказы</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-segment [(ngModel)]="activeSegment">
+    <ion-segment-button value="active">
+      <ion-label class="text-base">Мои заказы</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="history">
+      <ion-label class="text-base">История заказов</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div class="grid gap-3 pt-5">
+    <ng-container *ngIf="activeSegment==='active'">
+      <article class="card">
+        <h3 class="text-base font-semibold text-dark">
+          Нужен опытный Сантехник со стажем
+        </h3>
+        <div class="py-2">
+          <div class="flex items-center">
+            <p class="pr-2 text-medium">ID:</p>
+            <span class="font-medium">125486</span>
+          </div>
+          <div class="flex items-center">
+            <p class="pr-2 text-medium">Категория:</p>
+            <span class="font-medium">Сантехника</span>
+          </div>
+          <div class="flex items-center">
+            <p class="pr-2 text-medium">Город:</p>
+            <span class="font-medium">Ташкент</span>
+          </div>
+          <div class="flex items-center">
+            <p class="pr-2 text-medium">Дата:</p>
+            <span class="font-medium">19.10.2023</span>
+          </div>
+        </div>
+        <div class="flex text-base font-semibold">
+          <p class="pr-2">Нигора</p>
+          <p>+998 <span class="text-tertiary">XXX XX XX</span></p>
+        </div>
+        <div class="pt-1 text-base font-semibold">От 70.000 Сум</div>
+        <div class="grid grid-cols-2 gap-2 pt-2">
+          <ion-button color="light">Отказаться</ion-button>
+          <ion-button color="light">На карте</ion-button>
+        </div>
+        <ion-button color="secondary" expand="block">Откликнуться</ion-button>
+      </article>
+    </ng-container>
+    <ng-container *ngIf="activeSegment === 'history'">
+      <article class="card">
+        <div class="flex items-center gap-3">
+          <button
+            size="l"
+            tuiIconButton
+            icon="assets/icons/checkmark-outline.svg"
+            appearance="secondary"
+          ></button>
+          <div class="flex-auto">
+            <p class="text-base font-semibold text-dark">Заказ №10785</p>
+            <p class="text-sm text-tertiary">14 ноября 2023</p>
+          </div>
+        </div>
+        <div class="py-3 text-base font-medium text-dark">
+          К сожалению заказ был завершен без исполнителя закажите ещё
+        </div>
+        <div class="flex items-center">
+          <p class="text-base font-semibold text-primary">Завершен</p>
+          <p class="ml-auto text-base text-tertiary">13:36</p>
+        </div>
+      </article>
+    </ng-container>
+  </div>
+
+  <!-- <tui-block-status>
+    <img
+      class="!h-64 !w-60"
+      src="assets/block-status/empty-personal.svg"
+      tuiSlot="top"
+    />
+    <h4>Личная информация</h4>
+    <button tuiButton icon="assets/icons/plus-add.svg">Добавить</button>
+  </tui-block-status> -->
+
+  <!-- <tui-block-status>
+    <img
+      class="!h-64 !w-60"
+      src="assets/block-status/empty-search.svg"
+      tuiSlot="top"
+    />
+    <h4>Пока нет новых заказов</h4>
+  </tui-block-status> -->
+</ion-content>

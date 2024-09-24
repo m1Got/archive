@@ -1,0 +1,14 @@
+<ng-container *ngIf="favoritesItems.length">
+  <app-performers></app-performers>
+</ng-container>
+<ng-container *ngIf="!favoritesItems.length">
+  <tui-block-status>
+    <img
+      class="h-60 w-60"
+      src="images/block-status/empty-favorites.svg"
+      tuiSlot="top"
+    />
+    <h4>Ваш список желаний пуст</h4>
+    Создайте свой первый запрос в список желаний
+  </tui-block-status>
+</ng-container>

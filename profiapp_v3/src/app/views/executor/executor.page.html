@@ -1,0 +1,201 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="primary-toolbar">
+    <div class="primary-toolbar--inner">
+      <button
+        size="m"
+        shape="rounded"
+        tuiButton
+        appearance="whiteblock"
+        class="icon-button"
+        (click)="navCtrl.back()"
+      >
+        <ion-icon
+          class="text-lg"
+          color="primary"
+          src="assets/icons/chevron-back-outline.svg"
+        />
+      </button>
+      <ion-title>Мастер</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="py-2">
+    <div class="flex items-center">
+      <tui-avatar
+        size="m"
+        avatarUrl="assets/images/executor.png"
+        [rounded]="true"
+        class="mr-4"
+      />
+      <div class="flex-auto text-sm">
+        <p class="line-clamp-1 font-semibold">Равшан Аббасов</p>
+        <div class="flex items-center">
+          <p class="pr-4 text-tertiary">г.Ташкент</p>
+          <div class="flex items-center">
+            <ion-icon class="text-xs" src="assets/icons/rounded-star.svg" />
+            <p class="pl-1 font-medium">5.0</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex gap-2">
+        <button
+          size="m"
+          shape="rounded"
+          tuiButton
+          appearance="whiteblock"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-lg"
+            color="primary"
+            src="assets/icons/share.svg"
+          />
+        </button>
+        <button
+          size="m"
+          shape="rounded"
+          tuiButton
+          appearance="whiteblock"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-lg"
+            color="primary"
+            src="assets/icons/heart-fill.svg"
+          />
+        </button>
+      </div>
+    </div>
+    <div class="pt-4">
+      <ion-button expand="block">
+        <ion-icon class="text-base" src="assets/icons/material-call.svg" />
+        <span class="pl-2">Позвонить</span>
+      </ion-button>
+    </div>
+  </div>
+  <div class="py-2">
+    <ion-segment [(ngModel)]="activeSegment">
+      <ion-segment-button value="first">
+        <div class="flex items-center gap-2">
+          <ion-icon class="text-base" src="assets/icons/info.svg" />
+          <ion-label class="text-sm">Инфо</ion-label>
+        </div>
+      </ion-segment-button>
+      <ion-segment-button value="second">
+        <div class="flex items-center gap-2">
+          <ion-icon class="text-base" src="assets/icons/thumbs-like.svg" />
+          <ion-label class="text-sm">Отзывы</ion-label>
+        </div>
+      </ion-segment-button>
+      <ion-segment-button value="third">
+        <div class="flex items-center gap-2">
+          <ion-icon class="text-base" src="assets/icons/image-picture.svg" />
+          <ion-label class="text-sm">Работы</ion-label>
+        </div>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div class="py-3">
+    <ng-container *ngIf="activeSegment === 'first'">
+      <div class="mb-3">
+        <h5 class="text-base font-semibold">О мастере</h5>
+        <div class="pt-2">
+          <p class="text-sm leading-6">
+            Работы любой сложности ! - Установка Сантехники !Ремонт Сантехники !
+            - Замена Водопровода ! - Замена Канализации ! - Установка Батарей !
+            - Установка Счётчиков воды. Работаем 24/7 Быстро и качественно и
+            недорого самые лучшие мастера у нас энергичный ребята. Рада будем
+            обслуживать вас. Бизда енг яхши усталар биз сизларга хизмат
+            корсатишдан мамнун боламиз !!!
+          </p>
+        </div>
+      </div>
+      <div class="mb-3">
+        <h5 class="text-base font-semibold">Услуги мастера</h5>
+        <div class="grid gap-2 pt-2">
+          <div class="flex text-sm">
+            <p>Установить сантехнику</p>
+            <div class="flex-auto border-b border-dotted border-dark"></div>
+            <p class="font-semibold">15.000 Сум</p>
+          </div>
+          <div class="flex text-sm">
+            <p>Устранить засор</p>
+            <div class="flex-auto border-b border-dotted border-dark"></div>
+            <p class="font-semibold">15.000 Сум</p>
+          </div>
+          <div class="flex text-sm">
+            <p>Устранить течь</p>
+            <div class="flex-auto border-b border-dotted border-dark"></div>
+            <p class="font-semibold">15.000 Сум</p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="activeSegment === 'second'">
+      <div class="grid gap-3">
+        <article class="card">
+          <div class="flex items-center">
+            <!-- avatarUrl="assets/images/executor.png" -->
+            <tui-avatar size="m" [rounded]="true" text="casd" class="mr-4" />
+            <div class="flex-auto text-sm">
+              <p class="line-clamp-1 font-semibold">Равшан Аббасов</p>
+              <div class="flex items-center">
+                <p class="pr-4 text-tertiary">г.Ташкент</p>
+                <div class="flex items-center">
+                  <ion-icon
+                    class="text-xs"
+                    src="assets/icons/rounded-star.svg"
+                  />
+                  <p class="pl-1 font-medium">5.0</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="py-2 text-sm">
+            Хороший мастер, пунктуальный, аккуратный, честный. Спокойно могу
+            доверить на будущее ему ремонт
+          </div>
+        </article>
+        <article class="card">
+          <div class="flex items-center">
+            <tui-avatar
+              size="m"
+              [rounded]="true"
+              avatarUrl="assets/images/executor.png"
+              class="mr-4"
+            />
+            <div class="flex-auto text-sm">
+              <p class="line-clamp-1 font-semibold">Равшан Аббасов</p>
+              <div class="flex items-center">
+                <p class="pr-4 text-tertiary">г.Ташкент</p>
+                <div class="flex items-center">
+                  <ion-icon
+                    class="text-xs"
+                    src="assets/icons/rounded-star.svg"
+                  />
+                  <p class="pl-1 font-medium">5.0</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="py-2 text-sm">
+            Хороший мастер, пунктуальный, аккуратный, честный. Спокойно могу
+            доверить на будущее ему ремонт
+          </div>
+        </article>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="activeSegment === 'third'">
+      <div class="grid grid-cols-2 gap-3">
+        <ng-container *ngFor="let item of arrayItems">
+          <img
+            src="assets/images/work.jpg"
+            class="h-32 w-full snap-start rounded-lg object-cover"
+          />
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+</ion-content>

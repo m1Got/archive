@@ -1,0 +1,7 @@
+{
+  "name": "profiapp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

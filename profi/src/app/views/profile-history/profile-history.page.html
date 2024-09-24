@@ -1,0 +1,130 @@
+<ng-container *ngIf="authService.userStatus === 'executor'">
+  <div class="mb-5 flex gap-5">
+    <button
+      tuiButton
+      [appearance]="activeTab === 'new' ? 'primary' : 'secondary'"
+      (click)="activeTab = 'new'"
+    >
+      <span class="text-sm font-medium">Новые заказы</span>
+    </button>
+    <button
+      tuiButton
+      [appearance]="activeTab === 'completed' ? 'primary' : 'secondary'"
+      (click)="activeTab = 'completed'"
+    >
+      <span class="text-sm font-medium">История</span>
+    </button>
+  </div>
+</ng-container>
+<ng-container *ngIf="activeTab === 'new'">
+  <div class="grid gap-4">
+    <ion-card
+      class="flex flex-col rounded-3xl p-4"
+      *ngFor="let item of historyActiveItems"
+    >
+      <div class="grid gap-2">
+        <div class="flex flex-auto">
+          <div class="grid flex-auto gap-2 md:flex md:items-center">
+            <p class="line-clamp-3 text-lg font-semibold text-dark">
+              Нужен опытный Сантехник со стажем
+            </p>
+            <p class="text-base font-semibold text-dark md:ml-auto md:text-lg">
+              <span class="pr-2">Нигора</span> +998
+              <span [tuiSensitive]="true"> 999 99 99 </span>
+            </p>
+          </div>
+        </div>
+        <div class="grid items-center gap-2 pt-3 md:flex">
+          <div class="flex border-solid border-primary md:border-r">
+            <p class="text-medium">ID:</p>
+            <span class="px-3">125486</span>
+          </div>
+          <div class="flex border-solid border-primary md:border-r">
+            <p class="text-medium">Категория:</p>
+            <span class="px-3">Cантехника</span>
+          </div>
+          <div class="flex border-solid border-primary md:border-r">
+            <p class="text-medium">Город:</p>
+            <span class="px-3">Ташкент</span>
+          </div>
+          <div class="flex">
+            <p class="text-medium">Дата:</p>
+            <span class="px-3">19.10.2023</span>
+          </div>
+        </div>
+      </div>
+      <div class="py-2 md:min-h-[60px]"></div>
+      <div class="grid items-center gap-4 md:flex">
+        <div class="text-lg font-semibold text-dark">От 70.000 Сум</div>
+        <div class="grid gap-2 sm:ml-auto sm:flex">
+          <button size="m" tuiButton appearance="secondary">
+            <span class="font-medium">На карте</span>
+          </button>
+          <button size="m" tuiButton appearance="secondary">
+            <span class="font-medium">Отказаться</span>
+          </button>
+          <button size="m" tuiButton appearance="accent">
+            <span class="font-medium">Откликнуться</span>
+          </button>
+        </div>
+      </div>
+    </ion-card>
+  </div>
+</ng-container>
+<ng-container
+  *ngIf="activeTab === 'completed' || authService.userStatus === 'client'"
+>
+  <ng-container *ngIf="orders.length">
+    <div class="custom--table">
+      <table tuiTable [columns]="columns" class="w-full">
+        <thead>
+          <tr tuiThGroup>
+            <th *tuiHead="'id'" tuiTh>ID заказа</th>
+            <th *tuiHead="'name'" tuiTh>Исполнитель</th>
+            <th *tuiHead="'category'" tuiTh>Категория</th>
+            <th *tuiHead="'order_date'" tuiTh [sorter]="null">Дата заявки</th>
+            <th *tuiHead="'complete_date'" tuiTh [sorter]="null">
+              Дата выполнения
+            </th>
+            <th *tuiHead="'status'" tuiTh>Статус</th>
+          </tr>
+        </thead>
+        <tbody
+          tuiTbody
+          *tuiLet="orders | tuiTableSort as sortedOrders"
+          [data]="sortedOrders"
+        >
+          <tr tuiTr *ngFor="let order of sortedOrders;">
+            <td *tuiCell="'id'" tuiTd>2154789</td>
+            <td *tuiCell="'name'" tuiTd>Азимжон Т</td>
+            <td *tuiCell="'category'" tuiTd>Уборка</td>
+            <td *tuiCell="'order_date'" tuiTd>01.02.2023</td>
+            <td *tuiCell="'complete_date'" tuiTd></td>
+            <td *tuiCell="'status'" tuiTd>
+              <tui-tag
+                size="l"
+                status="custom"
+                [hoverable]="true"
+                class="text-white"
+                [value]="order.status === 1 ? 'В процессе' : order.status === 2 ? 'Выполнено' : order.status === 3 ? 'Отказано' : 'В процессе'"
+                [class]="order.status === 1 ? 'bg-warning' : order.status === 2 ? 'bg-success' : order.status === 3 ? 'bg-danger' : 'bg-warning'"
+              >
+              </tui-tag>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!orders.length">
+    <tui-block-status>
+      <img
+        class="h-60 w-60"
+        src="images/block-status/empty-orders.svg"
+        tuiSlot="top"
+      />
+      <h4>История заказов пусто</h4>
+      <button tuiButton icon="icons/add-circle.svg">Создать</button>
+    </tui-block-status>
+  </ng-container>
+</ng-container>

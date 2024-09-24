@@ -1,0 +1,74 @@
+<ng-container *ngIf="!(isCodeSended$ | async)">
+  <div class="mb-8 text-center">
+    <h2 class="text-2xl font-bold">
+      <translate uz="Avtorizatsiya" ru="Авторизация" />
+    </h2>
+  </div>
+
+  <form [formGroup]="loginForm" (submit)="login()">
+    <tui-input-phone
+      formControlName="phone"
+      countryCode="+998"
+      [tuiTextfieldCleaner]="true"
+      tuiAutoFocus
+      phoneMaskAfterCountryCode="(##) ###-##-##"
+    >
+      <translate uz="Telefon nomer" ru="Номер телефона" />
+    </tui-input-phone>
+
+    <div class="mt-8">
+      <button
+        class="w-full"
+        tuiButton
+        type="submit"
+        [disabled]="loginForm.invalid || (isSubmitting$ | async)"
+      >
+        <translate uz="Kodni yubormoq" ru="Запросить код" />
+      </button>
+    </div>
+  </form>
+</ng-container>
+
+<ng-container *ngIf="isCodeSended$ | async">
+  <div class="relative mb-8 text-center">
+    <div class="center-y absolute left-0">
+      <button
+        tuiIconButton
+        icon="icons/chevron-left.svg"
+        (click)="setIsCodeSended()"
+        shape="rounded"
+        size="m"
+      ></button>
+    </div>
+    <h2 class="text-2xl font-bold" data-basic>
+      <translate uz="Kodni kiriting" ru="Введите код" />
+    </h2>
+  </div>
+
+  <form [formGroup]="confirmForm" (submit)="confirm()">
+    <tui-input-phone
+      tuiAutoFocus
+      countryCode=""
+      formControlName="code"
+      [tuiTextfieldCleaner]="true"
+      phoneMaskAfterCountryCode="###-###"
+    >
+      <translate uz="Kod" ru="Код" />
+    </tui-input-phone>
+
+    <div class="mt-8">
+      <button
+        tuiButton
+        type="submit"
+        class="w-full"
+        [disabled]="confirmForm.invalid || (isSubmitting$ | async)"
+      >
+        <translate uz="Tasdiqlash" ru="Подтвердить" />
+      </button>
+
+      <!-- <button class="w-full py-3">
+      <span class="text-lg text-medium">Запросить ещё раз {{ retryTime }}</span>
+    </button> -->
+    </div>
+  </form>
+</ng-container>

@@ -1,0 +1,66 @@
+<ng-container *ngIf="addressItems.length">
+  <div class="grid gap-2">
+    <article
+      *ngFor="let address of addressItems"
+      class="flex items-center rounded-xl border border-solid border-jupiter px-3 py-2"
+    >
+      <p class="text-lg font-medium">
+        г.Ташкент, Янги шахар улица, Сансара баста
+      </p>
+      <button
+        size="m"
+        tuiIconButton
+        icon="icons/trash-delete.svg"
+        appearance="secondary"
+        class="ml-auto"
+      ></button>
+    </article>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="!addressItems.length">
+  <tui-block-status>
+    <img
+      class="h-60 w-60"
+      src="images/block-status/empty-address.svg"
+      tuiSlot="top"
+    />
+    <h4>У вас пока нет адреса</h4>
+    <button
+      tuiButton
+      icon="icons/add-circle.svg"
+      (click)="showMap(mapTemplate)"
+    >
+      Добавить
+    </button>
+  </tui-block-status>
+</ng-container>
+
+<ng-template #mapTemplate>
+  <div class="primary-search">
+    <tui-input [tuiTextfieldLabelOutside]="true" [formControl]="">
+      Введите адрес
+      <input tuiTextfield />
+    </tui-input>
+    <button tuiButton appearance="accent" shape="rounded" size="m">
+      Найти
+    </button>
+  </div>
+  <div class="relative h-[30rem] w-full pt-5">
+    <ya-map
+      class="block h-full w-full overflow-hidden rounded-3xl"
+      [center]="[55.751952, 37.600739]"
+      [zoom]="12"
+    >
+    </ya-map>
+    <button
+      size="m"
+      tuiButton
+      appearance="accent"
+      shape="rounded"
+      class="absolute bottom-14 left-[40%]"
+    >
+      Подтвердить
+    </button>
+  </div>
+</ng-template>

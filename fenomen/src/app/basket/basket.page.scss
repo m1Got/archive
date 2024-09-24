@@ -1,0 +1,94 @@
+ion-toolbar {
+  --ion-safe-area-top: 35px;
+}
+
+.basket-empty {
+  padding: 0 0 7.3vh;
+}
+
+.basket-items {
+  padding: 0 0 20px;
+  margin: 0 0 10px;
+
+  border-bottom: 1px solid rgba(#000, 0.15);
+}
+
+.basket-delivery {
+  padding: 20px 0 0;
+}
+
+.basket-segment {
+  border-radius: 0;
+  border-top: 1px solid rgba(#000, 0.15);
+  border-bottom: 1px solid rgba(#000, 0.15);
+  margin-bottom: 15px;
+  padding: 15px 0;
+  ion-segment-button {
+    border-radius: 0;
+    width: 100%;
+  }
+
+  ion-segment-button:not(:last-child)::part(native) {
+    border-right: 1px solid rgba(#000, 0.6);
+  }
+}
+
+.basket-links {
+  padding: 10px 0;
+
+  ion-item {
+    --detail-icon-opacity: 1;
+    --padding-start: 0;
+    --padding-bottom: 5px;
+    --padding-top: 5px;
+  }
+}
+
+.basket-delivery__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 0 0 10px;
+}
+
+.basket-delivery__items {
+  color: #222;
+  font-size: 15px;
+}
+
+.basket-delivery__items > * {
+  margin: 0 0 5px;
+}
+
+.basket-footer {
+}
+
+.basket-total {
+  margin: 15px 0 0;
+  padding: 15px 0 0;
+  border-top: 1px solid rgba(#000, 0.15);
+}
+
+.basket-bonus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  ion-toggle {
+    font-weight: 500;
+    font-size: 13px;
+  }
+}
+
+.basket-submit {
+  width: 100%;
+  margin: 35px 0 0;
+}
+
+.basket-restaurant {
+  padding: 20px 0 0;
+  ion-button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="primary-toolbar">
+    <div class="primary-toolbar--inner">
+      <button
+        size="m"
+        shape="rounded"
+        tuiButton
+        appearance="whiteblock"
+        class="icon-button"
+        (click)="navCtrl.back()"
+      >
+        <ion-icon
+          class="text-lg"
+          color="primary"
+          src="assets/icons/chevron-back-outline.svg"
+        />
+      </button>
+      <ion-title>История заказов</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="grid gap-4">
+    <article class="card">
+      <div class="flex items-center gap-3">
+        <button
+          size="l"
+          tuiIconButton
+          icon="assets/icons/checkmark-outline.svg"
+          appearance="secondary"
+        ></button>
+        <div class="flex-auto">
+          <p class="text-base font-semibold text-dark">Заказ №10785</p>
+          <p class="text-sm text-tertiary">14 ноября 2023</p>
+        </div>
+      </div>
+      <div class="py-3 text-base font-medium text-dark">
+        К сожалению заказ был завершен без исполнителя закажите ещё
+      </div>
+      <div class="flex items-center">
+        <p class="text-base font-semibold text-primary">Завершен</p>
+        <p class="ml-auto text-base text-tertiary">13:36</p>
+      </div>
+    </article>
+  </div>
+</ion-content>

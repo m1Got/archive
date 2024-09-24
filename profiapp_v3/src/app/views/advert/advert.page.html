@@ -1,0 +1,104 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="primary-toolbar">
+    <div class="primary-toolbar--inner">
+      <button
+        size="m"
+        shape="rounded"
+        tuiButton
+        appearance="whiteblock"
+        class="icon-button"
+        (click)="navCtrl.back()"
+      >
+        <ion-icon
+          class="text-lg"
+          color="primary"
+          src="assets/icons/chevron-back-outline.svg"
+        />
+      </button>
+      <ion-title>Объявления</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="mb-4">
+    <swiper [pagination]="{ el: advertPagination }">
+      <ng-template swiperSlide>
+        <img
+          routerLink="/advertimages"
+          class="min-h-[12rem] w-full object-cover"
+          src="assets/images/work.jpg"
+        />
+      </ng-template>
+      <ng-template swiperSlide>
+        <img
+          routerLink="/advertimages"
+          F
+          class="min-h-[12rem] w-full object-cover"
+          src="assets/images/work.jpg"
+        />
+      </ng-template>
+    </swiper>
+    <div class="flex justify-center pt-3" #advertPagination></div>
+  </div>
+  <div class="ion-padding">
+    <div class="flex pb-3">
+      <div class="mr-auto">
+        <h4 class="line-clamp-2 text-xl font-semibold text-dark">
+          Разработка сайтов под ключ
+        </h4>
+        <p class="pt-2 text-xl font-semibold text-primary">120.000 Сум</p>
+      </div>
+      <button
+        size="m"
+        shape="rounded"
+        tuiButton
+        appearance="whiteblock"
+        class="icon-button"
+      >
+        <ion-icon color="primary" src="assets/icons/heart-fill.svg" />
+      </button>
+    </div>
+    <hr />
+    <div class="flex items-center py-4">
+      <ion-icon
+        color="primary"
+        src="assets/icons/location-pin.svg"
+        class="pr-2 text-xl"
+      />
+      <p class="line-clamp-1 text-base text-dark">
+        г.Ташкент, ул-Мукими, дом 13, кв 85 Фулта...
+      </p>
+    </div>
+    <hr />
+    <div class="py-4">
+      <div class="grid grid-cols-2 gap-2 text-base">
+        <p class="text-dark">Тип</p>
+        <p class="font-semibold text-primary">Частное</p>
+      </div>
+      <div class="grid grid-cols-2 gap-2 text-base">
+        <p class="text-dark">Категория</p>
+        <p class="font-semibold">Авто</p>
+      </div>
+      <div class="grid grid-cols-2 gap-2 text-base">
+        <p class="text-dark">Отклики</p>
+        <p class="font-semibold">128</p>
+      </div>
+    </div>
+    <hr />
+    <div class="py-4">
+      <div class="grid grid-cols-2 gap-2 text-base">
+        <p class="text-dark">Просмотры</p>
+        <p class="font-semibold">287</p>
+      </div>
+      <div class="grid grid-cols-2 gap-2 text-base">
+        <p class="text-dark">В избранном</p>
+        <p class="font-semibold">454</p>
+      </div>
+      <div class="grid grid-cols-2 gap-2 text-base">
+        <p class="text-dark">Размещено</p>
+        <p class="font-semibold">3 часа назад</p>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,87 @@
+<ion-content [fullscreen]="true">
+  <div class="h-full bg-primary flex flex-col">
+    <div class="flex-[55%] flex flex-col min-w-0 relative z-10">
+      <h2 class="text-white text-3xl font-semibold pt-10 px-5">Profi24</h2>
+      <swiper
+        class="flex-auto w-full"
+        [controller]="{ control: content.swiperRef }"
+        #images
+      >
+        <ng-template swiperSlide class="flex flex-col items-center justify-end">
+          <img class="w-5/6" src="assets/images/auth/auth-start-01.svg" />
+        </ng-template>
+        <ng-template swiperSlide class="flex flex-col items-center justify-end">
+          <img class="w-5/6" src="assets/images/auth/auth-start-02.svg" />
+        </ng-template>
+        <ng-template swiperSlide class="flex flex-col items-center justify-end">
+          <img class="w-5/6" src="assets/images/auth/auth-start-03.svg" />
+        </ng-template>
+        <ng-template swiperSlide class="flex flex-col items-center justify-end">
+          <img class="w-5/6" src="assets/images/auth/auth-start-04.svg" />
+        </ng-template>
+      </swiper>
+      <img
+        class="absolute top-0 left-0 w-full h-full z-[-1] scale-125"
+        src="assets/images/auth/auth-start-texture.svg"
+      />
+    </div>
+    <div
+      class="flex-[45%] flex flex-col bg-white rounded-t-3xl pb-4 relative z-10 min-w-0"
+    >
+      <div class="px-10 py-8 flex-1 min-w-0 w-full">
+        <swiper
+          class="text-center w-full"
+          [controller]="{ control: images.swiperRef }"
+          [pagination]="{ el: contentPagination }"
+          (activeIndexChange)="activeIndex = $event[0].activeIndex"
+          #content
+        >
+          <ng-template swiperSlide>
+            <h4 class="text-2xl font-semibold">Вход в систему</h4>
+            <p class="py-5">
+              Авторизуйтесь, чтобы оставлять заказы и делиться отзывами
+            </p>
+          </ng-template>
+          <ng-template swiperSlide>
+            <h4 class="text-2xl font-semibold">Экстренный вызов</h4>
+            <p class="py-5">
+              Возможность экстренно вызвать профессионала в неотложеных
+              ситуациях
+            </p>
+          </ng-template>
+          <ng-template swiperSlide>
+            <h4 class="text-2xl font-semibold">Размещение заказа</h4>
+            <p class="py-5">
+              Разместите объявление и вы найдете мастера за считанные мтнуты
+            </p>
+          </ng-template>
+          <ng-template swiperSlide>
+            <h4 class="text-2xl font-semibold">Отзыв о работе</h4>
+            <p class="py-5">
+              Поделитесь отзывом о проделанной работе мастера для улучшения
+              сервися
+            </p>
+          </ng-template>
+        </swiper>
+        <div class="py-5 flex justify-center" #contentPagination></div>
+      </div>
+      <div class="flex flex-col justify-end gap-2 p-3 flex-1">
+        <ion-button
+          expand="block"
+          (click)="activeIndex === 3 ? 
+            router.navigate(['/app-start'], { replaceUrl: true }) : 
+            content.swiperRef.slideNext()"
+        >
+          Далее
+        </ion-button>
+        <ion-button
+          color="light"
+          expand="block"
+          (click)="router.navigate(['/app-start'], { replaceUrl: true })"
+        >
+          <span class="text-primary">Пропустить</span>
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

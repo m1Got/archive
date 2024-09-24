@@ -1,0 +1,7 @@
+{
+  "name": "funsim",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

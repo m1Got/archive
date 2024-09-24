@@ -1,0 +1,37 @@
+@import "@ionic/angular/css/core.css";
+
+@import "swiper/css/bundle";
+
+@tailwind utilities;
+
+html {
+  min-width: var(--min-width);
+
+  ::selection {
+    color: #fff;
+  }
+}
+
+app-root {
+  @media (width < 48em) {
+    padding: 0 0 5rem;
+  }
+
+  .container,
+  [class*="__container"] {
+    margin-inline: auto;
+    width: min(100% - min(5vw, 2rem), var(--container-width));
+  }
+}
+
+app-root,
+#tuiRoot,
+#tuiRoot > tui-dropdown-host,
+#tuiRoot > tui-dropdown-host > .t-root-content {
+  background: var(--light);
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  flex: 1;
+}

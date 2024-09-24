@@ -1,0 +1,38 @@
+<ion-content [fullscreen]="true" class="min-w-0">
+  <div class="absolute right-4 top-4">
+    <button
+      shape="rounded"
+      size="m"
+      appearance="secondary"
+      tuiIconButton
+      icon="assets/icons/close-outline.svg"
+      (click)="navCtrl.back()"
+    ></button>
+  </div>
+  <div class="flex h-full flex-col justify-center">
+    <div class="h-4/5">
+      <swiper
+        class="h-full"
+        [pagination]="{ el: pagination, type: 'fraction' }"
+      >
+        <ng-template swiperSlide>
+          <img
+            class="h-full min-h-[15rem] w-full object-contain"
+            src="assets/images/work.jpg"
+          />
+        </ng-template>
+        <ng-template swiperSlide>
+          <img
+            class="h-full min-h-[15rem] w-full object-contain"
+            src="assets/images/work.jpg"
+          />
+        </ng-template>
+      </swiper>
+    </div>
+    <div class="flex justify-center pt-3">
+      <ion-button color="dark" size="small">
+        <div #pagination></div>
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

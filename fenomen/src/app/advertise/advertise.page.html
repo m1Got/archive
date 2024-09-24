@@ -1,0 +1,87 @@
+<ion-content [fullscreen]="true">
+  <button class="advertise-close" (click)="back()">
+    <ion-icon src="assets/icon/close.svg"></ion-icon>
+  </button>
+  <section class="advertise-img">
+    <img src="assets/images/advertise.jpg" />
+  </section>
+  <section class="advertise-content ion-padding">
+    <ion-button class="advertise-ticket mark" color="lime">
+      новинка
+    </ion-button>
+    <h4 class="advertise-title">Попробуй новое вегетарианское меню</h4>
+    <div class="product-items">
+      <article class="product">
+        <button class="product__fav icon-button">
+          <ion-icon src="assets/icon/heart-fill.svg" color="danger"></ion-icon>
+        </button>
+        <div
+          class="product__img"
+          routerLink="/detail"
+          routerDirection="forward"
+        >
+          <img src="assets/images/order-3.jpg" />
+        </div>
+        <div class="product__body">
+          <button class="product__basket icon-button">
+            <ion-icon src="assets/icon/product-basket.svg"></ion-icon>
+          </button>
+          <div class="product__info">50 гр. 323 ккал</div>
+          <div class="product__title">Мини-брускетта с уткой конфи и луком</div>
+          <div class="product__price">
+            <ion-text>3000 ₽</ion-text>
+            <ion-note>5000 ₽ </ion-note>
+          </div>
+        </div>
+      </article>
+      <article class="product">
+        <button class="product__fav icon-button">
+          <ion-icon
+            src="assets/icon/heart-outline.svg"
+            color="light"
+          ></ion-icon>
+        </button>
+        <div
+          class="product__img"
+          routerLink="/detail"
+          routerDirection="forward"
+        >
+          <img src="assets/images/order-1.jpg" />
+        </div>
+        <div class="product__body">
+          <button class="product__basket icon-button">
+            <ion-icon src="assets/icon/product-basket.svg"></ion-icon>
+          </button>
+          <div class="product__info">150 гр. 300 ккал</div>
+          <div class="product__title">Тар тар из говядины</div>
+          <div class="product__price">
+            <ion-text>3000 ₽</ion-text>
+          </div>
+        </div>
+      </article>
+      <article class="product">
+        <button class="product__fav icon-button">
+          <ion-icon src="assets/icon/heart-fill.svg" color="danger"></ion-icon>
+        </button>
+        <div
+          class="product__img"
+          routerLink="/detail"
+          routerDirection="forward"
+        >
+          <img src="assets/images/order-2.jpg" />
+        </div>
+        <div class="product__body">
+          <button class="product__basket icon-button">
+            <ion-icon src="assets/icon/product-basket.svg"></ion-icon>
+          </button>
+          <div class="product__info">50 гр. 323 ккал</div>
+          <div class="product__title">Мини-брускетта с уткой конфи и луком</div>
+          <div class="product__price">
+            <ion-text>3000 ₽</ion-text>
+            <ion-note>5000 ₽ </ion-note>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</ion-content>

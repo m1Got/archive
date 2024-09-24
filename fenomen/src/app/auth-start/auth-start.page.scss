@@ -1,0 +1,36 @@
+ion-content {
+  --background: transparent;
+}
+
+section {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  z-index: 4;
+
+  article {
+    max-width: 240px;
+  }
+
+  article > img {
+    width: 100%;
+    object-fit: contain;
+    margin: 10px 0;
+  }
+
+  h3 {
+    padding: 5px 0;
+    font-weight: 400;
+    color: #fff;
+  }
+
+  ion-button {
+    --background: #fff3;
+    position: relative;
+    width: 100%;
+    top: 20dvh;
+  }
+}

@@ -1,0 +1,73 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="primary-toolbar">
+    <div class="primary-toolbar--inner">
+      <button
+        size="m"
+        shape="rounded"
+        tuiButton
+        appearance="whiteblock"
+        class="icon-button"
+        (click)="navCtrl.back()"
+      >
+        <ion-icon
+          class="text-lg"
+          color="primary"
+          src="assets/icons/chevron-back-outline.svg"
+        />
+      </button>
+      <ion-title>Специальность</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="grid gap-3">
+    <tui-accordion-item class="accordion-item">
+      <p class="text-lg font-medium">Авто</p>
+      <ng-template tuiAccordionItemContent>
+        <ion-toggle
+          [checked]="true"
+          [enableOnOffLabels]="true"
+          justify="space-between"
+          class="w-full py-1"
+        >
+          Авто
+        </ion-toggle>
+        <ion-toggle
+          [checked]="true"
+          [enableOnOffLabels]="true"
+          justify="space-between"
+          class="w-full py-2"
+        >
+          Вызов Автомойки
+        </ion-toggle>
+      </ng-template>
+    </tui-accordion-item>
+    <tui-accordion-item class="accordion-item">
+      <p class="text-lg font-medium">Авто</p>
+      <ng-template tuiAccordionItemContent class="!p-1">
+        <ion-toggle
+          [checked]="true"
+          [enableOnOffLabels]="true"
+          justify="space-between"
+          class="w-full py-2"
+        >
+          Авто
+        </ion-toggle>
+        <ion-toggle
+          [checked]="true"
+          [enableOnOffLabels]="true"
+          justify="space-between"
+          class="w-full py-2"
+        >
+          Вызов Автомойки
+        </ion-toggle>
+      </ng-template>
+    </tui-accordion-item>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-toolbar class="secondary-toolbar">
+    <ion-button expand="block">Сохранить</ion-button>
+  </ion-toolbar>
+</ion-footer>

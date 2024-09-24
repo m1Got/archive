@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTMX + Tailwind + Vite Project</title>
+
+    <script defer type="module" src="scripts/main.ts"></script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <main>
+        <!-- content -->
+      </main>
+
+      <div hx-get="layouts/tabs.htm" hx-trigger="load" hx-swap="outerHTML"></div>
+    </div>
+  </body>
+</html>

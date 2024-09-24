@@ -1,0 +1,51 @@
+<ion-card class="feedback">
+  <ion-title size="md">
+    <h3>
+      <translate
+        nameEN="Send us a message"
+        nameKZ="Бізге хабарлама жіберіңіз"
+        nameRU="Отправьте нам сообщение"
+      />
+    </h3>
+  </ion-title>
+  <form [formGroup]="form">
+    <label class="form-group">
+      <span class="form-label">
+        <translate nameEN="Name" nameKZ="Аты" nameRU="Имя" />
+      </span>
+      <input class="form-input" formControlName="username" />
+    </label>
+    <label class="form-group">
+      <span class="form-label">
+        <translate
+          nameEN="Phone number"
+          nameKZ="Телефон нөмірі"
+          nameRU="Номер телефона"
+        />
+      </span>
+      <input
+        mask="+0 000 000 00 00"
+        formControlName="phone"
+        inputmode="tel"
+        class="form-input"
+      />
+    </label>
+    <label class="form-group">
+      <span class="form-label">
+        <translate nameEN="Text" nameKZ="Мәтін" nameRU="Текст" />
+      </span>
+      <textarea class="form-input" formControlName="text"></textarea>
+    </label>
+    <ion-button
+      type="submit"
+      fill="outline"
+      [disabled]="form.invalid || (isSubmitting$ | async)"
+    >
+      <translate
+        nameEN="Make a request"
+        nameKZ="Өтініш жасаңыз"
+        nameRU="Оформить заявку"
+      />
+    </ion-button>
+  </form>
+</ion-card>

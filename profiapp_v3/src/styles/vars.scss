@@ -1,0 +1,115 @@
+:root {
+  --font-family: "Montserrat", serif;
+
+  // --swiper-theme-color: var(--primary);
+  --swiper-pagination-color: var(--primary);
+
+  --ion-font-family: var(--font-family);
+  --tui-text-font: var(--font-family);
+
+  --tui-font-text-s: normal 0.8125rem/1.5 var(--tui-font-text);
+  // --tui-font-text-s: normal 0.8125rem / 1.25rem var(--tui-font-text);
+  --tui-text-01: var(--dark);
+  --tui-link: var(--primary);
+
+  /* ============= primary ============= */
+  --primary: var(--ion-color-primary);
+
+  --ion-color-primary: #018780;
+  --ion-color-primary-rgb: 1, 135, 128;
+  --ion-color-primary-contrast: #fff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #017771;
+  --ion-color-primary-tint: #1a938d;
+
+  --tui-primary: var(--ion-color-primary);
+  --tui-primary-active: var(--ion-color-primary-shade);
+  --tui-primary-hover: var(--ion-color-primary-tint);
+  --tui-primary-text: var(--ion-color-primary-contrast);
+
+  /* ============= secondary ============= */
+  --secondary: var(--ion-color-secondary);
+
+  --ion-color-secondary: #ff6332;
+  --ion-color-secondary-rgb: 255, 99, 50;
+  --ion-color-secondary-contrast: #fff;
+  --ion-color-secondary-contrast-rgb: 0, 0, 0;
+  --ion-color-secondary-shade: #e0572c;
+  --ion-color-secondary-tint: #ff7347;
+
+  --tui-accent: var(--ion-color-secondary);
+  --tui-accent-active: var(--ion-color-secondary-shade);
+  --tui-accent-hover: var(--ion-color-secondary-tint);
+  --tui-accent-text: var(--ion-color-secondary-contrast);
+
+  /* ============= tertiary ============= */
+  --tertiary: var(--ion-color-tertiary);
+
+  --ion-color-tertiary: #ababab;
+  --ion-color-tertiary-rgb: 171, 171, 171;
+  --ion-color-tertiary-contrast: #000000;
+  --ion-color-tertiary-contrast-rgb: 0, 0, 0;
+  --ion-color-tertiary-shade: #969696;
+  --ion-color-tertiary-tint: #b3b3b3;
+
+  /* ============= success ============= */
+
+  --success: var(--ion-color-success);
+
+  --ion-color-success: #00d656;
+  --ion-color-success-rgb: 0, 214, 86;
+  --ion-color-success-contrast: #000000;
+  --ion-color-success-contrast-rgb: 0, 0, 0;
+  --ion-color-success-shade: #00bc4c;
+  --ion-color-success-tint: #1ada67;
+
+  /* ============= warning ============= */
+
+  /* ============= danger ============= */
+  --danger: var(--ion-color-danger);
+
+  --ion-color-danger: #ff0000;
+  --ion-color-danger-rgb: 255, 0, 0;
+  --ion-color-danger-contrast: #fff;
+  --ion-color-danger-contrast-rgb: 0, 0, 0;
+  --ion-color-danger-shade: #e00000;
+  --ion-color-danger-tint: #ff1a1a;
+
+  /* ============= dark ============= */
+  --dark: var(--ion-color-dark);
+
+  --ion-color-dark: #181818;
+  --ion-color-dark-rgb: 24, 24, 24;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #151515;
+  --ion-color-dark-tint: #2f2f2f;
+
+  /* ============= medium ============= */
+  --medium: var(--ion-color-medium);
+
+  --ion-color-medium: #9b9b9b;
+  --ion-color-medium-rgb: 155, 155, 155;
+  --ion-color-medium-contrast: #000000;
+  --ion-color-medium-contrast-rgb: 0, 0, 0;
+  --ion-color-medium-shade: #888888;
+  --ion-color-medium-tint: #a5a5a5;
+
+  --tui-clear: var(--ion-color-medium);
+  --tui-clear-active: var(--ion-color-medium-shade);
+  --tui-clear-hover: var(--ion-color-medium-tint);
+
+  /* ============= light ============= */
+  --light: var(--ion-color-light);
+
+  --ion-color-light: #f8f8f8;
+  --ion-color-light-rgb: 248, 248, 248;
+  --ion-color-light-contrast: #000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #dadada;
+  --ion-color-light-tint: #f9f9f9;
+
+  --tui-secondary: var(--ion-color-light);
+  --tui-secondary-active: var(--ion-color-light-shade);
+  --tui-secondary-hover: var(--ion-color-light-tint);
+}

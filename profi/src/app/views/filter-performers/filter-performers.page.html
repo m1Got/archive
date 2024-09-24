@@ -1,0 +1,138 @@
+<div class="relative hidden overflow-hidden bg-primary py-4 md:block md:py-8">
+  <div class="container">
+    <div class="relative z-10">
+      <app-search />
+    </div>
+    <div
+      class="absolute -bottom-48 -left-16 h-80 w-80 rounded-full bg-fire"
+    ></div>
+    <div class="absolute -right-6 -top-16 h-36 w-36 rounded-full bg-fire"></div>
+  </div>
+</div>
+<div class="relative py-2 md:py-4">
+  <div class="container">
+    <div class="hidden items-center justify-between gap-4 md:flex">
+      <tui-breadcrumbs size="l">
+        <a *tuiItem tuiLink routerLink="/" class="font-medium"> Главная </a>
+        <a
+          *tuiItem
+          tuiLink
+          routerLink="/filter/performers"
+          routerLinkActive="text-primary"
+          class="font-medium"
+        >
+          Исполнители
+        </a>
+      </tui-breadcrumbs>
+      <div
+        (click)="navigationService.back()"
+        class="flex cursor-pointer items-center gap-3"
+      >
+        <button
+          size="s"
+          tuiIconButton
+          icon="icons/chevron-left.svg"
+          shape="rounded"
+        ></button>
+        <p class="text-base font-medium text-primary">Назад</p>
+      </div>
+    </div>
+  </div>
+  <div class="full-divider"></div>
+</div>
+<div class="py-5 md:py-10">
+  <div class="container">
+    <div class="grid items-start gap-3 md:flex md:gap-6">
+      <div class="block md:hidden">
+        <button
+          size="m"
+          tuiButton
+          appearance="whiteblock-active"
+          iconRight="icons/filter-settings.svg"
+          id="filter-performers"
+          class="w-full"
+          (click)="showFilterModal(filterGroup)"
+        >
+          Фильтры
+        </button>
+      </div>
+      <div class="hidden flex-[30%] md:block">
+        <div class="card">
+          <ng-container [ngTemplateOutlet]="filterGroup"></ng-container>
+        </div>
+      </div>
+      <div class="flex-[70%]">
+        <app-performers />
+      </div>
+    </div>
+  </div>
+</div>
+<app-download />
+
+<ng-template #filterGroup>
+  <h4 class="text-lg font-semibold">Фильтр объявлений</h4>
+  <div class="grid gap-4 py-3">
+    <label tuiLabel="Выберите город">
+      <tui-select
+        tuiTextfieldSize="l"
+        [tuiTextfieldLabelOutside]="true"
+        [formControl]=""
+      >
+        Выберите город
+        <input tuiTextfield />
+        <tui-data-list *tuiDataList>
+          <button tuiOption value="Ташкент">Ташкент</button>
+          <button tuiOption value="Навои">Навои</button>
+          <button tuiOption value="Самарканд">Самарканд</button>
+        </tui-data-list>
+        <!-- 
+        <tui-data-list-wrapper
+          *tuiDataList
+          [items]="items"
+        ></tui-data-list-wrapper>
+      -->
+      </tui-select>
+    </label>
+    <label tuiLabel="Выбрать категорию">
+      <tui-select
+        tuiTextfieldSize="l"
+        [tuiTextfieldLabelOutside]="true"
+        [formControl]=""
+      >
+        Выберите категорию
+        <input tuiTextfield />
+        <tui-data-list *tuiDataList>
+          <button tuiOption value="Категория 1">Категория 1</button>
+          <button tuiOption value="Категория 2">Категория 2</button>
+          <button tuiOption value="Категория 3">Категория 3</button>
+        </tui-data-list>
+      </tui-select>
+    </label>
+    <label tuiLabel="Минимальный рейтинг">
+      <tui-rating
+        [(ngModel)]="data.rating"
+        iconNormal="icons/star-outline.svg"
+        iconFilled="icons/star-filled.svg"
+        class="rating-l mr-1 text-[#FFD600]"
+      ></tui-rating>
+    </label>
+    <label tuiLabel="Бюджет до">
+      <tui-input-number
+        tuiTextfieldSize="l"
+        [tuiTextfieldLabelOutside]="true"
+        [formControl]=""
+      >
+        Введите сумму
+        <input tuiTextfield />
+      </tui-input-number>
+    </label>
+  </div>
+  <div class="grid gap-2 py-4">
+    <button size="m" tuiButton appearance="accent" shape="rounded">
+      <span class="font-medium">Применить</span>
+    </button>
+    <button size="m" tuiButton appearance="whiteblock" shape="rounded">
+      <span class="font-medium">Очистить все</span>
+    </button>
+  </div>
+</ng-template>

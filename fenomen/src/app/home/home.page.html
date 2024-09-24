@@ -1,0 +1,202 @@
+<ion-content [fullscreen]="true">
+  <section class="home-banner">
+    <swiper-container
+      [pagination]="{ el: 'swiper-pagination', clickable: true }"
+    >
+      <swiper-slide>
+        <img src="assets/images/home-banner.png" />
+        <ion-button
+          size="small"
+          color="danger"
+          routerLink="/banner"
+          routerDirection="forward"
+        >
+          <ion-text>подробнее</ion-text>
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </ion-button>
+      </swiper-slide>
+      <swiper-slide>
+        <img src="assets/images/home-banner.png" />
+        <ion-button
+          size="small"
+          color="danger"
+          routerLink="/banner"
+          routerDirection="forward"
+        >
+          <ion-text>подробнее</ion-text>
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </ion-button>
+      </swiper-slide>
+    </swiper-container>
+    <swiper-pagination></swiper-pagination>
+  </section>
+  <section class="ion-padding">
+    <header class="info-header">
+      <div class="info-header__start">
+        <ion-chip class="sharped">
+          <ion-icon src="assets/icon/phi.svg"></ion-icon>
+          <ion-text>1,200</ion-text>
+        </ion-chip>
+      </div>
+      <div class="info-header__end">
+        <ion-text>ул. Уличная, 10 Пт 12:00-06:00</ion-text>
+      </div>
+    </header>
+    <header class="page-header">
+      <div class="page-header__start">
+        <h2 class="page-title"><span>Привет,</span> Феномен!</h2>
+      </div>
+      <div class="page-header__end">
+        <ion-avatar>
+          <img src="assets/logo.png" />
+        </ion-avatar>
+      </div>
+    </header>
+  </section>
+  <section class="ion-padding-horizontal">
+    <h5 class="title">Новости / События</h5>
+    <div class="blogs">
+      <div class="blog-item">
+        <ion-text>Феноменальный винный вечер</ion-text>
+        <img src="assets/images/blog-01.png" />
+      </div>
+      <div class="blog-item">
+        <ion-text>Вкусно и точка</ion-text>
+        <img src="assets/images/blog-02.png" />
+      </div>
+    </div>
+  </section>
+  <!-- Выберите действие -->
+  <ion-button id="choose-action" expand="block" class="ion-margin-bottom">
+    Выберите действие
+  </ion-button>
+  <ion-modal
+    trigger="choose-action"
+    [initialBreakpoint]="0.4"
+    [breakpoints]="[0, 0.4]"
+  >
+    <ng-template>
+      <ion-content class="ion-padding">
+        <h2 class="ion-padding-top">Выберите действие</h2>
+        <ion-text color="medium">
+          хотим, как можно скорей, Вас накормить! 🥹
+        </ion-text>
+        <ion-row class="ion-padding-vertical">
+          <ion-button color="silver">
+            Я в ресторане
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+          </ion-button>
+          <ion-button color="silver">
+            Заказать доставку
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+          </ion-button>
+          <ion-button color="silver">
+            Еду в ресторан
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+          </ion-button>
+        </ion-row>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+  <!-- Как хорошо, что Вы уже здесь! -->
+  <ion-button
+    id="already-here"
+    color="danger"
+    expand="block"
+    class="ion-margin-bottom"
+  >
+    Как хорошо, что Вы уже здесь!
+  </ion-button>
+  <ion-modal
+    trigger="already-here"
+    [initialBreakpoint]="0.35"
+    [breakpoints]="[0, 0.35]"
+  >
+    <ng-template>
+      <ion-content class="ion-padding">
+        <h2 class="ion-padding-top">Как хорошо, что Вы уже здесь!</h2>
+        <ion-text color="medium"> выберите действие и мы продолжим! </ion-text>
+        <ion-row class="ion-padding-vertical">
+          <ion-button color="silver">
+            Сделаю заказ сам
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+          </ion-button>
+          <ion-button color="silver">
+            Позвать официанта
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+          </ion-button>
+        </ion-row>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+  <ion-button
+    id="rate-quality"
+    color="green"
+    expand="block"
+    class="ion-margin-bottom"
+  >
+    Оцените качество обслуживания
+  </ion-button>
+  <ion-modal
+    trigger="rate-quality"
+    [initialBreakpoint]="0.65"
+    [breakpoints]="[0, 0.65]"
+    #rateQuality
+  >
+    <ng-template>
+      <ion-content class="ion-padding">
+        <div class="ion-text-center">
+          <h2 class="ion-padding-vertical">Оцените качество обслуживания</h2>
+          <ion-text color="medium"> сегодня, 18:30 </ion-text>
+        </div>
+        <div class="ion-text-center ion-padding-vertical">
+          <ion-text color="medium"> оставить чаевые </ion-text>
+          <ion-radio-group
+            value=""
+            [allowEmptySelection]="true"
+            class="radio-group"
+            size="large"
+            expand="full"
+          >
+            <ion-grid>
+              <ion-row>
+                <ion-col size="4">
+                  <ion-radio value="1"> <span>10%</span> </ion-radio>
+                </ion-col>
+                <ion-col size="4">
+                  <ion-radio value="2"> <span>20%</span> </ion-radio>
+                </ion-col>
+                <ion-col size="4">
+                  <ion-radio value="3"> <span>30%</span> </ion-radio>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-radio-group>
+        </div>
+        <ion-button
+          class="ion-margin-top"
+          (click)="rateQuality.dismiss()"
+          expand="block"
+          color="silver"
+        >
+          закрыть
+        </ion-button>
+        <!-- <ion-button class="ion-margin-top" expand="full"> оплатить </ion-button> -->
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>
+
+<ion-fab slot="fixed" vertical="bottom" horizontal="center">
+  <ion-fab-button routerLink="/scan" routerDirection="forward">
+    <ion-icon src="assets/icon/qrcode.svg"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<ion-footer>
+  <ion-toolbar color="green">
+    <marquee direction="right" class="mention">
+      НОВОЕ ВЕГЕТАРИАНСКОЕ МЕНЮ! /// НОВОЕ ВЕГЕТАРИАНСКОЕ МЕНЮ! ///
+    </marquee>
+  </ion-toolbar>
+</ion-footer>

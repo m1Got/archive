@@ -1,0 +1,44 @@
+@font-face {
+  font-weight: 400;
+  font-family: "FuturaPT";
+  font-display: swap;
+  font-style: normal;
+  src: url("../assets/fonts/FuturaPT-Book.woff2") format("woff2"),
+    url("../assets/fonts/FuturaPT-Book.woff") format("woff");
+}
+
+@font-face {
+  font-weight: 500;
+  font-family: "FuturaPT";
+  font-display: swap;
+  font-style: normal;
+  src: url("../assets/fonts/FuturaPT-Medium.woff2") format("woff2"),
+    url("../assets/fonts/FuturaPT-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-weight: 700;
+  font-family: "FuturaPT";
+  font-display: swap;
+  font-style: normal;
+  src: url("../assets/fonts/FuturaPT-Bold.woff2") format("woff2"),
+    url("../assets/fonts/FuturaPT-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-weight: 700;
+  font-family: "Benzin";
+  font-display: swap;
+  font-style: normal;
+  src: url("../assets/fonts/Benzin-Bold.woff2") format("woff2"),
+    url("../assets/fonts/Benzin-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-weight: 800;
+  font-family: "Benzin";
+  font-display: swap;
+  font-style: normal;
+  src: url("../assets/fonts/Benzin-ExtraBold.woff2") format("woff2"),
+    url("../assets/fonts/Benzin-ExtraBold.woff") format("woff");
+}

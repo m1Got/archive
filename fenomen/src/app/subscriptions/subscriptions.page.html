@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <header class="header">
+      <div class="header-start">
+        <ion-buttons slot="start">
+          <ion-back-button text="" icon="arrow-back-outline"> </ion-back-button>
+        </ion-buttons>
+      </div>
+      <div class="header-center">
+        <ion-text class="header-title"></ion-text>
+      </div>
+      <div class="header-end"></div>
+    </header>
+    <header class="page-header">
+      <div class="page-header__start">
+        <h2 class="page-title">Подписки и уведомления</h2>
+      </div>
+      <div class="page-header__end"></div>
+    </header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <section class="subscriptions-items">
+    <ion-toggle labelPlacement="start">push-уведомления</ion-toggle>
+    <ion-toggle labelPlacement="start">e-mail</ion-toggle>
+    <ion-toggle labelPlacement="start">sms</ion-toggle>
+  </section>
+</ion-content>

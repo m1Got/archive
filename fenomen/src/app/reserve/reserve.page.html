@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <header class="info-header">
+      <div class="info-header__start">
+        <ion-chip class="sharped">
+          <ion-icon src="assets/icon/phi.svg"></ion-icon>
+          <ion-text>1,200</ion-text>
+        </ion-chip>
+      </div>
+      <div class="info-header__end">
+        <ion-text>ул. Уличная, 10 Пт 12:00-06:00</ion-text>
+      </div>
+    </header>
+    <header class="page-header">
+      <div class="page-header__start">
+        <h2 class="page-title">Бронирование стола</h2>
+      </div>
+      <div class="page-header__end"></div>
+    </header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="group">
+    <div class="group-title">Дата</div>
+    <div class="group-body">
+      <article class="action">
+        <div class="action-info">
+          <ion-icon src="assets/icon/calendar.svg"></ion-icon>
+          <div class="action-text">Сегодня, 5 января, 15:50</div>
+        </div>
+        <div class="action-change">
+          <button
+            class="link-button"
+            routerLink="/datetime"
+            routerDirection="forward"
+          >
+            Изменить
+          </button>
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class="group">
+    <div class="group-title">количество гостей</div>
+    <div class="group-body">
+      <article class="action">
+        <div class="action-info">
+          <ion-icon src="assets/icon/user-plus.svg"></ion-icon>
+          <div class="action-text">5 гостей</div>
+        </div>
+        <div class="action-change">
+          <div class="quantity-actions">
+            <ion-chip>
+              <ion-icon src="assets/icon/minus.svg"></ion-icon>
+            </ion-chip>
+            <ion-chip>
+              <ion-icon src="assets/icon/plus.svg"></ion-icon>
+            </ion-chip>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class="group">
+    <div class="group-title">выберите стол</div>
+    <div class="group-body">
+      <article class="action">
+        <div class="action-info">
+          <ion-icon src="assets/icon/table.svg"></ion-icon>
+          <div class="action-text">7 стол</div>
+        </div>
+        <div class="action-change">
+          <button
+            class="link-button"
+            routerLink="/table"
+            routerDirection="forward"
+          >
+            Изменить
+          </button>
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class="group">
+    <div class="group-title">пожелания к бронированию</div>
+    <div class="group-body">
+      <ion-radio-group
+        class="radio-group"
+        [allowEmptySelection]="true"
+        value="1"
+      >
+        <ion-radio value="1">Закажу на месте</ion-radio><br />
+        <ion-radio value="2">Закажу сейчас</ion-radio><br />
+        <ion-radio value="3">Вынести блюда по готовности</ion-radio><br />
+      </ion-radio-group>
+      <ion-input
+        inputmode="text"
+        placeholder="Нагреть место! :)"
+        value="Закажу на месте;"
+        class="custom"
+      />
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button
+      expand="block"
+      routerLink="/success"
+      routerDirection="forward"
+      class="ion-margin-bottom"
+    >
+      Забронировать
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

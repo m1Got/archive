@@ -1,0 +1,7 @@
+{
+  "name": "fenomen",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

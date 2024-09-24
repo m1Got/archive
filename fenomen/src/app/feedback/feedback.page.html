@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <header class="header">
+      <div class="header-start">
+        <ion-buttons slot="start">
+          <ion-back-button text="" icon="arrow-back-outline"> </ion-back-button>
+        </ion-buttons>
+      </div>
+      <div class="header-center">
+        <ion-text class="header-title"></ion-text>
+      </div>
+      <div class="header-end"></div>
+    </header>
+    <header class="page-header">
+      <div class="page-header__start">
+        <h2 class="page-title">Поделитесь своим мнением</h2>
+      </div>
+      <div class="page-header__end"></div>
+    </header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <section>
+    <ion-grid>
+      <label class="radio">
+        <input type="radio" name="feedbackRadio" />
+        <span>сообщить о проблеме</span>
+      </label>
+
+      <label class="radio">
+        <input type="radio" name="feedbackRadio" />
+        <span>идея для улучшения</span>
+      </label>
+
+      <label class="radio">
+        <input type="radio" name="feedbackRadio" />
+        <span>оставить положительный отзыв</span>
+      </label>
+    </ion-grid>
+    <ion-input
+      label="e-mail"
+      inputmode="email"
+      placeholder="mail@fenomen.com"
+      class="custom"
+    />
+
+    <ion-input
+      label="телефон"
+      inputmode="tel"
+      placeholder="8 (800) 2000-600"
+      class="custom"
+    />
+
+    <ion-note color="primary">
+      Ответ будет отправлен на вашу почту или по указанному номеру телефона
+    </ion-note>
+
+    <ion-textarea
+      autoGrow
+      inputmode="tel"
+      placeholder="Введите сообщение"
+      class="custom"
+      rows="5"
+    />
+  </section>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="block">сохранить</ion-button>
+  </ion-toolbar>
+</ion-footer>

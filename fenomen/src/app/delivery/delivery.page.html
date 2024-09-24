@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <header class="header">
+      <div class="header-start">
+        <ion-buttons slot="start">
+          <ion-back-button text="" icon="arrow-back-outline"> </ion-back-button>
+        </ion-buttons>
+      </div>
+      <div class="header-center">
+        <ion-text class="header-title"></ion-text>
+      </div>
+      <div class="header-end"></div>
+    </header>
+    <header class="page-header">
+      <div class="page-header__start">
+        <h2 class="page-title">Данные доставки</h2>
+      </div>
+      <div class="page-header__end"></div>
+    </header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="group">
+    <div class="group-title">адрес</div>
+    <div class="group-body">
+      <div class="picker">
+        <div class="picker__start">
+          <div class="picker__value">г. Уфа, ул. Уличная, 10, кв. 77</div>
+        </div>
+        <div class="picker__end">
+          <button class="link-button">Изменить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="group">
+    <div class="group-title">ко времени</div>
+    <div class="group-body">
+      <div class="picker no-border">
+        <div class="picker__start">
+          <label class="radio">
+            <input type="checkbox" />
+            <span>Как можно скорее</span>
+          </label>
+        </div>
+        <div class="picker__end"></div>
+      </div>
+      <ion-input required placeholder="27.09.2023 05:36" class="custom" />
+    </div>
+  </div>
+
+  <div class="group">
+    <div class="group-title">промокод</div>
+    <div class="group-body">
+      <div class="picker">
+        <div class="picker__start">
+          <div class="picker__value">Промокод</div>
+        </div>
+        <div class="picker__end">
+          <ion-icon name="chevron-down"></ion-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <label class="radio">
+    <input type="checkbox" />
+    <span>нужны приборы</span>
+  </label>
+  <ion-note> *не используя приборы, вы бережете планету! </ion-note>
+
+  <div class="quantity">
+    <div class="quantity-label">Количество персон</div>
+    <div class="quantity-actions">
+      <ion-chip>
+        <ion-icon src="assets/icon/minus.svg"></ion-icon>
+      </ion-chip>
+      <div class="quantity-amount">2</div>
+      <ion-chip>
+        <ion-icon src="assets/icon/plus.svg"></ion-icon>
+      </ion-chip>
+    </div>
+  </div>
+
+  <div class="quantity">
+    <div class="quantity-label">Европейские приборы</div>
+    <div class="quantity-actions">
+      <ion-chip>
+        <ion-icon src="assets/icon/minus.svg"></ion-icon>
+      </ion-chip>
+      <div class="quantity-amount">2</div>
+      <ion-chip>
+        <ion-icon src="assets/icon/plus.svg"></ion-icon>
+      </ion-chip>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button color="primary" expand="block"> Сохранить </ion-button>
+  </ion-toolbar>
+</ion-footer>

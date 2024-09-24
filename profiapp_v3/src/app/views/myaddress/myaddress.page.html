@@ -1,0 +1,80 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="primary-toolbar">
+    <div class="primary-toolbar--inner">
+      <button
+        size="m"
+        shape="rounded"
+        tuiButton
+        appearance="whiteblock"
+        class="icon-button"
+        (click)="navCtrl.back()"
+      >
+        <ion-icon
+          class="text-lg"
+          color="primary"
+          src="assets/icons/chevron-back-outline.svg"
+        />
+      </button>
+      <ion-title>Мои адреса</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="grid gap-4">
+    <ion-item lines="none" detail="false" class="menu-item">
+      <div class="px-1">
+        <p class="text-base font-semibold">Мой новый адрес 1</p>
+        <p class="text-sm">Чилонзор, ул. Бунёдкор 8/10.</p>
+      </div>
+      <button
+        slot="end"
+        size="m"
+        tuiButton
+        appearance="secondary"
+        class="icon-button"
+      >
+        <ion-icon
+          color="danger"
+          class="text-2xl"
+          src="assets/icons/trash-bin.svg"
+        />
+      </button>
+    </ion-item>
+    <ion-item-sliding>
+      <ion-item button lines="none" detail="false" class="menu-item">
+        <div class="px-1">
+          <p class="line-clamp-1 text-base font-semibold">Мой новый адрес 1</p>
+          <p class="line-clamp-1 text-sm">Чилонзор, ул. Бунёдкор 8/10.</p>
+        </div>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" src="assets/icons/trash-bin.svg" />
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </div>
+  <!-- <tui-block-status>
+    <img
+      class="!h-60 !w-60"
+      src="assets/block-status/empty-address.svg"
+      tuiSlot="top"
+    />
+    <h4>У вас пока нет адреса</h4>
+    <button
+      tuiButton
+      icon="assets/icons/plus-add.svg"
+      routerLink="/addresscreate"
+    >
+      Добавить
+    </button>
+  </tui-block-status> -->
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="secondary-toolbar">
+    <ion-button expand="block">Добавить новый адрес</ion-button>
+  </ion-toolbar>
+</ion-footer>

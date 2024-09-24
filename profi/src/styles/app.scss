@@ -1,0 +1,50 @@
+@import "@ionic/angular/css/core.css";
+@import "@ionic/angular/css/padding.css";
+
+@import "swiper/css/bundle";
+
+@tailwind utilities;
+
+html {
+  min-width: var(--min-width);
+
+  ::selection {
+    color: #fff;
+  }
+}
+
+html.backdrop-lock {
+  overflow: hidden;
+}
+
+html.ios,
+html.md {
+  --ion-font-family: var(--font-family), -apple-system, sans-serif;
+  --ion-default-font: var(--font-family), -apple-system, sans-serif;
+}
+
+body.backdrop-no-scroll {
+  overflow: auto;
+}
+
+app-root {
+  @media (width < 48em) {
+    padding: 0 0 5rem;
+  }
+
+  .container,
+  [class*="__container"] {
+    margin-inline: auto;
+    width: min(100% - min(5vw, 3rem), var(--container-width));
+  }
+}
+
+app-root,
+#tuiRoot,
+#tuiRoot > tui-dropdown-host,
+#tuiRoot > tui-dropdown-host > .t-root-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}

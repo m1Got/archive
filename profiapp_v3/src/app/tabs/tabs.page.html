@@ -1,0 +1,58 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home" href="/tabs/home">
+      <ion-icon aria-hidden="true" src="assets/icons/home-classic.svg" />
+      <ion-label>Главная</ion-label>
+    </ion-tab-button>
+
+    <ng-container *ngIf="authService.role === 'client'">
+      <ion-tab-button tab="adverts" href="/tabs/adverts">
+        <ion-icon aria-hidden="true" src="assets/icons/grid-layout.svg" />
+        <ion-label>Объявления</ion-label>
+      </ion-tab-button>
+    </ng-container>
+
+    <ng-container *ngIf="authService.role === 'client'">
+      <ion-tab-button tab="order" href="/tabs/order">
+        <div class="tabs-primary-button">
+          <button
+            tuiIconButton
+            shape="rounded"
+            icon="assets/icons/plus-add.svg"
+          ></button>
+        </div>
+        <ion-icon aria-hidden="true" src="assets/icons/plus-add.svg" />
+        <ion-label>Cоздать</ion-label>
+      </ion-tab-button>
+    </ng-container>
+
+    <ng-container *ngIf="authService.role === 'executor'">
+      <ion-tab-button tab="advertcreate" href="/tabs/advertcreate">
+        <ion-icon aria-hidden="true" src="assets/icons/plus-add.svg" />
+        <ion-label>Cоздать</ion-label>
+      </ion-tab-button>
+    </ng-container>
+
+    <ng-container *ngIf="authService.role === 'client'">
+      <ion-tab-button tab="allorders" href="/tabs/allorders">
+        <ion-icon
+          aria-hidden="true"
+          src="assets/icons/suitcase-portfolio.svg"
+        />
+        <ion-label>Заказы</ion-label>
+      </ion-tab-button>
+    </ng-container>
+
+    <ng-container *ngIf="authService.role === 'executor'">
+      <ion-tab-button tab="executororders" href="/tabs/executororders">
+        <ion-icon aria-hidden="true" src="assets/icons/essential-shapes.svg" />
+        <ion-label>Заказы</ion-label>
+      </ion-tab-button>
+    </ng-container>
+
+    <ion-tab-button tab="profile" href="/tabs/profile">
+      <ion-icon aria-hidden="true" src="assets/icons/user-outline.svg" />
+      <ion-label>Профиль</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

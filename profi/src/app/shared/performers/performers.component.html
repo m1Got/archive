@@ -1,0 +1,176 @@
+<ng-container *ngIf="isSlider">
+  <swiper
+    [config]="utilsService.cardSwiper('performers')"
+    class="my-[min(2vw,_20px)] !py-4 md:!px-3"
+  >
+    <ng-template swiperSlide *ngFor="let performer of performers">
+      <ng-container
+        [ngTemplateOutlet]="performerTemplate"
+        [ngTemplateOutletContext]="{ performer }"
+      ></ng-container>
+    </ng-template>
+  </swiper>
+  <div data-performers-navigation class="flex justify-center gap-2">
+    <button
+      size="m"
+      tuiIconButton
+      icon="icons/chevron-left.svg"
+      shape="rounded"
+      data-prev
+    ></button>
+    <button
+      size="m"
+      tuiIconButton
+      icon="icons/chevron-right.svg"
+      shape="rounded"
+      data-next
+    ></button>
+  </div>
+</ng-container>
+<ng-container *ngIf="!isSlider">
+  <div class="auto-columns">
+    <ng-container *ngFor="let performer of performers">
+      <ng-container
+        [ngTemplateOutlet]="performerTemplate"
+        [ngTemplateOutletContext]="{ performer }"
+      ></ng-container>
+    </ng-container>
+  </div>
+</ng-container>
+
+<ng-template #performerTemplate let-performer="performer">
+  <ion-card class="card">
+    <div class="flex">
+      <tui-avatar
+        size="xl"
+        avatarUrl="images/executor-01.jpg"
+        routerLink="/performers/detail/slug"
+        class="cursor-pointer"
+      />
+      <div class="pl-4">
+        <h5 class="line-clamp-2 text-lg font-semibold text-dark">
+          {{ performer?.name }}
+        </h5>
+        <div class="flex items-center py-2">
+          <tui-rating
+            [readOnly]="true"
+            [(ngModel)]="data.rating"
+            iconNormal="icons/star-outline.svg"
+            iconFilled="icons/star-filled.svg"
+            class="mr-1 text-[#FFD600]"
+          ></tui-rating>
+          <span class="font-medium">{{ data.rating }}</span>
+        </div>
+        <div class="flex gap-3">
+          <button size="s" tuiButton appearance="secondary">
+            <span class="font-medium">Ташкент</span>
+          </button>
+          <button
+            size="s"
+            tuiButton
+            appearance="secondary"
+            icon="icons/eye.svg"
+          >
+            <span class="font-medium">1215</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="grid gap-1 py-5 md:flex">
+      <div class="flex items-center">
+        <button
+          size="s"
+          shape="rounded"
+          icon="icons/shield.svg"
+          tuiIconButton
+          class="mr-2"
+        ></button>
+        <span class="text-medium">Паспорт проверен</span>
+      </div>
+      <div class="flex items-center">
+        <button
+          size="s"
+          shape="rounded"
+          icon="icons/money.svg"
+          tuiIconButton
+          class="mr-2"
+        ></button>
+        <span class="text-medium">Цены соответствуют заявленным</span>
+      </div>
+    </div>
+    <ul class="[&>li]:py-1">
+      <li class="flex">
+        <span>Устранить течь</span>
+        <div
+          class="m-1 flex-auto border-b-2 border-dotted border-lightgrey"
+        ></div>
+        <b class="text-right text-dark">от 150.000 сум</b>
+      </li>
+      <li class="flex">
+        <span>Установить сантехнику</span>
+        <div
+          class="m-1 flex-auto border-b-2 border-dotted border-lightgrey"
+        ></div>
+        <b class="text-right text-dark">от 125.000 сум</b>
+      </li>
+      <li class="flex">
+        <span>Устранить засор</span>
+        <div
+          class="m-1 flex-auto border-b-2 border-dotted border-lightgrey"
+        ></div>
+        <b class="text-right text-dark">от 200.000 сум</b>
+      </li>
+    </ul>
+    <div class="mt-5 flex items-center">
+      <div class="md:hidden">
+        <button
+          size="m"
+          tuiIconButton
+          icon="icons/call.svg"
+          shape="rounded"
+          tuiHint="Контакты мастера"
+          [tuiHintShowDelay]="150"
+          [tuiHintDirection]="'right-top'"
+        ></button>
+      </div>
+      <div class="hidden md:inline-block">
+        <button tuiButton size="m" shape="rounded">
+          <span class="text-left font-medium">Контакты мастера</span>
+        </button>
+      </div>
+      <div class="ml-auto flex gap-2">
+        <button
+          size="m"
+          tuiIconButton
+          style="--tui-text-01: var(--charcoal)"
+          icon="icons/share.svg"
+          appearance="whiteblock"
+          shape="rounded"
+          (click)="utilsService.showAlert(copyTemplate)"
+        ></button>
+        <button
+          size="m"
+          tuiIconButton
+          style="--tui-text-01: var(--charcoal)"
+          icon="icons/heart-classic.svg"
+          appearance="whiteblock"
+          shape="rounded"
+          (click)="utilsService.showAlert(favoriteTemplate)"
+        ></button>
+      </div>
+    </div>
+  </ion-card>
+</ng-template>
+
+<ng-template #favoriteTemplate>
+  <tui-notification class="!p-1" size="m" icon="icons/heart-filled.svg">
+    <p class="text-[15px] font-semibold">Добавлен в избранное</p>
+    <a routerLink="/favorites" class="text-sm text-primary">Перейти</a>
+  </tui-notification>
+</ng-template>
+
+<ng-template #copyTemplate>
+  <tui-notification class="!p-1" size="m" icon="icons/share.svg">
+    <p class="text-[15px] font-semibold">Ссылка скопировано</p>
+  </tui-notification>
+</ng-template>

@@ -1,0 +1,126 @@
+<ion-content [fullscreen]="true" class="ion-padding-vertical">
+  <section>
+    <menu class="ion-padding-vertical">
+      <ion-item button routerLink="/personal" routerDirection="forward">
+        <ion-icon src="/assets/icons/user.svg" slot="start"></ion-icon>
+        <ion-label>
+          <translate
+            nameEN="Personal Area"
+            nameKZ="Жеке бөлме"
+            nameRU="Личный кабинет"
+          />
+        </ion-label>
+      </ion-item>
+      <ion-item button routerLink="/simcards" routerDirection="forward">
+        <ion-icon src="/assets/icons/sim.svg" slot="start"></ion-icon>
+        <ion-label>
+          <translate
+            nameEN="SIM cards"
+            nameKZ="SIM карталары"
+            nameRU="Сим-карты"
+          />
+        </ion-label>
+      </ion-item>
+      <ion-item button routerLink="/extension" routerDirection="forward">
+        <ion-icon src="/assets/icons/calendar.svg" slot="start"></ion-icon>
+        <ion-label>
+          <translate
+            nameEN="Renewal requests"
+            nameKZ="Жаңарту сұраулары"
+            nameRU="Запросы на продление"
+          />
+        </ion-label>
+      </ion-item>
+      <ion-item button id="language">
+        <ion-icon src="/assets/icons/globus.svg" slot="start"></ion-icon>
+        <ion-label>
+          <translate
+            nameEN="Application language"
+            nameKZ="Приложения тілдік"
+            nameRU="Язык приложение"
+          />
+        </ion-label>
+      </ion-item>
+      <ion-modal
+        trigger="language"
+        [breakpoints]="[0, 0.2]"
+        [initialBreakpoint]="0.2"
+      >
+        <ng-template>
+          <br /><br />
+          <ion-content class="ion-padding">
+            <ion-segment (ionChange)="changeLng()" [(ngModel)]="lng">
+              <ion-segment-button value="ru">
+                <ion-label>RU</ion-label>
+              </ion-segment-button>
+              <ion-segment-button value="kz">
+                <ion-label>KZ</ion-label>
+              </ion-segment-button>
+              <ion-segment-button value="en">
+                <ion-label>ENG</ion-label>
+              </ion-segment-button>
+            </ion-segment>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+    </menu>
+
+    <hr />
+
+    <menu class="ion-padding-vertical">
+      <ion-item button routerLink="/confident" routerDirection="forward">
+        <ion-label>
+          <translate
+            nameEN="Privacy Policy"
+            nameKZ="Құпиялылық саясаты"
+            nameRU="Политика конфиденциальности"
+          />
+        </ion-label>
+      </ion-item>
+      <ion-item button routerLink="/offer" routerDirection="forward">
+        <ion-label>
+          <translate
+            nameEN="Public offer"
+            nameKZ="Жария ұсыныс"
+            nameRU="Публичная оферта"
+          />
+        </ion-label>
+      </ion-item>
+      <ion-item button id="return-policy">
+        <ion-label>
+          <translate
+            nameEN="Return Policy"
+            nameKZ="Қайтару саясаты"
+            nameRU="Правила возврата"
+          />
+        </ion-label>
+      </ion-item>
+      <ion-modal
+        trigger="return-policy"
+        [initialBreakpoint]="0.35"
+        [breakpoints]="[0, 0.35]"
+      >
+        <ng-template>
+          <ion-content class="ion-padding">
+            <br />
+            <ion-text>
+              <translate
+                nameEN="The full cost of the SIM card is reimbursed if the SIM card has not been used, its presentation is preserved and there is no physical damage."
+                nameKZ="SIM картасының толық құны SIM картасы пайдаланылмаған болса, оның көрсетілімі сақталса және физикалық зақым болмаса, өтеледі."
+                nameRU="Полная стоимость SIM-карты возмещается в случае, если данная SIM-карта не была в употреблении, сохранены ее товарный вид и без физических повреждений."
+              />
+            </ion-text>
+            <br /><br />
+            <ion-text>
+              <translate
+                nameEN="Returns and exchanges of Funsim SIM cards of good quality are made within 7 days from the date of application. Cancellation of the order is carried out by the customer at least 48 hours before departure."
+                nameKZ="Сапалы Funsim SIM карталарын қайтару және айырбастау өтініш берілген күннен бастап 7 күн ішінде жүзеге асырылады. Тапсырыстың күшін жоюды тұтынушы кетуге дейін кемінде 48 сағат бұрын жүзеге асырады."
+                nameRU="Возврат и обмен SIM-карт Funsim надлежащего качества производится в течении 7 дней, c момента заявки. Отмена заказа осуществляется заказчиком не менее чем за 48 часов до вылета."
+              />
+            </ion-text>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+    </menu>
+  </section>
+</ion-content>

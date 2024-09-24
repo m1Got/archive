@@ -1,0 +1,526 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="primary-toolbar">
+    <div class="primary-toolbar--inner">
+      <button
+        size="m"
+        shape="rounded"
+        tuiButton
+        appearance="whiteblock"
+        class="icon-button"
+        (click)="navCtrl.back()"
+      >
+        <ion-icon
+          class="text-lg"
+          color="primary"
+          src="assets/icons/chevron-back-outline.svg"
+        />
+      </button>
+      <ion-title>Настройки</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="py-4">
+    <h5 class="text-base font-semibold text-dark">
+      Получать персональные предложения
+    </h5>
+    <p class="py-3 text-sm">
+      Новости об акциях, промокоды и реклама услуг, которые могут вам
+      пригодиться
+    </p>
+    <div class="grid gap-2">
+      <ion-item lines="none" detail="false" class="menu-item">
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-2xl text-primary"
+            src="assets/icons/bell-notification-alarm.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium">
+          Push-уведомления
+        </ion-label>
+        <ion-toggle slot="end">
+          <span class="hidden">Notifications</span>
+        </ion-toggle>
+      </ion-item>
+      <ion-item
+        lines="none"
+        detail="false"
+        class="menu-item"
+        (click)="utilsService.odTemplate(languageTemplate)"
+      >
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-2xl text-primary"
+            src="assets/icons/language-translate.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium"> Язык </ion-label>
+        <span class="ml-auto pr-1 text-sm text-primary">Русский</span>
+        <ion-icon
+          color="primary"
+          slot="end"
+          class="text-2xl"
+          src="assets/icons/chevron-right-filled.svg"
+        />
+      </ion-item>
+    </div>
+  </div>
+  <div class="py-4">
+    <h5 class="text-base font-semibold text-dark">Навигация</h5>
+    <p class="py-3 text-sm">
+      Выберите какой навигационной программой Вы будете пользоваться для
+      просмотра локации
+    </p>
+    <div class="grid gap-2">
+      <ion-item
+        lines="none"
+        detail="false"
+        class="menu-item"
+        (click)="utilsService.odTemplate(mapTemplate)"
+      >
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-2xl text-primary"
+            src="assets/icons/location-direction.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium"> Карта </ion-label>
+        <ion-icon
+          color="primary"
+          slot="end"
+          class="text-2xl"
+          src="assets/icons/chevron-right-filled.svg"
+        />
+      </ion-item>
+      <ion-item
+        lines="none"
+        detail="false"
+        class="menu-item"
+        routerLink="/protection"
+      >
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-2xl text-primary"
+            src="assets/icons/security-lock.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium">
+          Защита аккаунта
+        </ion-label>
+        <ion-icon
+          color="primary"
+          slot="end"
+          class="text-2xl"
+          src="assets/icons/chevron-right-filled.svg"
+        />
+      </ion-item>
+      <ion-item lines="none" detail="false" class="menu-item">
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-2xl text-primary"
+            src="assets/icons/building-home-house.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium">
+          Бизнес аккаунт
+        </ion-label>
+        <ion-icon
+          color="primary"
+          slot="end"
+          class="text-2xl"
+          src="assets/icons/chevron-right-filled.svg"
+        />
+      </ion-item>
+    </div>
+  </div>
+  <div class="py-4">
+    <h5 class="text-base font-semibold text-dark">Помощь</h5>
+    <p class="py-3 text-sm">
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the
+    </p>
+    <div class="grid gap-2">
+      <ion-item lines="none" detail="false" class="menu-item" routerLink="/faq">
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-2xl text-primary"
+            src="assets/icons/question-checkmark.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium"
+          >Вопросы и ответы</ion-label
+        >
+        <ion-icon
+          color="primary"
+          slot="end"
+          class="text-2xl"
+          src="assets/icons/chevron-right-filled.svg"
+        />
+      </ion-item>
+      <ion-item
+        lines="none"
+        detail="false"
+        class="menu-item"
+        (click)="utilsService.odTemplate(informationTemplate)"
+      >
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-2xl text-primary"
+            src="assets/icons/file-certificate.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium"> Информация </ion-label>
+        <ion-icon
+          color="primary"
+          slot="end"
+          class="text-2xl"
+          src="assets/icons/chevron-right-filled.svg"
+        />
+      </ion-item>
+    </div>
+  </div>
+  <div class="py-4">
+    <h5 class="text-base font-semibold text-dark">Настройки</h5>
+    <p class="py-3 text-sm">
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the
+    </p>
+    <div class="grid gap-2">
+      <ion-item lines="none" detail="false" class="menu-item">
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-2xl text-primary"
+            src="assets/icons/trash-refresh.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium"> Очистить кэш </ion-label>
+        <ion-icon
+          color="primary"
+          slot="end"
+          class="text-2xl"
+          src="assets/icons/chevron-right-filled.svg"
+        />
+      </ion-item>
+      <ion-item
+        id="logoutTrigger"
+        lines="none"
+        detail="false"
+        class="menu-item"
+      >
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-2xl text-primary"
+            src="assets/icons/log-out-arrow.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium"
+          >Выйти из аккаунта</ion-label
+        >
+        <ion-icon
+          color="primary"
+          slot="end"
+          class="text-2xl"
+          src="assets/icons/chevron-right-filled.svg"
+        />
+      </ion-item>
+      <ion-alert
+        trigger="logoutTrigger"
+        cssClass="myalert"
+        header="Переключить аккаунт?"
+        message="Вы уверены что хотите выйти?"
+        [buttons]="logoutButtons"
+      />
+      <ion-item
+        id="accountDeleteTrigger"
+        lines="none"
+        detail="false"
+        class="menu-item danger"
+      >
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            color="danger"
+            class="text-2xl"
+            src="assets/icons/user-delete-cross.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium" color="danger">
+          Удалить аккаунт
+        </ion-label>
+        <ion-icon
+          color="danger"
+          slot="end"
+          class="text-2xl"
+          src="assets/icons/chevron-right-filled.svg"
+        />
+      </ion-item>
+      <ion-alert
+        trigger="accountDeleteTrigger"
+        cssClass="myalert"
+        header="Удалить"
+        message="Вы уверены что хотите удалить аккаунт?"
+        [buttons]="accountDeleteButtons"
+      />
+    </div>
+  </div>
+</ion-content>
+
+<ng-template #languageTemplate>
+  <div class="py-5">
+    <h4 class="text-xl font-semibold">Сменить язык</h4>
+    <div class="grid gap-2 pt-2">
+      <ion-item
+        lines="none"
+        detail="false"
+        class="menu-item"
+        (click)="lng = 'ru'"
+        [ngClass]="{selected: lng === 'ru'}"
+      >
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-2xl text-primary"
+            src="/assets/images/ru-flag.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium">Русский язык</ion-label>
+        <ng-container *ngIf="lng === 'ru'">
+          <ion-icon
+            slot="end"
+            class="text-2xl"
+            color="primary"
+            src="assets/icons/checkmark-outline.svg"
+          />
+        </ng-container>
+      </ion-item>
+      <ion-item
+        lines="none"
+        detail="false"
+        class="menu-item"
+        (click)="lng = 'uz'"
+        [ngClass]="{selected: lng === 'uz'}"
+      >
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-2xl text-primary"
+            src="/assets/images/uz-flag.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium">Узбекский язык</ion-label>
+        <ng-container *ngIf="lng === 'uz'">
+          <ion-icon
+            slot="end"
+            class="text-2xl"
+            color="primary"
+            src="assets/icons/checkmark-outline.svg"
+          />
+        </ng-container>
+      </ion-item>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #mapTemplate>
+  <div class="py-5">
+    <h4 class="text-xl font-semibold">Выберите приложение</h4>
+    <div class="grid gap-2 pt-2">
+      <ion-item
+        lines="none"
+        detail="false"
+        class="menu-item"
+        (click)="map = 'map_1'"
+        [ngClass]="{selected: map === 'map_1'}"
+      >
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-2xl text-primary"
+            src="/assets/images/yandex-navigator.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium">Стандартное</ion-label>
+        <ng-container *ngIf="map === 'map_1'">
+          <ion-icon
+            slot="end"
+            class="text-2xl"
+            color="primary"
+            src="assets/icons/checkmark-outline.svg"
+          />
+        </ng-container>
+      </ion-item>
+      <ion-item
+        lines="none"
+        detail="false"
+        class="menu-item"
+        (click)="map = 'map_2'"
+        [ngClass]="{selected: map === 'map_2'}"
+      >
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-2xl text-primary"
+            src="/assets/images/yandex-navigator.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium"
+          >Яндекс навигатор</ion-label
+        >
+        <ng-container *ngIf="map === 'map_2'">
+          <ion-icon
+            slot="end"
+            class="text-2xl"
+            color="primary"
+            src="assets/icons/checkmark-outline.svg"
+          />
+        </ng-container>
+      </ion-item>
+      <ion-item
+        lines="none"
+        detail="false"
+        class="menu-item"
+        (click)="map = 'map_3'"
+        [ngClass]="{selected: map === 'map_3'}"
+      >
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-2xl text-primary"
+            src="/assets/images/google-maps.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium">Google Maps</ion-label>
+        <ng-container *ngIf="map === 'map_3'">
+          <ion-icon
+            slot="end"
+            class="text-2xl"
+            color="primary"
+            src="assets/icons/checkmark-outline.svg"
+          />
+        </ng-container>
+      </ion-item>
+      <ion-item
+        lines="none"
+        detail="false"
+        class="menu-item"
+        (click)="map = 'map_4'"
+        [ngClass]="{selected: map === 'map_4'}"
+      >
+        <button
+          size="m"
+          tuiIconButton
+          appearance="secondary"
+          class="icon-button"
+        >
+          <ion-icon
+            class="text-2xl text-primary"
+            src="/assets/images/google-maps.svg"
+          />
+        </button>
+        <ion-label class="px-1 !text-sm font-medium">2Gis</ion-label>
+        <ng-container *ngIf="map === 'map_4'">
+          <ion-icon
+            slot="end"
+            class="text-2xl"
+            color="primary"
+            src="assets/icons/checkmark-outline.svg"
+          />
+        </ng-container>
+      </ion-item>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #informationTemplate>
+  <div class="py-5">
+    <h4 class="text-xl font-semibold">Выберите приложение</h4>
+    <div class="grid gap-2 pt-2">
+      <ion-item lines="none" detail="false" class="menu-item">
+        <ion-label class="px-1 !text-sm font-medium"
+          >Политика конфиденциальности</ion-label
+        >
+      </ion-item>
+      <ion-item lines="none" detail="false" class="menu-item">
+        <ion-label class="px-1 !text-sm font-medium"
+          >Публичная оферта</ion-label
+        >
+      </ion-item>
+      <ion-item lines="none" detail="false" class="menu-item">
+        <ion-label class="px-1 !text-sm font-medium"
+          >Правила использование</ion-label
+        >
+      </ion-item>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,50 @@
+<div class="grid max-w-2xl gap-5">
+  <div class="flex flex-wrap items-center">
+    <h3 class="title">Пополнение счета</h3>
+    <button tuiButton appearance="secondary" shape="rounded" class="ml-5">
+      <span class="font-medium">Баланс: 500 000 UZS</span>
+    </button>
+  </div>
+  <div>
+    <div class="flex gap-5 pb-5">
+      <button
+        class="w-full max-w-[250px] rounded-2xl border-2 border-solid p-6 md:p-10"
+        [class]="activePayment === 'click' ? 'border-primary':'border-lightgrey'"
+        (click)="activePayment = 'click'"
+      >
+        <img src="images/payment/click.svg" />
+      </button>
+      <button
+        class="w-full max-w-[250px] rounded-2xl border-2 border-solid p-6 md:p-10"
+        [class]="activePayment === 'payme' ? 'border-primary':'border-lightgrey'"
+        (click)="activePayment = 'payme'"
+      >
+        <img src="images/payment/payme.svg" />
+      </button>
+    </div>
+    <ng-container *ngIf="activePayment === 'click'">
+      <label tuiLabel="Сумма">
+        <tui-input-number [tuiTextfieldLabelOutside]="true" [formControl]="">
+          Введите сумму
+          <input tuiTextfield />
+        </tui-input-number>
+      </label>
+    </ng-container>
+    <ng-container *ngIf="activePayment === 'payme'">
+      <label tuiLabel="Сумма">
+        <tui-input-number [tuiTextfieldLabelOutside]="true" [formControl]="">
+          Введите сумму
+          <input tuiTextfield />
+        </tui-input-number>
+      </label>
+    </ng-container>
+  </div>
+  <button
+    tuiButton
+    shape="rounded"
+    appearance="accent"
+    class="md:justify-self-start"
+  >
+    Пополнить баланс
+  </button>
+</div>
